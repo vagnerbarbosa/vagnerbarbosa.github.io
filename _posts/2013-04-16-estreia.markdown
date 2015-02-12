@@ -2,7 +2,7 @@
 layout: post
 title:  "Estréia!"
 date:   2013-04-16 14:11:31
-categories: novidade atualização
+categories: novidades 
 ---
 Olá! Sejam bem-vindos!
 
