@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Estréia!"
+date:   2013-04-16 14:11:31
+categories: novidade atualização
+---
+Olá! Sejam bem-vindos!
+
+Esse é o post de inaguração de mais um blog pessoal criado pela minha pessoa!
+
+Aqui irei postar tudo que diz respeito aos meus interesses pessoais e que eu julgue interessante compartilhar! Principalmente no que diz respeito a Tecnologia da Informação e Empreendedorismo no geral!
+
+Atualização em 12 de Fevereiro de 2014:
+Estou migrando todos os posts da plataforma wordpress para o Jekyll! Obrigado! :)
