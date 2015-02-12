@@ -11,25 +11,27 @@ layout: default
     <p class="post-meta">{% assign m = page.date | date: "%-m" %}
 {{ page.date | date: "%-d" }}
 {% case m %}
-  {% when '1' %}Janeiro
-  {% when '2' %}Fevereiro
-  {% when '3' %}M&auml;rz
-  {% when '4' %}Abril
-  {% when '5' %}Maio
-  {% when '6' %}Junho
-  {% when '7' %}Julho
-  {% when '8' %}Agosto
-  {% when '9' %}Setembro
-  {% when '10' %}Outubro
-  {% when '11' %}Novembro
-  {% when '12' %}Dezembro
+  {% when '1' %}de Janeiro,
+  {% when '2' %}de Fevereiro,
+  {% when '3' %}de M&auml;rz,
+  {% when '4' %}de Abril,
+  {% when '5' %}de Maio,
+  {% when '6' %}de Junho,
+  {% when '7' %}de Julho,
+  {% when '8' %}de Agosto,
+  {% when '9' %}de Setembro,
+  {% when '10' %}de Outubro,
+  {% when '11' %}de Novembro,
+  {% when '12' %}de Dezembro,
 {% endcase %}
 {{ page.date | date: "%Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>
 
   <article class="post-content">
-    {{ content }}
+    {{ content }}    
   </article>
+
+  <div class="post-comments">{% include comments.html %}</div>
 
 </div>
 
