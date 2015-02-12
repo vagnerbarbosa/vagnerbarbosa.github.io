@@ -10,5 +10,6 @@ Esse é o post de inaguração de mais um blog pessoal criado pela minha pessoa!
 
 Aqui irei postar tudo que diz respeito aos meus interesses pessoais e que eu julgue interessante compartilhar! Principalmente no que diz respeito a Tecnologia da Informação e Empreendedorismo no geral!
 
-Atualização em 12 de Fevereiro de 2014:
+**Atualização em 12 de Fevereiro de 2014:**
+
 Estou migrando todos os posts da plataforma wordpress para o Jekyll! Obrigado! :)
