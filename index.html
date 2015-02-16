@@ -9,24 +9,7 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{% assign m = page.date | date: "%-m" %}
-{{ page.date | date: "%-d" }}
-{% case m %}
-  {% when '1' %}de Janeiro,
-  {% when '2' %}de Fevereiro,
-  {% when '3' %}de M&auml;rz,
-  {% when '4' %}de Abril,
-  {% when '5' %}de Maio,
-  {% when '6' %}de Junho,
-  {% when '7' %}de Julho,
-  {% when '8' %}de Agosto,
-  {% when '9' %}de Setembro,
-  {% when '10' %}de Outubro,
-  {% when '11' %}de Novembro,
-  {% when '12' %}de Dezembro,
-{% endcase %}
-{{ page.date | date: "%Y" }}</span>
-
+      <p class="post-meta">{{ page.date | date: "%b %-d %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>       
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
