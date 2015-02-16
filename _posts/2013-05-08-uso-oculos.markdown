@@ -10,4 +10,4 @@ Há quem não consiga me apreciar diante da barreira dos óculos. Funcionam como
 
 fonte: [inquilinosdoalem.blogspot.com.br](inquilinosdoalem.blogspot.com.br "inquilinosdoalem.blogspot.com.br")
 
-![Gato de Óculos](http://vagnerbarbosa.github.io/contents/catinglass.png)
+![Gato de Óculos](http://vagnerbarbosa.github.io/contents/catinglass.jpg)
