@@ -12,4 +12,4 @@ Aqui irei postar tudo que diz respeito aos meus interesses pessoais e que eu jul
 
 **Atualização em 12 de Fevereiro de 2014:**
 
-Estou migrando todos os posts da plataforma wordpress para o Jekyll! Obrigado! :)
+Estou migrando todos os posts da plataforma wordpress (e alguns outros posts mais antigos e de outros lugares) para o Jekyll! Então... Obrigado! :)
