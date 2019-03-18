@@ -11,6 +11,18 @@
     align-items: center
 }
 
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 
 // Our variables
 $base-font-family: Helvetica, Arial, sans-serif;
@@ -20,8 +32,8 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
-$text-color:       #111;
-$background-color: #fdfdfd;
+$text-color:       #FFFFFF;
+$background-color: #141313
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
