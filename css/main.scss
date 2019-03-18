@@ -15,16 +15,15 @@
     width: 100vw;
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    align-items: right
+    justify-content: flex-end;
+    align-items: flex-end
 }
 
 .right-justify {
-    width: 100vw;
         display: flex;
         flex-direction: row;
-        justify-content: right;
-        align-items: right
+    justify-content: flex-end;
+    align-items: flex-end
 }
 
 a:visited {
