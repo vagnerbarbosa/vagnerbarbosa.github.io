@@ -7,9 +7,10 @@ layout: default
 
   <div class="welcome" style="text-align: justify; font-size: 48px;">vagner barbosa + FullStack Developer</div>
 
-  <h1 class="page-heading" id="right-justif">Últimos Posts</h1>
+  <div class="right-justif">
+  <h1 class="page-heading">Últimos Posts</h1>
 
-  <ul class="post-list" id="right-justif">
+  <ul class="post-list">
     {% for post in site.posts %}
       <li>
       <p class="post-meta">{{ page.date | date: "%b %-d %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>       
