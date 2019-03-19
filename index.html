@@ -35,28 +35,28 @@ ml.timelines["ml5"] = anime.timeline({loop: true})
     opacity: [0,1],
     scaleY: [0.5, 1],
     easing: "easeOutExpo",
-    duration: 10000,
+    duration: 1000,
     offset: '-=600'
   }).add({
     targets: '.ml5 .letters-left',
     opacity: [0,1],
     translateX: ["0.5em", 0],
     easing: "easeOutExpo",
-    duration: 10000,
+    duration: 1000,
     offset: '-=300'
   }).add({
     targets: '.ml5 .letters-right',
     opacity: [0,1],
     translateX: ["-0.5em", 0],
     easing: "easeOutExpo",
-    duration: 10000,
+    duration: 600,
     offset: '-=600'
   }).add({
     targets: '.ml5',
     opacity: 0,
     duration: 1000,
     easing: "easeOutExpo",
-    delay: 1000
+    delay: 10000
   });
 </script>
 
@@ -67,11 +67,11 @@ ml.timelines["ml5"] = anime.timeline({loop: true})
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 68px;
+    font-size: 98px;
 }
 .ml5 .text-wrapper {
   position: relative;
-  font-size: 68px;
+  font-size: 98px;
   display: inline-block;
   padding-top: 0.1em;
   padding-right: 0.05em;
@@ -79,14 +79,14 @@ ml.timelines["ml5"] = anime.timeline({loop: true})
   line-height: 1em;
 }
 .ml5 .ampersand {
-  font-size: 68px;
+  font-size: 98px;
   font-weight: 900;
   width: 1em;
   margin-right: -0.1em;
   margin-left: -0.1em;
 }
 .ml5 .letters {
-  font-size: 68px;
+  font-size: 98px;
   display: inline-block;
   opacity: 0;
   font-size: 48px;
