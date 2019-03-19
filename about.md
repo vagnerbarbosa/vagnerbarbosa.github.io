@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: mail-me!
+permalink: mailto:{{ site.email }}
 ---
 
 
