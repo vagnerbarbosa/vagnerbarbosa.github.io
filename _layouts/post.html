@@ -11,18 +11,18 @@ layout: default
     <p class="post-meta">Públicado em {% assign m = page.date | date: "%-m" %}
 {{ page.date | date: "%-d" }}
 {% case m %}
-  {% when '1' %}de Janeiro,
-  {% when '2' %}de Fevereiro,
-  {% when '3' %}de M&auml;rz,
-  {% when '4' %}de Abril,
-  {% when '5' %}de Maio,
-  {% when '6' %}de Junho,
-  {% when '7' %}de Julho,
-  {% when '8' %}de Agosto,
-  {% when '9' %}de Setembro,
-  {% when '10' %}de Outubro,
-  {% when '11' %}de Novembro,
-  {% when '12' %}de Dezembro,
+  {% when '1' %}de Janeiro do ano
+  {% when '2' %}de Fevereiro do ano
+  {% when '3' %}de Março do ano
+  {% when '4' %}de Abril do ano
+  {% when '5' %}de Maio do ano
+  {% when '6' %}de Junho do ano
+  {% when '7' %}de Julho do ano
+  {% when '8' %}de Agosto do ano
+  {% when '9' %}de Setembro do ano
+  {% when '10' %}de Outubro do ano
+  {% when '11' %}de Novembro do ano
+  {% when '12' %}de Dezembro do ano
 {% endcase %}
 {{ page.date | date: "%Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>

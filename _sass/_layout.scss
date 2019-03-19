@@ -175,6 +175,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    border-left-width: 5%;
 }
 
 .post-list {
@@ -184,6 +185,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    border-left-width: 5%;
 
     > li {
         margin-bottom: $spacing-unit;
