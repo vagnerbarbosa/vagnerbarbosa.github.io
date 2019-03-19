@@ -1,4 +1,4 @@
-anime.timeline({loop: true})
+ml.timelines["ml5"] = anime.timeline({loop: true})
   .add({
     targets: '.ml5 .line',
     opacity: [0.5,1],
