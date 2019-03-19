@@ -1,7 +1,7 @@
 ---
 layout: page
 title: mail-me!
-permalink: mailto:{{ site.email }}
+permalink: mailto:contato@vagnerbarbosa.com
 ---
 
 
