@@ -4,32 +4,27 @@ layout: default
 
 <div class="home">
 
+  <h1 class="ml5">
+    <span class="text-wrapper">
 
-    <h1 class="ml5">
-  <span class="text-wrapper">
-    <span class="line line1"></span>
     <span class="letters letters-left">vagner barbosa</span>
     <span class="letters ampersand">+</span>
     <span class="letters letters-right">FullStack Developer</span>
-    <span class="line line2"></span>
-  </span>
-    </h1>
 
+    </span>
+  </h1>
 
-
-  <!--more-->
-
-  <script>
-ml.timelines["ml5"] = anime.timeline({loop: true})
+<script>
+ml.timelines["ml5"] = anime.timeline({loop: false})
   .add({
     targets: '.ml5 .line',
     opacity: [0.5,1],
     scaleX: [0, 1],
     easing: "easeInOutExpo",
-    duration: 700
+    duration: 900
   }).add({
     targets: '.ml5 .line',
-    duration: 600,
+    duration: 800,
     easing: "easeOutExpo",
     translateY: function(e, i, l) {
       var offset = -0.625 + 0.625*2*i;
@@ -40,22 +35,22 @@ ml.timelines["ml5"] = anime.timeline({loop: true})
     opacity: [0,1],
     scaleY: [0.5, 1],
     easing: "easeOutExpo",
-    duration: 600,
-    offset: '-=600'
+    duration: 800,
+    offset: '-=800'
   }).add({
     targets: '.ml5 .letters-left',
     opacity: [0,1],
     translateX: ["0.5em", 0],
     easing: "easeOutExpo",
-    duration: 600,
-    offset: '-=300'
+    duration: 800,
+    offset: '-=500'
   }).add({
     targets: '.ml5 .letters-right',
     opacity: [0,1],
     translateX: ["-0.5em", 0],
     easing: "easeOutExpo",
-    duration: 600,
-    offset: '-=600'
+    duration: 800,
+    offset: '-=800'
   }).add({
     targets: '.ml5',
     opacity: 0,
@@ -95,7 +90,7 @@ ml.timelines["ml5"] = anime.timeline({loop: true})
 .ml5 .ampersand {
   font-family: Baskerville, "EB Garamond", serif;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 600;
   width: 1em;
   margin-right: -0.1em;
   margin-left: -0.1em;
