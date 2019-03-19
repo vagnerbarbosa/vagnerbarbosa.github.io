@@ -13,16 +13,10 @@
 
 .mailme {
     display: flex;
+    top: 0;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end
-}
-
-.right-justify {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start
 }
 
 a:visited {
