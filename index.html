@@ -7,7 +7,7 @@ layout: default
   <h1 class="ml5">
     <span class="text-wrapper">
 
-      <span class="letters letters-left"><a class="mailme" href="mailto:{{ site.email }}">vagner barbosa</a></span>
+      <span class="letters letters-left"><a class="mailme" href="mailto:{{ site.email }}">vagner barbosa </a></span>
       <span class="letters ampersand"><a class="mailme" href="mailto:{{ site.email }}">+</a></span>
       <span class="letters letters-right"><a class="mailme" href="mailto:{{ site.email }}">FullStack Developer</a></span>
 
@@ -17,6 +17,20 @@ layout: default
   <script>
 ml.timelines["ml5"] = anime.timeline({loop: true})
   .add({
+    targets: '.ml5 .line',
+    opacity: [0.5,1],
+    scaleX: [0, 1],
+    easing: "easeInOutExpo",
+    duration: 700
+  }).add({
+    targets: '.ml5 .line',
+    duration: 600,
+    easing: "easeOutExpo",
+    translateY: function(e, i, l) {
+      var offset = -0.625 + 0.625*2*i;
+      return offset + "em";
+    }
+  }).add({
     targets: '.ml5 .ampersand',
     opacity: [0,1],
     scaleY: [0.5, 1],
@@ -35,7 +49,7 @@ ml.timelines["ml5"] = anime.timeline({loop: true})
     opacity: [0,1],
     translateX: ["-0.5em", 0],
     easing: "easeOutExpo",
-    duration: 1000,
+    duration: 600,
     offset: '-=600'
   }).add({
     targets: '.ml5',
