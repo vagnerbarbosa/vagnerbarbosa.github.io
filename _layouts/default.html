@@ -1,34 +1,13 @@
 <!DOCTYPE html>
-<html>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<html lang="en">
   {% include head.html %}
-
   <body>
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}        
-      </div>
-
-      <h1 class="page-heading">Últimos Posts</h1>
-
-      <ul class="post-list">
-        {% for post in site.posts %}
-        <li>
-          <p class="post-meta">{{ page.date | date: "%-d %b %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-          <h2>
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-        </li>
-        {% endfor %}
-      </ul>
-
-      <p class="rss-subscribe">Inscreva-se <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-    </div>
-
-    {% include footer.html %}
-
+      {% include header.html %}
+      <section id="about">
+        {% include about.html %}
+      </section>
+        {{ content }}
+      {% include footer.html %}
   </body>
-
 </html>
