@@ -148,7 +148,7 @@ Para atualizar as tecnologias exibidas, edite as seções:
 O deploy é automático via GitHub Pages:
 1. Faça push para a branch `master`
 2. O GitHub Pages irá buildar e publicar automaticamente
-3. O site ficará disponível em `https://vagnerbarbosa.github.io`
+3. O site ficará disponível em `https://vagnerbarbosa.com`
 
 ## Personalização
 
