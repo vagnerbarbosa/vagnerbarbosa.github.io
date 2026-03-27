@@ -1,0 +1,32 @@
+{{define "index"}}<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+{{template "head" .}}
+<body>
+  <div class="container">
+    {{template "header" .}}
+    <main>
+      {{template "about" .}}
+      {{template "experience" .}}
+      {{template "skills" .}}
+      {{template "education" .}}
+      {{template "contact" .}}
+    </main>
+    {{template "footer" .}}
+  </div>
+
+  <script src="{{.Site.BaseURL}}/assets/js/utils.js" defer></script>
+  <script src="{{.Site.BaseURL}}/assets/js/theme.js" defer></script>
+  <script src="{{.Site.BaseURL}}/assets/js/i18n.js" defer></script>
+  <script src="{{.Site.BaseURL}}/assets/js/accordion.js" defer></script>
+  <script src="{{.Site.BaseURL}}/assets/js/app.js" defer></script>
+
+  <noscript>
+    <style>
+      .lang-en { display: none !important; }
+      .accordion .accordion-content { max-height: none !important; padding: 24px 0 !important; }
+      .accordion-header { cursor: default !important; }
+      .accordion-icon { display: none !important; }
+    </style>
+  </noscript>
+</body>
+</html>{{end}}

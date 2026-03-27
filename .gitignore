@@ -1,6 +1,45 @@
-.sass-cache/
-.jekyll-metadata
-node_modules
-.vscode
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylinx
+*.test
+*.out
+vendor/
+
+# Generated site
+public/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node (if used in future)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ruby (old Jekyll - can be removed after migration)
+Gemfile.lock
+.bundle/
 _site/
-.claude
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Claude
+.claude/

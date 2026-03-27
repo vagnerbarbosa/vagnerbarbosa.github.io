@@ -1,6 +1,6 @@
 # vagnerbarbosa.github.io
 
-[![Jekyll](https://img.shields.io/badge/Jekyll-4.0-CC0000?logo=jekyll)](https://jekyllrb.com/)
+[![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://golang.org/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-222?logo=github)](https://vagnerbarbosa.github.io)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -8,7 +8,7 @@
 
 ## Visão Geral
 
-Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.co](https://annamona.co). Design responsivo, bilíngue (PT/EN) e com foco em acessibilidade e performance.
+Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.co](https://annamona.co). Design responsivo, bilíngue (PT/EN) e com foco em acessibilidade e performance. **Agora gerado com Go!**
 
 ## Características
 
@@ -16,73 +16,86 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 - **Bilíngue** - Suporte completo a Português e Inglês com toggle de idioma
 - **Tema claro/escuro** - Alternância automática de tema
 - **Acessibilidade** - Suporte a preferências de movimento reduzido
-- **Segurança** - Headers de segurança (CSP, HSTS, X-Frame-Options) via Cloudflare
-- **Performance** - JavaScript modular com carregamento defer e SRI hashes
+- **Segurança** - Headers de segurança (CSP, X-Frame-Options)
+- **Performance** - Site 100% estático, sem dependências de runtime
 
 ## Tecnologias
 
 ### Core
 | Tecnologia | Versão | Descrição |
 |------------|--------|-----------|
-| [Jekyll](https://jekyllrb.com/) | 4.x | Gerador de sites estáticos |
-| [Ruby](https://www.ruby-lang.org/) | 3.2+ | Linguagem base do Jekyll |
+| [Go](https://golang.org/) | 1.21+ | Linguagem do gerador de site estático |
+| [html/template](https://pkg.go.dev/html/template) | built-in | Templates seguros para HTML |
 
 ### Frontend
 | Tecnologia | Uso |
 |------------|-----|
 | HTML5 | Estrutura semântica |
-| CSS3 | Estilização moderna com variáveis |
+| CSS3 | Estilização moderna com variáveis CSS |
 | JavaScript (ES6+) | Interatividade modular |
 
 ### Módulos JavaScript
 | Arquivo | Descrição |
 |---------|-----------|
-| `utils.js` | Utilitários e polyfills |
+| `utils.js` | Utilitários e storage seguro |
 | `theme.js` | Gerenciamento de tema claro/escuro |
 | `i18n.js` | Sistema de internacionalização PT/EN |
-| `accordion.js` | Componente de acordeão para experiências |
+| `accordion.js` | Componente de acordeão para seções |
 | `app.js` | Inicialização e orquestração |
 
 ### Deploy
-- **GitHub Pages**: Hospedagem gratuita integrada ao GitHub
-- **Cloudflare**: CDN e headers de segurança
+- **GitHub Actions**: Build automático com Go
+- **GitHub Pages**: Hospedagem gratuita
 - **Domínio customizado**: https://vagnerbarbosa.com
 
 ## Estrutura do Projeto
 
 ```
 vagnerbarbosa.github.io/
-├── _config.yml              # Configuração do Jekyll
-├── _includes/               # Componentes reutilizáveis
-│   ├── about.html          # Seção principal com acordeão
-│   ├── footer.html         # Rodapé minimalista
-│   ├── head.html           # Meta tags e headers de segurança
-│   └── header.html         # Cabeçalho com toggles
-├── _layouts/                # Templates de página
-│   └── default.html        # Layout principal único
-├── assets/                  # Assets compilados
-│   ├── css/main.css        # CSS principal
-│   ├── js/                 # JavaScript modular
+├── cmd/
+│   └── generator/           # Gerador de site estático em Go
+│       └── main.go           # Entry point do gerador
+├── internal/
+│   └── config/
+│       └── config.go         # Parser de configuração YAML
+├── templates/                # Templates Go (html/template)
+│   ├── index.html            # Template principal
+│   └── partials/             # Componentes reutilizáveis
+│       ├── head.html
+│       ├── header.html
+│       ├── about.html
+│       ├── experience.html
+│       ├── skills.html
+│       ├── education.html
+│       ├── contact.html
+│       └── footer.html
+├── assets/                   # Assets estáticos
+│   ├── css/
+│   │   └── main.css          # CSS principal
+│   ├── js/                   # JavaScript modular
 │   │   ├── utils.js
 │   │   ├── theme.js
 │   │   ├── i18n.js
 │   │   ├── accordion.js
 │   │   └── app.js
+│   ├── fonts/                # Fontes (devicon, fontawesome)
 │   └── favicon.png
-├── scripts/                 # Scripts auxiliares
-│   ├── generate-sri.sh     # Gerador de SRI hashes
-│   └── sri-hashes.txt      # Hashes atuais
-├── CNAME                    # Configuração de domínio
-├── index.html              # Página inicial
-├── LICENSE                 # Licença MIT
-└── README.md               # Este arquivo
+├── config.yaml               # Configuração do site (novo)
+├── go.mod                    # Módulo Go
+├── go.sum                    # Checksums de dependências
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # CI/CD para GitHub Pages
+├── CNAME                     # Configuração de domínio
+├── LICENSE                   # Licença MIT
+└── README.md                 # Este arquivo
 ```
 
 ## Desenvolvimento
 
 ### Pré-requisitos
-- Ruby 3.2 ou superior
-- Bundler (`gem install bundler`)
+- Go 1.21 ou superior
+- Git
 
 ### Instalação
 
@@ -92,69 +105,98 @@ git clone https://github.com/vagnerbarbosa/vagnerbarbosa.github.io.git
 cd vagnerbarbosa.github.io
 ```
 
-2. Instale as dependências Ruby:
+2. Instale as dependências Go:
 ```bash
-bundle install
+go mod download
 ```
 
 ### Comandos
 
 | Comando | Descrição |
 |---------|-----------|
-| `bundle exec jekyll serve` | Inicia servidor de desenvolvimento |
-| `bundle exec jekyll serve --livereload` | Com hot reload |
+| `go run cmd/generator/main.go` | Gera o site em `public/` |
+| `go build -o generator cmd/generator/main.go` | Compila o gerador |
+| `./generator` | Executa o gerador compilado |
 
-O site estará disponível em `http://localhost:4000`
+O site gerado estará disponível em `public/index.html`
 
 ## Configuração
 
-### Site (`_config.yml`)
+### Site (`config.yaml`)
 Edite as informações pessoais:
 
 ```yaml
-username: Seu Nome
-user_description: Sua descrição
-user_title: Seu Título
-email: seu@email.com
+site:
+  title: "Seu Nome"
+  username: "Seu Nome"
+  user_description: "Sua descrição"
+  user_title: "Seu Título"
+  email: "seu@email.com"
 ```
 
-### Internacionalização (`assets/js/i18n.js`)
-Para atualizar textos em PT/EN, edite o objeto `translations` no arquivo `i18n.js`.
+### Conteúdo (`config.yaml`)
+Atualize experiências, educação e tecnologias:
 
-### Experiências (`_includes/about.html`)
-Para atualizar experiências profissionais, edite as seções dentro do arquivo `about.html`.
-
-### SRI Hashes
-Ao modificar arquivos JS, gere novos hashes:
-
-```bash
-# Linux/Mac
-bash scripts/generate-sri.sh
-
-# Windows (PowerShell)
-scripts/generate-sri.ps1
+```yaml
+content:
+  about:
+    pt: "Texto em português..."
+    en: "Texto em inglês..."
+  experiences:
+    - title: "Título do cargo"
+      company: "Nome da empresa"
+      period: "Jan 2020 – Presente"
+      details:
+        - "Descrição da atividade 1"
+        - "Descrição da atividade 2"
+  education:
+    - title: "Curso"
+      school: "Instituição"
+      period: "2018 – 2022"
+  technologies:
+    - "Go"
+    - "JavaScript"
 ```
 
-Depois atualize os hashes no `_layouts/default.html`.
+## Deploy
+
+O deploy é automático via GitHub Actions:
+
+1. Faça push para a branch `master`
+2. O GitHub Actions executa o build com Go
+3. O site gerado em `public/` é publicado no GitHub Pages
+4. O site fica disponível em `https://vagnerbarbosa.com`
+
+### Workflow de CI/CD
+
+O arquivo `.github/workflows/deploy.yml` configura:
+
+1. **Build**: Instala Go, baixa dependências e executa o gerador
+2. **Deploy**: Publica o conteúdo de `public/` no GitHub Pages
+
+## Migração de Jekyll para Go
+
+Este projeto foi migrado de Jekyll (Ruby) para um gerador estático em Go. As principais mudanças:
+
+| Aspecto | Antes (Jekyll) | Agora (Go) |
+|---------|----------------|------------|
+| Linguagem | Ruby | Go |
+| Templates | Liquid | html/template |
+| Configuração | `_config.yml` | `config.yaml` |
+| Build local | `bundle exec jekyll serve` | `go run cmd/generator/main.go` |
+| CI/CD | GitHub Pages nativo | GitHub Actions + Go |
+| Performance | ~2-3s build | ~0.5s build |
+| Dependências | Ruby + gems | Apenas Go standard library + yaml |
 
 ## Segurança
 
-Os seguintes headers de segurança são configurados via Cloudflare:
+Os seguintes headers de segurança são configurados via meta tags:
 
 - **CSP (Content-Security-Policy)** - Restrições de conteúdo
-- **HSTS** - Força HTTPS
 - **X-Frame-Options: DENY** - Previne clickjacking
 - **X-Content-Type-Options: nosniff** - Evita MIME sniffing
 - **X-XSS-Protection** - Proteção XSS do navegador
 - **Referrer-Policy** - Política de referrer
-
-## Deploy
-
-O deploy é automático via GitHub Pages:
-1. Faça push para a branch `master`
-2. O GitHub Pages irá buildar e publicar automaticamente
-3. O Cloudflare aplica os headers de segurança
-4. O site fica disponível em `https://vagnerbarbosa.com`
 
 ## Licença
 
