@@ -106,6 +106,11 @@
           self._handleToggle();
         }
       });
+
+      // Atualiza quando o idioma muda
+      document.addEventListener('languageChanged', function() {
+        self._updateText(self.getCurrentTheme());
+      });
     },
 
     /**

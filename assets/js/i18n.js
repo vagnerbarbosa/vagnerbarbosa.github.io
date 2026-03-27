@@ -194,6 +194,13 @@
 
       // Alterna visibilidade dos elementos
       this._toggleElements(safeLang);
+
+      // Dispara evento para notificar outros módulos
+      if (typeof document !== 'undefined') {
+        const event = document.createEvent('CustomEvent');
+        event.initCustomEvent('languageChanged', true, true, { lang: safeLang });
+        document.dispatchEvent(event);
+      }
     },
 
     /**
