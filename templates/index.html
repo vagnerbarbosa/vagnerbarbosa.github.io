@@ -2,7 +2,10 @@
 <html lang="pt-BR" data-theme="light">
 {{template "head" .}}
 <body>
-  <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+  <a href="#main-content" class="skip-link">
+    <span class="lang-pt">Pular para conteúdo principal</span>
+    <span class="lang-en" style="display: none;">Skip to main content</span>
+  </a>
   <div class="container">
     {{template "header" .}}
     <main id="main-content" tabindex="-1">
