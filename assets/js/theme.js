@@ -171,8 +171,23 @@
      * @param {string} theme
      */
     _updateText: function(theme) {
-      const text = theme === 'light' ? 'Dark mode' : 'Light mode';
+      // Verifica idioma atual
+      const currentLang = window.App.I18n ? window.App.I18n.getCurrentLang() : 'pt';
+      const isEnglish = currentLang === 'en';
+
+      // Textos bilíngues
+      const text = isEnglish
+        ? (theme === 'light' ? 'Dark mode' : 'Light mode')
+        : (theme === 'light' ? 'Modo escuro' : 'Modo claro');
+
       this._elements.text.textContent = text;
+
+      // Atualiza aria-pressed e aria-label para acessibilidade
+      this._elements.toggle.setAttribute('aria-pressed', theme === 'dark');
+      const ariaLabel = isEnglish
+        ? (theme === 'light' ? 'Enable dark mode' : 'Enable light mode')
+        : (theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro');
+      this._elements.toggle.setAttribute('aria-label', ariaLabel);
     },
 
     /**

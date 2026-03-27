@@ -4,8 +4,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{.Site.Title}}</title>
+  <title>{{.Site.Title}} - {{.Site.UserTitle}}</title>
   <meta name="description" content="{{.Site.UserDescription}}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.vagnerbarbosa.com/">
+  <meta property="og:title" content="{{.Site.Title}} - {{.Site.UserTitle}}">
+  <meta property="og:description" content="{{.Site.UserDescription}}">
+  <meta property="og:image" content="https://www.vagnerbarbosa.com/assets/favicon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="https://www.vagnerbarbosa.com/">
+  <meta property="twitter:title" content="{{.Site.Title}} - {{.Site.UserTitle}}">
+  <meta property="twitter:description" content="{{.Site.UserDescription}}">
+  <meta property="twitter:image" content="https://www.vagnerbarbosa.com/assets/favicon.png">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{.Site.Username}}",
+    "jobTitle": "{{.Site.UserTitle}}",
+    "description": "{{.Site.UserDescription}}",
+    "email": "{{.Site.Email}}",
+    "url": "https://www.vagnerbarbosa.com",
+    "sameAs": [
+      "https://github.com/vagnerbarbosa/",
+      "https://www.linkedin.com/in/vagnerbarbosa/"
+    ]
+  }
+  </script>
 
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 
@@ -17,5 +48,6 @@
 
   <link rel="stylesheet" href="{{.Site.BaseURL}}/assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="{{.Site.BaseURL}}/assets/favicon.png">
+  <link rel="canonical" href="https://www.vagnerbarbosa.com/">
 </head>
 {{end}}
