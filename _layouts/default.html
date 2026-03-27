@@ -1,6 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="pt-BR" data-theme="light">
   {% include head.html %}
+  <head>
+    <!-- Subresource Integrity (SRI) recomendado para produção -->
+    <!-- Exemplo: <script src="file.js" integrity="sha384-..." crossorigin="anonymous"></script> -->
+
+    <!-- Content Security Policy (ajustar conforme necessidade) -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      connect-src 'self';
+    ">
+  </head>
+
   <body>
     <div class="container">
       {% include header.html %}
@@ -9,84 +24,23 @@
       </main>
       {% include footer.html %}
     </div>
-    <script>
-      // Theme toggle functionality
-      (function() {
-        const html = document.documentElement;
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeText = document.getElementById('theme-text');
 
-        // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', currentTheme);
-        updateThemeText(currentTheme);
+    <!-- Scripts externos com defer para performance -->
+    <!-- Ordem: Utils → Módulos → App -->
+    <script src="{{ '/assets/js/utils.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/i18n.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/accordion.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/app.js' | relative_url }}" defer></script>
 
-        themeToggle.addEventListener('click', function() {
-          const currentTheme = html.getAttribute('data-theme');
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-          html.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateThemeText(newTheme);
-        });
-
-        function updateThemeText(theme) {
-          themeText.textContent = theme === 'light' ? 'Dark mode' : 'Light mode';
-        }
-      })();
-
-      // Language toggle functionality
-      (function() {
-        const langToggle = document.getElementById('lang-toggle');
-        const langText = document.getElementById('lang-text');
-        const html = document.documentElement;
-
-        // Check for saved language preference or default to 'pt'
-        const currentLang = localStorage.getItem('lang') || 'pt';
-        html.setAttribute('lang', currentLang === 'pt' ? 'pt-BR' : 'en');
-        updateLanguage(currentLang);
-
-        langToggle.addEventListener('click', function() {
-          const currentLang = html.getAttribute('lang') === 'pt-BR' ? 'pt' : 'en';
-          const newLang = currentLang === 'pt' ? 'en' : 'pt';
-
-          html.setAttribute('lang', newLang === 'pt' ? 'pt-BR' : 'en');
-          localStorage.setItem('lang', newLang);
-          updateLanguage(newLang);
-        });
-
-        function updateLanguage(lang) {
-          langText.textContent = lang === 'pt' ? 'EN' : 'PT';
-
-          // Toggle visibility of language elements
-          document.querySelectorAll('.lang-pt').forEach(el => {
-            el.style.display = lang === 'pt' ? '' : 'none';
-          });
-          document.querySelectorAll('.lang-en').forEach(el => {
-            el.style.display = lang === 'en' ? '' : 'none';
-          });
-        }
-      })();
-
-      // Accordion functionality
-      (function() {
-        document.querySelectorAll('.accordion-header').forEach(button => {
-          button.addEventListener('click', function() {
-            const accordion = this.parentElement;
-            const isExpanded = accordion.classList.contains('expanded');
-
-            // Close all accordions
-            document.querySelectorAll('.accordion').forEach(acc => {
-              acc.classList.remove('expanded');
-            });
-
-            // Open clicked accordion if it wasn't expanded
-            if (!isExpanded) {
-              accordion.classList.add('expanded');
-            }
-          });
-        });
-      })();
-    </script>
+    <!-- Noscript fallback para acessibilidade -->
+    <noscript>
+      <style>
+        .lang-en { display: none !important; }
+        .accordion .accordion-content { max-height: none !important; padding: 24px 0 !important; }
+        .accordion-header { cursor: default !important; }
+        .accordion-icon { display: none !important; }
+      </style>
+    </noscript>
   </body>
 </html>
