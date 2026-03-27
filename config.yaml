@@ -1,0 +1,89 @@
+site:
+  title: "Vagner Barbosa"
+  description: "Vagner Barbosa Minimal Page"
+  baseurl: ""
+  username: "Vagner Barbosa"
+  user_description: "In the IT since 2012. Software Engineer in search of a professional environment that is more humanized, inclusive and responsible! :)"
+  user_title: "Software Engineer"
+  email: "contato@vagnerbarbosa.com"
+
+content:
+  about:
+    pt: |
+      Especialista em Desenvolvimento de Software com mais de 11 anos de experiência em sistemas distribuídos de alta complexidade. Atualmente, atuo na orquestração de agentes de IA e arquiteturas escaláveis utilizando Java, Python e AWS.
+      Histórico comprovado em liderança técnica, mentoria de times e otimização de infraestrutura (FinOps), elevando eficiência de 80% para 96,2% via otimizações em RDS e Glue Flex.
+      Acredito que ambientes de trabalho mais leves, colaborativos e com propósito fazem toda a diferença.
+    en: |
+      Software Development Specialist with 11+ years of experience in high-complexity distributed systems. Currently working on AI agent orchestration and scalable architectures using Java, Python, and AWS.
+      Proven track record in technical leadership, team mentorship, and FinOps optimization, improving efficiency from 80% to 96.2% through RDS and Glue Flex optimizations.
+      I believe lighter, collaborative, and purpose-driven work environments make all the difference.
+
+  experiences:
+    - title: "Specialist Software Engineer"
+      title_en: "Specialist Software Engineer"
+      company: "Zup Innovation (Itaú)"
+      period: "Fev 2025 – Presente"
+      period_en: "Feb 2025 – Present"
+      details:
+        - "Referência técnica em FinOps para o Itaú, elevando KPI de eficiência de 80% para 96,2%"
+        - "Gestão direta de 7+ desenvolvedores (pleno/sênior), elevando maturidade via mentorias"
+        - "Orquestração de agentes de IA: Prompt Engineering, RAG e Fine-tuning"
+      details_en:
+        - "FinOps technical reference for Itaú, improving efficiency KPI from 80% to 96.2%"
+        - "Direct management of 7+ developers (mid/senior), increasing maturity through mentorship"
+        - "AI agent orchestration: Prompt Engineering, RAG, and Fine-tuning"
+      tech_stack: "Java • Python • AWS • Datadog • AI/LLM"
+
+    - title: "Analista Desenvolvedor Sênior"
+      title_en: "Senior Software Engineer"
+      company: "Invillia (PagBank)"
+      period: "Ago 2020 – Fev 2025"
+      period_en: "Aug 2020 – Feb 2025"
+      details:
+        - "Tech Lead em soluções de mitigação de fraude em tempo real"
+        - "Sistemas de stream de alta performance com Kafka, validados com Locust"
+        - "PDI e gestão de carreira de desenvolvedores"
+      details_en:
+        - "Tech Lead in real-time fraud mitigation solutions"
+        - "High-performance stream systems with Kafka, validated with Locust"
+        - "PDI and career development management for developers"
+      tech_stack: "Java • Kotlin • Go • Spring Boot • Kafka • Kubernetes • Airflow"
+
+    - title: "Analista Desenvolvedor Pleno"
+      title_en: "Software Engineer"
+      company: "SONDA"
+      period: "Ago 2019 – Jul 2020"
+      period_en: "Aug 2019 – Jul 2020"
+      details:
+        - "Desenvolvimento de WebServices REST para o Ministério da Justiça"
+        - "Metodologias ágeis (SCRUM), GitFlow, Docker"
+      details_en:
+        - "RESTful WebServices development for the Ministry of Justice"
+        - "Agile methodologies (SCRUM), GitFlow, Docker"
+      tech_stack: ""
+
+  education:
+    - title: "Pós-graduação em Inteligência Artificial"
+      title_en: "Postgraduate in Artificial Intelligence"
+      school: "FIAP"
+      period: "Conclusão em 2026"
+      period_en: "Conclusion in 2026"
+
+    - title: "Tecnólogo em Análise e Desenvolvimento de Sistemas"
+      title_en: "Technologist in System Analysis and Development"
+      school: "IFPB"
+      period: "Concluído em 2020"
+      period_en: "Completed in 2020"
+
+  technologies:
+    - "Java"
+    - "Kotlin"
+    - "Golang"
+    - "Python"
+    - "AWS"
+    - "Kafka"
+    - "Kubernetes"
+    - "Docker"
+    - "LangChain"
+    - "Git"
+    - "Linux"

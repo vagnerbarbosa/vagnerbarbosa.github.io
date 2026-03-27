@@ -1,0 +1,24 @@
+{{define "contact"}}
+<div class="accordion" id="contact">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="lang-pt"><span class="bracket">[</span>Contato<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Contact<span class="bracket">]</span></span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <p class="lang-pt">Vamos conversar? Entre em contato através dos links abaixo ou envie um email para <a href="mailto:{{.Site.Email}}">{{.Site.Email}}</a>.</p>
+      <p class="lang-en" style="display: none;">Let's talk? Get in touch through the links below or send an email to <a href="mailto:{{.Site.Email}}">{{.Site.Email}}</a>.</p>
+      <div class="social-links">
+        <a class="social-link" href="https://github.com/vagnerbarbosa/" target="_blank">GitHub</a>
+        <a class="social-link" href="https://www.linkedin.com/in/vagnerbarbosa/" target="_blank">LinkedIn</a>
+        <a class="social-link" href="https://www.instagram.com/__vagnerbarbosa/" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}

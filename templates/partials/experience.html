@@ -1,0 +1,45 @@
+{{define "experience"}}
+<div class="accordion" id="experience">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="lang-pt"><span class="bracket">[</span>Experiência<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Experience<span class="bracket">]</span></span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <div class="lang-pt">
+{{range .Content.Experiences}}
+        <div class="experience-item">
+          <h3 class="experience-title">{{.Title}}</h3>
+          <p class="experience-company">{{.Company}} • {{.Period}}</p>
+          <ul>
+{{range .Details}}
+            <li>{{.}}</li>
+{{end}}
+          </ul>
+          {{if .TechStack}}<p class="tech-stack">{{.TechStack}}</p>{{end}}
+        </div>
+{{end}}
+      </div>
+      <div class="lang-en" style="display: none;">
+{{range .Content.Experiences}}
+        <div class="experience-item">
+          <h3 class="experience-title">{{.TitleEN}}</h3>
+          <p class="experience-company">{{.Company}} • {{.PeriodEN}}</p>
+          <ul>
+{{range .DetailsEN}}
+            <li>{{.}}</li>
+{{end}}
+          </ul>
+          {{if .TechStack}}<p class="tech-stack">{{.TechStack}}</p>{{end}}
+        </div>
+{{end}}
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}

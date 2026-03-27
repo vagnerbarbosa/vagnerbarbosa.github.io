@@ -1,0 +1,33 @@
+{{define "education"}}
+<div class="accordion" id="education">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="lang-pt"><span class="bracket">[</span>Formação<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Education<span class="bracket">]</span></span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <div class="lang-pt">
+{{range .Content.Education}}
+        <div class="education-item">
+          <h3 class="education-title">{{.Title}}</h3>
+          <p class="education-school">{{.School}} • {{.Period}}</p>
+        </div>
+{{end}}
+      </div>
+      <div class="lang-en" style="display: none;">
+{{range .Content.Education}}
+        <div class="education-item">
+          <h3 class="education-title">{{.TitleEN}}</h3>
+          <p class="education-school">{{.School}} • {{.PeriodEN}}</p>
+        </div>
+{{end}}
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}
