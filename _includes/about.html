@@ -1,27 +1,87 @@
-<div class="user-details">
-  <h1>About Me</h1>
-  <p>{{ site.user_description }}</p>
+<!-- About Section -->
+<div class="accordion expanded" id="about">
+  <button class="accordion-header" aria-expanded="true">
+    <span class="accordion-header-content">
+      <span class="bracket">[</span>Sobre<span class="bracket">]</span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <p>{{ site.user_description }}</p>
+      <p>Trabalho com desenvolvimento de software desde 2012, focando em criar soluções eficientes e escaláveis. Busco ambientes profissionais mais humanizados, inclusivos e responsáveis.</p>
+    </div>
+  </div>
 </div>
-<div class="user">
-  <div class="tech">
-    <h2>Design</h2>
-    <i class="devicon-html5-plain colored" style="font-size: 60px;"></i>
-    <i class="devicon-sass-original colored" style="font-size: 60px;"></i>
-    <i class="devicon-bootstrap-plain colored" style="font-size: 60px;"></i>
-    <p>I feel comfortable working on the front-end, going from pure CSS & HTML5 to Sass, Bootstrap or AngularJS/2+.</p>
+
+<!-- Experience Section -->
+<div class="accordion" id="experience">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="bracket">[</span>Experiência<span class="bracket">]</span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <ul>
+        <li>Software Engineer — desenvolvimento backend e APIs</li>
+        <li>Arquitetura de sistemas distribuídos</li>
+        <li>Integração com IA e ferramentas de desenvolvimento</li>
+        <li>DevOps e automação de infraestrutura</li>
+      </ul>
+    </div>
   </div>
-  <div class="tech">
-    <h2>Code</h2>
-    <i class="devicon-java-plain colored" style="font-size: 60px;"></i>
-    <i class="devicon-kotlin-plain" style="font-size: 60px;"></i>
-    <i class="devicon-go-original" style="font-size: 60px;"></i>
-    <p>My main development languages are Java and Kotlin, but I have worked extensively with Golang, Python, and more.</p>
+</div>
+
+<!-- Skills Section -->
+<div class="accordion" id="skills">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="bracket">[</span>Tecnologias<span class="bracket">]</span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <div class="tech-grid">
+        <div class="tech-item">Java</div>
+        <div class="tech-item">Kotlin</div>
+        <div class="tech-item">Golang</div>
+        <div class="tech-item">Python</div>
+        <div class="tech-item">Docker</div>
+        <div class="tech-item">Git</div>
+        <div class="tech-item">Linux</div>
+        <div class="tech-item">LangChain</div>
+      </div>
+    </div>
   </div>
-  <div class="tech">
-    <h2>Tools</h2>
-    <i class="devicon-git-plain colored" style="font-size: 60px;"></i>
-    <i class="devicon-docker-plain colored" style="font-size: 60px;"></i>
-    <i class="devicon-linux-plain colored" style="font-size: 60px;"></i>
-    <p>Git, Docker, Linux, LangChain, Claude Code, Devin AI, and more cutting-edge AI-powered development tools!</p>
+</div>
+
+<!-- Contact Section -->
+<div class="accordion" id="contact">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="bracket">[</span>Contato<span class="bracket">]</span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <p>Vamos conversar? Entre em contato através dos links abaixo ou envie um email para <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+      <div class="social-links">
+        <a class="social-link" href="https://github.com/vagnerbarbosa/" target="_blank">GitHub</a>
+        <a class="social-link" href="https://www.linkedin.com/in/vagnerbarbosa/" target="_blank">LinkedIn</a>
+        <a class="social-link" href="https://www.instagram.com/__vagnerbarbosa/" target="_blank">Instagram</a>
+      </div>
+    </div>
   </div>
 </div>
