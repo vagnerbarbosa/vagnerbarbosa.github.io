@@ -1,12 +1,12 @@
 {{define "header"}}
 <header class="site-header">
   <h1 class="site-title">{{.Site.Username}}</h1>
-  <div class="header-controls">
-    <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+  <nav class="header-controls" aria-label="Configurações do site">
+    <button class="lang-toggle" id="lang-toggle" aria-label="Mudar idioma para inglês">
       <span id="lang-text">EN</span>
     </button>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-      <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <button class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Ativar modo escuro">
+      <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <circle cx="12" cy="12" r="5"></circle>
         <line x1="12" y1="1" x2="12" y2="3"></line>
         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -17,8 +17,8 @@
         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
-      <span id="theme-text">Dark mode</span>
+      <span id="theme-text">Modo escuro</span>
     </button>
-  </div>
+  </nav>
 </header>
 {{end}}

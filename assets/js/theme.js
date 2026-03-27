@@ -171,8 +171,13 @@
      * @param {string} theme
      */
     _updateText: function(theme) {
-      const text = theme === 'light' ? 'Dark mode' : 'Light mode';
+      const text = theme === 'light' ? 'Modo escuro' : 'Modo claro';
       this._elements.text.textContent = text;
+
+      // Atualiza aria-pressed e aria-label para acessibilidade
+      this._elements.toggle.setAttribute('aria-pressed', theme === 'dark');
+      const ariaLabel = theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro';
+      this._elements.toggle.setAttribute('aria-label', ariaLabel);
     },
 
     /**
