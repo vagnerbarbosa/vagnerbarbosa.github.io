@@ -205,6 +205,10 @@
       // Mostra o idioma oposto ao atual
       const buttonText = lang === 'pt' ? 'EN' : 'PT';
       this._elements.text.textContent = buttonText;
+
+      // Atualiza aria-label para acessibilidade
+      const ariaLabel = lang === 'pt' ? 'Mudar idioma para inglês' : 'Change language to Portuguese';
+      this._elements.toggle.setAttribute('aria-label', ariaLabel);
     },
 
     /**

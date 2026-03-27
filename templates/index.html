@@ -2,9 +2,10 @@
 <html lang="pt-BR" data-theme="light">
 {{template "head" .}}
 <body>
+  <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
   <div class="container">
     {{template "header" .}}
-    <main>
+    <main id="main-content" tabindex="-1">
       {{template "about" .}}
       {{template "experience" .}}
       {{template "skills" .}}
