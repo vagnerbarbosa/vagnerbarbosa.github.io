@@ -2,7 +2,8 @@
 <div class="accordion expanded" id="about">
   <button class="accordion-header" aria-expanded="true">
     <span class="accordion-header-content">
-      <span class="bracket">[</span>Sobre<span class="bracket">]</span>
+      <span class="lang-pt"><span class="bracket">[</span>Sobre<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>About<span class="bracket">]</span></span>
     </span>
     <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"></polyline>
@@ -10,8 +11,16 @@
   </button>
   <div class="accordion-content">
     <div class="accordion-content-inner">
-      <p>{{ site.user_description }}</p>
-      <p>Trabalho com desenvolvimento de software desde 2012, focando em criar soluções eficientes e escaláveis. Busco ambientes profissionais mais humanizados, inclusivos e responsáveis.</p>
+      <div class="lang-pt">
+        <p>Especialista em Desenvolvimento de Software com mais de 11 anos de experiência em sistemas distribuídos de alta complexidade. Atualmente, atuo na <strong>orquestração de agentes de IA</strong> e arquiteturas escaláveis utilizando <strong>Java, Python e AWS</strong>.</p>
+        <p>Histórico comprovado em <strong>liderança técnica</strong>, <strong>mentoria de times</strong> e <strong>otimização de infraestrutura</strong> (FinOps), elevando eficiência de 80% para 96,2% via otimizações em RDS e Glue Flex.</p>
+        <p>Busco ambientes profissionais mais humanizados, inclusivos e responsáveis!</p>
+      </div>
+      <div class="lang-en" style="display: none;">
+        <p>Software Development Specialist with 11+ years of experience in high-complexity distributed systems. Currently working on <strong>AI agent orchestration</strong> and scalable architectures using <strong>Java, Python, and AWS</strong>.</p>
+        <p>Proven track record in <strong>technical leadership</strong>, <strong>team mentorship</strong>, and <strong>FinOps optimization</strong>, improving efficiency from 80% to 96.2% through RDS and Glue Flex optimizations.</p>
+        <p>I seek professional environments that are more humanized, inclusive, and responsible!</p>
+      </div>
     </div>
   </div>
 </div>
@@ -20,7 +29,8 @@
 <div class="accordion" id="experience">
   <button class="accordion-header" aria-expanded="false">
     <span class="accordion-header-content">
-      <span class="bracket">[</span>Experiência<span class="bracket">]</span>
+      <span class="lang-pt"><span class="bracket">[</span>Experiência<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Experience<span class="bracket">]</span></span>
     </span>
     <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"></polyline>
@@ -28,12 +38,71 @@
   </button>
   <div class="accordion-content">
     <div class="accordion-content-inner">
-      <ul>
-        <li>Software Engineer — desenvolvimento backend e APIs</li>
-        <li>Arquitetura de sistemas distribuídos</li>
-        <li>Integração com IA e ferramentas de desenvolvimento</li>
-        <li>DevOps e automação de infraestrutura</li>
-      </ul>
+      <div class="lang-pt">
+        <div class="experience-item">
+          <h3 class="experience-title">Specialist Software Engineer</h3>
+          <p class="experience-company">Zup Innovation • Fev 2025 – Presente</p>
+          <ul>
+            <li>Referência técnica em FinOps para o Itaú, elevando KPI de eficiência de 80% para 96,2%</li>
+            <li>Gestão direta de 7+ desenvolvedores (pleno/sênior), elevando maturidade via mentorias</li>
+            <li>Orquestração de agentes de IA: Prompt Engineering, RAG e Fine-tuning</li>
+          </ul>
+          <p class="tech-stack">Java • Python • AWS • Datadog • AI/LLM</p>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="experience-title">Analista Desenvolvedor Sênior</h3>
+          <p class="experience-company">Invillia (PagBank) • Ago 2020 – Fev 2025</p>
+          <ul>
+            <li>Tech Lead em soluções de mitigação de fraude em tempo real</li>
+            <li>Sistemas de stream de alta performance com Kafka, validados com Locust</li>
+            <li>PDI e gestão de carreira de desenvolvedores</li>
+          </ul>
+          <p class="tech-stack">Java • Kotlin • Go • Spring Boot • Kafka • Kubernetes • Airflow</p>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="experience-title">Analista Desenvolvedor Pleno</h3>
+          <p class="experience-company">SONDA • Ago 2019 – Jul 2020</p>
+          <ul>
+            <li>Desenvolvimento de WebServices REST para o Ministério da Justiça</li>
+            <li>Metodologias ágeis (SCRUM), GitFlow, Docker</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lang-en" style="display: none;">
+        <div class="experience-item">
+          <h3 class="experience-title">Specialist Software Engineer</h3>
+          <p class="experience-company">Zup Innovation • Feb 2025 – Present</p>
+          <ul>
+            <li>FinOps technical reference for Itaú, improving efficiency KPI from 80% to 96.2%</li>
+            <li>Direct management of 7+ developers (mid/senior), increasing maturity through mentorship</li>
+            <li>AI agent orchestration: Prompt Engineering, RAG, and Fine-tuning</li>
+          </ul>
+          <p class="tech-stack">Java • Python • AWS • Datadog • AI/LLM</p>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="experience-title">Senior Software Engineer</h3>
+          <p class="experience-company">Invillia (PagBank) • Aug 2020 – Feb 2025</p>
+          <ul>
+            <li>Tech Lead in real-time fraud mitigation solutions</li>
+            <li>High-performance stream systems with Kafka, validated with Locust</li>
+            <li>PDI and career development management for developers</li>
+          </ul>
+          <p class="tech-stack">Java • Kotlin • Go • Spring Boot • Kafka • Kubernetes • Airflow</p>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="experience-title">Software Engineer</h3>
+          <p class="experience-company">SONDA • Aug 2019 – Jul 2020</p>
+          <ul>
+            <li>RESTful WebServices development for the Ministry of Justice</li>
+            <li>Agile methodologies (SCRUM), GitFlow, Docker</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -42,7 +111,8 @@
 <div class="accordion" id="skills">
   <button class="accordion-header" aria-expanded="false">
     <span class="accordion-header-content">
-      <span class="bracket">[</span>Tecnologias<span class="bracket">]</span>
+      <span class="lang-pt"><span class="bracket">[</span>Tecnologias<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Tech Stack<span class="bracket">]</span></span>
     </span>
     <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"></polyline>
@@ -55,10 +125,50 @@
         <div class="tech-item">Kotlin</div>
         <div class="tech-item">Golang</div>
         <div class="tech-item">Python</div>
+        <div class="tech-item">AWS</div>
+        <div class="tech-item">Kafka</div>
+        <div class="tech-item">Kubernetes</div>
         <div class="tech-item">Docker</div>
+        <div class="tech-item">LangChain</div>
         <div class="tech-item">Git</div>
         <div class="tech-item">Linux</div>
-        <div class="tech-item">LangChain</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Education Section -->
+<div class="accordion" id="education">
+  <button class="accordion-header" aria-expanded="false">
+    <span class="accordion-header-content">
+      <span class="lang-pt"><span class="bracket">[</span>Formação<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Education<span class="bracket">]</span></span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-content-inner">
+      <div class="lang-pt">
+        <div class="education-item">
+          <h3 class="education-title">Pós-graduação em Inteligência Artificial</h3>
+          <p class="education-school">FIAP • 2025 – 2026</p>
+        </div>
+        <div class="education-item">
+          <h3 class="education-title">Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+          <p class="education-school">IFPB • 2010 – 2020</p>
+        </div>
+      </div>
+      <div class="lang-en" style="display: none;">
+        <div class="education-item">
+          <h3 class="education-title">Postgraduate in Artificial Intelligence</h3>
+          <p class="education-school">FIAP • 2025 – 2026</p>
+        </div>
+        <div class="education-item">
+          <h3 class="education-title">Technologist in System Analysis and Development</h3>
+          <p class="education-school">IFPB • 2010 – 2020</p>
+        </div>
       </div>
     </div>
   </div>
@@ -68,7 +178,8 @@
 <div class="accordion" id="contact">
   <button class="accordion-header" aria-expanded="false">
     <span class="accordion-header-content">
-      <span class="bracket">[</span>Contato<span class="bracket">]</span>
+      <span class="lang-pt"><span class="bracket">[</span>Contato<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Contact<span class="bracket">]</span></span>
     </span>
     <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"></polyline>
@@ -76,7 +187,8 @@
   </button>
   <div class="accordion-content">
     <div class="accordion-content-inner">
-      <p>Vamos conversar? Entre em contato através dos links abaixo ou envie um email para <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+      <p class="lang-pt">Vamos conversar? Entre em contato através dos links abaixo ou envie um email para <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+      <p class="lang-en" style="display: none;">Let's talk? Get in touch through the links below or send an email to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
       <div class="social-links">
         <a class="social-link" href="https://github.com/vagnerbarbosa/" target="_blank">GitHub</a>
         <a class="social-link" href="https://www.linkedin.com/in/vagnerbarbosa/" target="_blank">LinkedIn</a>

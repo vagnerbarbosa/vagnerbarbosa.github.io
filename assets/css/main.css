@@ -82,6 +82,72 @@ body {
   color: var(--text-color);
 }
 
+/* Header controls */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Language toggle */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle:hover {
+  background: var(--hover-bg);
+  color: var(--text-color);
+}
+
+/* Experience & Education items */
+.experience-item,
+.education-item {
+  margin-bottom: 32px;
+}
+
+.experience-item:last-child,
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-title,
+.education-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.experience-company,
+.education-school {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.tech-stack {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: var(--hover-bg);
+  border-radius: 6px;
+  display: inline-block;
+}
+
 .accordion {
   margin-bottom: 16px;
 }

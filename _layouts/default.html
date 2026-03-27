@@ -35,6 +35,39 @@
         }
       })();
 
+      // Language toggle functionality
+      (function() {
+        const langToggle = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+        const html = document.documentElement;
+
+        // Check for saved language preference or default to 'pt'
+        const currentLang = localStorage.getItem('lang') || 'pt';
+        html.setAttribute('lang', currentLang === 'pt' ? 'pt-BR' : 'en');
+        updateLanguage(currentLang);
+
+        langToggle.addEventListener('click', function() {
+          const currentLang = html.getAttribute('lang') === 'pt-BR' ? 'pt' : 'en';
+          const newLang = currentLang === 'pt' ? 'en' : 'pt';
+
+          html.setAttribute('lang', newLang === 'pt' ? 'pt-BR' : 'en');
+          localStorage.setItem('lang', newLang);
+          updateLanguage(newLang);
+        });
+
+        function updateLanguage(lang) {
+          langText.textContent = lang === 'pt' ? 'EN' : 'PT';
+
+          // Toggle visibility of language elements
+          document.querySelectorAll('.lang-pt').forEach(el => {
+            el.style.display = lang === 'pt' ? '' : 'none';
+          });
+          document.querySelectorAll('.lang-en').forEach(el => {
+            el.style.display = lang === 'en' ? '' : 'none';
+          });
+        }
+      })();
+
       // Accordion functionality
       (function() {
         document.querySelectorAll('.accordion-header').forEach(button => {
