@@ -6,17 +6,18 @@
 
 > Personal website and portfolio of Vagner Barbosa - Software Engineer
 
-![Header](header.png)
+## Visão Geral
 
-## Objetivo
+Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.co](https://annamona.co). Design responsivo, bilíngue (PT/EN) e com foco em acessibilidade e performance.
 
-Este repositório contém o código-fonte do meu site pessoal e portfólio profissional, desenvolvido para apresentar minha experiência como Software Engineer, as tecnologias que domino e minha trajetória na área de TI desde 2012.
+## Características
 
-O site tem como objetivos:
-- **Apresentação profissional**: Compartilhar minha experiência e background técnico
-- **Portfólio de tecnologias**: Demonstrar as stacks que trabalho (Java, Kotlin, Go, e mais)
-- **Contato**: Facilitar a conexão com recrutadores e outros profissionais da área
-- **Presença online**: Manter uma presença digital atualizada e profissional
+- **Design minimalista** - Layout clean inspirado no annamonaco.co
+- **Bilíngue** - Suporte completo a Português e Inglês com toggle de idioma
+- **Tema claro/escuro** - Alternância automática de tema
+- **Acessibilidade** - Suporte a preferências de movimento reduzido
+- **Segurança** - Headers de segurança (CSP, HSTS, X-Frame-Options) via Cloudflare
+- **Performance** - JavaScript modular com carregamento defer e SRI hashes
 
 ## Tecnologias
 
@@ -25,30 +26,27 @@ O site tem como objetivos:
 |------------|--------|-----------|
 | [Jekyll](https://jekyllrb.com/) | 4.x | Gerador de sites estáticos |
 | [Ruby](https://www.ruby-lang.org/) | 3.2+ | Linguagem base do Jekyll |
-| [Node.js](https://nodejs.org/) | 20.x | Ambiente de execução para build tools |
 
 ### Frontend
 | Tecnologia | Uso |
 |------------|-----|
 | HTML5 | Estrutura semântica |
-| SCSS/Sass | Estilização avançada |
-| JavaScript | Interatividade e animações |
-| [Particles.js](https://vincentgarreau.com/particles.js/) | Animação de partículas no header |
-| [Sweet Scroll](https://tsuyoshiwada.github.io/sweet-scroll/) | Navegação suave |
+| CSS3 | Estilização moderna com variáveis |
+| JavaScript (ES6+) | Interatividade modular |
 
-### Build Tools
-| Tecnologia | Função |
-|------------|--------|
-| [Gulp](https://gulpjs.com/) | Task runner para automação |
-| gulp-sass | Compilação SCSS |
-| gulp-uglify | Minificação de JS |
-| gulp-csso | Minificação de CSS |
-| gulp-imagemin | Otimização de imagens |
-| browser-sync | Live reload durante desenvolvimento |
+### Módulos JavaScript
+| Arquivo | Descrição |
+|---------|-----------|
+| `utils.js` | Utilitários e polyfills |
+| `theme.js` | Gerenciamento de tema claro/escuro |
+| `i18n.js` | Sistema de internacionalização PT/EN |
+| `accordion.js` | Componente de acordeão para experiências |
+| `app.js` | Inicialização e orquestração |
 
 ### Deploy
 - **GitHub Pages**: Hospedagem gratuita integrada ao GitHub
-- **Domínio customizado**: Configurado via CNAME
+- **Cloudflare**: CDN e headers de segurança
+- **Domínio customizado**: https://vagnerbarbosa.com
 
 ## Estrutura do Projeto
 
@@ -56,37 +54,27 @@ O site tem como objetivos:
 vagnerbarbosa.github.io/
 ├── _config.yml              # Configuração do Jekyll
 ├── _includes/               # Componentes reutilizáveis
-│   ├── about.html          # Seção de tecnologias
-│   ├── comments.html       # Sistema de comentários
-│   ├── footer.html         # Rodapé com scripts
-│   ├── google-analytics.html
-│   ├── head.html           # Meta tags e CSS
-│   └── header.html         # Hero section
+│   ├── about.html          # Seção principal com acordeão
+│   ├── footer.html         # Rodapé minimalista
+│   ├── head.html           # Meta tags e headers de segurança
+│   └── header.html         # Cabeçalho com toggles
 ├── _layouts/                # Templates de página
-│   ├── default.html        # Layout principal
-│   ├── page.html           # Layout para páginas
-│   └── post.html           # Layout para posts
-├── _sass/                   # Estilos Sass do Jekyll
+│   └── default.html        # Layout principal único
 ├── assets/                  # Assets compilados
-│   ├── css/main.css        # CSS final
-│   ├── js/                 # JavaScript
-│   ├── fonts/              # Ícones (FontAwesome, Devicon)
+│   ├── css/main.css        # CSS principal
+│   ├── js/                 # JavaScript modular
+│   │   ├── utils.js
+│   │   ├── theme.js
+│   │   ├── i18n.js
+│   │   ├── accordion.js
+│   │   └── app.js
 │   └── favicon.png
-├── src/                     # Arquivos fonte
-│   ├── styles/             # SCSS source
-│   │   ├── _about.scss
-│   │   ├── _header.scss
-│   │   ├── _footer.scss
-│   │   └── main.scss
-│   ├── js/                 # JavaScript source
-│   └── fonts/              # Fontes source
-├── gulpfile.js             # Configuração do Gulp
-├── Gemfile                 # Dependências Ruby
-├── package.json            # Dependências Node.js
+├── scripts/                 # Scripts auxiliares
+│   ├── generate-sri.sh     # Gerador de SRI hashes
+│   └── sri-hashes.txt      # Hashes atuais
+├── CNAME                    # Configuração de domínio
 ├── index.html              # Página inicial
-├── about.md                # Página sobre
-├── header.png              # Imagem de banner
-├── CNAME                   # Configuração de domínio
+├── LICENSE                 # Licença MIT
 └── README.md               # Este arquivo
 ```
 
@@ -94,7 +82,6 @@ vagnerbarbosa.github.io/
 
 ### Pré-requisitos
 - Ruby 3.2 ou superior
-- Node.js 20.x ou superior
 - Bundler (`gem install bundler`)
 
 ### Instalação
@@ -110,18 +97,12 @@ cd vagnerbarbosa.github.io
 bundle install
 ```
 
-3. Instale as dependências Node.js:
-```bash
-npm install
-```
-
 ### Comandos
 
 | Comando | Descrição |
 |---------|-----------|
 | `bundle exec jekyll serve` | Inicia servidor de desenvolvimento |
-| `gulp` | Executa build completo com minificação |
-| `gulp watch` | Modo watch com live reload |
+| `bundle exec jekyll serve --livereload` | Com hot reload |
 
 O site estará disponível em `http://localhost:4000`
 
@@ -137,30 +118,43 @@ user_title: Seu Título
 email: seu@email.com
 ```
 
-### Tecnologias (`_includes/about.html`)
-Para atualizar as tecnologias exibidas, edite as seções:
-- **Design**: Tecnologias de frontend/design
-- **Code**: Linguagens de programação
-- **Tools**: Ferramentas e plataformas
+### Internacionalização (`assets/js/i18n.js`)
+Para atualizar textos em PT/EN, edite o objeto `translations` no arquivo `i18n.js`.
+
+### Experiências (`_includes/about.html`)
+Para atualizar experiências profissionais, edite as seções dentro do arquivo `about.html`.
+
+### SRI Hashes
+Ao modificar arquivos JS, gere novos hashes:
+
+```bash
+# Linux/Mac
+bash scripts/generate-sri.sh
+
+# Windows (PowerShell)
+scripts/generate-sri.ps1
+```
+
+Depois atualize os hashes no `_layouts/default.html`.
+
+## Segurança
+
+Os seguintes headers de segurança são configurados via Cloudflare:
+
+- **CSP (Content-Security-Policy)** - Restrições de conteúdo
+- **HSTS** - Força HTTPS
+- **X-Frame-Options: DENY** - Previne clickjacking
+- **X-Content-Type-Options: nosniff** - Evita MIME sniffing
+- **X-XSS-Protection** - Proteção XSS do navegador
+- **Referrer-Policy** - Política de referrer
 
 ## Deploy
 
 O deploy é automático via GitHub Pages:
 1. Faça push para a branch `master`
 2. O GitHub Pages irá buildar e publicar automaticamente
-3. O site ficará disponível em `https://vagnerbarbosa.com`
-
-## Personalização
-
-### Cores
-As cores principais são definidas em `src/styles/_vars.scss`:
-- Cor primária: `#5B4282`
-- Cor secundária: `#E44D26`
-- Cor de destaque: `#00ACD7`
-
-### Fontes
-- [Font Awesome](https://fontawesome.com/) para ícones
-- [Devicon](https://devicon.dev/) para ícones de tecnologia
+3. O Cloudflare aplica os headers de segurança
+4. O site fica disponível em `https://vagnerbarbosa.com`
 
 ## Licença
 
@@ -168,4 +162,4 @@ Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICE
 
 ---
 
-Desenvolvido com ❤ por Vagner Barbosa
+Desenvolvido por Vagner Barbosa
