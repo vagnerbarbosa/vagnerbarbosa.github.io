@@ -2,18 +2,26 @@
 <html lang="pt-BR" data-theme="light">
   {% include head.html %}
   <head>
-    <!-- Subresource Integrity (SRI) recomendado para produção -->
-    <!-- Exemplo: <script src="file.js" integrity="sha384-..." crossorigin="anonymous"></script> -->
-
-    <!-- Content Security Policy (ajustar conforme necessidade) -->
+    <!-- Content Security Policy - Ajustada para ambiente real -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      font-src https://fonts.gstatic.com;
+      script-src 'self' https://fonts.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+      font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
       img-src 'self' data: https:;
       connect-src 'self';
+      frame-ancestors 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
     ">
+
+    <!-- Security Headers via Meta (GitHub Pages limitation workaround) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
   </head>
 
   <body>
@@ -25,13 +33,28 @@
       {% include footer.html %}
     </div>
 
-    <!-- Scripts externos com defer para performance -->
+    <!-- Scripts externos com SRI e defer para performance -->
     <!-- Ordem: Utils → Módulos → App -->
-    <script src="{{ '/assets/js/utils.js' | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/i18n.js' | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/accordion.js' | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/app.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/utils.js' | relative_url }}"
+            integrity="sha384-qHVvO5jnPODwpwClFRlv1w7ccwHuAqNR8euF0hka0r059w7PA8GznKuFq/WrI2ic"
+            crossorigin="anonymous"
+            defer></script>
+    <script src="{{ '/assets/js/theme.js' | relative_url }}"
+            integrity="sha384-3Pu0MMXnQpgYJahBjjq4vFyKUuXNNkBWdHrRE6lKOb0cdbgkE+2Kc2ZDXiNADtHX"
+            crossorigin="anonymous"
+            defer></script>
+    <script src="{{ '/assets/js/i18n.js' | relative_url }}"
+            integrity="sha384-xy9N+BZpHG03lMjRVfMsb/U0YY0dAD7OJDulAhO7csSTs+pucGo+NASexw1Wy5Yu"
+            crossorigin="anonymous"
+            defer></script>
+    <script src="{{ '/assets/js/accordion.js' | relative_url }}"
+            integrity="sha384-5wIn+FVhJSdG75BBHlf1g9GkX+Ls+v6TiLLizG3FQtV9gMnUgl3iqMdxwQZOIfc9"
+            crossorigin="anonymous"
+            defer></script>
+    <script src="{{ '/assets/js/app.js' | relative_url }}"
+            integrity="sha384-WMasG/Ali1goB2q9n4nW/Z1rbwpWjowGpBfuYY6J4VMjZzcvKJ4rof1Rpfbym+Sy"
+            crossorigin="anonymous"
+            defer></script>
 
     <!-- Noscript fallback para acessibilidade -->
     <noscript>
