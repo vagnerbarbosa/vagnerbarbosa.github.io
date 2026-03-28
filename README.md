@@ -53,11 +53,13 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 ```
 vagnerbarbosa.github.io/
 ├── cmd/
-│   └── generator/           # Gerador de site estático em Go
-│       └── main.go           # Entry point do gerador
+│   └── generator/            # Gerador de site estático em Go
+│       ├── main.go           # Entry point do gerador
+│       └── main_test.go      # Testes unitários do gerador
 ├── internal/
 │   └── config/
-│       └── config.go         # Parser de configuração YAML
+│       ├── config.go         # Parser de configuração YAML
+│       └── config_test.go    # Testes unitários de configuração
 ├── templates/                # Templates Go (html/template)
 │   ├── index.html            # Template principal
 │   └── partials/             # Componentes reutilizáveis
