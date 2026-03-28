@@ -34,18 +34,20 @@
 /* Skip link for accessibility */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: 0;
   left: 0;
+  transform: translateY(-100%);
   background: var(--text-color);
   color: var(--bg-color);
   padding: 8px 16px;
   text-decoration: none;
   z-index: 100;
   border-radius: 0 0 4px 0;
+  transition: transform 0.2s ease;
 }
 
 .skip-link:focus {
-  top: 0;
+  transform: translateY(0);
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
