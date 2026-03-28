@@ -265,6 +265,9 @@
      * @returns {string}
      */
     getCurrentLang: function() {
+      if (!this._elements || !this._elements.html) {
+        return this.DEFAULT_LANG;
+      }
       const current = this._elements.html.getAttribute('lang');
       // Converte pt-BR para pt
       if (current === 'pt-BR') return 'pt';
