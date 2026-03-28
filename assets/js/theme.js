@@ -177,7 +177,11 @@
      */
     _updateText: function(theme) {
       // Verifica idioma atual para textos bilíngues
-      const currentLang = window.App.I18n ? window.App.I18n.getCurrentLang() : 'pt';
+      // Só usa I18n se estiver totalmente inicializado
+      let currentLang = 'pt';
+      if (window.App.I18n && window.App.I18n._elements && window.App.I18n._elements.html) {
+        currentLang = window.App.I18n.getCurrentLang();
+      }
       const isEnglish = currentLang === 'en';
 
       // Textos bilíngues para o botão de tema
