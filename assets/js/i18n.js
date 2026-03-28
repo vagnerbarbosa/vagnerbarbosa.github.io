@@ -135,14 +135,42 @@
     },
 
     /**
-     * Carrega idioma salvo
+     * Carrega idioma salvo ou detecta do navegador
      * @private
      */
     _loadSavedLanguage: function() {
-      const savedLang = App.Utils.Storage.get(this.STORAGE_KEY, this.DEFAULT_LANG);
-      const validLang = this._validateLang(savedLang);
+      const savedLang = App.Utils.Storage.get(this.STORAGE_KEY);
 
+      // Se não houver idioma salvo, detecta pelo navegador
+      if (!savedLang) {
+        const detectedLang = this._detectBrowserLanguage();
+        this._applyLanguage(detectedLang);
+        return;
+      }
+
+      const validLang = this._validateLang(savedLang);
       this._applyLanguage(validLang);
+    },
+
+    /**
+     * Detecta idioma do navegador
+     * @private
+     * @returns {string}
+     */
+    _detectBrowserLanguage: function() {
+      try {
+        // Pega o idioma primário do navegador (ex: "pt-BR", "en-US")
+        const browserLang = navigator.language || navigator.userLanguage || 'pt';
+
+        // Se começar com 'pt', usa português, senão usa inglês
+        if (browserLang.toLowerCase().startsWith('pt')) {
+          return 'pt';
+        }
+
+        return 'en';
+      } catch (error) {
+        return this.DEFAULT_LANG;
+      }
     },
 
     /**
