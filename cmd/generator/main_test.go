@@ -450,13 +450,14 @@ func TestCopyAssets(t *testing.T) {
 		t.Errorf("CSS file was not copied")
 	}
 
-	// Verify content
+	// Verify content (minified)
 	content, err := os.ReadFile(publicCSS)
 	if err != nil {
 		t.Fatalf("Failed to read copied CSS: %v", err)
 	}
-	if string(content) != "body { color: black; }" {
-		t.Errorf("Copied CSS content = %v, want %v", string(content), "body { color: black; }")
+	// CSS is minified, so we check for the minified version
+	if !strings.Contains(string(content), "color:") {
+		t.Errorf("Copied CSS content = %v, should contain 'color:'", string(content))
 	}
 
 	// Verify JS was copied
@@ -581,8 +582,8 @@ func TestCopyDir(t *testing.T) {
 	dstDir := filepath.Join(fs.root, "destination")
 
 	// Copy directory
-	if err := copyDir(srcDir, dstDir); err != nil {
-		t.Fatalf("copyDir() error = %v", err)
+	if err := copyAndMinifyDir(srcDir, dstDir); err != nil {
+		t.Fatalf("copyAndMinifyDir() error = %v", err)
 	}
 
 	// Verify files were copied
@@ -618,9 +619,9 @@ func TestCopyDir_MissingSource(t *testing.T) {
 	src := filepath.Join(t.TempDir(), "nonexistent")
 	dst := filepath.Join(t.TempDir(), "destination")
 
-	err := copyDir(src, dst)
+	err := copyAndMinifyDir(src, dst)
 	if err == nil {
-		t.Error("copyDir() should return error for non-existent source")
+		t.Error("copyAndMinifyDir() should return error for non-existent source")
 	}
 }
 
@@ -638,8 +639,8 @@ func TestCopyFile(t *testing.T) {
 	}
 
 	// Copy file
-	if err := copyFile(srcFile, dstFile); err != nil {
-		t.Fatalf("copyFile() error = %v", err)
+	if err := copyAndMinifyFile(srcFile, dstFile); err != nil {
+		t.Fatalf("copyAndMinifyFile() error = %v", err)
 	}
 
 	// Verify destination file
@@ -666,9 +667,9 @@ func TestCopyFile_MissingSource(t *testing.T) {
 	src := filepath.Join(tmpDir, "nonexistent.txt")
 	dst := filepath.Join(tmpDir, "dest.txt")
 
-	err := copyFile(src, dst)
+	err := copyAndMinifyFile(src, dst)
 	if err == nil {
-		t.Error("copyFile() should return error for non-existent source")
+		t.Error("copyAndMinifyFile() should return error for non-existent source")
 	}
 }
 
@@ -685,9 +686,9 @@ func TestCopyFile_InvalidDestination(t *testing.T) {
 	}
 
 	// Should fail because parent directory doesn't exist
-	err := copyFile(src, dst)
+	err := copyAndMinifyFile(src, dst)
 	if err == nil {
-		t.Error("copyFile() should return error when destination directory doesn't exist")
+		t.Error("copyAndMinifyFile() should return error when destination directory doesn't exist")
 	}
 }
 
@@ -872,9 +873,9 @@ func TestCopyDir_ReadDirError(t *testing.T) {
 		t.Fatalf("Failed to create fake dir: %v", err)
 	}
 
-	err := copyDir(fakeDir, filepath.Join(tmpDir, "dest"))
+	err := copyAndMinifyDir(fakeDir, filepath.Join(tmpDir, "dest"))
 	if err == nil {
-		t.Error("copyDir() should return error when source is not a directory")
+		t.Error("copyAndMinifyDir() should return error when source is not a directory")
 	}
 }
 
@@ -893,8 +894,8 @@ func TestCopyFile_StatError(t *testing.T) {
 	}
 
 	// Normal copy should work
-	if err := copyFile(src, dst); err != nil {
-		t.Fatalf("copyFile() error = %v", err)
+	if err := copyAndMinifyFile(src, dst); err != nil {
+		t.Fatalf("copyAndMinifyFile() error = %v", err)
 	}
 }
 
@@ -1085,8 +1086,8 @@ func TestCopyFile_StatFailure(t *testing.T) {
 	}
 
 	// Copy should work normally
-	if err := copyFile(src, dst); err != nil {
-		t.Fatalf("copyFile() error = %v", err)
+	if err := copyAndMinifyFile(src, dst); err != nil {
+		t.Fatalf("copyAndMinifyFile() error = %v", err)
 	}
 
 	// Verify
@@ -1115,8 +1116,8 @@ func TestCopyDir_NestedErrors(t *testing.T) {
 	dstDir := filepath.Join(tmpDir, "dest")
 
 	// Copy should work
-	if err := copyDir(srcDir, dstDir); err != nil {
-		t.Fatalf("copyDir() error = %v", err)
+	if err := copyAndMinifyDir(srcDir, dstDir); err != nil {
+		t.Fatalf("copyAndMinifyDir() error = %v", err)
 	}
 
 	// Verify

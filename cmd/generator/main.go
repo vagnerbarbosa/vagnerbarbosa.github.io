@@ -2,14 +2,46 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
 
+	"github.com/tdewolff/minify/v2"
+	"github.com/tdewolff/minify/v2/css"
+	"github.com/tdewolff/minify/v2/html"
+	"github.com/tdewolff/minify/v2/js"
+	"github.com/tdewolff/minify/v2/json"
 	"github.com/vagnerbarbosa/vagnerbarbosa.github.io/internal/config"
 )
+
+// minifier instance configured for optimal compression
+var minifier *minify.M
+
+func init() {
+	minifier = minify.New()
+
+	// JavaScript: aggressive minification
+	minifier.AddFunc("application/javascript", js.Minify)
+	minifier.AddFunc("text/javascript", js.Minify)
+
+	// CSS: clean minification preserving semantics
+	minifier.AddFunc("text/css", css.Minify)
+
+	// JSON: compact representation
+	minifier.AddFunc("application/json", json.Minify)
+	minifier.AddFunc("application/ld+json", json.Minify)
+
+	// HTML: minify while keeping essential whitespace
+	minifier.Add("text/html", &html.Minifier{
+		KeepDocumentTags: true,
+		KeepEndTags:      true,
+		KeepQuotes:       true,
+		KeepWhitespace:   false,
+	})
+}
 
 func main() {
 	if err := run(); err != nil {
@@ -36,13 +68,13 @@ func run() error {
 		return fmt.Errorf("failed to parse templates: %w", err)
 	}
 
-	// Generate index.html
+	// Generate index.html (minified)
 	data := cfg.ToTemplateData()
 	if err := generateIndex(tmpl, data); err != nil {
 		return fmt.Errorf("failed to generate index: %w", err)
 	}
 
-	// Copy static assets
+	// Copy and minify static assets
 	if err := copyAssets(); err != nil {
 		return fmt.Errorf("failed to copy assets: %w", err)
 	}
@@ -99,32 +131,44 @@ func parseTemplates() (*template.Template, error) {
 }
 
 func generateIndex(tmpl *template.Template, data config.TemplateData) error {
-	file, err := os.Create("public/index.html")
-	if err != nil {
-		return fmt.Errorf("failed to create index.html: %w", err)
-	}
-	defer file.Close()
-
-	// Execute the "index" template
-	if err := tmpl.ExecuteTemplate(file, "index", data); err != nil {
+	// Execute template to buffer first
+	var buf bytes.Buffer
+	if err := tmpl.ExecuteTemplate(&buf, "index", data); err != nil {
 		return fmt.Errorf("failed to execute template: %w", err)
+	}
+
+	// Minify HTML before writing
+	minified, err := minifier.Bytes("text/html", buf.Bytes())
+	if err != nil {
+		// Fallback to unminified if minification fails
+		minified = buf.Bytes()
+	}
+
+	if err := os.WriteFile("public/index.html", minified, 0644); err != nil {
+		return fmt.Errorf("failed to write index.html: %w", err)
+	}
+
+	// Print stats
+	savings := len(buf.Bytes()) - len(minified)
+	if savings > 0 {
+		percent := float64(savings) * 100 / float64(len(buf.Bytes()))
+		fmt.Printf("HTML minified: %d bytes -> %d bytes (saved %d bytes, %.1f%%)\n",
+			len(buf.Bytes()), len(minified), savings, percent)
 	}
 
 	return nil
 }
 
 func copyAssets() error {
-	// Copy assets directory
-	if err := copyDir("assets", "public/assets"); err != nil {
+	if err := copyAndMinifyDir("assets", "public/assets"); err != nil {
 		return fmt.Errorf("failed to copy assets directory: %w", err)
 	}
 	return nil
 }
 
 func copyCNAME() error {
-	// Check if CNAME exists
 	if _, err := os.Stat("CNAME"); os.IsNotExist(err) {
-		return nil // CNAME doesn't exist, skip
+		return nil
 	}
 
 	content, err := os.ReadFile("CNAME")
@@ -139,20 +183,17 @@ func copyCNAME() error {
 	return nil
 }
 
-// copyDir recursively copies a directory
-func copyDir(src, dst string) error {
-	// Get file info
+// copyAndMinifyDir recursively copies a directory, minifying supported file types
+func copyAndMinifyDir(src, dst string) error {
 	info, err := os.Stat(src)
 	if err != nil {
 		return err
 	}
 
-	// Create destination directory
 	if err := os.MkdirAll(dst, info.Mode()); err != nil {
 		return err
 	}
 
-	// Read directory contents
 	entries, err := os.ReadDir(src)
 	if err != nil {
 		return err
@@ -163,11 +204,11 @@ func copyDir(src, dst string) error {
 		dstPath := filepath.Join(dst, entry.Name())
 
 		if entry.IsDir() {
-			if err := copyDir(srcPath, dstPath); err != nil {
+			if err := copyAndMinifyDir(srcPath, dstPath); err != nil {
 				return err
 			}
 		} else {
-			if err := copyFile(srcPath, dstPath); err != nil {
+			if err := copyAndMinifyFile(srcPath, dstPath); err != nil {
 				return err
 			}
 		}
@@ -176,8 +217,8 @@ func copyDir(src, dst string) error {
 	return nil
 }
 
-// copyFile copies a single file
-func copyFile(src, dst string) error {
+// copyAndMinifyFile copies a file, minifying if it's a supported type
+func copyAndMinifyFile(src, dst string) error {
 	content, err := os.ReadFile(src)
 	if err != nil {
 		return err
@@ -186,6 +227,35 @@ func copyFile(src, dst string) error {
 	info, err := os.Stat(src)
 	if err != nil {
 		return err
+	}
+
+	// Determine mime type and minify if supported
+	ext := strings.ToLower(filepath.Ext(src))
+	var mimeType string
+
+	switch ext {
+	case ".js":
+		mimeType = "application/javascript"
+	case ".css":
+		mimeType = "text/css"
+	case ".html", ".htm":
+		mimeType = "text/html"
+	case ".json":
+		mimeType = "application/json"
+	case ".jsonld":
+		mimeType = "application/ld+json"
+	}
+
+	if mimeType != "" {
+		minified, err := minifier.Bytes(mimeType, content)
+		if err == nil && len(minified) < len(content) {
+			savings := len(content) - len(minified)
+			percent := float64(savings) * 100 / float64(len(content))
+			relPath, _ := filepath.Rel("assets", src)
+			fmt.Printf("Minified %s: %d -> %d bytes (saved %d bytes, %.1f%%)\n",
+				relPath, len(content), len(minified), savings, percent)
+			content = minified
+		}
 	}
 
 	return os.WriteFile(dst, content, info.Mode())

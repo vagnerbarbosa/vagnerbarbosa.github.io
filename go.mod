@@ -1,5 +1,10 @@
 module github.com/vagnerbarbosa/vagnerbarbosa.github.io
 
-go 1.21
+go 1.24.0
 
-require gopkg.in/yaml.v3 v3.0.1
+require (
+	github.com/tdewolff/minify/v2 v2.24.11
+	gopkg.in/yaml.v3 v3.0.1
+)
+
+require github.com/tdewolff/parse/v2 v2.8.11 // indirect
