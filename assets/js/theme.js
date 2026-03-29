@@ -72,7 +72,8 @@
     _cacheElements: function() {
       this._elements.html = document.documentElement;
       this._elements.toggle = document.getElementById('theme-toggle');
-      this._elements.text = document.getElementById('theme-text');
+      this._elements.textPt = document.getElementById('theme-text-pt');
+      this._elements.textEn = document.getElementById('theme-text-en');
     },
 
     /**
@@ -82,8 +83,7 @@
      */
     _validateElements: function() {
       return App.Utils.isValidElement(this._elements.html) &&
-             App.Utils.isValidElement(this._elements.toggle) &&
-             App.Utils.isValidElement(this._elements.text);
+             App.Utils.isValidElement(this._elements.toggle);
     },
 
     /**
@@ -185,11 +185,16 @@
       const isEnglish = currentLang === 'en';
 
       // Textos bilíngues para o botão de tema
-      const text = isEnglish
-        ? (theme === 'light' ? 'Dark mode' : 'Light mode')
-        : (theme === 'light' ? 'Modo escuro' : 'Modo claro');
+      const textPt = theme === 'light' ? 'Modo escuro' : 'Modo claro';
+      const textEn = theme === 'light' ? 'Dark mode' : 'Light mode';
 
-      this._elements.text.textContent = text;
+      // Atualiza ambos os spans se existirem
+      if (App.Utils.isValidElement(this._elements.textPt)) {
+        this._elements.textPt.textContent = textPt;
+      }
+      if (App.Utils.isValidElement(this._elements.textEn)) {
+        this._elements.textEn.textContent = textEn;
+      }
 
       // Atualiza aria-pressed e aria-label bilíngue para acessibilidade
       this._elements.toggle.setAttribute('aria-pressed', theme === 'dark');
