@@ -72,8 +72,6 @@
     _cacheElements: function() {
       this._elements.html = document.documentElement;
       this._elements.toggle = document.getElementById('theme-toggle');
-      this._elements.textPt = document.getElementById('theme-text-pt');
-      this._elements.textEn = document.getElementById('theme-text-en');
     },
 
     /**
@@ -177,31 +175,19 @@
      */
     _updateText: function(theme) {
       // Verifica idioma atual para textos bilíngues
-      // Só usa I18n se estiver totalmente inicializado
       let currentLang = 'pt';
       if (window.App.I18n && window.App.I18n._elements && window.App.I18n._elements.html) {
         currentLang = window.App.I18n.getCurrentLang();
       }
       const isEnglish = currentLang === 'en';
 
-      // Textos bilíngues para o botão de tema
-      const textPt = theme === 'light' ? 'Modo escuro' : 'Modo claro';
-      const textEn = theme === 'light' ? 'Dark mode' : 'Light mode';
-
-      // Atualiza ambos os spans se existirem
-      if (App.Utils.isValidElement(this._elements.textPt)) {
-        this._elements.textPt.textContent = textPt;
-      }
-      if (App.Utils.isValidElement(this._elements.textEn)) {
-        this._elements.textEn.textContent = textEn;
-      }
-
-      // Atualiza aria-pressed e aria-label bilíngue para acessibilidade
+      // Atualiza aria-pressed e aria-label/title bilíngue para acessibilidade
       this._elements.toggle.setAttribute('aria-pressed', theme === 'dark');
-      const ariaLabel = isEnglish
+      const labelText = isEnglish
         ? (theme === 'light' ? 'Enable dark mode' : 'Enable light mode')
         : (theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro');
-      this._elements.toggle.setAttribute('aria-label', ariaLabel);
+      this._elements.toggle.setAttribute('aria-label', labelText);
+      this._elements.toggle.setAttribute('title', labelText);
     },
 
     /**
