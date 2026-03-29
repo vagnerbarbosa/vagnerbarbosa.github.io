@@ -164,7 +164,7 @@ content:
 
 O deploy é automático via GitHub Actions:
 
-1. Faça push para a branch `master`
+1. Faça push para a branch `main`
 2. O GitHub Actions executa o build com Go
 3. O site gerado em `public/` é publicado no GitHub Pages
 4. O site fica disponível em `https://vagnerbarbosa.com`
