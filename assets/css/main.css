@@ -144,6 +144,13 @@ body {
   color: var(--text-color);
 }
 
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: block;
+}
+
 /* Header controls */
 .header-controls {
   display: flex;
