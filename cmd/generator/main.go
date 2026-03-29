@@ -13,6 +13,7 @@ import (
 	"github.com/tdewolff/minify/v2/css"
 	"github.com/tdewolff/minify/v2/html"
 	"github.com/tdewolff/minify/v2/js"
+	"github.com/tdewolff/minify/v2/json"
 	"github.com/vagnerbarbosa/vagnerbarbosa.github.io/internal/config"
 )
 
@@ -28,6 +29,10 @@ func init() {
 
 	// CSS: clean minification preserving semantics
 	minifier.AddFunc("text/css", css.Minify)
+
+	// JSON: compact representation
+	minifier.AddFunc("application/json", json.Minify)
+	minifier.AddFunc("application/ld+json", json.Minify)
 
 	// HTML: minify while keeping essential whitespace
 	minifier.Add("text/html", &html.Minifier{
@@ -235,6 +240,10 @@ func copyAndMinifyFile(src, dst string) error {
 		mimeType = "text/css"
 	case ".html", ".htm":
 		mimeType = "text/html"
+	case ".json":
+		mimeType = "application/json"
+	case ".jsonld":
+		mimeType = "application/ld+json"
 	}
 
 	if mimeType != "" {
