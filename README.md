@@ -18,6 +18,7 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 - **Acessibilidade** - Suporte a preferências de movimento reduzido
 - **Segurança** - Headers de segurança (CSP, X-Frame-Options)
 - **Performance** - Site 100% estático, sem dependências de runtime
+- **Minificação automática** - JS, CSS, HTML e JSON são minificados durante o build
 
 ## Tecnologias
 
@@ -26,6 +27,7 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 |------------|--------|-----------|
 | [Go](https://golang.org/) | 1.21+ | Linguagem do gerador de site estático |
 | [html/template](https://pkg.go.dev/html/template) | built-in | Templates seguros para HTML |
+| [tdewolff/minify](https://github.com/tdewolff/minify) | v2.24+ | Minificação de JS, CSS, HTML e JSON |
 
 ### Frontend
 | Tecnologia | Uso |
@@ -116,11 +118,31 @@ go mod download
 
 | Comando | Descrição |
 |---------|-----------|
-| `go run cmd/generator/main.go` | Gera o site em `public/` |
+| `go run cmd/generator/main.go` | Gera o site em `public/` (com minificação automática) |
 | `go build -o generator cmd/generator/main.go` | Compila o gerador |
 | `./generator` | Executa o gerador compilado |
+| `go test ./...` | Executa testes unitários |
 
-O site gerado estará disponível em `public/index.html`
+O site gerado estará disponível em `public/index.html`.
+
+### Minificação Automática
+
+Durante o build, todos os assets são automaticamente minificados:
+
+| Tipo | Economia típica |
+|------|-----------------|
+| JavaScript | ~60% |
+| CSS | ~25% |
+| HTML | ~14% |
+| JSON | ~30-40% |
+
+Exemplo de output durante o build:
+```
+HTML minified: 15563 bytes -> 13378 bytes (saved 2185 bytes, 14.0%)
+Minified js/utils.js: 4901 -> 1438 bytes (saved 3463 bytes, 70.7%)
+Minified css/main.css: 6308 -> 4712 bytes (saved 1596 bytes, 25.3%)
+Site generated successfully in public/
+```
 
 ## Configuração
 
@@ -173,8 +195,9 @@ O deploy é automático via GitHub Actions:
 
 O arquivo `.github/workflows/deploy.yml` configura:
 
-1. **Build**: Instala Go, baixa dependências, executa testes e por último executa o gerador
-2. **Deploy**: Publica o conteúdo de `public/` no GitHub Pages
+1. **Build**: Instala Go, baixa dependências, executa testes e executa o gerador
+2. **Minificação**: Durante o build, JS, CSS, HTML e JSON são automaticamente minificados
+3. **Deploy**: Publica o conteúdo otimizado de `public/` no GitHub Pages
 
 ## Migração de Jekyll para Go
 
@@ -188,7 +211,8 @@ Este projeto foi migrado de Jekyll (Ruby) para um gerador estático em Go. As pr
 | Build local | `bundle exec jekyll serve` | `go run cmd/generator/main.go` |
 | CI/CD | GitHub Pages nativo | GitHub Actions + Go |
 | Performance | ~2-3s build | ~0.5s build |
-| Dependências | Ruby + gems | Apenas Go standard library + yaml |
+| Minificação | Requer plugins | Integrado (minify) |
+| Dependências | Ruby + gems | Go + yaml + minify |
 
 ## Segurança
 
