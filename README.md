@@ -8,7 +8,7 @@
 
 ## Visão Geral
 
-Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.co](https://annamona.co). Design responsivo, bilíngue (PT/EN) e com foco em acessibilidade e performance. **Agora gerado com Go!**
+Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.co](https://annamona.co). Design responsivo, bilíngue (PT/EN) e com foco em acessibilidade e performance.
 
 ## Características
 
