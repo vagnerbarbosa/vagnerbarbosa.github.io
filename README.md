@@ -173,7 +173,7 @@ O deploy é automático via GitHub Actions:
 
 O arquivo `.github/workflows/deploy.yml` configura:
 
-1. **Build**: Instala Go, baixa dependências e executa o gerador
+1. **Build**: Instala Go, baixa dependências, executa testes e por último executa o gerador
 2. **Deploy**: Publica o conteúdo de `public/` no GitHub Pages
 
 ## Migração de Jekyll para Go
