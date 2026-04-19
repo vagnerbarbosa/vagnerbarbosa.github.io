@@ -1,5 +1,32 @@
 # Regras de Colaboração - Vagner Barbosa
 
+## CRÍTICO: NUNCA fazer push direto na main
+
+**QUANDO APLICAR:** SEMPRE. Sem exceções.
+
+**AÇÃO OBRIGATÓRIA:**
+1. **NUNCA** execute `git push origin main`
+2. **NUNCA** execute `git push` estando na branch main
+3. **SEMPRE** crie uma branch de feature: `git checkout -b feat/nome-da-feature`
+4. **SEMPRE** faça push da branch de feature: `git push origin feat/nome-da-feature`
+5. **SEMPRE** crie uma Pull Request via GitHub CLI: `gh pr create` ou pelo site
+6. **SEMPRE** aguarde revisão e merge via PR
+
+**PROTEÇÃO CONFIGURADA:**
+- Hook pre-push bloqueia push na main localmente
+- Branch protection deve ser configurada no GitHub (Settings > Branches > main)
+
+**VIOLAÇÃO ANTERIOR:**
+Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito via PR #82.
+
+**POR QUE:**
+- Mantém histórico limpo e rastreável
+- Permite revisão de código
+- Previne erros em produção
+- Alinha com princípio "Build Reprodutível" da constituição
+
+---
+
 ## CRÍTICO: Sempre verificar status da PR antes de alterações
 
 **Quando aplicar:** Antes de fazer qualquer commit, push ou alteração em branch existente.

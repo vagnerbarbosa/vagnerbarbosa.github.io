@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Hook pre-push para bloquear push direto na main
+# Este hook é executado antes de qualquer push
+#
+# INSTALAÇÃO:
+#   cp hooks/pre-push .git/hooks/pre-push
+#   chmod +x .git/hooks/pre-push
+
+protected_branch="main"
+current_branch=$(git symbolic-ref HEAD | sed 's!refs/heads/!!')
+
+if [ "$current_branch" = "$protected_branch" ]; then
+    echo "❌ ERRO: Push direto na branch '$protected_branch' não é permitido!"
+    echo ""
+    echo "📋 Instruções:"
+    echo "   1. Crie uma branch de feature: git checkout -b feat/nome-da-feature"
+    echo "   2. Faça seus commits na branch de feature"
+    echo "   3. Push: git push origin feat/nome-da-feature"
+    echo "   4. Crie uma Pull Request no GitHub"
+    echo "   5. Aguarde revisão e merge"
+    echo ""
+    echo "🔗 Para configurar proteção de branch no GitHub:"
+    echo "   https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/settings/branches"
+    echo ""
+    exit 1
+fi
+
+exit 0
