@@ -198,8 +198,8 @@
           return null;
         }
 
-        // Previne javascript: e data:
-        if (parsed.protocol === 'javascript:' || parsed.protocol === 'data:') {
+        // Previne javascript:, data: e vbscript: (XSS prevention)
+        if (parsed.protocol === 'javascript:' || parsed.protocol === 'data:' || parsed.protocol === 'vbscript:') {
           return null;
         }
 
