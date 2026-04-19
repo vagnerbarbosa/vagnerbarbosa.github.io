@@ -48,7 +48,7 @@ jobs:
           npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer @semantic-release/release-notes-generator
 
           # Executar semantic-release em modo dry-run para obter próxima versão
-          npx semantic-release --dry-run --branches main 2>&1 | tee output.log || true
+          npx semantic-release --dry-run --branches main --config ../../.releaserc.json 2>&1 | tee output.log || true
 
           # Extrair versão do output
           VERSION=$(grep -oP 'Published release \K[0-9]+\.[0-9]+\.[0-9]+' output.log || echo "")
