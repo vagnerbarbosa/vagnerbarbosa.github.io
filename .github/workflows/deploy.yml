@@ -10,7 +10,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write  # Necessário para o workflow de release criar tags
   pages: write
   id-token: write
 
