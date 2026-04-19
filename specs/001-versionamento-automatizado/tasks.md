@@ -73,8 +73,8 @@
 - [x] T016 [HU2] Adicionar step usando `softprops/action-gh-release` para criar release
 - [x] T017 [HU2] Configurar release para usar changelog gerado como body
 - [x] T018 [HU2] Adicionar verificação: se deploy falha, não criar release (apenas log)
-- [ ] T019 [HU2] Testar em fork: release criada com changelog formatado (Adicionado/Corrigido/Alterado)
-- [ ] T020 [HU2] Verificar: se deploy falha, tag existe mas release não é criada
+- [x] T019 [HU2] Testar em fork: release criada com changelog formatado (Adicionado/Corrigido/Alterado)
+- [x] T020 [HU2] Verificar: se deploy falha, tag existe mas release não é criada
 
 **Checkpoint**: Releases sendo criadas automaticamente após deploys bem-sucedidos
 
@@ -110,7 +110,7 @@
 - [x] T031 [P] Adicionar badge de versão/latest release no README.md
 - [x] T032 Documentar processo de versionamento em `docs/VERSIONING.md` (opcional)
 - [x] T033 Validar quickstart.md com passos reais
-- [ ] T034 [P] Testar edge case: dois merges simultâneos (concurrency funcionando)
+- [x] T034 [P] Testar edge case: dois merges simultâneos (concurrency funcionando)
 
 **Checkpoint**: Sistema completo documentado e testado
 
