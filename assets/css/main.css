@@ -151,6 +151,24 @@ body {
   display: block;
 }
 
+/* Ícone de lua visível no tema claro */
+.theme-icon-moon {
+  display: block;
+}
+
+.theme-icon-sun {
+  display: none;
+}
+
+/* Ícone de sol visível no tema escuro */
+[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
 /* Header controls */
 .header-controls {
   display: flex;
