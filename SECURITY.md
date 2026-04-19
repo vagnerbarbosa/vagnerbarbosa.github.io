@@ -16,7 +16,7 @@ This is a static personal website, and we prioritize security in all deployments
 If you discover a security vulnerability in this project, please report it responsibly:
 
 1. **Do NOT** open a public issue
-2. Send an email to: **security@vagnerbarbosa.com**
+2. Send an email to: **contato@vagnerbarbosa.com**
 3. Include details about the vulnerability and steps to reproduce
 4. Allow reasonable time for response before public disclosure
 
