@@ -70,22 +70,40 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 <!-- SPECKIT START -->
 ## Plano Ativo do Speckit
 
-**Funcionalidade atual**: 🔄 EM ANDAMENTO - Ajustes de Tema e Idioma  
+**Funcionalidade atual**: ✅ CONCLUÍDO - Ajustes de Tema e Idioma  
 **Diretório**: `specs/002-theme-language-adjustments/`  
 **Plano**: [plan.md](specs/002-theme-language-adjustments/plan.md)  
-**Status**: **Especificação e Plano Completos** - Pronto para implementação
+**Status**: **100% Implementado e Entregue**
 
 ### Artefatos Disponíveis
 - [Especificação](specs/002-theme-language-adjustments/spec.md)
 - [Plano de Implementação](specs/002-theme-language-adjustments/plan.md)
 - [Tarefas](specs/002-theme-language-adjustments/tasks.md)
 
-### Histórias de Usuário
-1. **US1 (P1)**: Correção dos ícones de tema - mostrar lua no modo claro, sol no modo escuro
-2. **US2 (P1)**: Tema padrão escuro para novos visitantes
-3. **US3 (P2)**: Validação da detecção automática de idioma via navegador
-4. **US4 (P2)**: Animação fade-in no carregamento (estilo annamona.co)
+### Histórias de Usuário Implementadas
+1. **US1 (P1)**: ✅ Ícones de tema - lua no modo claro, sol no modo escuro
+2. **US2 (P1)**: ✅ Tema padrão escuro para novos visitantes
+3. **US3 (P2)**: ✅ Validação da detecção automática de idioma via navegador
+4. **US4 (P2)**: ✅ Animação fade-in no carregamento em todas as seções
+5. **US5 (P1)**: ✅ Correções de segurança (XSS, permissões, polling)
 
-### Próximo Passo
-Executar `/speckit-implement` para iniciar a implementação das tarefas
+### Implementações Realizadas
+- CSS atualizado com controle de visibilidade para ícones sol/lua
+- `DEFAULT_THEME` alterado para `'dark'`
+- `FadeIn` adicionado aos módulos em app.js
+- Efeito fade-in aplicado em todas as seções (header, about, experience, skills, education, contact, footer)
+- `will-change: opacity` adicionado para performance
+- Função `safeHTML` removida do gerador Go (prevenção XSS)
+- Permissões de workflows restritas (menor privilégio)
+- Polling com backoff implementado no workflow de release
+- README.md atualizado com estrutura do projeto
+- `.gitattributes` criado para destacar Go nas estatísticas
+
+### Status da PR
+- **PR #108**: [feat: ajustes de tema, idioma e correções de segurança](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/108)
+- Branch: `feat/theme-language-security-adjustments`
+- Status: ✅ **Mergeado e Deployado**
+
+### Próximos Passos
+- Nenhum - funcionalidade completa e em produção
 <!-- SPECKIT END -->
