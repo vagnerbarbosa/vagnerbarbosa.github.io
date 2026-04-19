@@ -124,7 +124,11 @@ vagnerbarbosa.github.io/
 │       ├── release.yml       # Versionamento automatizado com tags
 │       └── create-retro-tag.yml  # Criação de tags retroativas
 ├── specs/                    # Especificações de funcionalidades (Spec Kit)
-│   └── 001-versionamento-automatizado/
+│   ├── 001-versionamento-automatizado/
+│   │   ├── spec.md
+│   │   ├── plan.md
+│   │   └── tasks.md
+│   └── 002-theme-language-adjustments/
 │       ├── spec.md
 │       ├── plan.md
 │       └── tasks.md

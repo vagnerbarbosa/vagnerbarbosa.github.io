@@ -692,17 +692,17 @@ func TestCopyFile_InvalidDestination(t *testing.T) {
 	}
 }
 
-// TestSafeHTML verifica que a função safeHTML está registrada nos templates.
-// TestSafeHTML verifies that the safeHTML function is registered in templates.
-func TestSafeHTML(t *testing.T) {
-	// The safeHTML function should be registered in parseTemplates
+// TestTemplateAutoEscaping verifica que templates usam auto-escaping por padrão (prevenção XSS).
+// TestTemplateAutoEscaping verifies that templates use auto-escaping by default (XSS prevention).
+func TestTemplateAutoEscaping(t *testing.T) {
+	// Templates should auto-escape HTML content by default
 	fs := setupTestFs(t)
 	if err := os.MkdirAll(fs.templates, 0755); err != nil {
 		t.Fatalf("Failed to create templates dir: %v", err)
 	}
 
-	// Template using safeHTML function
-	templateContent := `{{define "test"}}{{safeHTML "<b>Bold</b>"}}{{end}}`
+	// Template with potentially dangerous content - should be escaped
+	templateContent := `{{define "test"}}{{.Site.Title}}{{end}}`
 	if err := os.WriteFile(filepath.Join(fs.templates, "test.html"), []byte(templateContent), 0644); err != nil {
 		t.Fatalf("Failed to write template: %v", err)
 	}
@@ -723,7 +723,34 @@ func TestSafeHTML(t *testing.T) {
 	}
 
 	if tmpl.Lookup("test") == nil {
-		t.Error("test template not found - safeHTML function may not be registered")
+		t.Error("test template not found")
+	}
+
+	// Create public directory
+	if err := os.MkdirAll(filepath.Join(fs.root, "public"), 0755); err != nil {
+		t.Fatalf("Failed to create public dir: %v", err)
+	}
+
+	// Execute template with HTML content
+	data := config.TemplateData{
+		Site: config.SiteConfig{
+			Title: "<script>alert('xss')</script>",
+		},
+	}
+
+	var buf strings.Builder
+	if err := tmpl.ExecuteTemplate(&buf, "test", data); err != nil {
+		t.Fatalf("Failed to execute template: %v", err)
+	}
+
+	// Verify content is escaped (XSS prevention)
+	output := buf.String()
+	if strings.Contains(output, "<script>") {
+		t.Error("Template output contains unescaped script tag - XSS vulnerability!")
+	}
+	// Should have escaped HTML entities
+	if !strings.Contains(output, "&lt;script&gt;") {
+		t.Logf("Output: %s", output)
 	}
 }
 
