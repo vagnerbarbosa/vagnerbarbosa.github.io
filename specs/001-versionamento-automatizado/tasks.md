@@ -52,9 +52,9 @@
 - [x] T008 [P] [HU1] Adicionar job de análise de commits usando semantic-release no workflow
 - [x] T009 [HU1] Configurar job para criar tag semver (major/minor/patch) baseada nos commits
 - [x] T010 [HU1] Adicionar configuração de concurrency para evitar corridas entre workflows
-- [ ] T011 [HU1] Testar workflow em branch de teste: commit tipo `feat:` deve gerar bump minor
-- [ ] T012 [HU1] Testar workflow em branch de teste: commit tipo `fix:` deve gerar bump patch
-- [ ] T013 [HU1] Testar: commit com `BREAKING CHANGE:` ou `!` deve gerar bump major
+- [x] T011 [HU1] Testar workflow em branch de teste: commit tipo `feat:` deve gerar bump minor
+- [x] T012 [HU1] Testar workflow em branch de teste: commit tipo `fix:` deve gerar bump patch
+- [x] T013 [HU1] Testar: commit com `BREAKING CHANGE:` ou `!` deve gerar bump major
 
 **Checkpoint**: Tags sendo criadas automaticamente em pushes na main
 
