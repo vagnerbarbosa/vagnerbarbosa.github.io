@@ -14,18 +14,18 @@
 
 ---
 
-## Fase 1: Setup (Infraestrutura Compartilhada)
+## Fase 1: Setup (Infraestrutura Compartilhada) ✅
 
 **Propósito**: Preparação inicial e criação da branch
 
-- [ ] T001 Criar branch `002-theme-language-adjustments` a partir da main
-- [ ] T002 Verificar estado limpo do working tree antes de iniciar
+- [X] T001 Criar branch `002-theme-language-adjustments` a partir da main
+- [X] T002 Verificar estado limpo do working tree antes de iniciar
 
-**Checkpoint**: Branch criada e pronta para desenvolvimento
+**Checkpoint**: ✅ Branch criada e pronta para desenvolvimento
 
 ---
 
-## Fase 2: História de Usuário 1 - Correção dos Ícones de Tema (Prioridade: P1) 🎯 MVP
+## Fase 2: História de Usuário 1 - Correção dos Ícones de Tema (Prioridade: P1) ✅ 🎯 MVP
 
 **Objetivo**: Implementar dois ícones (sol e lua) no botão de tema, mostrando lua no modo claro e sol no modo escuro
 
@@ -33,16 +33,16 @@
 
 ### Implementação da US1
 
-- [ ] T003 [US1] Adicionar ícone de lua (moon.svg) no header.html junto ao ícone de sol existente
-- [ ] T004 [US1] Adicionar classes CSS para controle de visibilidade dos ícones em assets/css/main.css
-- [ ] T005 [US1] Atualizar theme.js para alternar visibilidade dos ícones baseado no tema atual
-- [ ] T006 [US1] Testar manualmente: modo claro mostra lua, modo escuro mostra sol
+- [X] T003 [US1] Adicionar ícone de lua (moon.svg) no header.html junto ao ícone de sol existente
+- [X] T004 [US1] Adicionar classes CSS para controle de visibilidade dos ícones em assets/css/main.css
+- [X] T005 [US1] Atualizar theme.js para alternar visibilidade dos ícones baseado no tema atual
+- [X] T006 [US1] Testar manualmente: modo claro mostra lua, modo escuro mostra sol
 
-**Checkpoint**: Ícones alternam corretamente ao mudar tema
+**Checkpoint**: ✅ Ícones alternam corretamente ao mudar tema
 
 ---
 
-## Fase 3: História de Usuário 2 - Tema Padrão Escuro (Prioridade: P1) 🎯 MVP
+## Fase 3: História de Usuário 2 - Tema Padrão Escuro (Prioridade: P1) ✅ 🎯 MVP
 
 **Objetivo**: Alterar o tema padrão de 'light' para 'dark' para novos visitantes
 
@@ -50,15 +50,15 @@
 
 ### Implementação da US2
 
-- [ ] T007 [US2] Alterar `DEFAULT_THEME: 'light'` para `'dark'` em assets/js/theme.js
-- [ ] T008 [US2] Verificar que preferências salvas continuam sendo respeitadas
-- [ ] T009 [US2] Testar manualmente em navegação privada: tema inicia escuro
+- [X] T007 [US2] Alterar `DEFAULT_THEME: 'light'` para `'dark'` em assets/js/theme.js
+- [X] T008 [US2] Verificar que preferências salvas continuam sendo respeitadas
+- [X] T009 [US2] Testar manualmente em navegação privada: tema inicia escuro
 
-**Checkpoint**: Novos visitantes veem tema escuro; retornantes mantêm preferência
+**Checkpoint**: ✅ Novos visitantes veem tema escuro; retornantes mantêm preferência
 
 ---
 
-## Fase 4: História de Usuário 3 - Detecção Automática de Idioma (Prioridade: P2)
+## Fase 4: História de Usuário 3 - Detecção Automática de Idioma (Prioridade: P2) ✅
 
 **Objetivo**: Validar que a detecção automática de idioma via navigator.language está funcionando
 
@@ -66,16 +66,16 @@
 
 ### Implementação da US3
 
-- [ ] T010 [US3] Revisar função `_detectBrowserLanguage()` em assets/js/i18n.js
-- [ ] T011 [US3] Verificar cobertura de variações de português (pt-BR, pt-PT, pt-AO)
-- [ ] T012 [US3] Testar manualmente: navegador em EN → site em inglês
-- [ ] T013 [US3] Testar manualmente: navegador em PT → site em português
+- [X] T010 [US3] Revisar função `_detectBrowserLanguage()` em assets/js/i18n.js
+- [X] T011 [US3] Verificar cobertura de variações de português (pt-BR, pt-PT, pt-AO)
+- [X] T012 [US3] Testar manualmente: navegador em EN → site em inglês
+- [X] T013 [US3] Testar manualmente: navegador em PT → site em português
 
-**Checkpoint**: Idioma detectado automaticamente baseado no navegador
+**Checkpoint**: ✅ Idioma detectado automaticamente baseado no navegador
 
 ---
 
-## Fase 5: História de Usuário 4 - Animação Fade-In (Prioridade: P2)
+## Fase 5: História de Usuário 4 - Animação Fade-In (Prioridade: P2) ✅
 
 **Objetivo**: Adicionar animação fade-in suave no carregamento, estilo annamona.co
 
@@ -83,21 +83,21 @@
 
 ### Implementação da US4
 
-- [ ] T014 [P] [US4] Criar arquivo assets/js/fadein.js com módulo de animação
-- [ ] T015 [P] [US4] Adicionar keyframes CSS fadeIn em assets/css/main.css
-- [ ] T016 [US4] Adicionar classe .fade-in com duração 0.8s ease-in
-- [ ] T017 [US4] Adicionar media query prefers-reduced-motion para desabilitar animação
-- [ ] T018 [US4] Adicionar `will-change: opacity` para otimização de performance
-- [ ] T019 [US4] Integrar módulo fadein.js em assets/js/app.js (inicialização)
-- [ ] T020 [US4] Adicionar classe fade-in aos elementos principais (header, sections)
-- [ ] T021 [US4] Testar manualmente: animação executa suavemente
-- [ ] T022 [US4] Testar manualmente: prefers-reduced-motion desabilita animação
+- [X] T014 [P] [US4] Criar arquivo assets/js/fadein.js com módulo de animação
+- [X] T015 [P] [US4] Adicionar keyframes CSS fadeIn em assets/css/main.css
+- [X] T016 [US4] Adicionar classe .fade-in com duração 0.8s ease-in
+- [X] T017 [US4] Adicionar media query prefers-reduced-motion para desabilitar animação
+- [X] T018 [US4] Adicionar `will-change: opacity` para otimização de performance
+- [X] T019 [US4] Integrar módulo fadein.js em assets/js/app.js (inicialização)
+- [X] T020 [US4] Adicionar classe fade-in aos elementos principais (header, sections)
+- [X] T021 [US4] Testar manualmente: animação executa suavemente
+- [X] T022 [US4] Testar manualmente: prefers-reduced-motion desabilita animação
 
-**Checkpoint**: Conteúdo aparece com fade-in suave ao carregar
+**Checkpoint**: ✅ Conteúdo aparece com fade-in suave ao carregar
 
 ---
 
-## Fase 6: História de Usuário 5 - Correções de Segurança (Prioridade: P1) 🎯 CRÍTICO
+## Fase 6: História de Usuário 5 - Correções de Segurança (Prioridade: P1) ✅ 🎯 CRÍTICO
 
 **Objetivo**: Corrigir vulnerabilidades de segurança e problemas de qualidade identificados na revisão
 
@@ -105,30 +105,30 @@
 
 ### Implementação da US5
 
-- [ ] T023 [P] [US5] Remover função `safeHTML` do cmd/generator/main.go (prevenir XSS)
-- [ ] T024 [P] [US5] Restringir permissões em .github/workflows/deploy.yml (princípio do menor privilégio)
-- [ ] T025 [P] [US5] Restringir permissões em .github/workflows/release.yml (princípio do menor privilégio)
-- [ ] T026 [US5] Implementar polling com backoff em vez de sleep fixo no workflow release.yml
-- [ ] T027 [US5] Verificar funcionamento do workflow de deploy após alterações
-- [ ] T028 [US5] Testar manualmente: workflow de release funciona corretamente
+- [X] T023 [P] [US5] Remover função `safeHTML` do cmd/generator/main.go (prevenir XSS)
+- [X] T024 [P] [US5] Restringir permissões em .github/workflows/deploy.yml (princípio do menor privilégio)
+- [X] T025 [P] [US5] Restringir permissões em .github/workflows/release.yml (princípio do menor privilégio)
+- [X] T026 [US5] Implementar polling com backoff em vez de sleep fixo no workflow release.yml
+- [X] T027 [US5] Verificar funcionamento do workflow de deploy após alterações
+- [X] T028 [US5] Testar manualmente: workflow de release funciona corretamente
 
-**Checkpoint**: Correções de segurança aplicadas e validadas
+**Checkpoint**: ✅ Correções de segurança aplicadas e validadas
 
 ---
 
-## Fase 7: Polimento & Preocupações Transversais
+## Fase 7: Polimento & Preocupações Transversais ✅
 
 **Propósito**: Ajustes finais e validação completa
 
-- [ ] T029 [P] Validar todos os critérios de sucesso do spec.md
-- [ ] T030 [P] Verificar acessibilidade (aria-labels, prefers-reduced-motion)
-- [ ] T031 Verificar funcionamento sem JavaScript (degradado)
-- [ ] T032 Atualizar quickstart.md com cenários de teste manuais
-- [ ] T033 Atualizar README.md com estrutura de projeto atualizada
-- [ ] T034 Executar build do site e verificar sem erros
-- [ ] T035 Criar commit com mensagem seguindo Conventional Commits
+- [X] T029 [P] Validar todos os critérios de sucesso do spec.md
+- [X] T030 [P] Verificar acessibilidade (aria-labels, prefers-reduced-motion)
+- [X] T031 Verificar funcionamento sem JavaScript (degradado)
+- [X] T032 Atualizar quickstart.md com cenários de teste manuais
+- [X] T033 Atualizar README.md com estrutura de projeto atualizada
+- [X] T034 Executar build do site e verificar sem erros
+- [X] T035 Criar commit com mensagem seguindo Conventional Commits
 
-**Checkpoint**: Funcionalidade completa e pronta para PR
+**Checkpoint**: ✅ Funcionalidade completa e pronta para PR
 
 ---
 
