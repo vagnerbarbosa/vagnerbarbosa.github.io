@@ -1,0 +1,64 @@
+# Contrato de Eventos do Workflow
+
+## Evento: Push na Main
+
+Dispara o workflow de release completo.
+
+```yaml
+on:
+  push:
+    branches:
+      - main
+```
+
+### Saídas Esperadas
+
+- Tag semver criada (ex: v3.1.0)
+- Deploy para GitHub Pages executado
+- Release criada no GitHub com changelog
+
+## Evento: Workflow Dispatch (Tag Retroativa)
+
+Dispara criação manual de tags para commits históricos.
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: 'Commit SHA para tag retroativa'
+        required: true
+        type: string
+      tag:
+        description: 'Nome da tag (ex: v1.0.0)'
+        required: true
+        type: string
+```
+
+### Validações
+
+- SHA deve existir no histórico
+- Tag deve seguir semver (v{MAJOR}.{MINOR}.{PATCH})
+- Tag não deve já existir
+
+### Saídas Esperadas
+
+- Tag criada apontando para o SHA especificado
+- Release criada (opcional, configurável)
+
+## Evento: Workflow Run (Deploy)
+
+Aguarda conclusão do workflow de deploy.
+
+```yaml
+on:
+  workflow_run:
+    workflows: ["Deploy"]
+    types:
+      - completed
+```
+
+### Condições
+
+- Só cria release se deploy foi bem-sucedido
+- Se deploy falhou, apenas log de erro
