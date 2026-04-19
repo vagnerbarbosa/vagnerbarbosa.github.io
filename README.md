@@ -2,6 +2,7 @@
 
 [![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://golang.org/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-222?logo=github)](https://vagnerbarbosa.github.io)
+[![Version](https://img.shields.io/github/v/release/vagnerbarbosa/vagnerbarbosa.github.io?label=vers%C3%A3o)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 > Personal website and portfolio of Vagner Barbosa - Software Engineer

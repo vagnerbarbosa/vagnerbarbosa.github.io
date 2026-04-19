@@ -106,10 +106,10 @@
 
 **Propósito**: Melhorias e documentação
 
-- [ ] T030 [P] Atualizar `.github/workflows/deploy.yml` se necessário para integração
-- [ ] T031 [P] Adicionar badge de versão/latest release no README.md
-- [ ] T032 Documentar processo de versionamento em `docs/VERSIONING.md` (opcional)
-- [ ] T033 Validar quickstart.md com passos reais
+- [x] T030 [P] Atualizar `.github/workflows/deploy.yml` se necessário para integração
+- [x] T031 [P] Adicionar badge de versão/latest release no README.md
+- [x] T032 Documentar processo de versionamento em `docs/VERSIONING.md` (opcional)
+- [x] T033 Validar quickstart.md com passos reais
 - [ ] T034 [P] Testar edge case: dois merges simultâneos (concurrency funcionando)
 
 **Checkpoint**: Sistema completo documentado e testado
