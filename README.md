@@ -48,6 +48,33 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 ### Deploy
 - **GitHub Actions**: Build automático com Go
 - **GitHub Pages**: Hospedagem gratuita
+
+## Spec Kit (Speckit)
+
+Este projeto utiliza [Spec Kit](https://speckit.org/) - um toolkit de desenvolvimento dirigido por especificações da GitHub.
+
+### Comandos disponíveis
+
+| Comando | Descrição |
+|---------|-----------|
+| `/speckit-constitution` | Estabelece princípios do projeto |
+| `/speckit-specify` | Cria especificação baseline |
+| `/speckit-clarify` | Esclarece áreas ambíguas antes do planejamento |
+| `/speckit-plan` | Cria plano de implementação técnica |
+| `/speckit-tasks` | Gera tarefas acionáveis |
+| `/speckit-analyze` | Análise de consistência entre artefatos |
+| `/speckit-checklist` | Gera checklists de qualidade |
+| `/speckit-implement` | Executa implementação |
+
+### Git Workflow
+
+| Comando | Descrição |
+|---------|-----------|
+| `/speckit-git.initialize` | Inicializa repositório Git |
+| `/speckit-git.feature` | Cria nova feature branch |
+| `/speckit-git.commit` | Commit automático seguindo convenções |
+| `/speckit-git.remote` | Configura remote |
+| `/speckit-git.validate` | Valida estado do repositório |
 - **Domínio customizado**: https://vagnerbarbosa.com
 
 ## Estrutura do Projeto
@@ -199,9 +226,19 @@ O arquivo `.github/workflows/deploy.yml` configura:
 2. **Minificação**: Durante o build, JS, CSS, HTML e JSON são automaticamente minificados
 3. **Deploy**: Publica o conteúdo otimizado de `public/` no GitHub Pages
 
-## Migração de Jekyll para Go
+## História do Projeto
 
-Este projeto foi migrado de Jekyll (Ruby) para um gerador estático em Go. As principais mudanças:
+| Era | Tecnologia | Período |
+|-----|------------|---------|
+| v1.x | Jekyll (inicial) | Fev 2015 – 2019 |
+| v2.x | Jekyll (estabilizado) | 2019 – Mar 2026 |
+| **v3.x** | **Go gerador estático** | **Mar 2026 – presente** |
+
+O site nasceu em 2015 como um portfolio Jekyll. Em março de 2026, foi completamente reescrito em Go, motivado pela adoção do design minimalista do [annamona.co](https://annamona.co) e como oportunidade de treinar Go em um projeto real.
+
+## Migração v2 → v3 (Jekyll para Go)
+
+As principais mudanças na migração para v3.0.0:
 
 | Aspecto | Antes (Jekyll) | Agora (Go) |
 |---------|----------------|------------|

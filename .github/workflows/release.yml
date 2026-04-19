@@ -1,0 +1,144 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  # Job 1: Analisar commits e criar tag
+  tag:
+    name: Create Tag
+    runs-on: ubuntu-latest
+    outputs:
+      new_tag: ${{ steps.tag.outputs.new_tag }}
+      version: ${{ steps.tag.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: .github/scripts
+        run: npm ci
+
+      - name: Determine next version
+        working-directory: .github/scripts
+        id: tag
+        run: |
+          # Instalar semantic-release
+          npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer @semantic-release/release-notes-generator
+
+          # Executar semantic-release em modo dry-run para obter próxima versão
+          npx semantic-release --dry-run --branches main 2>&1 | tee output.log || true
+
+          # Extrair versão do output
+          VERSION=$(grep -oP 'Published release \K[0-9]+\.[0-9]+\.[0-9]+' output.log || echo "")
+
+          if [ -n "$VERSION" ]; then
+            echo "new_tag=v${VERSION}" >> $GITHUB_OUTPUT
+            echo "version=${VERSION}" >> $GITHUB_OUTPUT
+            echo "✅ Nova versão: v${VERSION}"
+          else
+            echo "new_tag=" >> $GITHUB_OUTPUT
+            echo "version=" >> $GITHUB_OUTPUT
+            echo "⚠️ Nenhuma nova versão necessária"
+          fi
+
+      - name: Create Tag
+        if: steps.tag.outputs.new_tag != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a ${{ steps.tag.outputs.new_tag }} -m "Release ${{ steps.tag.outputs.new_tag }}"
+          git push origin ${{ steps.tag.outputs.new_tag }}
+          echo "✅ Tag criada: ${{ steps.tag.outputs.new_tag }}"
+
+  # Job 2: Aguardar deploy e criar release
+  release:
+    name: Create Release
+    needs: tag
+    if: needs.tag.outputs.new_tag != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Wait for deploy
+        run: |
+          echo "⏳ Aguardando deploy do GitHub Pages..."
+          sleep 30  # Aguardar 30 segundos para o deploy iniciar
+
+      - name: Check deploy status
+        id: deploy
+        run: |
+          # Verificar se o deploy foi bem-sucedido consultando a API do GitHub
+          DEPLOY_STATUS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pages" | jq -r '.status' || echo "")
+
+          if [ "$DEPLOY_STATUS" == "built" ]; then
+            echo "success=true" >> $GITHUB_OUTPUT
+            echo "✅ Deploy verificado"
+          else
+            echo "success=false" >> $GITHUB_OUTPUT
+            echo "⚠️ Status do deploy: ${DEPLOY_STATUS:-unknown}"
+          fi
+        continue-on-error: true
+
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          chmod +x .github/scripts/generate-changelog.sh
+
+          # Obter última tag anterior
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 ${{ needs.tag.outputs.new_tag }}^ 2>/dev/null || echo "")
+
+          # Gerar changelog
+          CHANGELOG=$(.github/scripts/generate-changelog.sh ${{ needs.tag.outputs.new_tag }} "$PREVIOUS_TAG")
+
+          # Escapar para GitHub Actions
+          CHANGELOG_ESCAPED="${CHANGELOG//'%'/'%25'}"
+          CHANGELOG_ESCAPED="${CHANGELOG_ESCAPED//$'\n'/'%0A'}"
+          CHANGELOG_ESCAPED="${CHANGELOG_ESCAPED//$'\r'/'%0D'}"
+
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "✅ Changelog gerado"
+
+      - name: Create GitHub Release
+        if: steps.deploy.outputs.success != 'false'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.tag.outputs.new_tag }}
+          name: Release ${{ needs.tag.outputs.new_tag }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log skipped release
+        if: steps.deploy.outputs.success == 'false'
+        run: |
+          echo "⚠️ Release não criada - deploy falhou ou não foi confirmado"
+          echo "Tag ${{ needs.tag.outputs.new_tag }} permanece disponível para retry"

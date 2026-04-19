@@ -26,6 +26,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+nul
 
 # Node (if used in future)
 node_modules/
@@ -41,5 +42,5 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
-# Claude
-.claude/
+# Claude Settings (local/personal)
+.claude/settings.local.json
