@@ -68,24 +68,20 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 ---
 
 <!-- SPECKIT START -->
-## Plano Ativo do Speckit
+## Histórico de Funcionalidades
 
-**Funcionalidade atual**: 🔄 EM ANDAMENTO - Ajustes de Tema e Idioma  
-**Diretório**: `specs/002-theme-language-adjustments/`  
-**Plano**: [plan.md](specs/002-theme-language-adjustments/plan.md)  
-**Status**: **Especificação e Plano Completos** - Pronto para implementação
+### ✅ Concluídas
 
-### Artefatos Disponíveis
-- [Especificação](specs/002-theme-language-adjustments/spec.md)
-- [Plano de Implementação](specs/002-theme-language-adjustments/plan.md)
-- [Tarefas](specs/002-theme-language-adjustments/tasks.md)
+| Funcionalidade | PR | Status |
+|---------------|-----|--------|
+| Versionamento Automatizado | [#107](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/107) | ✅ Mergeada |
+| Ajustes de Tema, Idioma e Segurança | [#108](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/108) | ✅ Mergeada |
+| Fade-in Completo + SECURITY.md | [#110](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/110) | ✅ Mergeada |
 
-### Histórias de Usuário
-1. **US1 (P1)**: Correção dos ícones de tema - mostrar lua no modo claro, sol no modo escuro
-2. **US2 (P1)**: Tema padrão escuro para novos visitantes
-3. **US3 (P2)**: Validação da detecção automática de idioma via navegador
-4. **US4 (P2)**: Animação fade-in no carregamento (estilo annamona.co)
+### 📁 Especificações Disponíveis
+- [001-versionamento-automatizado](specs/001-versionamento-automatizado/) - ✅ Concluído
+- [002-theme-language-adjustments](specs/002-theme-language-adjustments/) - ✅ Concluído
 
-### Próximo Passo
-Executar `/speckit-implement` para iniciar a implementação das tarefas
+### 🎯 Próxima Funcionalidade
+Nenhuma funcionalidade ativa. Use `/speckit-specify` para iniciar uma nova.
 <!-- SPECKIT END -->
