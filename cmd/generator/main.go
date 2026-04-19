@@ -89,14 +89,9 @@ func run() error {
 }
 
 func parseTemplates() (*template.Template, error) {
-	// Create template with custom functions
-	funcMap := template.FuncMap{
-		"safeHTML": func(s string) template.HTML {
-			return template.HTML(s)
-		},
-	}
-
-	tmpl := template.New("").Funcs(funcMap)
+	// Templates use auto-escaping by default - safeHTML removed to prevent XSS
+	// All content from config.yaml is treated as plain text
+	tmpl := template.New("")
 
 	// Walk templates directory
 	err := filepath.Walk("templates", func(path string, info os.FileInfo, err error) error {

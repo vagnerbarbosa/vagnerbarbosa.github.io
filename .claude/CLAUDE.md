@@ -70,22 +70,22 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 <!-- SPECKIT START -->
 ## Plano Ativo do Speckit
 
-**Funcionalidade atual**: ✅ CONCLUÍDO - Versionamento Automatizado com Tags e Releases  
-**Diretório**: `specs/001-versionamento-automatizado/`  
-**Plano**: [plan.md](specs/001-versionamento-automatizado/plan.md)  
-**Status**: **100% Completo** - Todas as 34 tarefas finalizadas e testadas
+**Funcionalidade atual**: 🔄 EM ANDAMENTO - Ajustes de Tema e Idioma  
+**Diretório**: `specs/002-theme-language-adjustments/`  
+**Plano**: [plan.md](specs/002-theme-language-adjustments/plan.md)  
+**Status**: **Especificação e Plano Completos** - Pronto para implementação
 
 ### Artefatos Disponíveis
-- [Especificação](specs/001-versionamento-automatizado/spec.md)
-- [Pesquisa](specs/001-versionamento-automatizado/research.md)
-- [Modelo de Dados](specs/001-versionamento-automatizado/data-model.md)
-- [Plano de Implementação](specs/001-versionamento-automatizado/plan.md)
-- [Tarefas](specs/001-versionamento-automatizado/tasks.md)
+- [Especificação](specs/002-theme-language-adjustments/spec.md)
+- [Plano de Implementação](specs/002-theme-language-adjustments/plan.md)
+- [Tarefas](specs/002-theme-language-adjustments/tasks.md)
 
-### Resultado da Implementação
-- **10 tags criadas**: v1.0.0, v2.0.0 (retroativas), v2.1.0-v2.2.2, v3.0.0, v4.0.0-v4.2.0
-- **6 releases automáticas** publicadas no GitHub
-- **Versionamento**: `feat:` → minor, `fix:` → patch, `feat!:` → major
-- **Changelog**: Em português (Adicionado/Alterado/Corrigido/Quebra de Compatibilidade)
-- **Concorrência**: Workflows executam sequencialmente sem conflitos
+### Histórias de Usuário
+1. **US1 (P1)**: Correção dos ícones de tema - mostrar lua no modo claro, sol no modo escuro
+2. **US2 (P1)**: Tema padrão escuro para novos visitantes
+3. **US3 (P2)**: Validação da detecção automática de idioma via navegador
+4. **US4 (P2)**: Animação fade-in no carregamento (estilo annamona.co)
+
+### Próximo Passo
+Executar `/speckit-implement` para iniciar a implementação das tarefas
 <!-- SPECKIT END -->
