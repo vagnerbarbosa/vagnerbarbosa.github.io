@@ -2,7 +2,7 @@
 
 **Branch da Funcionalidade**: `001-versionamento-automatizado`  
 **Criada**: 2026-04-19  
-**Status**: Rascunho  
+**Status**: ✅ Concluído (Implementado)  
 **Input**: Sistema de versionamento automatizado com geração de tags no GitHub e releases automáticas após deploy. Incluir criação de tags retroativas para versões históricas (v1.x, v2.x) no GitHub. O workflow deve detectar quando uma entrega é feita na main, criar uma nova tag semver, e após deploy bem-sucedido gerar release no GitHub com changelog automático.
 
 ## Esclarecimentos
