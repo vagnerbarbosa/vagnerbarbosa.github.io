@@ -50,8 +50,8 @@ jobs:
           # Analisar commits desde a última tag
           COMMITS=$(git log "$LAST_TAG..HEAD" --pretty=format:"%s" 2>/dev/null || echo "")
 
-          # Verificar se há commits convencionais
-          if echo "$COMMITS" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?:"; then
+          # Verificar se há commits convencionais (incluindo breaking changes com !)
+          if echo "$COMMITS" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?!?:"; then
             echo "✅ Commits convencionais encontrados"
 
             # Determinar tipo de versão
