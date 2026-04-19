@@ -13,13 +13,15 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 
 ## Características
 
-- **Design minimalista** - Layout clean inspirado no annamonaco.co
-- **Bilíngue** - Suporte completo a Português e Inglês com toggle de idioma
-- **Tema claro/escuro** - Alternância automática de tema
-- **Acessibilidade** - Suporte a preferências de movimento reduzido
-- **Segurança** - Headers de segurança (CSP, X-Frame-Options)
-- **Performance** - Site 100% estático, sem dependências de runtime
-- **Minificação automática** - JS, CSS, HTML e JSON são minificados durante o build
+- **Design minimalista** - Layout clean inspirado no [annamona.co](https://annamona.co)
+- **Bilíngue** - Suporte completo a Português e Inglês com detecção automática do navegador
+- **Tema escuro padrão** - Primeira visita sempre inicia no tema escuro (pode ser alterado)
+- **Ícones de tema intuitivos** - Lua no modo claro (ativar escuro), sol no modo escuro (ativar claro)
+- **Animação fade-in** - Efeito suave de entrada no carregamento da página (estilo annamona.co)
+- **Acessibilidade** - Suporte a preferências de movimento reduzido (`prefers-reduced-motion`)
+- **Segurança** - Sanitização de conteúdo, permissões mínimas em workflows
+- **Performance** - Site 100% estático, sem dependências de runtime, minificação automática
+- **Versionamento automatizado** - Tags e releases geradas automaticamente via Conventional Commits
 
 ## Tecnologias
 
@@ -94,7 +96,7 @@ vagnerbarbosa.github.io/
 │   ├── index.html            # Template principal
 │   └── partials/             # Componentes reutilizáveis
 │       ├── head.html
-│       ├── header.html
+│       ├── header.html       # Header com tema escuro padrão e ícones sol/lua
 │       ├── about.html
 │       ├── experience.html
 │       ├── skills.html
@@ -103,21 +105,36 @@ vagnerbarbosa.github.io/
 │       └── footer.html
 ├── assets/                   # Assets estáticos
 │   ├── css/
-│   │   └── main.css          # CSS principal
+│   │   └── main.css          # CSS principal com animações fade-in
 │   ├── js/                   # JavaScript modular
-│   │   ├── utils.js
-│   │   ├── theme.js
-│   │   ├── i18n.js
-│   │   ├── accordion.js
-│   │   └── app.js
+│   │   ├── utils.js          # Utilitários e storage seguro
+│   │   ├── theme.js          # Gerenciamento de tema (escuro padrão)
+│   │   ├── i18n.js           # Sistema de internacionalização PT/EN
+│   │   ├── accordion.js      # Componente de acordeão
+│   │   ├── fadein.js         # Animação fade-in (estilo annamona.co)
+│   │   └── app.js            # Inicialização e orquestração
 │   ├── fonts/                # Fontes (devicon, fontawesome)
 │   └── favicon.png
-├── config.yaml               # Configuração do site (novo)
+├── config.yaml               # Configuração do site
 ├── go.mod                    # Módulo Go
 ├── go.sum                    # Checksums de dependências
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml        # CI/CD para GitHub Pages
+│       ├── deploy.yml        # CI/CD para GitHub Pages
+│       ├── release.yml       # Versionamento automatizado com tags
+│       └── create-retro-tag.yml  # Criação de tags retroativas
+├── specs/                    # Especificações de funcionalidades (Spec Kit)
+│   ├── 001-versionamento-automatizado/
+│   │   ├── spec.md
+│   │   ├── plan.md
+│   │   └── tasks.md
+│   └── 002-theme-language-adjustments/
+│       ├── spec.md
+│       ├── plan.md
+│       └── tasks.md
+├── .claude/
+│   ├── CLAUDE.md             # Regras de colaboração
+│   └── skills/               # Skills do Spec Kit
 ├── CNAME                     # Configuração de domínio
 ├── LICENSE                   # Licença MIT
 └── README.md                 # Este arquivo
@@ -234,7 +251,7 @@ O arquivo `.github/workflows/deploy.yml` configura:
 | v1.x | Jekyll (inicial) | Fev 2015 – 2019 |
 | v2.x | Jekyll (estabilizado) | 2019 – Mar 2026 |
 | v3.x | Go gerador estático | Mar 2026 – Abr 2026 |
-| **v4.x** | **Go gerador estático + Versionamento Automatizado** | **Abr 2026 – presente** |
+| **v4.x** | **Go gerador estático + Versionamento + Ajustes de UX** | **Abr 2026 – presente** |
 
 O site nasceu em 2015 como um portfolio Jekyll. Em março de 2026, foi completamente reescrito em Go, motivado pela adoção do design minimalista do [annamona.co](https://annamona.co) e como oportunidade de treinar Go em um projeto real.
 

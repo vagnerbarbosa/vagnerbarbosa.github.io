@@ -1,0 +1,11 @@
+# GitHub Linguist - Language detection overrides
+# Mark directories as vendored to exclude from language statistics
+
+# Spec Kit scripts - tooling, not project code
+.specify/** linguist-vendored
+
+# GitHub Action scripts with node_modules - tooling dependencies
+.github/scripts/** linguist-vendored
+
+# Documentation
+*.md linguist-documentation

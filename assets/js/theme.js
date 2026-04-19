@@ -30,7 +30,7 @@
      * Valor padrão
      * @constant {string}
      */
-    DEFAULT_THEME: 'light',
+    DEFAULT_THEME: 'dark',
 
     /**
      * Elementos DOM cacheados

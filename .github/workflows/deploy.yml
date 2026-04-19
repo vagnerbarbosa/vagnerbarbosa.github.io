@@ -10,9 +10,9 @@ on:
     branches: [main]
 
 permissions:
-  contents: write  # Necessário para o workflow de release criar tags
-  pages: write
-  id-token: write
+  contents: read    # Apenas leitura para checkout
+  pages: write      # Necessário para deploy no GitHub Pages
+  id-token: write   # Necessário para OIDC
 
 concurrency:
   group: "pages"

@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
-  actions: read
+  contents: write   # Necessário para criar tags
+  actions: read     # Para verificar status de workflows
 
 jobs:
   # Job 1: Analisar commits e criar tag
@@ -108,25 +108,30 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Wait for deploy
-        run: |
-          echo "⏳ Aguardando deploy do GitHub Pages..."
-          sleep 30  # Aguardar 30 segundos para o deploy iniciar
-
-      - name: Check deploy status
+      - name: Wait for deploy with polling
         id: deploy
         run: |
-          # Verificar se o deploy foi bem-sucedido consultando a API do GitHub
-          DEPLOY_STATUS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" | jq -r '.status' || echo "")
+          echo "⏳ Aguardando deploy do GitHub Pages..."
 
-          if [ "$DEPLOY_STATUS" == "built" ]; then
-            echo "success=true" >> $GITHUB_OUTPUT
-            echo "✅ Deploy verificado"
-          else
-            echo "success=false" >> $GITHUB_OUTPUT
-            echo "⚠️ Status do deploy: ${DEPLOY_STATUS:-unknown}"
-          fi
+          # Polling com backoff: 10 tentativas, 15s entre cada
+          for i in {1..10}; do
+            echo "🔍 Tentativa $i/10..."
+
+            DEPLOY_STATUS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/pages" | jq -r '.status' || echo "")
+
+            if [ "$DEPLOY_STATUS" == "built" ]; then
+              echo "success=true" >> $GITHUB_OUTPUT
+              echo "✅ Deploy concluído com sucesso"
+              exit 0
+            fi
+
+            echo "⏳ Status atual: ${DEPLOY_STATUS:-unknown}. Aguardando 15s..."
+            sleep 15
+          done
+
+          echo "success=false" >> $GITHUB_OUTPUT
+          echo "⚠️ Timeout após 10 tentativas. Deploy pode estar em andamento."
         continue-on-error: true
 
       - name: Generate Changelog

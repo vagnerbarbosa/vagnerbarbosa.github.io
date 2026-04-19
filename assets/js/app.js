@@ -21,8 +21,8 @@
    * @constant {Object}
    */
   const CONFIG = Object.freeze({
-    VERSION: '2.0.0',
-    MODULES: ['Utils', 'Theme', 'I18n', 'Accordion'],
+    VERSION: '2.1.0',
+    MODULES: ['Utils', 'Theme', 'I18n', 'Accordion', 'FadeIn'],
     INIT_TIMEOUT: 5000 // Timeout de segurança para inicialização
   });
 
