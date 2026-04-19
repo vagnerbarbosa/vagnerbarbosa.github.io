@@ -2,7 +2,7 @@
 
 **Branch da Funcionalidade**: `002-theme-language-adjustments`  
 **Criada**: 2026-04-19  
-**Status**: Rascunho  
+**Status**: ✅ Concluído (Implementado via PR #108)  
 **Input**: Descrição do usuário: "Ajuste nos ícones de tema para mostrar lua no modo claro e sol no modo escuro, alteração do tema padrão para escuro (dark), e verificação da detecção automática de idioma baseada nas configurações do navegador/SO do usuário"
 
 ## Cenários de Usuário & Testes *(obrigatório)*
