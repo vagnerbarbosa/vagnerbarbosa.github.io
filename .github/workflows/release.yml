@@ -42,25 +42,48 @@ jobs:
         id: tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # Instalar semantic-release
-          npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer @semantic-release/release-notes-generator
+          # Obter última tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Última tag: $LAST_TAG"
 
-          # Executar semantic-release em modo dry-run para obter próxima versão
-          npx semantic-release --dry-run --branches main --config ../../.releaserc.json 2>&1 | tee output.log || true
+          # Analisar commits desde a última tag
+          COMMITS=$(git log "$LAST_TAG..HEAD" --pretty=format:"%s" 2>/dev/null || echo "")
 
-          # Extrair versão do output
-          VERSION=$(grep -oP 'Published release \K[0-9]+\.[0-9]+\.[0-9]+' output.log || echo "")
+          # Verificar se há commits convencionais
+          if echo "$COMMITS" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?:"; then
+            echo "✅ Commits convencionais encontrados"
 
-          if [ -n "$VERSION" ]; then
-            echo "new_tag=v${VERSION}" >> $GITHUB_OUTPUT
-            echo "version=${VERSION}" >> $GITHUB_OUTPUT
-            echo "✅ Nova versão: v${VERSION}"
+            # Determinar tipo de versão
+            if echo "$COMMITS" | grep -qE "^[a-z]+(\(.+\))?!:|BREAKING CHANGE:"; then
+              VERSION_TYPE="major"
+            elif echo "$COMMITS" | grep -qE "^feat(\(.+\))?:"; then
+              VERSION_TYPE="minor"
+            else
+              VERSION_TYPE="patch"
+            fi
+
+            echo "Tipo de versão: $VERSION_TYPE"
+
+            # Calcular próxima versão
+            CURRENT_VERSION=${LAST_TAG#v}
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+
+            if [ "$VERSION_TYPE" = "major" ]; then
+              NEW_VERSION="$((MAJOR + 1)).0.0"
+            elif [ "$VERSION_TYPE" = "minor" ]; then
+              NEW_VERSION="${MAJOR}.$((MINOR + 1)).0"
+            else
+              NEW_VERSION="${MAJOR}.${MINOR}.$((PATCH + 1))"
+            fi
+
+            echo "new_tag=v${NEW_VERSION}" >> $GITHUB_OUTPUT
+            echo "version=${NEW_VERSION}" >> $GITHUB_OUTPUT
+            echo "✅ Nova versão: v${NEW_VERSION}"
           else
             echo "new_tag=" >> $GITHUB_OUTPUT
             echo "version=" >> $GITHUB_OUTPUT
-            echo "⚠️ Nenhuma nova versão necessária"
+            echo "⚠️ Nenhum commit convencional encontrado"
           fi
 
       - name: Create Tag
