@@ -84,4 +84,59 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 
 ### 🎯 Próxima Funcionalidade
 Nenhuma funcionalidade ativa. Use `/speckit-specify` para iniciar uma nova.
+
+---
+
+## Melhorias Futuras
+
+### Cobertura de Testes - 100%
+
+**Status atual:** 93.0% (PR #121)  
+**Gap para 100%:** ~7% (principalmente em `cmd/generator/main.go`)
+
+#### Bloqueadores Identificados
+
+1. **`main()` - 0% cobertura**
+   - Problema: Chama `os.Exit(1)` que encerra o processo de teste
+   - Solução potencial: Refatorar para retornar código de erro em vez de chamar `os.Exit()`
+   ```go
+   // Atual
+   func main() {
+       if err := run(); err != nil {
+           fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+           os.Exit(1)
+       }
+   }
+   
+   // Refatorado para testabilidade
+   func main() {
+       os.Exit(runWithExitCode())
+   }
+   
+   func runWithExitCode() int {
+       if err := run(); err != nil {
+           fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+           return 1
+       }
+       return 0
+   }
+   ```
+
+2. **Casos de erro em `copyAndMinifyDir()` e `copyAndMinifyFile()`**
+   - Problema: Alguns caminhos de erro requerem condições de corrida ou permissões de arquivo específicas
+   - Solução potencial: Usar interface `fs.FS` para permitir mocking do filesystem
+
+3. **Testes com permissões de arquivo**
+   - Problema: Windows e Unix tratam permissões diferentemente
+   - Solução potencial: Usar build tags ou abstração de filesystem
+
+#### Estratégia para Alcançar 100%
+
+1. **Refatoração leve:** Extrair lógica de `main()` para função testável
+2. **Filesystem abstraction:** Interface para operações de arquivo permitindo mocks
+3. **Testes de integração:** Testar o binário gerado em vez de apenas pacotes
+
+**Prioridade:** Baixa - 93% é excelente cobertura para um projeto Go
+
+---
 <!-- SPECKIT END -->
