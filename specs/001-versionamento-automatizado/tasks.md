@@ -94,9 +94,9 @@
 - [x] T024 [HU3] Implementar validação: tag deve seguir semver e não existir
 - [x] T025 [HU3] Adicionar step para criar tag apontando para o SHA especificado
 - [x] T026 [HU3] Adicionar step opcional para criar release da tag retroativa
-- [ ] T027 [HU3] Executar manualmente: criar tag v1.0.0 apontando para commit `b81034a` (2015)
-- [ ] T028 [HU3] Executar manualmente: criar tag v2.0.0 apontando para commit pré-migração Go
-- [ ] T029 [HU3] Verificar no GitHub: tags v1.0.0 e v2.0.0 existem e apontam para commits corretos
+- [x] T027 [HU3] Executar manualmente: criar tag v1.0.0 apontando para commit `b81034a` (2015)
+- [x] T028 [HU3] Executar manualmente: criar tag v2.0.0 apontando para commit pré-migração Go
+- [x] T029 [HU3] Verificar no GitHub: tags v1.0.0 e v2.0.0 existem e apontam para commits corretos
 
 **Checkpoint**: Tags retroativas v1.0.0 e v2.0.0 criadas no GitHub
 
