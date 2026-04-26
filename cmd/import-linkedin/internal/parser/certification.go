@@ -14,18 +14,18 @@ type CertificationParser struct {
 	reader  *CSVReader
 }
 
-// Required columns for certification parsing
+// Required columns for certification parsing (LinkedIn export format)
 var certificationRequiredColumns = []string{
-	"Certification Name",
-	"Certification Authority",
+	"Name",
+	"Authority",
 }
 
-// Optional columns for certification parsing
+// Optional columns for certification parsing (LinkedIn export format)
 var certificationOptionalColumns = []string{
 	"Started On",
 	"Finished On",
 	"License Number",
-	"Certification URL",
+	"Url",
 }
 
 // NewCertificationParser creates a new certification parser for the given CSV file.
@@ -89,12 +89,12 @@ func (p *CertificationParser) ParseAll() ([]models.Certification, error) {
 // parseRow converts a CSV row to a Certification struct.
 func (p *CertificationParser) parseRow(row map[string]string, lineNum int) (*models.Certification, error) {
 	cert := models.Certification{
-		Name:          row["Certification Name"],
-		Organization:  row["Certification Authority"],
-		IssueDate:     ConvertDate(row["Started On"]),
+		Name:           row["Name"],
+		Organization:   row["Authority"],
+		IssueDate:      ConvertDate(row["Started On"]),
 		ExpirationDate: ConvertDate(row["Finished On"]),
-		CredentialID:  row["License Number"],
-		CredentialURL: row["Certification URL"],
+		CredentialID:   row["License Number"],
+		CredentialURL:  row["Url"],
 	}
 
 	// Validate the certification
@@ -129,11 +129,11 @@ func (p *CertificationParser) Validate() []error {
 		}
 
 		// Check required fields
-		if row["Certification Name"] == "" {
-			errors = append(errors, models.NewParseError(lineNum, "Certification Name", "cannot be empty"))
+		if row["Name"] == "" {
+			errors = append(errors, models.NewParseError(lineNum, "Name", "cannot be empty"))
 		}
-		if row["Certification Authority"] == "" {
-			errors = append(errors, models.NewParseError(lineNum, "Certification Authority", "cannot be empty"))
+		if row["Authority"] == "" {
+			errors = append(errors, models.NewParseError(lineNum, "Authority", "cannot be empty"))
 		}
 
 		// Validate date format

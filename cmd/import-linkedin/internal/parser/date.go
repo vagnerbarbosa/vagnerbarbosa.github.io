@@ -71,6 +71,14 @@ func convertSingleDate(dateStr string) string {
 		}
 	}
 
+	// Regex to match year-only format (e.g., "2010")
+	reYear := regexp.MustCompile(`^(\d{4})$`)
+	matches = reYear.FindStringSubmatch(dateStr)
+	if len(matches) == 2 {
+		// Year-only format, return as-is
+		return dateStr
+	}
+
 	// If not matching expected format, return as-is
 	return dateStr
 }
@@ -88,9 +96,15 @@ func ValidateDate(dateStr string) bool {
 		return true
 	}
 
-	// Check for "MMM YYYY" format
+	// Check for "MMM YYYY" format (e.g., "Jan 2020")
 	re := regexp.MustCompile(`^[A-Za-z]{3}\s+\d{4}$`)
 	if re.MatchString(dateStr) {
+		return true
+	}
+
+	// Check for year-only format (e.g., "2010")
+	reYear := regexp.MustCompile(`^\d{4}$`)
+	if reYear.MatchString(dateStr) {
 		return true
 	}
 
