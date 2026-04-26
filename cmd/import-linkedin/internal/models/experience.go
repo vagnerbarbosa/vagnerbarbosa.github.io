@@ -8,6 +8,7 @@ type Experience struct {
 	StartDate   string   `yaml:"start_date" json:"start_date"`
 	EndDate     string   `yaml:"end_date" json:"end_date"`
 	Description []string `yaml:"description" json:"description"`
+	TechStack   string   `yaml:"tech_stack,omitempty" json:"tech_stack,omitempty"`
 	Location    string   `yaml:"location,omitempty" json:"location,omitempty"`
 }
 
