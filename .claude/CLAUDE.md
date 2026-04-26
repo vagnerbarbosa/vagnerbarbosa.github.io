@@ -77,6 +77,7 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 | Versionamento Automatizado | [#107](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/107) | ✅ Mergeada |
 | Ajustes de Tema, Idioma e Segurança | [#108](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/108) | ✅ Mergeada |
 | Fade-in Completo + SECURITY.md | [#110](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/110) | ✅ Mergeada |
+| LinkedIn Import CLI | [#124](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/124) | 🔄 Em Revisão |
 
 ### 📁 Especificações Disponíveis
 - [001-versionamento-automatizado](specs/001-versionamento-automatizado/) - ✅ Concluído
@@ -84,11 +85,7 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 - [003-linkedin-import](specs/003-linkedin-import/) - ✅ Especificação concluída
 
 ### 🎯 Próxima Funcionalidade
-**LinkedIn Import CLI** (003-linkedin-import)  
-Ferramenta CLI para importar experiências, educação e certificações do LinkedIn a partir do export CSV manual, converter datas para português, dividir descrições em bullets, comparar com config.yaml atual e aplicar mudanças com confirmação interativa.
-
-**Plano**: [specs/003-linkedin-import/plan.md](specs/003-linkedin-import/plan.md)  
-**Branch**: `003-linkedin-import`
+Nenhuma funcionalidade ativa. Use `/speckit-specify` para iniciar uma nova.
 
 ---
 
