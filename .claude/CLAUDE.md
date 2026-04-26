@@ -78,11 +78,13 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 | Ajustes de Tema, Idioma e Segurança | [#108](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/108) | ✅ Mergeada |
 | Fade-in Completo + SECURITY.md | [#110](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/110) | ✅ Mergeada |
 | LinkedIn Import CLI | [#124](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/124) | ✅ Mergeada |
+| Extração Inteligente de Tech Stack | [#126](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/126) | 🔄 Em Revisão |
 
 ### 📁 Especificações Disponíveis
 - [001-versionamento-automatizado](specs/001-versionamento-automatizado/) - ✅ Concluído
 - [002-theme-language-adjustments](specs/002-theme-language-adjustments/) - ✅ Concluído
-- [003-linkedin-import](specs/003-linkedin-import/) - ✅ Especificação concluída
+- [003-linkedin-import](specs/003-linkedin-import/) - ✅ Concluído
+- [004-tech-stack-extraction](specs/004-tech-stack-extraction/) - 🔄 Em Desenvolvimento
 
 ### 🎯 Próxima Funcionalidade
 Nenhuma funcionalidade ativa. Use `/speckit-specify` para iniciar uma nova.
