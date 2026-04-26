@@ -9,7 +9,7 @@ import (
 )
 
 func TestEducationParser_ParseAll(t *testing.T) {
-	csvData := `School Name,Degree Name,Field Of Study,Started On,Finished On,Description
+	csvData := `School Name,Degree Name,Field Of Study,Start Date,End Date,Description
 Universidade Federal,Bachelor's Degree,Computer Science,Jan 2015,Dec 2019,Studied algorithms and data structures
 Tech Institute,Master's Degree,AI,Jan 2020,Present,Research in machine learning`
 
@@ -61,28 +61,28 @@ func TestEducationParser_Validate(t *testing.T) {
 	}{
 		{
 			name: "valid data",
-			csvData: `School Name,Degree Name,Field Of Study,Started On,Finished On,Description
+			csvData: `School Name,Degree Name,Field Of Study,Start Date,End Date,Description
 University,Bachelor,CS,Jan 2015,Dec 2019,Studied`,
 			expectError: false,
 			errorCount:  0,
 		},
 		{
 			name: "missing institution",
-			csvData: `School Name,Degree Name,Field Of Study,Started On,Finished On,Description
+			csvData: `School Name,Degree Name,Field Of Study,Start Date,End Date,Description
 ,Bachelor,CS,Jan 2015,Dec 2019,Studied`,
 			expectError: true,
 			errorCount:  1,
 		},
 		{
 			name: "missing degree",
-			csvData: `School Name,Degree Name,Field Of Study,Started On,Finished On,Description
+			csvData: `School Name,Degree Name,Field Of Study,Start Date,End Date,Description
 University,,CS,Jan 2015,Dec 2019,Studied`,
 			expectError: true,
 			errorCount:  1,
 		},
 		{
 			name: "missing both dates",
-			csvData: `School Name,Degree Name,Field Of Study,Started On,Finished On,Description
+			csvData: `School Name,Degree Name,Field Of Study,Start Date,End Date,Description
 University,Bachelor,CS,,,Studied`,
 			expectError: true,
 			errorCount:  1,

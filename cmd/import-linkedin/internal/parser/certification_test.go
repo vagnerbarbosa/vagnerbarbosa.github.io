@@ -9,9 +9,9 @@ import (
 )
 
 func TestCertificationParser_ParseAll(t *testing.T) {
-	csvData := `Certification Name,Certification Authority,Started On,Finished On,License Number,Certification URL
-AWS Solutions Architect,Amazon Web Services,Jan 2020,Jan 2023,ABC123,https://aws.amazon.com/certification
-Kubernetes Admin,CNCF,Mar 2021,Mar 2024,XYZ789,https://cncf.io/certification`
+	csvData := `Name,Url,Authority,Started On,Finished On,License Number
+AWS Solutions Architect,https://aws.amazon.com/certification,Amazon Web Services,Jan 2020,Jan 2023,ABC123
+Kubernetes Admin,https://cncf.io/certification,CNCF,Mar 2021,Mar 2024,XYZ789`
 
 	parser, err := NewCertificationParserFromReader(strings.NewReader(csvData))
 	if err != nil {
@@ -58,22 +58,22 @@ func TestCertificationParser_Validate(t *testing.T) {
 	}{
 		{
 			name: "valid data",
-			csvData: `Certification Name,Certification Authority,Started On,Finished On,License Number,Certification URL
-AWS Cert,Amazon,Jan 2020,Jan 2023,ABC,https://test.com`,
+			csvData: `Name,Url,Authority,Started On,Finished On,License Number
+AWS Cert,https://test.com,Amazon,Jan 2020,Jan 2023,ABC`,
 			expectError: false,
 			errorCount:  0,
 		},
 		{
 			name: "missing name",
-			csvData: `Certification Name,Certification Authority,Started On,Finished On,License Number,Certification URL
-,Amazon,Jan 2020,,ABC,`,
+			csvData: `Name,Url,Authority,Started On,Finished On,License Number
+,https://test.com,Amazon,Jan 2020,,ABC`,
 			expectError: true,
 			errorCount:  1,
 		},
 		{
 			name: "missing organization",
-			csvData: `Certification Name,Certification Authority,Started On,Finished On,License Number,Certification URL
-AWS Cert,,Jan 2020,,ABC,`,
+			csvData: `Name,Url,Authority,Started On,Finished On,License Number
+AWS Cert,https://test.com,,Jan 2020,,ABC`,
 			expectError: true,
 			errorCount:  1,
 		},

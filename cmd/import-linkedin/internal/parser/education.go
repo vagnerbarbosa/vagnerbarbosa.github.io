@@ -24,8 +24,8 @@ var educationRequiredColumns = []string{
 // Optional columns for education parsing
 var educationOptionalColumns = []string{
 	"Field Of Study",
-	"Started On",
-	"Finished On",
+	"Start Date",
+	"End Date",
 	"Description",
 }
 
@@ -93,8 +93,8 @@ func (p *EducationParser) parseRow(row map[string]string, lineNum int) (*models.
 		Institution: row["School Name"],
 		Degree:      row["Degree Name"],
 		Field:       row["Field Of Study"],
-		StartDate:   ConvertDate(row["Started On"]),
-		EndDate:     ConvertDate(row["Finished On"]),
+		StartDate:   ConvertDate(row["Start Date"]),
+		EndDate:     ConvertDate(row["End Date"]),
 	}
 
 	// Split description into bullets
@@ -143,16 +143,16 @@ func (p *EducationParser) Validate() []error {
 		}
 
 		// At least one date should be present
-		if row["Started On"] == "" && row["Finished On"] == "" {
+		if row["Start Date"] == "" && row["End Date"] == "" {
 			errors = append(errors, models.NewParseError(lineNum, "dates", "at least one date must be present"))
 		}
 
 		// Validate date format
-		if row["Started On"] != "" && !ValidateDate(row["Started On"]) {
-			errors = append(errors, models.NewParseError(lineNum, "Started On", "invalid date format"))
+		if row["Start Date"] != "" && !ValidateDate(row["Start Date"]) {
+			errors = append(errors, models.NewParseError(lineNum, "Start Date", "invalid date format"))
 		}
-		if row["Finished On"] != "" && !ValidateDate(row["Finished On"]) {
-			errors = append(errors, models.NewParseError(lineNum, "Finished On", "invalid date format"))
+		if row["End Date"] != "" && !ValidateDate(row["End Date"]) {
+			errors = append(errors, models.NewParseError(lineNum, "End Date", "invalid date format"))
 		}
 	}
 
