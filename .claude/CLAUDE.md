@@ -81,9 +81,14 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 ### 📁 Especificações Disponíveis
 - [001-versionamento-automatizado](specs/001-versionamento-automatizado/) - ✅ Concluído
 - [002-theme-language-adjustments](specs/002-theme-language-adjustments/) - ✅ Concluído
+- [003-linkedin-import](specs/003-linkedin-import/) - ✅ Especificação concluída
 
 ### 🎯 Próxima Funcionalidade
-Nenhuma funcionalidade ativa. Use `/speckit-specify` para iniciar uma nova.
+**LinkedIn Import CLI** (003-linkedin-import)  
+Ferramenta CLI para importar experiências, educação e certificações do LinkedIn a partir do export CSV manual, converter datas para português, dividir descrições em bullets, comparar com config.yaml atual e aplicar mudanças com confirmação interativa.
+
+**Plano**: [specs/003-linkedin-import/plan.md](specs/003-linkedin-import/plan.md)  
+**Branch**: `003-linkedin-import`
 
 ---
 
