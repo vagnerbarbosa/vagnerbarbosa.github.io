@@ -77,7 +77,7 @@ Commit 170ab22 foi feito direto na main em 19/04/2026. Foi revertido e refeito v
 | Versionamento Automatizado | [#107](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/107) | ✅ Mergeada |
 | Ajustes de Tema, Idioma e Segurança | [#108](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/108) | ✅ Mergeada |
 | Fade-in Completo + SECURITY.md | [#110](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/110) | ✅ Mergeada |
-| LinkedIn Import CLI | [#124](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/124) | 🔄 Em Revisão |
+| LinkedIn Import CLI | [#124](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/pull/124) | ✅ Mergeada |
 
 ### 📁 Especificações Disponíveis
 - [001-versionamento-automatizado](specs/001-versionamento-automatizado/) - ✅ Concluído

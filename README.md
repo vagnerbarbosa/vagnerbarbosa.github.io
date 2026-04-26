@@ -1,6 +1,6 @@
 # vagnerbarbosa.github.io
 
-[![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go)](https://golang.org/)
+[![Go](https://img.shields.io/badge/Go-1.25+-00ADD8?logo=go)](https://golang.org/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-222?logo=github)](https://vagnerbarbosa.github.io)
 [![Version](https://img.shields.io/github/v/release/vagnerbarbosa/vagnerbarbosa.github.io?label=vers%C3%A3o)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -22,6 +22,7 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 - **Segurança** - Sanitização de conteúdo, permissões mínimas em workflows
 - **Performance** - Site 100% estático, sem dependências de runtime, minificação automática
 - **Versionamento automatizado** - Tags e releases geradas automaticamente via Conventional Commits
+- **LinkedIn Import CLI** - Ferramenta para importar experiências, educação e certificações do LinkedIn
 
 ## Tecnologias
 
@@ -85,9 +86,13 @@ Este projeto utiliza [Spec Kit](https://speckit.org/) - um toolkit de desenvolvi
 ```
 vagnerbarbosa.github.io/
 ├── cmd/
-│   └── generator/            # Gerador de site estático em Go
-│       ├── main.go           # Entry point do gerador
-│       └── main_test.go      # Testes unitários do gerador
+│   ├── generator/            # Gerador de site estático em Go
+│   │   ├── main.go           # Entry point do gerador
+│   │   └── main_test.go      # Testes unitários do gerador
+│   └── import-linkedin/      # Ferramenta CLI para importar dados do LinkedIn
+│       ├── main.go           # Entry point da ferramenta
+│       ├── commands/         # Comandos CLI (import, validate, version)
+│       └── internal/         # Parser, models, comparator, UI
 ├── internal/
 │   └── config/
 │       ├── config.go         # Parser de configuração YAML
@@ -115,6 +120,9 @@ vagnerbarbosa.github.io/
 │   │   └── app.js            # Inicialização e orquestração
 │   ├── fonts/                # Fontes (devicon, fontawesome)
 │   └── favicon.png
+├── docs/                     # Documentação
+│   ├── LINKEDIN-IMPORT.md    # Guia da ferramenta LinkedIn Import CLI
+│   └── VERSIONING.md         # Documentação de versionamento
 ├── config.yaml               # Configuração do site
 ├── go.mod                    # Módulo Go
 ├── go.sum                    # Checksums de dependências
@@ -128,10 +136,15 @@ vagnerbarbosa.github.io/
 │   │   ├── spec.md
 │   │   ├── plan.md
 │   │   └── tasks.md
-│   └── 002-theme-language-adjustments/
+│   ├── 002-theme-language-adjustments/
+│   │   ├── spec.md
+│   │   ├── plan.md
+│   │   └── tasks.md
+│   └── 003-linkedin-import/
 │       ├── spec.md
 │       ├── plan.md
-│       └── tasks.md
+│       ├── tasks.md
+│       └── ...
 ├── .claude/
 │   ├── CLAUDE.md             # Regras de colaboração
 │   └── skills/               # Skills do Spec Kit
@@ -143,7 +156,7 @@ vagnerbarbosa.github.io/
 ## Desenvolvimento
 
 ### Pré-requisitos
-- Go 1.21 ou superior
+- Go 1.25 ou superior
 - Git
 
 ### Instalação
@@ -166,6 +179,8 @@ go mod download
 | `go run cmd/generator/main.go` | Gera o site em `public/` (com minificação automática) |
 | `go build -o generator cmd/generator/main.go` | Compila o gerador |
 | `./generator` | Executa o gerador compilado |
+| `go run cmd/import-linkedin/main.go import` | Importa dados do LinkedIn (modo interativo) |
+| `go run cmd/import-linkedin/main.go import --dry-run` | Visualiza importação sem aplicar |
 | `go test ./...` | Executa testes unitários |
 
 O site gerado estará disponível em `public/index.html`.
