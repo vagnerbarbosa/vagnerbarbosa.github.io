@@ -46,20 +46,20 @@
 
 > **NOTA: Escreva estes testes PRIMEIRO, garanta que FALHEM antes da implementação**
 
-- [ ] T004 [P] [US1] Criar testes unitários para extração de tech stack em `cmd/import-linkedin/internal/transformer/techstack_test.go` - testar padrão "Tecnologias:"
-- [ ] T005 [P] [US1] Criar teste para extração com vírgula como separador
-- [ ] T006 [P] [US1] Criar teste para remoção do bullet de tech stack da descrição
-- [ ] T007 [P] [US1] Criar teste para múltiplos separadores (pipe, hífen, bullet)
-- [ ] T008 [P] [US1] Criar teste para tech stack no meio da descrição (preservar outros bullets)
+- [x] T004 [P] [US1] Criar testes unitários para extração de tech stack em `cmd/import-linkedin/internal/transformer/techstack_test.go` - testar padrão "Tecnologias:"
+- [x] T005 [P] [US1] Criar teste para extração com vírgula como separador
+- [x] T006 [P] [US1] Criar teste para remoção do bullet de tech stack da descrição
+- [x] T007 [P] [US1] Criar teste para múltiplos separadores (pipe, hífen, bullet)
+- [x] T008 [P] [US1] Criar teste para tech stack no meio da descrição (preservar outros bullets)
 
 ### Implementação da História de Usuário 1
 
-- [ ] T009 [US1] Implementar struct `TechStackResult` em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T010 [US1] Implementar função `ExtractTechStack(bullets []string) TechStackResult` em `cmd/import-linkedin/internal/transformer/techstack.go` - detectar padrões PT
-- [ ] T011 [US1] Implementar regex para padrões de tech stack (case-insensitive) em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T012 [US1] Implementar parsing de tecnologias com separadores variados em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T013 [US1] Implementar formatação de saída com separador " • " em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T014 [US1] Integrar `ExtractTechStack` no parser de experiências em `cmd/import-linkedin/internal/parser/experience.go` - chamar após `SplitDescription`
+- [x] T009 [US1] Implementar struct `TechStackResult` em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T010 [US1] Implementar função `ExtractTechStack(bullets []string) TechStackResult` em `cmd/import-linkedin/internal/transformer/techstack.go` - detectar padrões PT
+- [x] T011 [US1] Implementar regex para padrões de tech stack (case-insensitive) em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T012 [US1] Implementar parsing de tecnologias com separadores variados em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T013 [US1] Implementar formatação de saída com separador " • " em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T014 [US1] Integrar `ExtractTechStack` no parser de experiências em `cmd/import-linkedin/internal/parser/experience.go` - chamar após `SplitDescription`
 
 **Checkpoint**: Neste ponto, a História de Usuário 1 deve estar totalmente funcional e testável independentemente
 
@@ -73,20 +73,20 @@
 
 ### Testes para História de Usuário 2 ⚠️
 
-- [ ] T015 [P] [US2] Criar teste para padrão "Tech Stack:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
-- [ ] T016 [P] [US2] Criar teste para padrão "Technologies:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
-- [ ] T017 [P] [US2] Criar teste para padrão "Tools:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
-- [ ] T018 [P] [US2] Criar teste para separador pipe `|` em `cmd/import-linkedin/internal/transformer/techstack_test.go`
-- [ ] T019 [P] [US2] Criar teste para padrão "As principais tecnologias e ferramentas utilizadas:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T015 [P] [US2] Criar teste para padrão "Tech Stack:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T016 [P] [US2] Criar teste para padrão "Technologies:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T017 [P] [US2] Criar teste para padrão "Tools:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T018 [P] [US2] Criar teste para separador pipe `|` em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T019 [P] [US2] Criar teste para padrão "As principais tecnologias e ferramentas utilizadas:" em `cmd/import-linkedin/internal/transformer/techstack_test.go`
 
 ### Implementação da História de Usuário 2
 
-- [ ] T020 [US2] Adicionar suporte a padrão "Tech Stack:" em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T021 [US2] Adicionar suporte a padrão "Technologies:" em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T022 [US2] Adicionar suporte a padrão "Tools:" em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T023 [US2] Adicionar suporte a padrão "As principais tecnologias e ferramentas utilizadas:" em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T024 [US2] Adicionar suporte a separador pipe `|` em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T025 [US2] Adicionar suporte a padrão "Ferramentas:" em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T020 [US2] Adicionar suporte a padrão "Tech Stack:" em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T021 [US2] Adicionar suporte a padrão "Technologies:" em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T022 [US2] Adicionar suporte a padrão "Tools:" em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T023 [US2] Adicionar suporte a padrão "As principais tecnologias e ferramentas utilizadas:" em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T024 [US2] Adicionar suporte a separador pipe `|` em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T025 [US2] Adicionar suporte a padrão "Ferramentas:" em `cmd/import-linkedin/internal/transformer/techstack.go`
 
 **Checkpoint**: Neste ponto, as Histórias de Usuário 1 E 2 devem ambas funcionar independentemente
 
@@ -100,13 +100,13 @@
 
 ### Testes para História de Usuário 3 ⚠️
 
-- [ ] T026 [P] [US3] Criar teste para descrição sem tech stack - preservar todos os bullets em `cmd/import-linkedin/internal/transformer/techstack_test.go`
-- [ ] T027 [P] [US3] Criar teste para tech stack vazio após prefixo em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T026 [P] [US3] Criar teste para descrição sem tech stack - preservar todos os bullets em `cmd/import-linkedin/internal/transformer/techstack_test.go`
+- [x] T027 [P] [US3] Criar teste para tech stack vazio após prefixo em `cmd/import-linkedin/internal/transformer/techstack_test.go`
 
 ### Implementação da História de Usuário 3
 
-- [ ] T028 [US3] Garantir que bullets sem padrões de tech stack são preservados inalterados em `cmd/import-linkedin/internal/transformer/techstack.go`
-- [ ] T029 [US3] Tratar caso de tech stack vazio após prefixo em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T028 [US3] Garantir que bullets sem padrões de tech stack são preservados inalterados em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T029 [US3] Tratar caso de tech stack vazio após prefixo em `cmd/import-linkedin/internal/transformer/techstack.go`
 
 **Checkpoint**: Todas as histórias de usuário devem agora ser independentemente funcionais
 
@@ -116,10 +116,10 @@
 
 **Propósito**: Melhorias que afetam múltiplas histórias de usuário
 
-- [ ] T030 [P] Atualizar documentação do LinkedIn Import CLI em `docs/LINKEDIN-IMPORT.md`
-- [ ] T031 Atualizar README.md seção de comandos do import-linkedin
-- [ ] T032 Executar todos os testes: `go test ./cmd/import-linkedin/...`
-- [ ] T033 Verificar cobertura de testes: `go test -cover ./cmd/import-linkedin/...`
+- [x] T030 [P] Atualizar documentação do LinkedIn Import CLI em `docs/LINKEDIN-IMPORT.md`
+- [x] T031 Atualizar README.md seção de comandos do import-linkedin
+- [x] T032 Executar todos os testes: `go test ./cmd/import-linkedin/...`
+- [x] T033 Verificar cobertura de testes: `go test -cover ./cmd/import-linkedin/...`
 
 ---
 
