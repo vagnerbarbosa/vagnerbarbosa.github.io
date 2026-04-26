@@ -13,6 +13,7 @@ Esta ferramenta permite importar seu histórico profissional do LinkedIn diretam
 - ✅ Importação de certificações
 - ✅ Conversão automática de datas (inglês → português)
 - ✅ Divisão de descrições em bullets
+- ✅ **Extração automática de tech stack** - Detecta tech stack em bullets e separa no campo `tech_stack`
 - ✅ Diff visual colorido das mudanças
 - ✅ Confirmação interativa das alterações
 - ✅ Backup automático do config.yaml
@@ -152,6 +153,42 @@ details:
   - "Otimização de FinOps: Referência técnica na evolução do KPI"
   - "Liderança Técnica: Gestão direta de mais de 7 desenvolvedores"
 ```
+
+### Extração Automática de Tech Stack
+
+Quando um bullet de descrição contém padrões de tech stack, a ferramenta detecta e extrai automaticamente:
+
+**Entrada (CSV):**
+```
+"Referência técnica em FinOps para o Itaú\nGestão de 7+ desenvolvedores\nAs principais tecnologias e ferramentas utilizadas: Java, Python, AWS"
+```
+
+**Saída (config.yaml):**
+```yaml
+details:
+  - "Referência técnica em FinOps para o Itaú"
+  - "Gestão de 7+ desenvolvedores"
+tech_stack: "Java • Python • AWS"
+```
+
+#### Padrões Detectados
+
+A ferramenta reconhece os seguintes padrões (case-insensitive):
+- `As principais tecnologias e ferramentas utilizadas:`
+- `Tecnologias:` / `Technologies:`
+- `Tech Stack:` / `Stack:`
+- `Ferramentas:` / `Tools:`
+
+#### Formatos Suportados
+
+Tecnologias podem ser separadas por:
+- Vírgula: `Java, Python, AWS`
+- Pipe: `Java | Python | AWS`
+- Hífen: `Java - Python - AWS`
+- Bullet: `• Java • Python • AWS`
+- Ponto-e-vírgula: `Java; Python; AWS`
+
+O tech stack extraído é formatado com o separador ` • ` para consistência no portfólio.
 
 ### Identificação de Duplicatas
 

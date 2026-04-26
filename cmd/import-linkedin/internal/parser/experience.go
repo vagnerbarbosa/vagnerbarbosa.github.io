@@ -97,10 +97,13 @@ func (p *ExperienceParser) parseRow(row map[string]string, lineNum int) (*models
 		Location:  row["Location"],
 	}
 
-	// Split description into bullets
+	// Split description into bullets and extract tech stack
 	description := row["Description"]
 	if description != "" {
-		experience.Description = transformer.SplitDescription(description)
+		bullets := transformer.SplitDescription(description)
+		result := transformer.ExtractTechStack(bullets)
+		experience.Description = result.CleanedBullets
+		experience.TechStack = result.TechStack
 	}
 
 	// Validate the experience

@@ -92,7 +92,7 @@ vagnerbarbosa.github.io/
 │   └── import-linkedin/      # Ferramenta CLI para importar dados do LinkedIn
 │       ├── main.go           # Entry point da ferramenta
 │       ├── commands/         # Comandos CLI (import, validate, version)
-│       └── internal/         # Parser, models, comparator, UI
+│       └── internal/         # Parser, models, comparator, transformer, UI
 ├── internal/
 │   └── config/
 │       ├── config.go         # Parser de configuração YAML
@@ -140,11 +140,18 @@ vagnerbarbosa.github.io/
 │   │   ├── spec.md
 │   │   ├── plan.md
 │   │   └── tasks.md
-│   └── 003-linkedin-import/
+│   ├── 003-linkedin-import/
+│   │   ├── spec.md
+│   │   ├── plan.md
+│   │   ├── tasks.md
+│   │   └── ...
+│   └── 004-tech-stack-extraction/
 │       ├── spec.md
 │       ├── plan.md
 │       ├── tasks.md
-│       └── ...
+│       ├── data-model.md
+│       ├── research.md
+│       └── quickstart.md
 ├── .claude/
 │   ├── CLAUDE.md             # Regras de colaboração
 │   └── skills/               # Skills do Spec Kit
