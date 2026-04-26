@@ -19,7 +19,7 @@
 
 **Propósito**: Criar estrutura base para a funcionalidade
 
-- [ ] T001 [P] Criar diretório e arquivo para transformer de tech stack em `cmd/import-linkedin/internal/transformer/techstack.go`
+- [x] T001 [P] Criar diretório e arquivo para transformer de tech stack em `cmd/import-linkedin/internal/transformer/techstack.go`
 
 ---
 
@@ -29,8 +29,8 @@
 
 **⚠️ CRÍTICO**: Nenhum trabalho de história de usuário pode começar até esta fase estar completa
 
-- [ ] T002 Adicionar campo `TechStack` ao struct `Experience` em `cmd/import-linkedin/internal/models/experience.go`
-- [ ] T003 Atualizar mapeamento YAML para incluir `tech_stack` em `cmd/import-linkedin/internal/config/yaml.go`
+- [x] T002 Adicionar campo `TechStack` ao struct `Experience` em `cmd/import-linkedin/internal/models/experience.go`
+- [x] T003 Atualizar mapeamento YAML para incluir `tech_stack` em `cmd/import-linkedin/internal/config/yaml.go`
 
 **Checkpoint**: Fundação pronta - implementação de histórias de usuário pode agora começar
 
