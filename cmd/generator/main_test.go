@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -754,19 +754,46 @@ func TestTemplateAutoEscaping(t *testing.T) {
 	}
 }
 
-// TestMainFunction verifica que main() pode ser chamado (chama os.Exit em caso de sucesso).
-// TestMainFunction verifies that main() can be called (calls os.Exit on success).
+// TestMainFunction verifies that main() can be called.
 func TestMainFunction(t *testing.T) {
-	// This is a simple check that main() can be called
-	// We can't actually run main() as it calls os.Exit
-	// but we can verify the function signature
-	if testing.Short() {
-		t.Skip("Skipping main function test in short mode")
+	if os.Getenv("BE_CRASHY") == "1" {
+		main()
+		return
+	}
+	cmd := exec.Command(os.Args[0], "-test.run=TestMainFunction")
+	cmd.Env = append(os.Environ(), "BE_CRASHY=1")
+	err := cmd.Run()
+	if e, ok := err.(*exec.ExitError); ok {
+		_ = e
+		return // Success: the process exited with a non-zero status
+	}
+	if err == nil {
+		t.Error("expected process to exit with non-zero status")
+	} else {
+		t.Fatalf("process ran with error %v", err)
+	}
+}
+
+func TestRun_GenerateIndexError(t *testing.T) {
+	fs := setupTestFs(t)
+	fs.setupConfig(t)
+	fs.setupTemplates(t)
+	fs.setupAssets(t)
+
+	originalCwd, _ := os.Getwd()
+	defer os.Chdir(originalCwd)
+	os.Chdir(fs.root)
+
+	// Create public as a file to block index.html creation
+	publicFile := filepath.Join(fs.root, "public")
+	if err := os.WriteFile(publicFile, []byte("not a dir"), 0644); err != nil {
+		t.Fatalf("failed to create blocking file: %v", err)
 	}
 
-	// Note: We cannot directly test main() as it calls os.Exit
-	// The run() function is tested separately above
-	_ = fmt.Sprintf("main function exists")
+	err := run()
+	if err == nil {
+		t.Error("run() should return error when generateIndex fails")
+	}
 }
 
 // TestGenerateIndex_TemplateDataTypes verifica generateIndex com diferentes tipos de dados.
@@ -1098,29 +1125,81 @@ func TestGenerateIndex_CreateFileError(t *testing.T) {
 	}
 }
 
-// TestCopyFile_StatFailure verifica tratamento quando stat falha no destino.
-// TestCopyFile_StatFailure verifies handling when stat fails on destination.
-func TestCopyFile_StatFailure(t *testing.T) {
-	// This tests the error when stat fails on destination
-	// On Windows we can't easily test this, but we can test the logic
-	tmpDir := t.TempDir()
-	src := filepath.Join(tmpDir, "source.txt")
-	dst := filepath.Join(tmpDir, "dest.txt")
+func TestRunWithExitCode(t *testing.T) {
+	// Setup filesystem
+	fs := setupTestFs(t)
+	fs.setupTemplates(t)
+	fs.setupConfig(t)
+	fs.setupAssets(t)
 
-	// Create source
-	if err := os.WriteFile(src, []byte("content"), 0644); err != nil {
-		t.Fatalf("Failed to write source: %v", err)
+	originalCwd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get cwd: %v", err)
+	}
+	defer os.Chdir(originalCwd)
+
+	if err := os.Chdir(fs.root); err != nil {
+		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// Copy should work normally
-	if err := copyAndMinifyFile(src, dst); err != nil {
-		t.Fatalf("copyAndMinifyFile() error = %v", err)
+	// Test success
+	if code := runWithExitCode(); code != 0 {
+		t.Errorf("expected exit code 0, got %d", code)
 	}
 
-	// Verify
-	content, _ := os.ReadFile(dst)
-	if string(content) != "content" {
-		t.Errorf("Content mismatch: got %s, want content", string(content))
+	// Test failure by removing config
+	if err := os.Remove(fs.config); err != nil {
+		t.Fatalf("Failed to remove config: %v", err)
+	}
+	if code := runWithExitCode(); code != 1 {
+		t.Errorf("expected exit code 1, got %d", code)
+	}
+}
+
+func TestCopyAndMinifyDir_RecursiveError(t *testing.T) {
+	fs := setupTestFs(t)
+	srcDir := filepath.Join(fs.root, "src")
+	subDir := filepath.Join(srcDir, "sub")
+	if err := os.MkdirAll(subDir, 0755); err != nil {
+		t.Fatalf("failed to create subDir: %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(subDir, "file.txt"), []byte("content"), 0644); err != nil {
+		t.Fatalf("failed to write file: %v", err)
+	}
+
+	dstDir := filepath.Join(fs.root, "dst")
+
+	// To cause a recursive error, we can make the subdirectory in source unreadable.
+	if err := os.Chmod(subDir, 0000); err != nil {
+		t.Fatalf("failed to chmod subDir: %v", err)
+	}
+	defer os.Chmod(subDir, 0755)
+
+	err := copyAndMinifyDir(srcDir, dstDir)
+	if err == nil {
+		t.Error("expected error when subdirectory is unreadable")
+	}
+}
+
+func TestCopyAndMinifyDir_FileError(t *testing.T) {
+	fs := setupTestFs(t)
+	srcDir := filepath.Join(fs.root, "src")
+	if err := os.MkdirAll(srcDir, 0755); err != nil {
+		t.Fatalf("failed to create srcDir: %v", err)
+	}
+	srcFile := filepath.Join(srcDir, "unreadable.txt")
+	if err := os.WriteFile(srcFile, []byte("content"), 0644); err != nil {
+		t.Fatalf("failed to write srcFile: %v", err)
+	}
+	if err := os.Chmod(srcFile, 0000); err != nil {
+		t.Fatalf("failed to chmod srcFile: %v", err)
+	}
+	defer os.Chmod(srcFile, 0644)
+
+	dstDir := filepath.Join(fs.root, "dst")
+	err := copyAndMinifyDir(srcDir, dstDir)
+	if err == nil {
+		t.Error("expected error when file is unreadable")
 	}
 }
 
@@ -1713,39 +1792,6 @@ func TestCopyAndMinifyDir_StatError(t *testing.T) {
 	err := copyAndMinifyDir(srcDir, dstDir)
 	if err == nil {
 		t.Error("copyAndMinifyDir() should return error when source doesn't exist")
-	}
-}
-
-// TestRun_GenerateIndexError verifica erro em run() quando generateIndex falha.
-// TestRun_GenerateIndexError verifies error in run() when generateIndex fails.
-func TestRun_GenerateIndexError(t *testing.T) {
-	fs := setupTestFs(t)
-	fs.setupConfig(t)
-	fs.setupTemplates(t)
-
-	// Create public as a file (not directory) to cause generateIndex to fail
-	publicFile := filepath.Join(fs.root, "public")
-	if err := os.MkdirAll(fs.root, 0755); err != nil {
-		t.Fatalf("Failed to create root: %v", err)
-	}
-	if err := os.WriteFile(publicFile, []byte("not a dir"), 0644); err != nil {
-		t.Fatalf("Failed to create blocking file: %v", err)
-	}
-
-	originalCwd, err := os.Getwd()
-	if err != nil {
-		t.Fatalf("Failed to get cwd: %v", err)
-	}
-	defer os.Chdir(originalCwd)
-
-	if err := os.Chdir(fs.root); err != nil {
-		t.Fatalf("Failed to chdir: %v", err)
-	}
-
-	// run() should fail when generateIndex cannot write to public/index.html
-	err = run()
-	if err == nil {
-		t.Error("run() should return error when generateIndex fails")
 	}
 }
 
