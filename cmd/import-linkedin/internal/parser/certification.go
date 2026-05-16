@@ -125,7 +125,7 @@ func (p *CertificationParser) Validate() []error {
 		}
 		if err != nil {
 			errors = append(errors, fmt.Errorf("parse error at line %d: %w", lineNum, err))
-			continue
+			break
 		}
 
 		// Check required fields

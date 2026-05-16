@@ -2,11 +2,85 @@
 package parser
 
 import (
+	"os"
 	"strings"
 	"testing"
 
 	"github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/models"
 )
+
+func TestNewExperienceParser(t *testing.T) {
+	content := "Company Name,Title,Started On,Finished On,Description,Location\nAcme Corp,Engineer,Jan 2020,Mar 2022,Work,NY"
+	tmpFile, err := os.CreateTemp("", "exp*.csv")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.Remove(tmpFile.Name())
+
+	if _, err := tmpFile.Write([]byte(content)); err != nil {
+		t.Fatal(err)
+	}
+	tmpFile.Close()
+
+	t.Run("valid file", func(t *testing.T) {
+		parser, err := NewExperienceParser(tmpFile.Name())
+		if err != nil {
+			t.Errorf("Expected no error, got %v", err)
+		}
+		if parser == nil {
+			t.Error("Expected parser to be non-nil")
+		}
+	})
+
+	t.Run("missing required column", func(t *testing.T) {
+		contentBad := "Started On\nJan 2020"
+		tmpFileBad, _ := os.CreateTemp("", "expbad*.csv")
+		defer os.Remove(tmpFileBad.Name())
+		tmpFileBad.Write([]byte(contentBad))
+		tmpFileBad.Close()
+
+		_, err := NewExperienceParser(tmpFileBad.Name())
+		if err == nil {
+			t.Error("Expected error for missing required columns")
+		}
+	})
+
+	t.Run("non-existent file", func(t *testing.T) {
+		_, err := NewExperienceParser("non_existent.csv")
+		if err == nil {
+			t.Error("Expected error for non-existent file")
+		}
+	})
+}
+
+func TestNewExperienceParserFromReader(t *testing.T) {
+	t.Run("invalid csv header", func(t *testing.T) {
+		parser, err := NewExperienceParserFromReader(strings.NewReader(""))
+		if err == nil {
+			t.Error("Expected error for empty input")
+		}
+		if parser != nil {
+			t.Error("Expected parser to be nil on error")
+		}
+	})
+
+	t.Run("simulated read error", func(t *testing.T) {
+		parser, err := NewExperienceParserFromReader(&failingReader{failAt: 0})
+		if err == nil {
+			t.Error("Expected error for simulated read failure")
+		}
+		if parser != nil {
+			t.Error("Expected parser to be nil")
+		}
+	})
+}
+
+func TestExperienceParser_Close(t *testing.T) {
+	parser, _ := NewExperienceParserFromReader(strings.NewReader("Company Name,Title,Started On\nAcme Corp,Engineer,Jan 2020"))
+	if err := parser.Close(); err != nil {
+		t.Errorf("Close() error = %v", err)
+	}
+}
 
 func TestExperienceParser_ParseAll(t *testing.T) {
 	// Test CSV data
@@ -138,6 +212,60 @@ Acme Corp,Engineer,Invalid Date,,,NY`,
 			}
 		})
 	}
+}
+
+func TestExperienceParser_ParseAll_Errors(t *testing.T) {
+	tests := []struct {
+		name        string
+		csvData     string
+		expectError bool
+	}{
+		{
+			name:        "invalid row - missing company",
+			csvData:     "Company Name,Title,Started On\n,Engineer,Jan 2020",
+			expectError: true,
+		},
+		{
+			name:        "invalid row - missing title",
+			csvData:     "Company Name,Title,Started On\nAcme Corp,,Jan 2020",
+			expectError: true,
+		},
+		{
+			name:        "invalid row - missing start date",
+			csvData:     "Company Name,Title,Started On\nAcme Corp,Engineer,",
+			expectError: true,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			parser, err := NewExperienceParserFromReader(strings.NewReader(tt.csvData))
+			if err != nil {
+				t.Fatalf("Failed to create parser: %v", err)
+			}
+
+			_, err = parser.ParseAll()
+			if (err != nil) != tt.expectError {
+				t.Errorf("ParseAll() error = %v, expectError %v", err, tt.expectError)
+			}
+		})
+	}
+}
+
+func TestExperienceParser_Validate_Errors(t *testing.T) {
+	csvData := "Company Name,Title,Started On\nAcme Corp,Engineer,Jan 2020\nTech Inc,Dev,Mar 2021"
+
+	t.Run("ParseAll failure with read error", func(t *testing.T) {
+		reader := &failingReader{
+			data:   []byte(csvData),
+			failAt: 20,
+		}
+		parser, _ := NewExperienceParserFromReader(reader)
+		_, err := parser.ParseAll()
+		if err == nil {
+			t.Error("Expected error during ParseAll")
+		}
+	})
 }
 
 func TestExperience_Validate(t *testing.T) {

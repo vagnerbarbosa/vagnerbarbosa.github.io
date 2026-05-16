@@ -3,6 +3,7 @@ package parser
 
 import (
 	"encoding/csv"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -52,7 +53,9 @@ func NewCSVReaderFromIO(r io.Reader) (*CSVReader, error) {
 func (r *CSVReader) Next() (map[string]string, error) {
 	record, err := r.reader.Read()
 	if err != nil {
-		return nil, err
+		if !errors.Is(err, csv.ErrFieldCount) {
+			return nil, err
+		}
 	}
 
 	// Convert to map
