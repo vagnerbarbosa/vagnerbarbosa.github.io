@@ -19,48 +19,57 @@ content:
       I believe lighter, collaborative, and purpose-driven work environments make all the difference.
 
   experiences:
-    - title: "Engenheiro de Software Especialista"
-      title_en: "Specialist Software Engineer"
+    - title: "Desenvolvedor Backend Especialista"
+      title_en: "Specialist Backend Developer"
       company: "Zup Innovation (Itaú)"
       period: "Fev 2025 – Presente"
       period_en: "Feb 2025 – Present"
       details:
-        - "Referência técnica em FinOps para o Itaú, elevando KPI de eficiência de 80% para 96,2%"
-        - "Gestão direta de 7+ desenvolvedores (pleno/sênior), elevando maturidade via mentorias"
-        - "Orquestração de agentes de IA: Prompt Engineering, RAG e Fine-tuning"
+        - "Como Especialista Backend, atuando em diversas frentes, como: Otimização de FinOps: Referência técnica na evolução do KPI de FinOps para o Itaú, elevando a eficiência de 80% para 96,2% via otimizações em RDS e implementação de Glue Flex"
+        - "Liderança Técnica: Gestão direta de mais de 7 desenvolvedores (pleno e sênior), aumentando a maturidade do time via mentorias e planos de carreira baseados em métricas"
       details_en:
-        - "FinOps technical reference for Itaú, improving efficiency KPI from 80% to 96.2%"
-        - "Direct management of 7+ developers (mid/senior), increasing maturity through mentorship"
-        - "AI agent orchestration: Prompt Engineering, RAG, and Fine-tuning"
-      tech_stack: "Java • Python • AWS • Datadog • AI/LLM"
+        - "As a Backend Specialist, working on several fronts, such as: FinOps Optimization: Technical reference in the evolution of FinOps KPIs for Itaú, increasing efficiency from 80% to 96.2% through RDS optimizations and Glue Flex implementation"
+        - "Technical Leadership: Direct management of more than 7 developers (mid and senior), increasing team maturity through mentorship and career plans based on metrics"
+      tech_stack: "Java • Python • AWS (Lambda • Glue • RDS) • Datadog • Prompt Engineering • RAG e Fine-tuning"
 
-    - title: "Engenheiro de Software Sênior"
-      title_en: "Senior Software Engineer"
+    - title: "Analista Desenvolvedor Sênior"
+      title_en: "Senior Developer Analyst"
       company: "Invillia (PagBank)"
-      period: "Ago 2020 – Fev 2025"
-      period_en: "Aug 2020 – Feb 2025"
+      period: "Jul 2021 – Fev 2025"
+      period_en: "Jul 2021 – Feb 2025"
       details:
-        - "Tech Lead em soluções de mitigação de fraude em tempo real"
-        - "Sistemas de stream de alta performance com Kafka, validados com Locust"
-        - "PDI e gestão de carreira de desenvolvedores"
+        - "Como Sênior além das funções de pleno ainda atuei no papel de Tech Lead com as seguintes responsabilidades: Mitigação de Fraude: Desenvolvi soluções de orquestração para Risco e Fraude no PagBank, reduzindo perdas financeiras com fluxos de prevenção e chargeback em tempo real"
+        - "Resiliência e Escala: Projetei sistemas de stream de alta performance e validei a escalabilidade através de testes de carga com Locust, garantindo baixa latência sob alto volume"
+        - "Gestão de PDI: Acompanhei o Plano de Desenvolvimento Individual da equipe técnica, garantindo alinhamento total com as necessidades de negócio"
       details_en:
-        - "Tech Lead in real-time fraud mitigation solutions"
-        - "High-performance stream systems with Kafka, validated with Locust"
-        - "PDI and career development management for developers"
-      tech_stack: "Java • Kotlin • Go • Spring Boot • Kafka • Kubernetes • Airflow"
+        - "As a Senior, in addition to full functions, I also acted as Tech Lead with the following responsibilities: Fraud Mitigation: Developed orchestration solutions for Risk and Fraud at PagBank, reducing financial losses with real-time prevention and chargeback flows"
+        - "Resilience and Scale: Designed high-performance stream systems and validated scalability through load testing with Locust, ensuring low latency under high volume"
+        - "PDI Management: Followed up on the Individual Development Plan of the technical team, ensuring full alignment with business needs"
+      tech_stack: "Java (8 • 11 • 17) • Kotlin • Go • Spring Boot • Apache Kafka • Airflow • Kubernetes • Locust • Splunk • NoSQL e New Relic"
 
-    - title: "Engenheiro de Software Pleno"
-      title_en: "Software Engineer"
+    - title: "Analista Desenvolvedor Pleno"
+      title_en: "Mid-level Developer Analyst"
+      company: "Invillia (PagBank)"
+      period: "Ago 2020 – Jul 2021"
+      period_en: "Aug 2020 – Jul 2021"
+      details:
+        - "Atuando no contexto de Risco e Fraude para produtos financeiros do PagBank, implementando soluções focadas em orquestração, enriquecimentos de dados e processos relacionados ao Transacional (Prevenção) e ao Pós Transacional (Chargeback e Disputa)"
+      details_en:
+        - "Working in the context of Risk and Fraud for PagBank financial products, implementing solutions focused on orchestration, data enrichment and processes related to Transactional (Prevention) and Post Transactional (Chargeback and Dispute)"
+      tech_stack: "Java 8 • 11 • 17 • Kotlin • Spring Boot • Spring Feign • Gradle • Apache Kafka • Apacha Airflow • SonarQube • CheckStyle • SpotBugs • MockMvc • Rest Docs • Cucumber • Junit • Mockito • RestAssured • Locust • Splunk • New Relic • Jira • Jenkins • Amazon Workspaces • Marathon • Apache Mesos • Kubernetes • Amazon Redshift • Grafana • Prometheus • Open Telemetry"
+
+    - title: "Analista Desenvolvedor Pleno"
+      title_en: "Mid-level Developer Analyst"
       company: "SONDA"
       period: "Ago 2019 – Jul 2020"
       period_en: "Aug 2019 – Jul 2020"
       details:
-        - "Desenvolvimento de WebServices REST para o Ministério da Justiça"
-        - "Metodologias ágeis (SCRUM), GitFlow, Docker"
+        - "Atuando como Desenvolvedor Pleno para clientes em todo território nacional com foco principalmente no Ministério da Justiça e Segurança Pública. Seguindo metodologias Ágeis como SCRUM"
+        - "Em linhas gerais as atividades foram: Desenvolvimento de WebServices REST. Criação de Testes Unitários e de Integração; Versionamento de código usando GIT via fluxo GitFlow; Controle de atividades via Azure e Trello"
       details_en:
-        - "RESTful WebServices development for the Ministry of Justice"
-        - "Agile methodologies (SCRUM), GitFlow, Docker"
-      tech_stack: ""
+        - "Working as a Mid-level Developer for clients across the country with a focus mainly on the Ministry of Justice and Public Security. Following Agile methodologies such as SCRUM"
+        - "In general, the activities were: Development of REST WebServices. Creation of Unit and Integration Tests; Code versioning using GIT via GitFlow; Activity control via Azure and Trello"
+      tech_stack: "Java 12 • Hibernate ORM • Hibernate Envers • Maven • Swagger • Trello • Eclipse IDE • Intellij IDE • VS Code • git-scm • Docker • Junit • Jasper Report • Mockito"
 
   education:
     - title: "Pós-graduação em Inteligência Artificial"
@@ -87,3 +96,6 @@ content:
     - "LangChain"
     - "Git"
     - "Linux"
+  privacy:
+    pt: "Este site não coleta dados pessoais, não utiliza cookies de rastreamento e não armazena informações dos visitantes."
+    en: "This website does not collect personal data, does not use tracking cookies, and does not store visitor information."

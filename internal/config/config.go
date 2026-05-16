@@ -61,6 +61,7 @@ type Content struct {
 	Experiences  []Experience `yaml:"experiences"`
 	Education    []Education  `yaml:"education"`
 	Technologies []string     `yaml:"technologies"`
+	Privacy      AboutContent `yaml:"privacy"`
 }
 
 // Config is the main configuration structure
