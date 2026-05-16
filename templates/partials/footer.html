@@ -1,5 +1,9 @@
 {{define "footer"}}
 <footer class="fade-in fade-in-delay-5">
   <p>&copy; {{.Year}} {{.Site.Username}}</p>
+  <p class="privacy-statement" style="font-size: 0.8em; opacity: 0.8;">
+    <span class="lang-pt">{{.Content.Privacy.PT}}</span>
+    <span class="lang-en" style="display: none;">{{.Content.Privacy.EN}}</span>
+  </p>
 </footer>
 {{end}}
