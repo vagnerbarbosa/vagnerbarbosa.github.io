@@ -295,7 +295,7 @@ body {
 }
 
 .accordion.expanded .accordion-content {
-  max-height: 1000px;
+  max-height: 10000px;
   padding: 24px 0;
 }
 

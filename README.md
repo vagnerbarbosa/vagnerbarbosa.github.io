@@ -92,7 +92,8 @@ vagnerbarbosa.github.io/
 │   └── import-linkedin/      # Ferramenta CLI para importar dados do LinkedIn
 │       ├── main.go           # Entry point da ferramenta
 │       ├── commands/         # Comandos CLI (import, validate, version)
-│       └── internal/         # Parser, models, comparator, transformer, UI
+│       ├── internal/         # Parser, models, comparator, transformer, UI
+│       └── testdata/         # Dados de teste (CSVs malformados, etc.)
 ├── internal/
 │   └── config/
 │       ├── config.go         # Parser de configuração YAML
@@ -127,10 +128,15 @@ vagnerbarbosa.github.io/
 ├── go.mod                    # Módulo Go
 ├── go.sum                    # Checksums de dependências
 ├── .github/
+│   ├── scripts/              # Scripts para GitHub Actions
+│   │   ├── package.json      # Dependências Node.js (semantic-release)
+│   │   └── package-lock.json
 │   └── workflows/
 │       ├── deploy.yml        # CI/CD para GitHub Pages
 │       ├── release.yml       # Versionamento automatizado com tags
 │       └── create-retro-tag.yml  # Criação de tags retroativas
+├── scripts/                  # Scripts auxiliares
+│   └── check_coverage.sh     # Script de validação de cobertura de testes
 ├── specs/                    # Especificações de funcionalidades (Spec Kit)
 │   ├── 001-versionamento-automatizado/
 │   │   ├── spec.md
@@ -145,13 +151,20 @@ vagnerbarbosa.github.io/
 │   │   ├── plan.md
 │   │   ├── tasks.md
 │   │   └── ...
-│   └── 004-tech-stack-extraction/
+│   ├── 004-tech-stack-extraction/
+│   │   ├── spec.md
+│   │   ├── plan.md
+│   │   ├── tasks.md
+│   │   ├── data-model.md
+│   │   ├── research.md
+│   │   └── quickstart.md
+│   └── 005-test-coverage-total/
 │       ├── spec.md
 │       ├── plan.md
 │       ├── tasks.md
-│       ├── data-model.md
 │       ├── research.md
-│       └── quickstart.md
+│       └── checklists/
+│           └── requirements.md
 ├── .claude/
 │   ├── CLAUDE.md             # Regras de colaboração
 │   └── skills/               # Skills do Spec Kit
