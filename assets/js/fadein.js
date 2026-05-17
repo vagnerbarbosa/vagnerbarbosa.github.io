@@ -18,6 +18,7 @@
     /**
      * Initialize the fade-in animations
      * Handles prefers-reduced-motion for accessibility
+     * @returns {boolean} Always returns true
      */
     init: function() {
       // Check if user prefers reduced motion
@@ -25,6 +26,7 @@
         this.showAll();
       }
       // Otherwise, CSS animation runs automatically via @keyframes
+      return true;
     },
 
     /**
