@@ -178,6 +178,12 @@ vagnerbarbosa.github.io/
 │   ├── feature.json          # Feature atual
 │   ├── templates/            # Templates de especificação
 │   └── scripts/              # Scripts auxiliares do Spec Kit
+├── public/                   # Site gerado (output do generator)
+│   ├── index.html            # Página principal gerada
+│   ├── assets/               # Assets processados e minificados
+│   ├── sitemap.xml           # Sitemap para SEO
+│   ├── robots.txt            # Configuração de crawl
+│   └── site.webmanifest      # Configuração PWA
 ├── CNAME                     # Configuração de domínio
 ├── LICENSE                   # Licença MIT
 └── README.md                 # Este arquivo
