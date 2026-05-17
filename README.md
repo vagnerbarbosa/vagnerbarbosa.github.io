@@ -137,6 +137,10 @@ vagnerbarbosa.github.io/
 │       └── create-retro-tag.yml  # Criação de tags retroativas
 ├── scripts/                  # Scripts auxiliares
 │   └── check_coverage.sh     # Script de validação de cobertura de testes
+├── hooks/                    # Git hooks
+│   └── pre-push              # Hook para prevenir push direto na main
+├── la-linkedin/              # Dados exportados do LinkedIn (importados via CLI)
+│   └── testdata/             # Dados de teste para importação
 ├── specs/                    # Especificações de funcionalidades (Spec Kit)
 │   ├── 001-versionamento-automatizado/
 │   │   ├── spec.md
@@ -168,6 +172,12 @@ vagnerbarbosa.github.io/
 ├── .claude/
 │   ├── CLAUDE.md             # Regras de colaboração
 │   └── skills/               # Skills do Spec Kit
+├── .specify/                 # Configuração do Spec Kit
+│   ├── extensions.yml        # Configuração de extensões
+│   ├── init-options.json     # Opções de inicialização
+│   ├── feature.json          # Feature atual
+│   ├── templates/            # Templates de especificação
+│   └── scripts/              # Scripts auxiliares do Spec Kit
 ├── CNAME                     # Configuração de domínio
 ├── LICENSE                   # Licença MIT
 └── README.md                 # Este arquivo
