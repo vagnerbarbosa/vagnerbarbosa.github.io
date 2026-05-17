@@ -19,6 +19,15 @@
    */
   App.Utils = {
     /**
+     * Inicializa o módulo de utilitários
+     * @returns {boolean} Sempre retorna true
+     */
+    init: function() {
+      // Utils é um módulo utilitário, não requer inicialização
+      return true;
+    },
+
+    /**
      * Sanitiza uma string para prevenir XSS
      * @param {string} str - String a ser sanitizada
      * @returns {string} String sanitizada
