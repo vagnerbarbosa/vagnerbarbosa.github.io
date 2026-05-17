@@ -1,6 +1,6 @@
 {{define "experience"}}
-<div class="accordion fade-in fade-in-delay-2" id="experience">
-  <button class="accordion-header" aria-expanded="false">
+<div class="accordion fade-in fade-in-delay-2" id="experience" role="region" aria-label="Experiência profissional">
+  <button class="accordion-header" aria-expanded="false" aria-controls="experience-content">
     <span class="accordion-header-content">
       <span class="lang-pt"><span class="bracket">[</span>Experiência<span class="bracket">]</span></span>
       <span class="lang-en" style="display: none;"><span class="bracket">[</span>Experience<span class="bracket">]</span></span>
@@ -9,7 +9,7 @@
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
   </button>
-  <div class="accordion-content">
+  <div class="accordion-content" id="experience-content">
     <div class="accordion-content-inner">
       <div class="lang-pt">
 {{range .Content.Experiences}}

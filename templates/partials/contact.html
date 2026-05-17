@@ -1,6 +1,6 @@
 {{define "contact"}}
-<div class="accordion fade-in fade-in-delay-5" id="contact">
-  <button class="accordion-header" aria-expanded="false">
+<div class="accordion fade-in fade-in-delay-5" id="contact" role="region" aria-label="Informações de contato">
+  <button class="accordion-header" aria-expanded="false" aria-controls="contact-content">
     <span class="accordion-header-content">
       <span class="lang-pt"><span class="bracket">[</span>Contato<span class="bracket">]</span></span>
       <span class="lang-en" style="display: none;"><span class="bracket">[</span>Contact<span class="bracket">]</span></span>
@@ -9,7 +9,7 @@
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
   </button>
-  <div class="accordion-content">
+  <div class="accordion-content" id="contact-content">
     <div class="accordion-content-inner">
       <p class="lang-pt">Vamos conversar? Entre em contato através dos links abaixo ou envie um email para <a href="mailto:{{.Site.Email}}">{{.Site.Email}}</a>.</p>
       <p class="lang-en" style="display: none;">Let's talk? Get in touch through the links below or send an email to <a href="mailto:{{.Site.Email}}">{{.Site.Email}}</a>.</p>
