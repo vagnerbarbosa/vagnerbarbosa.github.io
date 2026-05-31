@@ -54,9 +54,3 @@ func TestExecute_VersionExtended(t *testing.T) {
 		t.Logf("Version extended returned code: %d", code)
 	}
 }
-
-func TestPrintVersionExtended(t *testing.T) {
-	// Simply call the function to ensure coverage
-	// Can't easily capture stdout, but this ensures the code runs
-	printVersionExtended()
-}
