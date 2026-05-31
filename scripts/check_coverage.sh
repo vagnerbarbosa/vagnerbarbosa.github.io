@@ -39,7 +39,7 @@ if [ $COUNT -eq 0 ]; then
 fi
 
 AVERAGE=$(echo "$TOTAL_COV / $COUNT" | bc -l)
-printf "Project Average Coverage: %.2f%%\n" "$AVERAGE"
+LC_NUMERIC=C printf "Project Average Coverage: %.2f%%\n" "$AVERAGE"
 
 if (( $(echo "$AVERAGE < $THRESHOLD" | bc -l) )); then
     echo "❌ Average coverage is below $THRESHOLD%"
