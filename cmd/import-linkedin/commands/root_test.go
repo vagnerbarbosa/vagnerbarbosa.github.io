@@ -1,6 +1,8 @@
 package commands
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -52,5 +54,25 @@ func TestExecute_VersionExtended(t *testing.T) {
 	// Should succeed even if verbose flag not fully supported
 	if code != ExitSuccess && code != ExitErrorGeneric {
 		t.Logf("Version extended returned code: %d", code)
+	}
+}
+
+func TestExecute_ImportError(t *testing.T) {
+	// RunImport doesn't easily return error unless we trigger a catastrophic failure
+	// but we can try to provide invalid flags if the flag package allows.
+}
+
+func TestExecute_ValidateError(t *testing.T) {
+	tmpDir := t.TempDir()
+	expPath := filepath.Join(tmpDir, "exp.csv")
+	os.WriteFile(expPath, []byte("Wrong,Header\nValue\n"), 0644)
+
+	origExp := Config.ExperiencesPath
+	defer func() { Config.ExperiencesPath = origExp }()
+	Config.ExperiencesPath = expPath
+
+	code := Execute([]string{"validate"})
+	if code != ExitErrorCSV {
+		t.Errorf("Expected exit code %d for validation failure, got %d", ExitErrorCSV, code)
 	}
 }

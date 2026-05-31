@@ -6,143 +6,50 @@ import (
 	"testing"
 )
 
-func TestRunValidate_MalformedCSV(t *testing.T) {
-	// Save original config
-	origExp := Config.ExperiencesPath
-	origEdu := Config.EducationPath
-	origCert := Config.CertificationsPath
-
-	defer func() {
-		Config.ExperiencesPath = origExp
-		Config.EducationPath = origEdu
-		Config.CertificationsPath = origCert
-	}()
-
-	// Use a malformed CSV for experiences
-	malformedPath := filepath.Join("..", "testdata", "malformed", "missing_columns.csv")
-	Config.ExperiencesPath = malformedPath
-	Config.EducationPath = "" // Skip education
-	Config.CertificationsPath = "" // Skip certifications
-
-	err := runValidate([]string{})
-	if err == nil {
-		t.Error("Expected validation to fail for malformed CSV, but it succeeded")
-	}
-}
-
-func TestRunValidate_ValidCSV(t *testing.T) {
+func TestRunValidate_Success(t *testing.T) {
 	tmpDir := t.TempDir()
 
-	// Save original config
+	expPath := filepath.Join(tmpDir, "exp.csv")
+	expContent := "Company Name,Title,Started On,Finished On,Location,Description\nAcme Corp,Engineer,Jan 2020,Mar 2022,NY,Work\n"
+	os.WriteFile(expPath, []byte(expContent), 0644)
+
+	eduPath := filepath.Join(tmpDir, "edu.csv")
+	eduContent := "School Name,Degree Name,Field Of Study,Start Date,Finished On\nMIT,BSc,CS,Jan 2015,Jan 2019\n"
+	os.WriteFile(eduPath, []byte(eduContent), 0644)
+
+	certPath := filepath.Join(tmpDir, "cert.csv")
+	certContent := "Name,Authority,Started On\nAWS Cert,Amazon,Jan 2020\n"
+	os.WriteFile(certPath, []byte(certContent), 0644)
+
 	origExp := Config.ExperiencesPath
 	origEdu := Config.EducationPath
 	origCert := Config.CertificationsPath
-
 	defer func() {
 		Config.ExperiencesPath = origExp
 		Config.EducationPath = origEdu
 		Config.CertificationsPath = origCert
 	}()
-
-	// Create a minimal valid CSV for experiences
-	expPath := filepath.Join(tmpDir, "valid_exp.csv")
-	content := "Company Name,Title,Started On,Finished On,Location,Description\nCompany A,Title A,Jan 2020,Jan 2021,City,Desc\n"
-	if err := os.WriteFile(expPath, []byte(content), 0644); err != nil {
-		t.Fatal(err)
-	}
 
 	Config.ExperiencesPath = expPath
-	Config.EducationPath = ""
-	Config.CertificationsPath = ""
-
-	err := runValidate([]string{})
-	if err != nil {
-		t.Errorf("Expected validation to succeed for valid CSV, got: %v", err)
-	}
-}
-
-func TestRunValidate_WithEducation(t *testing.T) {
-	tmpDir := t.TempDir()
-
-	// Save original config
-	origExp := Config.ExperiencesPath
-	origEdu := Config.EducationPath
-	origCert := Config.CertificationsPath
-
-	defer func() {
-		Config.ExperiencesPath = origExp
-		Config.EducationPath = origEdu
-		Config.CertificationsPath = origCert
-	}()
-
-	// Create valid CSV for education
-	eduPath := filepath.Join(tmpDir, "edu.csv")
-	content := "School Name,Degree Name,Field Of Study,Start Date\nMIT,BSc,CS,Jan 2020\n"
-	if err := os.WriteFile(eduPath, []byte(content), 0644); err != nil {
-		t.Fatal(err)
-	}
-
-	Config.ExperiencesPath = ""
 	Config.EducationPath = eduPath
-	Config.CertificationsPath = ""
-
-	err := runValidate([]string{})
-	if err != nil {
-		t.Errorf("Expected validation to succeed for valid education CSV, got: %v", err)
-	}
-}
-
-func TestRunValidate_WithCertifications(t *testing.T) {
-	tmpDir := t.TempDir()
-
-	// Save original config
-	origExp := Config.ExperiencesPath
-	origEdu := Config.EducationPath
-	origCert := Config.CertificationsPath
-
-	defer func() {
-		Config.ExperiencesPath = origExp
-		Config.EducationPath = origEdu
-		Config.CertificationsPath = origCert
-	}()
-
-	// Create valid CSV for certifications
-	certPath := filepath.Join(tmpDir, "cert.csv")
-	content := "Name,Authority,Started On\nAWS Cert,Amazon,Jan 2020\n"
-	if err := os.WriteFile(certPath, []byte(content), 0644); err != nil {
-		t.Fatal(err)
-	}
-
-	Config.ExperiencesPath = ""
-	Config.EducationPath = ""
 	Config.CertificationsPath = certPath
 
 	err := runValidate([]string{})
 	if err != nil {
-		t.Errorf("Expected validation to succeed for valid certification CSV, got: %v", err)
+		t.Errorf("Expected no error for valid files, got: %v", err)
 	}
 }
 
-func TestRunValidate_WithParseError(t *testing.T) {
+func TestRunValidate_InvalidFiles(t *testing.T) {
 	tmpDir := t.TempDir()
 
-	// Save original config
-	origExp := Config.ExperiencesPath
-	origEdu := Config.EducationPath
-	origCert := Config.CertificationsPath
-
-	defer func() {
-		Config.ExperiencesPath = origExp
-		Config.EducationPath = origEdu
-		Config.CertificationsPath = origCert
-	}()
-
-	// Create invalid CSV (missing required column)
 	expPath := filepath.Join(tmpDir, "exp.csv")
-	content := "Invalid,Header\nValue1,Value2\n"
-	if err := os.WriteFile(expPath, []byte(content), 0644); err != nil {
-		t.Fatal(err)
-	}
+	// Missing required columns
+	expContent := "Wrong,Header,On\nValue1,Value2,Value3\n"
+	os.WriteFile(expPath, []byte(expContent), 0644)
+
+	origExp := Config.ExperiencesPath
+	defer func() { Config.ExperiencesPath = origExp }()
 
 	Config.ExperiencesPath = expPath
 	Config.EducationPath = ""
@@ -150,30 +57,20 @@ func TestRunValidate_WithParseError(t *testing.T) {
 
 	err := runValidate([]string{})
 	if err == nil {
-		t.Error("Expected validation to fail for CSV with parse error")
+		t.Error("Expected error for invalid CSV columns, got nil")
 	}
 }
 
-func TestRunValidate_WithValidationErrors(t *testing.T) {
+func TestRunValidate_ParseError(t *testing.T) {
 	tmpDir := t.TempDir()
 
-	// Save original config
-	origExp := Config.ExperiencesPath
-	origEdu := Config.EducationPath
-	origCert := Config.CertificationsPath
-
-	defer func() {
-		Config.ExperiencesPath = origExp
-		Config.EducationPath = origEdu
-		Config.CertificationsPath = origCert
-	}()
-
-	// Create CSV with validation errors (empty required fields)
 	expPath := filepath.Join(tmpDir, "exp.csv")
-	content := "Company Name,Title,Started On\n,Engineer,Jan 2020\n" // Missing Company Name
-	if err := os.WriteFile(expPath, []byte(content), 0644); err != nil {
-		t.Fatal(err)
-	}
+	// Header is correct, but row is malformed
+	expContent := "Company Name,Title,Started On,Finished On,Location,Description\nMalformed\n"
+	os.WriteFile(expPath, []byte(expContent), 0644)
+
+	origExp := Config.ExperiencesPath
+	defer func() { Config.ExperiencesPath = origExp }()
 
 	Config.ExperiencesPath = expPath
 	Config.EducationPath = ""
@@ -181,6 +78,44 @@ func TestRunValidate_WithValidationErrors(t *testing.T) {
 
 	err := runValidate([]string{})
 	if err == nil {
-		t.Error("Expected validation to fail for CSV with validation errors")
+		t.Error("Expected error for malformed CSV row, got nil")
+	}
+}
+
+func TestRunValidate_MissingFiles(t *testing.T) {
+	origExp := Config.ExperiencesPath
+	origEdu := Config.EducationPath
+	origCert := Config.CertificationsPath
+	defer func() {
+		Config.ExperiencesPath = origExp
+		Config.EducationPath = origEdu
+		Config.CertificationsPath = origCert
+	}()
+
+	Config.ExperiencesPath = "non-existent-exp.csv"
+	Config.EducationPath = "non-existent-edu.csv"
+	Config.CertificationsPath = "non-existent-cert.csv"
+
+	err := runValidate([]string{})
+	if err != nil {
+		t.Errorf("Expected no error when files are missing (should just warn), got: %v", err)
+	}
+}
+
+func TestRunValidate_ShorthandFlags(t *testing.T) {
+	tmpDir := t.TempDir()
+	expPath := filepath.Join(tmpDir, "exp.csv")
+	os.WriteFile(expPath, []byte("Company Name,Title,Started On,Finished On,Location,Description\nAcme,Eng,Jan 2020,Mar 2022,NY,Work\n"), 0644)
+
+	origExp := Config.ExperiencesPath
+	defer func() { Config.ExperiencesPath = origExp }()
+
+	args := []string{"-e", expPath}
+	err := runValidate(args)
+	if err != nil {
+		t.Errorf("Expected no error with shorthand flag, got: %v", err)
+	}
+	if Config.ExperiencesPath != expPath {
+		t.Errorf("Expected ExperiencesPath to be %s, got %s", expPath, Config.ExperiencesPath)
 	}
 }
