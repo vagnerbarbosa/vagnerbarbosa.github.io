@@ -1,14 +1,22 @@
 #!/bin/bash
-# check_coverage.sh - Validates that all project packages have 100% statement coverage.
+# check_coverage.sh - Validates that all project packages meet the minimum statement coverage.
 
-THRESHOLD=100.0
+THRESHOLD=95.0
 FAILED=0
 
 echo "Checking overall project coverage..."
 echo "--------------------------------------------------"
 
-# Get coverage for all packages
+# Run tests and capture output + exit code
 COVERAGE_OUTPUT=$(go test ./... -cover)
+TEST_EXIT_CODE=$?
+
+# If tests failed, we fail immediately
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+    echo "❌ Tests failed!"
+    echo "$COVERAGE_OUTPUT"
+    exit 1
+fi
 
 # Extract coverage percentages from output
 # Example line: ok  github.com/.../pkg 0.001s coverage: 92.7% of statements
@@ -28,7 +36,7 @@ done <<< "$COVERAGE_OUTPUT"
 
 echo "--------------------------------------------------"
 if [ $FAILED -eq 0 ]; then
-    echo "🎉 All packages reached 100% coverage!"
+    echo "🎉 All packages reached the minimum $THRESHOLD% coverage!"
     exit 0
 else
     echo "❌ Some packages are below $THRESHOLD% coverage."

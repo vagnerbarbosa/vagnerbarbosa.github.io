@@ -17,8 +17,8 @@ jobs:
         with:
           go-version: '1.25'
           cache: true
-      - name: Run Unit Tests
-        run: go test -v ./...
+      - name: Run Unit Tests and Coverage Check
+        run: bash scripts/check_coverage.sh
 
   integration-tests:
     runs-on: ubuntu-latest

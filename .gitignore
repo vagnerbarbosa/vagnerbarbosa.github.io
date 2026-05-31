@@ -26,6 +26,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+tests_out.txt
 nul
 
 # Node (if used in future)
