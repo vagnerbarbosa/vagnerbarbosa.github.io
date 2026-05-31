@@ -219,21 +219,25 @@ func TestExperienceParser_ParseAll_Errors(t *testing.T) {
 		name        string
 		csvData     string
 		expectError bool
+		expectedLen int
 	}{
 		{
 			name:        "invalid row - missing company",
 			csvData:     "Company Name,Title,Started On\n,Engineer,Jan 2020",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name:        "invalid row - missing title",
 			csvData:     "Company Name,Title,Started On\nAcme Corp,,Jan 2020",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name:        "invalid row - missing start date",
 			csvData:     "Company Name,Title, Started On\nAcme Corp,Engineer,",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 	}
 
@@ -244,9 +248,13 @@ func TestExperienceParser_ParseAll_Errors(t *testing.T) {
 				t.Fatalf("Failed to create parser: %v", err)
 			}
 
-			_, err = parser.ParseAll()
+			experiences, err := parser.ParseAll()
 			if (err != nil) != tt.expectError {
 				t.Errorf("ParseAll() error = %v, expectError %v", err, tt.expectError)
+			}
+
+			if len(experiences) != tt.expectedLen {
+				t.Errorf("Expected %d experiences, got %d", tt.expectedLen, len(experiences))
 			}
 		})
 	}

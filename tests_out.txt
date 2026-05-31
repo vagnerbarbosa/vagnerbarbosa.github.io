@@ -1,0 +1,3230 @@
+=== RUN   TestRun_Success
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_Success (0.00s)
+=== RUN   TestRun_NoCNAME
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_NoCNAME (0.00s)
+=== RUN   TestRun_MissingConfig
+--- PASS: TestRun_MissingConfig (0.00s)
+=== RUN   TestRun_MissingTemplates
+--- PASS: TestRun_MissingTemplates (0.00s)
+=== RUN   TestParseTemplates
+--- PASS: TestParseTemplates (0.00s)
+=== RUN   TestParseTemplates_MissingDir
+--- PASS: TestParseTemplates_MissingDir (0.00s)
+=== RUN   TestParseTemplates_InvalidTemplate
+--- PASS: TestParseTemplates_InvalidTemplate (0.00s)
+=== RUN   TestGenerateIndex
+HTML minified: 139 bytes -> 134 bytes (saved 5 bytes, 3.6%)
+--- PASS: TestGenerateIndex (0.00s)
+=== RUN   TestCopyAssets
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+--- PASS: TestCopyAssets (0.00s)
+=== RUN   TestCopyAssets_MissingDir
+--- PASS: TestCopyAssets_MissingDir (0.00s)
+=== RUN   TestCopyCNAME
+--- PASS: TestCopyCNAME (0.00s)
+=== RUN   TestCopyCNAME_MissingFile
+--- PASS: TestCopyCNAME_MissingFile (0.00s)
+=== RUN   TestCopyDir
+--- PASS: TestCopyDir (0.00s)
+=== RUN   TestCopyDir_MissingSource
+--- PASS: TestCopyDir_MissingSource (0.00s)
+=== RUN   TestCopyFile
+--- PASS: TestCopyFile (0.00s)
+=== RUN   TestCopyFile_MissingSource
+--- PASS: TestCopyFile_MissingSource (0.00s)
+=== RUN   TestCopyFile_InvalidDestination
+--- PASS: TestCopyFile_InvalidDestination (0.00s)
+=== RUN   TestTemplateAutoEscaping
+--- PASS: TestTemplateAutoEscaping (0.00s)
+=== RUN   TestMainFunction
+--- PASS: TestMainFunction (0.00s)
+=== RUN   TestRun_GenerateIndexError
+--- PASS: TestRun_GenerateIndexError (0.00s)
+=== RUN   TestGenerateIndex_TemplateDataTypes
+=== RUN   TestGenerateIndex_TemplateDataTypes/empty_data
+HTML minified: 121 bytes -> 116 bytes (saved 5 bytes, 4.1%)
+=== RUN   TestGenerateIndex_TemplateDataTypes/full_data
+HTML minified: 155 bytes -> 151 bytes (saved 4 bytes, 2.6%)
+=== RUN   TestGenerateIndex_TemplateDataTypes/with_content
+HTML minified: 133 bytes -> 128 bytes (saved 5 bytes, 3.8%)
+--- PASS: TestGenerateIndex_TemplateDataTypes (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/empty_data (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/full_data (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/with_content (0.00s)
+=== RUN   TestCopyCNAME_ReadError
+--- PASS: TestCopyCNAME_ReadError (0.00s)
+=== RUN   TestCopyDir_ReadDirError
+--- PASS: TestCopyDir_ReadDirError (0.00s)
+=== RUN   TestCopyFile_StatError
+--- PASS: TestCopyFile_StatError (0.00s)
+=== RUN   TestRun_FailCreatePublicDir
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_FailCreatePublicDir (0.00s)
+=== RUN   TestParseTemplates_NonHTMLFiles
+--- PASS: TestParseTemplates_NonHTMLFiles (0.00s)
+=== RUN   TestCopyAssets_NestedDirs
+Minified js/utils/helper.js: 9 -> 0 bytes (saved 9 bytes, 100.0%)
+--- PASS: TestCopyAssets_NestedDirs (0.00s)
+=== RUN   TestCopyCNAME_WriteError
+--- PASS: TestCopyCNAME_WriteError (0.00s)
+=== RUN   TestGenerateIndex_CreateFileError
+--- PASS: TestGenerateIndex_CreateFileError (0.00s)
+=== RUN   TestRunWithExitCode
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+Error: failed to load config: failed to read config file: open config.yaml: no such file or directory
+--- PASS: TestRunWithExitCode (0.00s)
+=== RUN   TestCopyAndMinifyDir_RecursiveError
+--- PASS: TestCopyAndMinifyDir_RecursiveError (0.00s)
+=== RUN   TestCopyAndMinifyDir_FileError
+--- PASS: TestCopyAndMinifyDir_FileError (0.00s)
+=== RUN   TestCopyDir_NestedErrors
+--- PASS: TestCopyDir_NestedErrors (0.00s)
+=== RUN   TestParseTemplates_FileReadError
+--- PASS: TestParseTemplates_FileReadError (0.00s)
+=== RUN   TestRun_CopyCNAMEError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_CopyCNAMEError (0.00s)
+=== RUN   TestRun_CopyCNAME_ReturnsError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+--- PASS: TestRun_CopyCNAME_ReturnsError (0.00s)
+=== RUN   TestCopyCNAME_ReadErrorAfterStat
+--- PASS: TestCopyCNAME_ReadErrorAfterStat (0.00s)
+=== RUN   TestCopyAndMinifyDir_MkdirAllError
+--- PASS: TestCopyAndMinifyDir_MkdirAllError (0.00s)
+=== RUN   TestCopyAndMinifyFile_ReadError
+--- PASS: TestCopyAndMinifyFile_ReadError (0.00s)
+=== RUN   TestGenerateIndex_TemplateExecutionError
+--- PASS: TestGenerateIndex_TemplateExecutionError (0.00s)
+=== RUN   TestParseTemplates_WalkError
+--- PASS: TestParseTemplates_WalkError (0.00s)
+=== RUN   TestCopyAssets_ErrorInCopyAndMinify
+--- PASS: TestCopyAssets_ErrorInCopyAndMinify (0.00s)
+=== RUN   TestCopyAndMinifyFile_WithJSONLD
+Minified : 78 -> 64 bytes (saved 14 bytes, 17.9%)
+--- PASS: TestCopyAndMinifyFile_WithJSONLD (0.00s)
+=== RUN   TestCopyAndMinifyFile_UnsupportedExtension
+--- PASS: TestCopyAndMinifyFile_UnsupportedExtension (0.00s)
+=== RUN   TestCopyAndMinifyFile_NoSavings
+--- PASS: TestCopyAndMinifyFile_NoSavings (0.00s)
+=== RUN   TestRun_FailToCreatePublicDir
+--- PASS: TestRun_FailToCreatePublicDir (0.00s)
+=== RUN   TestCopyAndMinifyFile_MinificationError
+--- PASS: TestCopyAndMinifyFile_MinificationError (0.00s)
+=== RUN   TestCopyAndMinifyFile_HTMLExtension
+Minified : 66 -> 53 bytes (saved 13 bytes, 19.7%)
+--- PASS: TestCopyAndMinifyFile_HTMLExtension (0.00s)
+=== RUN   TestCopyAndMinifyFile_JSONExtension
+Minified : 34 -> 25 bytes (saved 9 bytes, 26.5%)
+--- PASS: TestCopyAndMinifyFile_JSONExtension (0.00s)
+=== RUN   TestCopyAndMinifyDir_CopyFileError
+--- PASS: TestCopyAndMinifyDir_CopyFileError (0.00s)
+=== RUN   TestParseTemplates_ParseError
+--- PASS: TestParseTemplates_ParseError (0.00s)
+=== RUN   TestCopyAndMinifyDir_StatError
+--- PASS: TestCopyAndMinifyDir_StatError (0.00s)
+=== RUN   TestRun_CopyAssetsError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+--- PASS: TestRun_CopyAssetsError (0.00s)
+=== RUN   TestGenerateIndex_MinificationFallback
+HTML minified: 125 bytes -> 120 bytes (saved 5 bytes, 4.0%)
+--- PASS: TestGenerateIndex_MinificationFallback (0.00s)
+=== RUN   TestParseTemplates_ReadFileError
+    main_test.go:1920: Expected error occurred: failed to read template templates/test.html: open templates/test.html: permission denied
+--- PASS: TestParseTemplates_ReadFileError (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/generator	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin	[no test files]
+=== RUN   TestExecute_Validate
+🔍 Validando arquivos CSV...
+
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestExecute_Validate (0.00s)
+=== RUN   TestConfig_Defaults
+--- PASS: TestConfig_Defaults (0.00s)
+=== RUN   TestRunImport_MissingFiles
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Experiências: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles2993238997/001/missing_exp.csv)
+⚠ Educação: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles2993238997/001/missing_edu.csv)
+⚠ Certificações: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles2993238997/001/missing_cert.csv)
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestRunImport_MissingFiles (0.00s)
+=== RUN   TestRunImport_DryRun
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: failed to create CSV reader: failed to read CSV header: EOF
+  - education: failed to create CSV reader: failed to read CSV header: EOF
+  - certifications: failed to create CSV reader: failed to read CSV header: EOF
+
+⚠ Criando novo config.yaml (arquivo atual não pôde ser lido: failed to parse config file: yaml: unmarshal errors:
+  line 1: cannot unmarshal !!str `initial...` into models.ConfigPortfolio)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_DryRun (0.00s)
+=== RUN   TestRunImport_WithValidFiles
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 1 encontradas
+✓ Educação: 1 encontradas
+✓ Certificações: 1 encontradas
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 3 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + Engineer @ Acme Corp[m
+[38;5;42m[m                        
+
+[1;38;5;39m🎓 Educação[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + BSc at MIT[m
+[38;5;42m[m              
+
+[1;38;5;39m📜 Certificações[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + AWS Cert (Amazon)[m
+[38;5;42m[m                     
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_WithValidFiles (0.00s)
+=== RUN   TestRunImport_WithBackup
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 2 encontradas
+
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 2 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (2):[m
+[38;5;42m[m                  [38;5;42m  + Engineer @ Acme Corp[m
+[38;5;42m[m                        [38;5;42m  + Dev @ Tech Inc[m
+[38;5;42m[m                  
+
+
+✓ Modo automático: aceitando todas as mudanças.
+✓ Backup criado: /tmp/claude-1000/TestRunImport_WithBackup4088261417/001/config.backup.20260531_115831.yaml
+
+✓ Importação concluída:
+  2 adições, 0 modificações, 0 remoções
+  Experiências: 2 adições, 0 modificações, 0 remoções
+
+✓ Configuração salva em: /tmp/claude-1000/TestRunImport_WithBackup4088261417/001/config.yaml
+--- PASS: TestRunImport_WithBackup (0.00s)
+=== RUN   TestRunImport_ParseErrors
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: missing required columns: [Company Name Title Started On]
+  - education: missing required columns: [School Name Degree Name]
+  - certifications: missing required columns: [Name Authority]
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_ParseErrors (0.00s)
+=== RUN   TestExecute_UnknownCommand
+Unknown command: unknown
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+--- PASS: TestExecute_UnknownCommand (0.00s)
+=== RUN   TestExecute_Help
+=== RUN   TestExecute_Help/help_command
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+=== RUN   TestExecute_Help/--help_flag
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+=== RUN   TestExecute_Help/-h_flag
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+--- PASS: TestExecute_Help (0.00s)
+    --- PASS: TestExecute_Help/help_command (0.00s)
+    --- PASS: TestExecute_Help/--help_flag (0.00s)
+    --- PASS: TestExecute_Help/-h_flag (0.00s)
+=== RUN   TestExecute_Version
+linkedin-import version 1.0.0
+Go version: go1.26.2
+--- PASS: TestExecute_Version (0.00s)
+=== RUN   TestExecute_NoArgs
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Experiências: arquivo não encontrado (Experiences.csv)
+⚠ Educação: arquivo não encontrado (Education.csv)
+⚠ Certificações: arquivo não encontrado (Certifications.csv)
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestExecute_NoArgs (0.00s)
+=== RUN   TestExecute_VersionExtended
+linkedin-import version 1.0.0
+Go version: go1.26.2
+--- PASS: TestExecute_VersionExtended (0.00s)
+=== RUN   TestPrintVersionExtended
+LinkedIn Import CLI
+Version: 1.0.0
+Build Date: 2026-04-26
+Go version: go1.26.2
+
+For help, run: linkedin-import help
+--- PASS: TestPrintVersionExtended (0.00s)
+=== RUN   TestRunValidate_MalformedCSV
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv: missing required columns: [Company Name Started On]
+
+--- PASS: TestRunValidate_MalformedCSV (0.00s)
+=== RUN   TestRunValidate_ValidCSV
+🔍 Validando arquivos CSV...
+
+✓ Experiences.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_ValidCSV (0.00s)
+=== RUN   TestRunValidate_WithEducation
+🔍 Validando arquivos CSV...
+
+✓ Education.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_WithEducation (0.00s)
+=== RUN   TestRunValidate_WithCertifications
+🔍 Validando arquivos CSV...
+
+✓ Certifications.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_WithCertifications (0.00s)
+=== RUN   TestRunValidate_WithParseError
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv: missing required columns: [Company Name Title Started On]
+
+--- PASS: TestRunValidate_WithParseError (0.00s)
+=== RUN   TestRunValidate_WithValidationErrors
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv:
+  - parse error at line 2, column 'Company Name': cannot be empty
+
+--- PASS: TestRunValidate_WithValidationErrors (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/commands	(cached)
+=== RUN   TestApplyChanges
+--- PASS: TestApplyChanges (0.00s)
+=== RUN   TestApplyChanges_NilPointers
+--- PASS: TestApplyChanges_NilPointers (0.00s)
+=== RUN   TestApplyChanges_Comprehensive
+--- PASS: TestApplyChanges_Comprehensive (0.00s)
+=== RUN   TestMergeConfigs
+=== RUN   TestMergeConfigs/all_overridden
+=== RUN   TestMergeConfigs/some_overridden
+=== RUN   TestMergeConfigs/none_overridden
+--- PASS: TestMergeConfigs (0.00s)
+    --- PASS: TestMergeConfigs/all_overridden (0.00s)
+    --- PASS: TestMergeConfigs/some_overridden (0.00s)
+    --- PASS: TestMergeConfigs/none_overridden (0.00s)
+=== RUN   TestGetImportResult
+--- PASS: TestGetImportResult (0.00s)
+=== RUN   TestPrintImportResult
+
+✓ Importação concluída:
+  3 adições, 0 modificações, 0 remoções
+  Experiências: 1 adições, 0 modificações, 0 remoções
+  Educação: 1 adições, 0 modificações, 0 remoções
+  Certificações: 1 adições, 0 modificações, 0 remoções
+--- PASS: TestPrintImportResult (0.00s)
+=== RUN   TestCompareExperiences
+--- PASS: TestCompareExperiences (0.00s)
+=== RUN   TestCompareExperiences_WithModifications
+--- PASS: TestCompareExperiences_WithModifications (0.00s)
+=== RUN   TestCompareEducation
+=== RUN   TestCompareEducation/added_and_removed
+=== RUN   TestCompareEducation/modified
+=== RUN   TestCompareEducation/identical
+=== RUN   TestCompareEducation/all_removed
+--- PASS: TestCompareEducation (0.00s)
+    --- PASS: TestCompareEducation/added_and_removed (0.00s)
+    --- PASS: TestCompareEducation/modified (0.00s)
+    --- PASS: TestCompareEducation/identical (0.00s)
+    --- PASS: TestCompareEducation/all_removed (0.00s)
+=== RUN   TestCompareCertifications
+=== RUN   TestCompareCertifications/added_and_removed
+=== RUN   TestCompareCertifications/modified
+=== RUN   TestCompareCertifications/identical
+=== RUN   TestCompareCertifications/all_removed
+--- PASS: TestCompareCertifications (0.00s)
+    --- PASS: TestCompareCertifications/added_and_removed (0.00s)
+    --- PASS: TestCompareCertifications/modified (0.00s)
+    --- PASS: TestCompareCertifications/identical (0.00s)
+    --- PASS: TestCompareCertifications/all_removed (0.00s)
+=== RUN   TestNewDiff
+--- PASS: TestNewDiff (0.00s)
+=== RUN   TestDiff_HasChanges
+=== RUN   TestDiff_HasChanges/empty_diff
+=== RUN   TestDiff_HasChanges/with_added
+=== RUN   TestDiff_HasChanges/with_modified
+=== RUN   TestDiff_HasChanges/with_removed
+--- PASS: TestDiff_HasChanges (0.00s)
+    --- PASS: TestDiff_HasChanges/empty_diff (0.00s)
+    --- PASS: TestDiff_HasChanges/with_added (0.00s)
+    --- PASS: TestDiff_HasChanges/with_modified (0.00s)
+    --- PASS: TestDiff_HasChanges/with_removed (0.00s)
+=== RUN   TestGetChangedFields
+=== RUN   TestGetChangedFields/no_changes
+=== RUN   TestGetChangedFields/all_changes
+=== RUN   TestGetChangedFields/some_changes
+--- PASS: TestGetChangedFields (0.00s)
+    --- PASS: TestGetChangedFields/no_changes (0.00s)
+    --- PASS: TestGetChangedFields/all_changes (0.00s)
+    --- PASS: TestGetChangedFields/some_changes (0.00s)
+=== RUN   TestFormatID
+=== RUN   TestFormatID/experience
+=== RUN   TestFormatID/experience_pointer
+=== RUN   TestFormatID/experience_pointer_nil
+=== RUN   TestFormatID/education
+=== RUN   TestFormatID/education_pointer
+=== RUN   TestFormatID/education_pointer_nil
+=== RUN   TestFormatID/certification
+=== RUN   TestFormatID/certification_pointer
+=== RUN   TestFormatID/certification_pointer_nil
+=== RUN   TestFormatID/unknown
+--- PASS: TestFormatID (0.00s)
+    --- PASS: TestFormatID/experience (0.00s)
+    --- PASS: TestFormatID/experience_pointer (0.00s)
+    --- PASS: TestFormatID/experience_pointer_nil (0.00s)
+    --- PASS: TestFormatID/education (0.00s)
+    --- PASS: TestFormatID/education_pointer (0.00s)
+    --- PASS: TestFormatID/education_pointer_nil (0.00s)
+    --- PASS: TestFormatID/certification (0.00s)
+    --- PASS: TestFormatID/certification_pointer (0.00s)
+    --- PASS: TestFormatID/certification_pointer_nil (0.00s)
+    --- PASS: TestFormatID/unknown (0.00s)
+=== RUN   TestEqualityHelpers
+=== RUN   TestEqualityHelpers/experiencesEqual
+=== RUN   TestEqualityHelpers/educationEqual
+=== RUN   TestEqualityHelpers/certificationsEqual
+--- PASS: TestEqualityHelpers (0.00s)
+    --- PASS: TestEqualityHelpers/experiencesEqual (0.00s)
+    --- PASS: TestEqualityHelpers/educationEqual (0.00s)
+    --- PASS: TestEqualityHelpers/certificationsEqual (0.00s)
+=== RUN   TestCompareAll
+--- PASS: TestCompareAll (0.00s)
+=== RUN   TestIDGenerator
+=== RUN   TestIDGenerator/experience
+=== RUN   TestIDGenerator/experience_pointer
+=== RUN   TestIDGenerator/experience_pointer_nil
+=== RUN   TestIDGenerator/education
+=== RUN   TestIDGenerator/education_pointer
+=== RUN   TestIDGenerator/education_pointer_nil
+=== RUN   TestIDGenerator/certification
+=== RUN   TestIDGenerator/certification_pointer
+=== RUN   TestIDGenerator/certification_pointer_nil
+=== RUN   TestIDGenerator/unknown_entity
+=== RUN   TestIDGenerator/nil_entity
+--- PASS: TestIDGenerator (0.00s)
+    --- PASS: TestIDGenerator/experience (0.00s)
+    --- PASS: TestIDGenerator/experience_pointer (0.00s)
+    --- PASS: TestIDGenerator/experience_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/education (0.00s)
+    --- PASS: TestIDGenerator/education_pointer (0.00s)
+    --- PASS: TestIDGenerator/education_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/certification (0.00s)
+    --- PASS: TestIDGenerator/certification_pointer (0.00s)
+    --- PASS: TestIDGenerator/certification_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/unknown_entity (0.00s)
+    --- PASS: TestIDGenerator/nil_entity (0.00s)
+=== RUN   TestGetEntityType
+=== RUN   TestGetEntityType/experience
+=== RUN   TestGetEntityType/experience_pointer
+=== RUN   TestGetEntityType/education
+=== RUN   TestGetEntityType/education_pointer
+=== RUN   TestGetEntityType/certification
+=== RUN   TestGetEntityType/certification_pointer
+=== RUN   TestGetEntityType/unknown
+=== RUN   TestGetEntityType/nil
+--- PASS: TestGetEntityType (0.00s)
+    --- PASS: TestGetEntityType/experience (0.00s)
+    --- PASS: TestGetEntityType/experience_pointer (0.00s)
+    --- PASS: TestGetEntityType/education (0.00s)
+    --- PASS: TestGetEntityType/education_pointer (0.00s)
+    --- PASS: TestGetEntityType/certification (0.00s)
+    --- PASS: TestGetEntityType/certification_pointer (0.00s)
+    --- PASS: TestGetEntityType/unknown (0.00s)
+    --- PASS: TestGetEntityType/nil (0.00s)
+=== RUN   TestGenerateIDs
+--- PASS: TestGenerateIDs (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/comparator	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/config	[no test files]
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/integration	[no test files]
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/models	[no test files]
+=== RUN   TestNewCertificationParser
+=== RUN   TestNewCertificationParser/valid_file
+=== RUN   TestNewCertificationParser/missing_required_column
+=== RUN   TestNewCertificationParser/non-existent_file
+--- PASS: TestNewCertificationParser (0.00s)
+    --- PASS: TestNewCertificationParser/valid_file (0.00s)
+    --- PASS: TestNewCertificationParser/missing_required_column (0.00s)
+    --- PASS: TestNewCertificationParser/non-existent_file (0.00s)
+=== RUN   TestNewCertificationParserFromReader
+=== RUN   TestNewCertificationParserFromReader/invalid_csv_header
+=== RUN   TestNewCertificationParserFromReader/simulated_read_error
+--- PASS: TestNewCertificationParserFromReader (0.00s)
+    --- PASS: TestNewCertificationParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewCertificationParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestCertificationParser_ParseAll
+=== RUN   TestCertificationParser_ParseAll/valid_data
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_name
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'name': cannot be empty
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_organization
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'organization': cannot be empty
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_issue_date
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'issue_date': cannot be empty
+--- PASS: TestCertificationParser_ParseAll (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/valid_data (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_name (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_organization (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_issue_date (0.00s)
+=== RUN   TestCertificationParser_Close
+--- PASS: TestCertificationParser_Close (0.00s)
+=== RUN   TestCertificationParser_Validate
+=== RUN   TestCertificationParser_Validate/valid_data
+=== RUN   TestCertificationParser_Validate/missing_name
+=== RUN   TestCertificationParser_Validate/missing_organization
+=== RUN   TestCertificationParser_Validate/invalid_date_format
+=== RUN   TestCertificationParser_Validate/multiple_errors
+--- PASS: TestCertificationParser_Validate (0.00s)
+    --- PASS: TestCertificationParser_Validate/valid_data (0.00s)
+    --- PASS: TestCertificationParser_Validate/missing_name (0.00s)
+    --- PASS: TestCertificationParser_Validate/missing_organization (0.00s)
+    --- PASS: TestCertificationParser_Validate/invalid_date_format (0.00s)
+    --- PASS: TestCertificationParser_Validate/multiple_errors (0.00s)
+=== RUN   TestCertificationParser_ReadFailure
+=== RUN   TestCertificationParser_ReadFailure/ParseAll_failure
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'issue_date': cannot be empty
+=== RUN   TestCertificationParser_ReadFailure/Validate_failure
+--- PASS: TestCertificationParser_ReadFailure (0.00s)
+    --- PASS: TestCertificationParser_ReadFailure/ParseAll_failure (0.00s)
+    --- PASS: TestCertificationParser_ReadFailure/Validate_failure (0.00s)
+=== RUN   TestCertification_Validate
+=== RUN   TestCertification_Validate/valid_certification
+=== RUN   TestCertification_Validate/missing_name
+=== RUN   TestCertification_Validate/missing_organization
+=== RUN   TestCertification_Validate/missing_issue_date
+--- PASS: TestCertification_Validate (0.00s)
+    --- PASS: TestCertification_Validate/valid_certification (0.00s)
+    --- PASS: TestCertification_Validate/missing_name (0.00s)
+    --- PASS: TestCertification_Validate/missing_organization (0.00s)
+    --- PASS: TestCertification_Validate/missing_issue_date (0.00s)
+=== RUN   TestNewCSVReaderFromIO
+=== RUN   TestNewCSVReaderFromIO/valid_csv
+=== RUN   TestNewCSVReaderFromIO/empty_input
+=== RUN   TestNewCSVReaderFromIO/only_header
+--- PASS: TestNewCSVReaderFromIO (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/valid_csv (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/empty_input (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/only_header (0.00s)
+=== RUN   TestCSVReader_Next
+=== RUN   TestCSVReader_Next/regular_records
+=== RUN   TestCSVReader_Next/irregular_records_(too_short)
+=== RUN   TestCSVReader_Next/irregular_records_(too_long)
+--- PASS: TestCSVReader_Next (0.00s)
+    --- PASS: TestCSVReader_Next/regular_records (0.00s)
+    --- PASS: TestCSVReader_Next/irregular_records_(too_short) (0.00s)
+    --- PASS: TestCSVReader_Next/irregular_records_(too_long) (0.00s)
+=== RUN   TestCSVReader_GetHeader
+--- PASS: TestCSVReader_GetHeader (0.00s)
+=== RUN   TestCSVReader_HasColumn
+--- PASS: TestCSVReader_HasColumn (0.00s)
+=== RUN   TestCSVReader_Close
+--- PASS: TestCSVReader_Close (0.00s)
+=== RUN   TestCSVReader_ValidateColumns
+=== RUN   TestCSVReader_ValidateColumns/all_present
+=== RUN   TestCSVReader_ValidateColumns/some_missing
+=== RUN   TestCSVReader_ValidateColumns/all_missing
+--- PASS: TestCSVReader_ValidateColumns (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/all_present (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/some_missing (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/all_missing (0.00s)
+=== RUN   TestNewCSVReader
+=== RUN   TestNewCSVReader/valid_file
+=== RUN   TestNewCSVReader/non-existent_file
+--- PASS: TestNewCSVReader (0.00s)
+    --- PASS: TestNewCSVReader/valid_file (0.00s)
+    --- PASS: TestNewCSVReader/non-existent_file (0.00s)
+=== RUN   TestConvertDate
+=== RUN   TestConvertDate/empty
+=== RUN   TestConvertDate/present_lowercase
+=== RUN   TestConvertDate/present_uppercase
+=== RUN   TestConvertDate/present_mixed_case
+=== RUN   TestConvertDate/present_with_spaces
+=== RUN   TestConvertDate/single_date_Jan
+=== RUN   TestConvertDate/single_date_Feb
+=== RUN   TestConvertDate/single_date_Apr
+=== RUN   TestConvertDate/single_date_Aug
+=== RUN   TestConvertDate/single_date_Sep
+=== RUN   TestConvertDate/single_date_Oct
+=== RUN   TestConvertDate/single_date_Dec
+=== RUN   TestConvertDate/year_only
+=== RUN   TestConvertDate/range_Jan-Mar
+=== RUN   TestConvertDate/range_Feb-Apr
+=== RUN   TestConvertDate/range_year-year
+=== RUN   TestConvertDate/range_Present
+=== RUN   TestConvertDate/invalid_format
+=== RUN   TestConvertDate/wrong_month_length
+=== RUN   TestConvertDate/wrong_year_length
+--- PASS: TestConvertDate (0.00s)
+    --- PASS: TestConvertDate/empty (0.00s)
+    --- PASS: TestConvertDate/present_lowercase (0.00s)
+    --- PASS: TestConvertDate/present_uppercase (0.00s)
+    --- PASS: TestConvertDate/present_mixed_case (0.00s)
+    --- PASS: TestConvertDate/present_with_spaces (0.00s)
+    --- PASS: TestConvertDate/single_date_Jan (0.00s)
+    --- PASS: TestConvertDate/single_date_Feb (0.00s)
+    --- PASS: TestConvertDate/single_date_Apr (0.00s)
+    --- PASS: TestConvertDate/single_date_Aug (0.00s)
+    --- PASS: TestConvertDate/single_date_Sep (0.00s)
+    --- PASS: TestConvertDate/single_date_Oct (0.00s)
+    --- PASS: TestConvertDate/single_date_Dec (0.00s)
+    --- PASS: TestConvertDate/year_only (0.00s)
+    --- PASS: TestConvertDate/range_Jan-Mar (0.00s)
+    --- PASS: TestConvertDate/range_Feb-Apr (0.00s)
+    --- PASS: TestConvertDate/range_year-year (0.00s)
+    --- PASS: TestConvertDate/range_Present (0.00s)
+    --- PASS: TestConvertDate/invalid_format (0.00s)
+    --- PASS: TestConvertDate/wrong_month_length (0.00s)
+    --- PASS: TestConvertDate/wrong_year_length (0.00s)
+=== RUN   TestValidateDate
+=== RUN   TestValidateDate/empty
+=== RUN   TestValidateDate/present
+=== RUN   TestValidateDate/presente
+=== RUN   TestValidateDate/single_date
+=== RUN   TestValidateDate/year_only
+=== RUN   TestValidateDate/range_valid
+=== RUN   TestValidateDate/range_present
+=== RUN   TestValidateDate/range_invalid
+=== RUN   TestValidateDate/invalid_date
+=== RUN   TestValidateDate/invalid_month
+=== RUN   TestValidateDate/invalid_year
+=== RUN   TestValidateDate/random_text
+--- PASS: TestValidateDate (0.00s)
+    --- PASS: TestValidateDate/empty (0.00s)
+    --- PASS: TestValidateDate/present (0.00s)
+    --- PASS: TestValidateDate/presente (0.00s)
+    --- PASS: TestValidateDate/single_date (0.00s)
+    --- PASS: TestValidateDate/year_only (0.00s)
+    --- PASS: TestValidateDate/range_valid (0.00s)
+    --- PASS: TestValidateDate/range_present (0.00s)
+    --- PASS: TestValidateDate/range_invalid (0.00s)
+    --- PASS: TestValidateDate/invalid_date (0.00s)
+    --- PASS: TestValidateDate/invalid_month (0.00s)
+    --- PASS: TestValidateDate/invalid_year (0.00s)
+    --- PASS: TestValidateDate/random_text (0.00s)
+=== RUN   TestParseDateRange
+=== RUN   TestParseDateRange/empty
+=== RUN   TestParseDateRange/single_date
+=== RUN   TestParseDateRange/valid_range
+=== RUN   TestParseDateRange/range_with_spaces
+=== RUN   TestParseDateRange/range_with_present
+--- PASS: TestParseDateRange (0.00s)
+    --- PASS: TestParseDateRange/empty (0.00s)
+    --- PASS: TestParseDateRange/single_date (0.00s)
+    --- PASS: TestParseDateRange/valid_range (0.00s)
+    --- PASS: TestParseDateRange/range_with_spaces (0.00s)
+    --- PASS: TestParseDateRange/range_with_present (0.00s)
+=== RUN   TestNewEducationParser
+=== RUN   TestNewEducationParser/valid_file
+=== RUN   TestNewEducationParser/missing_required_column
+=== RUN   TestNewEducationParser/non-existent_file
+--- PASS: TestNewEducationParser (0.00s)
+    --- PASS: TestNewEducationParser/valid_file (0.00s)
+    --- PASS: TestNewEducationParser/missing_required_column (0.00s)
+    --- PASS: TestNewEducationParser/non-existent_file (0.00s)
+=== RUN   TestNewEducationParserFromReader
+=== RUN   TestNewEducationParserFromReader/invalid_csv_header
+=== RUN   TestNewEducationParserFromReader/simulated_read_error
+--- PASS: TestNewEducationParserFromReader (0.00s)
+    --- PASS: TestNewEducationParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewEducationParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestEducationParser_Close
+--- PASS: TestEducationParser_Close (0.00s)
+=== RUN   TestEducationParser_ParseAll
+--- PASS: TestEducationParser_ParseAll (0.00s)
+=== RUN   TestEducationParser_Validate
+=== RUN   TestEducationParser_Validate/valid_data
+=== RUN   TestEducationParser_Validate/missing_institution
+=== RUN   TestEducationParser_Validate/missing_degree
+=== RUN   TestEducationParser_Validate/missing_both_dates
+--- PASS: TestEducationParser_Validate (0.00s)
+    --- PASS: TestEducationParser_Validate/valid_data (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_institution (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_degree (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_both_dates (0.00s)
+=== RUN   TestEducationParser_ParseAll_Errors
+=== RUN   TestEducationParser_ParseAll_Errors/invalid_row_-_missing_school
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'institution': cannot be empty
+=== RUN   TestEducationParser_ParseAll_Errors/invalid_row_-_missing_degree
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'degree': cannot be empty
+--- PASS: TestEducationParser_ParseAll_Errors (0.00s)
+    --- PASS: TestEducationParser_ParseAll_Errors/invalid_row_-_missing_school (0.00s)
+    --- PASS: TestEducationParser_ParseAll_Errors/invalid_row_-_missing_degree (0.00s)
+=== RUN   TestEducationParser_Validate_Errors
+=== RUN   TestEducationParser_Validate_Errors/ParseAll_failure
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'dates': at least one date (start or end) must be present
+--- PASS: TestEducationParser_Validate_Errors (0.00s)
+    --- PASS: TestEducationParser_Validate_Errors/ParseAll_failure (0.00s)
+=== RUN   TestEducation_Validate
+=== RUN   TestEducation_Validate/valid_education
+=== RUN   TestEducation_Validate/missing_institution
+=== RUN   TestEducation_Validate/missing_degree
+=== RUN   TestEducation_Validate/missing_dates
+--- PASS: TestEducation_Validate (0.00s)
+    --- PASS: TestEducation_Validate/valid_education (0.00s)
+    --- PASS: TestEducation_Validate/missing_institution (0.00s)
+    --- PASS: TestEducation_Validate/missing_degree (0.00s)
+    --- PASS: TestEducation_Validate/missing_dates (0.00s)
+=== RUN   TestNewExperienceParser
+=== RUN   TestNewExperienceParser/valid_file
+=== RUN   TestNewExperienceParser/missing_required_column
+=== RUN   TestNewExperienceParser/non-existent_file
+--- PASS: TestNewExperienceParser (0.00s)
+    --- PASS: TestNewExperienceParser/valid_file (0.00s)
+    --- PASS: TestNewExperienceParser/missing_required_column (0.00s)
+    --- PASS: TestNewExperienceParser/non-existent_file (0.00s)
+=== RUN   TestNewExperienceParserFromReader
+=== RUN   TestNewExperienceParserFromReader/invalid_csv_header
+=== RUN   TestNewExperienceParserFromReader/simulated_read_error
+--- PASS: TestNewExperienceParserFromReader (0.00s)
+    --- PASS: TestNewExperienceParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewExperienceParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestExperienceParser_Close
+--- PASS: TestExperienceParser_Close (0.00s)
+=== RUN   TestExperienceParser_ParseAll
+--- PASS: TestExperienceParser_ParseAll (0.00s)
+=== RUN   TestExperienceParser_ParseAll_EmptyCSV
+--- PASS: TestExperienceParser_ParseAll_EmptyCSV (0.00s)
+=== RUN   TestExperienceParser_Validate
+=== RUN   TestExperienceParser_Validate/valid_data
+=== RUN   TestExperienceParser_Validate/missing_company
+=== RUN   TestExperienceParser_Validate/missing_title
+=== RUN   TestExperienceParser_Validate/invalid_date
+--- PASS: TestExperienceParser_Validate (0.00s)
+    --- PASS: TestExperienceParser_Validate/valid_data (0.00s)
+    --- PASS: TestExperienceParser_Validate/missing_company (0.00s)
+    --- PASS: TestExperienceParser_Validate/missing_title (0.00s)
+    --- PASS: TestExperienceParser_Validate/invalid_date (0.00s)
+=== RUN   TestExperienceParser_ParseAll_Errors
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_company
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'company': cannot be empty
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_title
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'title': cannot be empty
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_start_date
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'start_date': cannot be empty
+--- PASS: TestExperienceParser_ParseAll_Errors (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_company (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_title (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_start_date (0.00s)
+=== RUN   TestExperienceParser_Validate_Errors
+=== RUN   TestExperienceParser_Validate_Errors/ParseAll_failure_with_read_error
+--- PASS: TestExperienceParser_Validate_Errors (0.00s)
+    --- PASS: TestExperienceParser_Validate_Errors/ParseAll_failure_with_read_error (0.00s)
+=== RUN   TestExperience_Validate
+=== RUN   TestExperience_Validate/valid_experience
+=== RUN   TestExperience_Validate/missing_company
+=== RUN   TestExperience_Validate/missing_role
+=== RUN   TestExperience_Validate/missing_start_date
+--- PASS: TestExperience_Validate (0.00s)
+    --- PASS: TestExperience_Validate/valid_experience (0.00s)
+    --- PASS: TestExperience_Validate/missing_company (0.00s)
+    --- PASS: TestExperience_Validate/missing_role (0.00s)
+    --- PASS: TestExperience_Validate/missing_start_date (0.00s)
+=== RUN   TestConvertDate_Experiences
+--- PASS: TestConvertDate_Experiences (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/parser	(cached)
+=== RUN   TestSplitDescription
+=== RUN   TestSplitDescription/empty_string
+=== RUN   TestSplitDescription/paragraphs_with_double_newlines
+=== RUN   TestSplitDescription/with_bullet_markers
+=== RUN   TestSplitDescription/with_numbered_bullets
+=== RUN   TestSplitDescription/single_text_no_splits
+=== RUN   TestSplitDescription/with_sentences
+=== RUN   TestSplitDescription/with_Windows_line_endings
+--- PASS: TestSplitDescription (0.00s)
+    --- PASS: TestSplitDescription/empty_string (0.00s)
+    --- PASS: TestSplitDescription/paragraphs_with_double_newlines (0.00s)
+    --- PASS: TestSplitDescription/with_bullet_markers (0.00s)
+    --- PASS: TestSplitDescription/with_numbered_bullets (0.00s)
+    --- PASS: TestSplitDescription/single_text_no_splits (0.00s)
+    --- PASS: TestSplitDescription/with_sentences (0.00s)
+    --- PASS: TestSplitDescription/with_Windows_line_endings (0.00s)
+=== RUN   TestSplitByParagraphs
+=== RUN   TestSplitByParagraphs/normal_paragraphs
+=== RUN   TestSplitByParagraphs/Windows_line_endings
+=== RUN   TestSplitByParagraphs/single_paragraph
+--- PASS: TestSplitByParagraphs (0.00s)
+    --- PASS: TestSplitByParagraphs/normal_paragraphs (0.00s)
+    --- PASS: TestSplitByParagraphs/Windows_line_endings (0.00s)
+    --- PASS: TestSplitByParagraphs/single_paragraph (0.00s)
+=== RUN   TestSplitByBullets
+=== RUN   TestSplitByBullets/asterisk_bullets
+=== RUN   TestSplitByBullets/dash_bullets
+=== RUN   TestSplitByBullets/bullet_character
+=== RUN   TestSplitByBullets/numbered_items
+=== RUN   TestSplitByBullets/mixed_bullets
+--- PASS: TestSplitByBullets (0.00s)
+    --- PASS: TestSplitByBullets/asterisk_bullets (0.00s)
+    --- PASS: TestSplitByBullets/dash_bullets (0.00s)
+    --- PASS: TestSplitByBullets/bullet_character (0.00s)
+    --- PASS: TestSplitByBullets/numbered_items (0.00s)
+    --- PASS: TestSplitByBullets/mixed_bullets (0.00s)
+=== RUN   TestSplitBySentences
+=== RUN   TestSplitBySentences/multiple_sentences
+=== RUN   TestSplitBySentences/single_sentence
+--- PASS: TestSplitBySentences (0.00s)
+    --- PASS: TestSplitBySentences/multiple_sentences (0.00s)
+    --- PASS: TestSplitBySentences/single_sentence (0.00s)
+=== RUN   TestCleanBullets
+=== RUN   TestCleanBullets/with_trailing_periods
+=== RUN   TestCleanBullets/with_whitespace
+=== RUN   TestCleanBullets/empty_strings_filtered
+=== RUN   TestCleanBullets/no_changes_needed
+--- PASS: TestCleanBullets (0.00s)
+    --- PASS: TestCleanBullets/with_trailing_periods (0.00s)
+    --- PASS: TestCleanBullets/with_whitespace (0.00s)
+    --- PASS: TestCleanBullets/empty_strings_filtered (0.00s)
+    --- PASS: TestCleanBullets/no_changes_needed (0.00s)
+=== RUN   TestJoinBullets
+=== RUN   TestJoinBullets/default_separator
+=== RUN   TestJoinBullets/custom_separator
+=== RUN   TestJoinBullets/empty_bullets
+=== RUN   TestJoinBullets/single_bullet
+--- PASS: TestJoinBullets (0.00s)
+    --- PASS: TestJoinBullets/default_separator (0.00s)
+    --- PASS: TestJoinBullets/custom_separator (0.00s)
+    --- PASS: TestJoinBullets/empty_bullets (0.00s)
+    --- PASS: TestJoinBullets/single_bullet (0.00s)
+=== RUN   TestExtractTechStack
+=== RUN   TestExtractTechStack/US1:_Extract_tech_stack_with_'Tecnologias:'_pattern
+=== RUN   TestExtractTechStack/US1:_Extract_tech_stack_with_comma_separator
+=== RUN   TestExtractTechStack/US1:_Remove_tech_stack_bullet_from_description
+=== RUN   TestExtractTechStack/US2:_Extract_with_pipe_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_bullet_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_'Technologies:'_pattern
+=== RUN   TestExtractTechStack/US2:_Extract_with_'Tools:'_pattern
+=== RUN   TestExtractTechStack/US2:_Extract_with_'As_principais_tecnologias_e_ferramentas_utilizadas:'_pattern
+=== RUN   TestExtractTechStack/US3:_Description_without_tech_stack_-_preserve_all_bullets
+=== RUN   TestExtractTechStack/US3:_Empty_tech_stack_after_prefix
+=== RUN   TestExtractTechStack/Tech_stack_in_the_middle_-_preserve_other_bullets
+=== RUN   TestExtractTechStack/Case_insensitive_matching
+=== RUN   TestExtractTechStack/Multiple_patterns_-_use_last_one
+=== RUN   TestExtractTechStack/US2:_Extract_with_hyphen_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_semicolon_separator
+=== RUN   TestExtractTechStack/Empty_bullets
+=== RUN   TestExtractTechStack/Single_bullet_without_pattern
+=== RUN   TestExtractTechStack/Single_bullet_with_pattern
+--- PASS: TestExtractTechStack (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Extract_tech_stack_with_'Tecnologias:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Extract_tech_stack_with_comma_separator (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Remove_tech_stack_bullet_from_description (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_pipe_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_bullet_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'Technologies:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'Tools:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'As_principais_tecnologias_e_ferramentas_utilizadas:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US3:_Description_without_tech_stack_-_preserve_all_bullets (0.00s)
+    --- PASS: TestExtractTechStack/US3:_Empty_tech_stack_after_prefix (0.00s)
+    --- PASS: TestExtractTechStack/Tech_stack_in_the_middle_-_preserve_other_bullets (0.00s)
+    --- PASS: TestExtractTechStack/Case_insensitive_matching (0.00s)
+    --- PASS: TestExtractTechStack/Multiple_patterns_-_use_last_one (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_hyphen_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_semicolon_separator (0.00s)
+    --- PASS: TestExtractTechStack/Empty_bullets (0.00s)
+    --- PASS: TestExtractTechStack/Single_bullet_without_pattern (0.00s)
+    --- PASS: TestExtractTechStack/Single_bullet_with_pattern (0.00s)
+=== RUN   TestParseTechStack
+=== RUN   TestParseTechStack/Comma_separator
+=== RUN   TestParseTechStack/Semicolon_separator
+=== RUN   TestParseTechStack/Pipe_separator
+=== RUN   TestParseTechStack/Bullet_separator
+=== RUN   TestParseTechStack/Hyphen_separator
+=== RUN   TestParseTechStack/Mixed_separators
+=== RUN   TestParseTechStack/Empty_input
+=== RUN   TestParseTechStack/Single_tech
+=== RUN   TestParseTechStack/With_trailing_period
+=== RUN   TestParseTechStack/With_extra_spaces
+--- PASS: TestParseTechStack (0.00s)
+    --- PASS: TestParseTechStack/Comma_separator (0.00s)
+    --- PASS: TestParseTechStack/Semicolon_separator (0.00s)
+    --- PASS: TestParseTechStack/Pipe_separator (0.00s)
+    --- PASS: TestParseTechStack/Bullet_separator (0.00s)
+    --- PASS: TestParseTechStack/Hyphen_separator (0.00s)
+    --- PASS: TestParseTechStack/Mixed_separators (0.00s)
+    --- PASS: TestParseTechStack/Empty_input (0.00s)
+    --- PASS: TestParseTechStack/Single_tech (0.00s)
+    --- PASS: TestParseTechStack/With_trailing_period (0.00s)
+    --- PASS: TestParseTechStack/With_extra_spaces (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/transformer	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/ui	[no test files]
+=== RUN   TestLoad_ValidConfig
+--- PASS: TestLoad_ValidConfig (0.00s)
+=== RUN   TestLoad_FileNotFound
+--- PASS: TestLoad_FileNotFound (0.00s)
+=== RUN   TestLoad_InvalidYAML
+--- PASS: TestLoad_InvalidYAML (0.00s)
+=== RUN   TestLoad_EmptyParagraphs
+--- PASS: TestLoad_EmptyParagraphs (0.00s)
+=== RUN   TestLoad_AboutWithEmptyLines
+--- PASS: TestLoad_AboutWithEmptyLines (0.00s)
+=== RUN   TestSplitParagraphs
+=== RUN   TestSplitParagraphs/multiple_paragraphs
+=== RUN   TestSplitParagraphs/empty_lines
+=== RUN   TestSplitParagraphs/whitespace_trimming
+=== RUN   TestSplitParagraphs/empty_string
+=== RUN   TestSplitParagraphs/only_whitespace
+=== RUN   TestSplitParagraphs/single_line
+--- PASS: TestSplitParagraphs (0.00s)
+    --- PASS: TestSplitParagraphs/multiple_paragraphs (0.00s)
+    --- PASS: TestSplitParagraphs/empty_lines (0.00s)
+    --- PASS: TestSplitParagraphs/whitespace_trimming (0.00s)
+    --- PASS: TestSplitParagraphs/empty_string (0.00s)
+    --- PASS: TestSplitParagraphs/only_whitespace (0.00s)
+    --- PASS: TestSplitParagraphs/single_line (0.00s)
+=== RUN   TestCurrentYear
+--- PASS: TestCurrentYear (0.00s)
+=== RUN   TestToTemplateData
+--- PASS: TestToTemplateData (0.00s)
+=== RUN   TestToTemplateData_EmptyAbout
+--- PASS: TestToTemplateData_EmptyAbout (0.00s)
+=== RUN   TestConfigStructs
+--- PASS: TestConfigStructs (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/internal/config	(cached)
+=== RUN   TestRun_Success
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_Success (0.00s)
+=== RUN   TestRun_NoCNAME
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_NoCNAME (0.00s)
+=== RUN   TestRun_MissingConfig
+--- PASS: TestRun_MissingConfig (0.00s)
+=== RUN   TestRun_MissingTemplates
+--- PASS: TestRun_MissingTemplates (0.00s)
+=== RUN   TestParseTemplates
+--- PASS: TestParseTemplates (0.00s)
+=== RUN   TestParseTemplates_MissingDir
+--- PASS: TestParseTemplates_MissingDir (0.00s)
+=== RUN   TestParseTemplates_InvalidTemplate
+--- PASS: TestParseTemplates_InvalidTemplate (0.00s)
+=== RUN   TestGenerateIndex
+HTML minified: 139 bytes -> 134 bytes (saved 5 bytes, 3.6%)
+--- PASS: TestGenerateIndex (0.00s)
+=== RUN   TestCopyAssets
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+--- PASS: TestCopyAssets (0.00s)
+=== RUN   TestCopyAssets_MissingDir
+--- PASS: TestCopyAssets_MissingDir (0.00s)
+=== RUN   TestCopyCNAME
+--- PASS: TestCopyCNAME (0.00s)
+=== RUN   TestCopyCNAME_MissingFile
+--- PASS: TestCopyCNAME_MissingFile (0.00s)
+=== RUN   TestCopyDir
+--- PASS: TestCopyDir (0.00s)
+=== RUN   TestCopyDir_MissingSource
+--- PASS: TestCopyDir_MissingSource (0.00s)
+=== RUN   TestCopyFile
+--- PASS: TestCopyFile (0.00s)
+=== RUN   TestCopyFile_MissingSource
+--- PASS: TestCopyFile_MissingSource (0.00s)
+=== RUN   TestCopyFile_InvalidDestination
+--- PASS: TestCopyFile_InvalidDestination (0.00s)
+=== RUN   TestTemplateAutoEscaping
+--- PASS: TestTemplateAutoEscaping (0.00s)
+=== RUN   TestMainFunction
+--- PASS: TestMainFunction (0.00s)
+=== RUN   TestRun_GenerateIndexError
+--- PASS: TestRun_GenerateIndexError (0.00s)
+=== RUN   TestGenerateIndex_TemplateDataTypes
+=== RUN   TestGenerateIndex_TemplateDataTypes/empty_data
+HTML minified: 121 bytes -> 116 bytes (saved 5 bytes, 4.1%)
+=== RUN   TestGenerateIndex_TemplateDataTypes/full_data
+HTML minified: 155 bytes -> 151 bytes (saved 4 bytes, 2.6%)
+=== RUN   TestGenerateIndex_TemplateDataTypes/with_content
+HTML minified: 133 bytes -> 128 bytes (saved 5 bytes, 3.8%)
+--- PASS: TestGenerateIndex_TemplateDataTypes (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/empty_data (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/full_data (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/with_content (0.00s)
+=== RUN   TestCopyCNAME_ReadError
+--- PASS: TestCopyCNAME_ReadError (0.00s)
+=== RUN   TestCopyDir_ReadDirError
+--- PASS: TestCopyDir_ReadDirError (0.00s)
+=== RUN   TestCopyFile_StatError
+--- PASS: TestCopyFile_StatError (0.00s)
+=== RUN   TestRun_FailCreatePublicDir
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_FailCreatePublicDir (0.00s)
+=== RUN   TestParseTemplates_NonHTMLFiles
+--- PASS: TestParseTemplates_NonHTMLFiles (0.00s)
+=== RUN   TestCopyAssets_NestedDirs
+Minified js/utils/helper.js: 9 -> 0 bytes (saved 9 bytes, 100.0%)
+--- PASS: TestCopyAssets_NestedDirs (0.00s)
+=== RUN   TestCopyCNAME_WriteError
+--- PASS: TestCopyCNAME_WriteError (0.00s)
+=== RUN   TestGenerateIndex_CreateFileError
+--- PASS: TestGenerateIndex_CreateFileError (0.00s)
+=== RUN   TestRunWithExitCode
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+Error: failed to load config: failed to read config file: open config.yaml: no such file or directory
+--- PASS: TestRunWithExitCode (0.00s)
+=== RUN   TestCopyAndMinifyDir_RecursiveError
+--- PASS: TestCopyAndMinifyDir_RecursiveError (0.00s)
+=== RUN   TestCopyAndMinifyDir_FileError
+--- PASS: TestCopyAndMinifyDir_FileError (0.00s)
+=== RUN   TestCopyDir_NestedErrors
+--- PASS: TestCopyDir_NestedErrors (0.00s)
+=== RUN   TestParseTemplates_FileReadError
+--- PASS: TestParseTemplates_FileReadError (0.00s)
+=== RUN   TestRun_CopyCNAMEError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_CopyCNAMEError (0.00s)
+=== RUN   TestRun_CopyCNAME_ReturnsError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+--- PASS: TestRun_CopyCNAME_ReturnsError (0.00s)
+=== RUN   TestCopyCNAME_ReadErrorAfterStat
+--- PASS: TestCopyCNAME_ReadErrorAfterStat (0.00s)
+=== RUN   TestCopyAndMinifyDir_MkdirAllError
+--- PASS: TestCopyAndMinifyDir_MkdirAllError (0.00s)
+=== RUN   TestCopyAndMinifyFile_ReadError
+--- PASS: TestCopyAndMinifyFile_ReadError (0.00s)
+=== RUN   TestGenerateIndex_TemplateExecutionError
+--- PASS: TestGenerateIndex_TemplateExecutionError (0.00s)
+=== RUN   TestParseTemplates_WalkError
+--- PASS: TestParseTemplates_WalkError (0.00s)
+=== RUN   TestCopyAssets_ErrorInCopyAndMinify
+--- PASS: TestCopyAssets_ErrorInCopyAndMinify (0.00s)
+=== RUN   TestCopyAndMinifyFile_WithJSONLD
+Minified : 78 -> 64 bytes (saved 14 bytes, 17.9%)
+--- PASS: TestCopyAndMinifyFile_WithJSONLD (0.00s)
+=== RUN   TestCopyAndMinifyFile_UnsupportedExtension
+--- PASS: TestCopyAndMinifyFile_UnsupportedExtension (0.00s)
+=== RUN   TestCopyAndMinifyFile_NoSavings
+--- PASS: TestCopyAndMinifyFile_NoSavings (0.00s)
+=== RUN   TestRun_FailToCreatePublicDir
+--- PASS: TestRun_FailToCreatePublicDir (0.00s)
+=== RUN   TestCopyAndMinifyFile_MinificationError
+--- PASS: TestCopyAndMinifyFile_MinificationError (0.00s)
+=== RUN   TestCopyAndMinifyFile_HTMLExtension
+Minified : 66 -> 53 bytes (saved 13 bytes, 19.7%)
+--- PASS: TestCopyAndMinifyFile_HTMLExtension (0.00s)
+=== RUN   TestCopyAndMinifyFile_JSONExtension
+Minified : 34 -> 25 bytes (saved 9 bytes, 26.5%)
+--- PASS: TestCopyAndMinifyFile_JSONExtension (0.00s)
+=== RUN   TestCopyAndMinifyDir_CopyFileError
+--- PASS: TestCopyAndMinifyDir_CopyFileError (0.00s)
+=== RUN   TestParseTemplates_ParseError
+--- PASS: TestParseTemplates_ParseError (0.00s)
+=== RUN   TestCopyAndMinifyDir_StatError
+--- PASS: TestCopyAndMinifyDir_StatError (0.00s)
+=== RUN   TestRun_CopyAssetsError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+--- PASS: TestRun_CopyAssetsError (0.00s)
+=== RUN   TestGenerateIndex_MinificationFallback
+HTML minified: 125 bytes -> 120 bytes (saved 5 bytes, 4.0%)
+--- PASS: TestGenerateIndex_MinificationFallback (0.00s)
+=== RUN   TestParseTemplates_ReadFileError
+    main_test.go:1920: Expected error occurred: failed to read template templates/test.html: open templates/test.html: permission denied
+--- PASS: TestParseTemplates_ReadFileError (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/generator	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin	[no test files]
+=== RUN   TestExecute_Validate
+🔍 Validando arquivos CSV...
+
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestExecute_Validate (0.00s)
+=== RUN   TestConfig_Defaults
+--- PASS: TestConfig_Defaults (0.00s)
+=== RUN   TestRunImport_MissingFiles
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Experiências: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles2363851805/001/missing_exp.csv)
+⚠ Educação: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles2363851805/001/missing_edu.csv)
+⚠ Certificações: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles2363851805/001/missing_cert.csv)
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestRunImport_MissingFiles (0.00s)
+=== RUN   TestRunImport_DryRun
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: failed to create CSV reader: failed to read CSV header: EOF
+  - education: failed to create CSV reader: failed to read CSV header: EOF
+  - certifications: failed to create CSV reader: failed to read CSV header: EOF
+
+⚠ Criando novo config.yaml (arquivo atual não pôde ser lido: failed to parse config file: yaml: unmarshal errors:
+  line 1: cannot unmarshal !!str `initial...` into models.ConfigPortfolio)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_DryRun (0.00s)
+=== RUN   TestRunImport_WithValidFiles
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 1 encontradas
+✓ Educação: 1 encontradas
+✓ Certificações: 1 encontradas
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 3 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + Engineer @ Acme Corp[m
+[38;5;42m[m                        
+
+[1;38;5;39m🎓 Educação[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + BSc at MIT[m
+[38;5;42m[m              
+
+[1;38;5;39m📜 Certificações[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + AWS Cert (Amazon)[m
+[38;5;42m[m                     
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_WithValidFiles (0.00s)
+=== RUN   TestRunImport_WithBackup
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 2 encontradas
+
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 2 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (2):[m
+[38;5;42m[m                  [38;5;42m  + Engineer @ Acme Corp[m
+[38;5;42m[m                        [38;5;42m  + Dev @ Tech Inc[m
+[38;5;42m[m                  
+
+
+✓ Modo automático: aceitando todas as mudanças.
+✓ Backup criado: /tmp/claude-1000/TestRunImport_WithBackup3054209831/001/config.backup.20260531_132412.yaml
+
+✓ Importação concluída:
+  2 adições, 0 modificações, 0 remoções
+  Experiências: 2 adições, 0 modificações, 0 remoções
+
+✓ Configuração salva em: /tmp/claude-1000/TestRunImport_WithBackup3054209831/001/config.yaml
+--- PASS: TestRunImport_WithBackup (0.00s)
+=== RUN   TestRunImport_ParseErrors
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: missing required columns: [Company Name Title Started On]
+  - education: missing required columns: [School Name Degree Name]
+  - certifications: missing required columns: [Name Authority]
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_ParseErrors (0.00s)
+=== RUN   TestExecute_UnknownCommand
+Unknown command: unknown
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+--- PASS: TestExecute_UnknownCommand (0.00s)
+=== RUN   TestExecute_Help
+=== RUN   TestExecute_Help/help_command
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+=== RUN   TestExecute_Help/--help_flag
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+=== RUN   TestExecute_Help/-h_flag
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+--- PASS: TestExecute_Help (0.00s)
+    --- PASS: TestExecute_Help/help_command (0.00s)
+    --- PASS: TestExecute_Help/--help_flag (0.00s)
+    --- PASS: TestExecute_Help/-h_flag (0.00s)
+=== RUN   TestExecute_Version
+linkedin-import version 1.0.0
+Go version: go1.26.2
+--- PASS: TestExecute_Version (0.00s)
+=== RUN   TestExecute_NoArgs
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Experiências: arquivo não encontrado (Experiences.csv)
+⚠ Educação: arquivo não encontrado (Education.csv)
+⚠ Certificações: arquivo não encontrado (Certifications.csv)
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestExecute_NoArgs (0.00s)
+=== RUN   TestExecute_VersionExtended
+linkedin-import version 1.0.0
+Go version: go1.26.2
+--- PASS: TestExecute_VersionExtended (0.00s)
+=== RUN   TestPrintVersionExtended
+LinkedIn Import CLI
+Version: 1.0.0
+Build Date: 2026-04-26
+Go version: go1.26.2
+
+For help, run: linkedin-import help
+--- PASS: TestPrintVersionExtended (0.00s)
+=== RUN   TestRunValidate_MalformedCSV
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv: missing required columns: [Company Name Started On]
+
+--- PASS: TestRunValidate_MalformedCSV (0.00s)
+=== RUN   TestRunValidate_ValidCSV
+🔍 Validando arquivos CSV...
+
+✓ Experiences.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_ValidCSV (0.00s)
+=== RUN   TestRunValidate_WithEducation
+🔍 Validando arquivos CSV...
+
+✓ Education.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_WithEducation (0.00s)
+=== RUN   TestRunValidate_WithCertifications
+🔍 Validando arquivos CSV...
+
+✓ Certifications.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_WithCertifications (0.00s)
+=== RUN   TestRunValidate_WithParseError
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv: missing required columns: [Company Name Title Started On]
+
+--- PASS: TestRunValidate_WithParseError (0.00s)
+=== RUN   TestRunValidate_WithValidationErrors
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv:
+  - parse error at line 2, column 'Company Name': cannot be empty
+
+--- PASS: TestRunValidate_WithValidationErrors (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/commands	(cached)
+=== RUN   TestApplyChanges
+--- PASS: TestApplyChanges (0.00s)
+=== RUN   TestApplyChanges_NilPointers
+--- PASS: TestApplyChanges_NilPointers (0.00s)
+=== RUN   TestApplyChanges_Comprehensive
+--- PASS: TestApplyChanges_Comprehensive (0.00s)
+=== RUN   TestMergeConfigs
+=== RUN   TestMergeConfigs/all_overridden
+=== RUN   TestMergeConfigs/some_overridden
+=== RUN   TestMergeConfigs/none_overridden
+--- PASS: TestMergeConfigs (0.00s)
+    --- PASS: TestMergeConfigs/all_overridden (0.00s)
+    --- PASS: TestMergeConfigs/some_overridden (0.00s)
+    --- PASS: TestMergeConfigs/none_overridden (0.00s)
+=== RUN   TestGetImportResult
+--- PASS: TestGetImportResult (0.00s)
+=== RUN   TestPrintImportResult
+
+✓ Importação concluída:
+  3 adições, 0 modificações, 0 remoções
+  Experiências: 1 adições, 0 modificações, 0 remoções
+  Educação: 1 adições, 0 modificações, 0 remoções
+  Certificações: 1 adições, 0 modificações, 0 remoções
+--- PASS: TestPrintImportResult (0.00s)
+=== RUN   TestCompareExperiences
+--- PASS: TestCompareExperiences (0.00s)
+=== RUN   TestCompareExperiences_WithModifications
+--- PASS: TestCompareExperiences_WithModifications (0.00s)
+=== RUN   TestCompareEducation
+=== RUN   TestCompareEducation/added_and_removed
+=== RUN   TestCompareEducation/modified
+=== RUN   TestCompareEducation/identical
+=== RUN   TestCompareEducation/all_removed
+--- PASS: TestCompareEducation (0.00s)
+    --- PASS: TestCompareEducation/added_and_removed (0.00s)
+    --- PASS: TestCompareEducation/modified (0.00s)
+    --- PASS: TestCompareEducation/identical (0.00s)
+    --- PASS: TestCompareEducation/all_removed (0.00s)
+=== RUN   TestCompareCertifications
+=== RUN   TestCompareCertifications/added_and_removed
+=== RUN   TestCompareCertifications/modified
+=== RUN   TestCompareCertifications/identical
+=== RUN   TestCompareCertifications/all_removed
+--- PASS: TestCompareCertifications (0.00s)
+    --- PASS: TestCompareCertifications/added_and_removed (0.00s)
+    --- PASS: TestCompareCertifications/modified (0.00s)
+    --- PASS: TestCompareCertifications/identical (0.00s)
+    --- PASS: TestCompareCertifications/all_removed (0.00s)
+=== RUN   TestNewDiff
+--- PASS: TestNewDiff (0.00s)
+=== RUN   TestDiff_HasChanges
+=== RUN   TestDiff_HasChanges/empty_diff
+=== RUN   TestDiff_HasChanges/with_added
+=== RUN   TestDiff_HasChanges/with_modified
+=== RUN   TestDiff_HasChanges/with_removed
+--- PASS: TestDiff_HasChanges (0.00s)
+    --- PASS: TestDiff_HasChanges/empty_diff (0.00s)
+    --- PASS: TestDiff_HasChanges/with_added (0.00s)
+    --- PASS: TestDiff_HasChanges/with_modified (0.00s)
+    --- PASS: TestDiff_HasChanges/with_removed (0.00s)
+=== RUN   TestGetChangedFields
+=== RUN   TestGetChangedFields/no_changes
+=== RUN   TestGetChangedFields/all_changes
+=== RUN   TestGetChangedFields/some_changes
+--- PASS: TestGetChangedFields (0.00s)
+    --- PASS: TestGetChangedFields/no_changes (0.00s)
+    --- PASS: TestGetChangedFields/all_changes (0.00s)
+    --- PASS: TestGetChangedFields/some_changes (0.00s)
+=== RUN   TestFormatID
+=== RUN   TestFormatID/experience
+=== RUN   TestFormatID/experience_pointer
+=== RUN   TestFormatID/experience_pointer_nil
+=== RUN   TestFormatID/education
+=== RUN   TestFormatID/education_pointer
+=== RUN   TestFormatID/education_pointer_nil
+=== RUN   TestFormatID/certification
+=== RUN   TestFormatID/certification_pointer
+=== RUN   TestFormatID/certification_pointer_nil
+=== RUN   TestFormatID/unknown
+--- PASS: TestFormatID (0.00s)
+    --- PASS: TestFormatID/experience (0.00s)
+    --- PASS: TestFormatID/experience_pointer (0.00s)
+    --- PASS: TestFormatID/experience_pointer_nil (0.00s)
+    --- PASS: TestFormatID/education (0.00s)
+    --- PASS: TestFormatID/education_pointer (0.00s)
+    --- PASS: TestFormatID/education_pointer_nil (0.00s)
+    --- PASS: TestFormatID/certification (0.00s)
+    --- PASS: TestFormatID/certification_pointer (0.00s)
+    --- PASS: TestFormatID/certification_pointer_nil (0.00s)
+    --- PASS: TestFormatID/unknown (0.00s)
+=== RUN   TestEqualityHelpers
+=== RUN   TestEqualityHelpers/experiencesEqual
+=== RUN   TestEqualityHelpers/educationEqual
+=== RUN   TestEqualityHelpers/certificationsEqual
+--- PASS: TestEqualityHelpers (0.00s)
+    --- PASS: TestEqualityHelpers/experiencesEqual (0.00s)
+    --- PASS: TestEqualityHelpers/educationEqual (0.00s)
+    --- PASS: TestEqualityHelpers/certificationsEqual (0.00s)
+=== RUN   TestCompareAll
+--- PASS: TestCompareAll (0.00s)
+=== RUN   TestIDGenerator
+=== RUN   TestIDGenerator/experience
+=== RUN   TestIDGenerator/experience_pointer
+=== RUN   TestIDGenerator/experience_pointer_nil
+=== RUN   TestIDGenerator/education
+=== RUN   TestIDGenerator/education_pointer
+=== RUN   TestIDGenerator/education_pointer_nil
+=== RUN   TestIDGenerator/certification
+=== RUN   TestIDGenerator/certification_pointer
+=== RUN   TestIDGenerator/certification_pointer_nil
+=== RUN   TestIDGenerator/unknown_entity
+=== RUN   TestIDGenerator/nil_entity
+--- PASS: TestIDGenerator (0.00s)
+    --- PASS: TestIDGenerator/experience (0.00s)
+    --- PASS: TestIDGenerator/experience_pointer (0.00s)
+    --- PASS: TestIDGenerator/experience_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/education (0.00s)
+    --- PASS: TestIDGenerator/education_pointer (0.00s)
+    --- PASS: TestIDGenerator/education_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/certification (0.00s)
+    --- PASS: TestIDGenerator/certification_pointer (0.00s)
+    --- PASS: TestIDGenerator/certification_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/unknown_entity (0.00s)
+    --- PASS: TestIDGenerator/nil_entity (0.00s)
+=== RUN   TestGetEntityType
+=== RUN   TestGetEntityType/experience
+=== RUN   TestGetEntityType/experience_pointer
+=== RUN   TestGetEntityType/education
+=== RUN   TestGetEntityType/education_pointer
+=== RUN   TestGetEntityType/certification
+=== RUN   TestGetEntityType/certification_pointer
+=== RUN   TestGetEntityType/unknown
+=== RUN   TestGetEntityType/nil
+--- PASS: TestGetEntityType (0.00s)
+    --- PASS: TestGetEntityType/experience (0.00s)
+    --- PASS: TestGetEntityType/experience_pointer (0.00s)
+    --- PASS: TestGetEntityType/education (0.00s)
+    --- PASS: TestGetEntityType/education_pointer (0.00s)
+    --- PASS: TestGetEntityType/certification (0.00s)
+    --- PASS: TestGetEntityType/certification_pointer (0.00s)
+    --- PASS: TestGetEntityType/unknown (0.00s)
+    --- PASS: TestGetEntityType/nil (0.00s)
+=== RUN   TestGenerateIDs
+--- PASS: TestGenerateIDs (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/comparator	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/config	[no test files]
+=== RUN   TestPipelineHappyPath
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 2 encontradas
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 2 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (2):[m
+[38;5;42m[m                  [38;5;42m  + Software Engineer @ Company A[m
+[38;5;42m[m                                 [38;5;42m  + Junior Developer @ Company B[m
+[38;5;42m[m                                
+
+
+✓ Modo automático: aceitando todas as mudanças.
+
+✓ Importação concluída:
+  2 adições, 0 modificações, 0 remoções
+  Experiências: 2 adições, 0 modificações, 0 remoções
+
+✓ Configuração salva em: /tmp/claude-1000/TestPipelineHappyPath393215199/001/config.yaml
+--- PASS: TestPipelineHappyPath (0.00s)
+=== RUN   TestPipelinePartialData
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Warning: skipping row 3: validation error at line 3: validation error for field 'company': cannot be empty
+⚠ Warning: skipping row 4: validation error at line 4: validation error for field 'start_date': cannot be empty
+✓ Experiências: 1 encontradas
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 1 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + Dev @ Company Partial[m
+[38;5;42m[m                         
+
+
+✓ Modo automático: aceitando todas as mudanças.
+
+✓ Importação concluída:
+  1 adições, 0 modificações, 0 remoções
+  Experiências: 1 adições, 0 modificações, 0 remoções
+
+✓ Configuração salva em: /tmp/claude-1000/TestPipelinePartialData2906307902/001/config.yaml
+--- PASS: TestPipelinePartialData (0.00s)
+=== RUN   TestPipelineParsingError
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: missing required columns: [Company Name Title Started On]
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestPipelineParsingError (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/integration	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/models	[no test files]
+=== RUN   TestNewCertificationParser
+=== RUN   TestNewCertificationParser/valid_file
+=== RUN   TestNewCertificationParser/missing_required_column
+=== RUN   TestNewCertificationParser/non-existent_file
+--- PASS: TestNewCertificationParser (0.00s)
+    --- PASS: TestNewCertificationParser/valid_file (0.00s)
+    --- PASS: TestNewCertificationParser/missing_required_column (0.00s)
+    --- PASS: TestNewCertificationParser/non-existent_file (0.00s)
+=== RUN   TestNewCertificationParserFromReader
+=== RUN   TestNewCertificationParserFromReader/invalid_csv_header
+=== RUN   TestNewCertificationParserFromReader/simulated_read_error
+--- PASS: TestNewCertificationParserFromReader (0.00s)
+    --- PASS: TestNewCertificationParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewCertificationParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestCertificationParser_ParseAll
+=== RUN   TestCertificationParser_ParseAll/valid_data
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_name
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'name': cannot be empty
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_organization
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'organization': cannot be empty
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_issue_date
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'issue_date': cannot be empty
+--- PASS: TestCertificationParser_ParseAll (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/valid_data (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_name (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_organization (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_issue_date (0.00s)
+=== RUN   TestCertificationParser_Close
+--- PASS: TestCertificationParser_Close (0.00s)
+=== RUN   TestCertificationParser_Validate
+=== RUN   TestCertificationParser_Validate/valid_data
+=== RUN   TestCertificationParser_Validate/missing_name
+=== RUN   TestCertificationParser_Validate/missing_organization
+=== RUN   TestCertificationParser_Validate/invalid_date_format
+=== RUN   TestCertificationParser_Validate/multiple_errors
+--- PASS: TestCertificationParser_Validate (0.00s)
+    --- PASS: TestCertificationParser_Validate/valid_data (0.00s)
+    --- PASS: TestCertificationParser_Validate/missing_name (0.00s)
+    --- PASS: TestCertificationParser_Validate/missing_organization (0.00s)
+    --- PASS: TestCertificationParser_Validate/invalid_date_format (0.00s)
+    --- PASS: TestCertificationParser_Validate/multiple_errors (0.00s)
+=== RUN   TestCertificationParser_ReadFailure
+=== RUN   TestCertificationParser_ReadFailure/ParseAll_failure
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'issue_date': cannot be empty
+=== RUN   TestCertificationParser_ReadFailure/Validate_failure
+--- PASS: TestCertificationParser_ReadFailure (0.00s)
+    --- PASS: TestCertificationParser_ReadFailure/ParseAll_failure (0.00s)
+    --- PASS: TestCertificationParser_ReadFailure/Validate_failure (0.00s)
+=== RUN   TestCertification_Validate
+=== RUN   TestCertification_Validate/valid_certification
+=== RUN   TestCertification_Validate/missing_name
+=== RUN   TestCertification_Validate/missing_organization
+=== RUN   TestCertification_Validate/missing_issue_date
+--- PASS: TestCertification_Validate (0.00s)
+    --- PASS: TestCertification_Validate/valid_certification (0.00s)
+    --- PASS: TestCertification_Validate/missing_name (0.00s)
+    --- PASS: TestCertification_Validate/missing_organization (0.00s)
+    --- PASS: TestCertification_Validate/missing_issue_date (0.00s)
+=== RUN   TestNewCSVReaderFromIO
+=== RUN   TestNewCSVReaderFromIO/valid_csv
+=== RUN   TestNewCSVReaderFromIO/empty_input
+=== RUN   TestNewCSVReaderFromIO/only_header
+--- PASS: TestNewCSVReaderFromIO (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/valid_csv (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/empty_input (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/only_header (0.00s)
+=== RUN   TestCSVReader_Next
+=== RUN   TestCSVReader_Next/regular_records
+=== RUN   TestCSVReader_Next/irregular_records_(too_short)
+=== RUN   TestCSVReader_Next/irregular_records_(too_long)
+--- PASS: TestCSVReader_Next (0.00s)
+    --- PASS: TestCSVReader_Next/regular_records (0.00s)
+    --- PASS: TestCSVReader_Next/irregular_records_(too_short) (0.00s)
+    --- PASS: TestCSVReader_Next/irregular_records_(too_long) (0.00s)
+=== RUN   TestCSVReader_GetHeader
+--- PASS: TestCSVReader_GetHeader (0.00s)
+=== RUN   TestCSVReader_HasColumn
+--- PASS: TestCSVReader_HasColumn (0.00s)
+=== RUN   TestCSVReader_Close
+--- PASS: TestCSVReader_Close (0.00s)
+=== RUN   TestCSVReader_ValidateColumns
+=== RUN   TestCSVReader_ValidateColumns/all_present
+=== RUN   TestCSVReader_ValidateColumns/some_missing
+=== RUN   TestCSVReader_ValidateColumns/all_missing
+--- PASS: TestCSVReader_ValidateColumns (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/all_present (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/some_missing (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/all_missing (0.00s)
+=== RUN   TestNewCSVReader
+=== RUN   TestNewCSVReader/valid_file
+=== RUN   TestNewCSVReader/non-existent_file
+--- PASS: TestNewCSVReader (0.00s)
+    --- PASS: TestNewCSVReader/valid_file (0.00s)
+    --- PASS: TestNewCSVReader/non-existent_file (0.00s)
+=== RUN   TestConvertDate
+=== RUN   TestConvertDate/empty
+=== RUN   TestConvertDate/present_lowercase
+=== RUN   TestConvertDate/present_uppercase
+=== RUN   TestConvertDate/present_mixed_case
+=== RUN   TestConvertDate/present_with_spaces
+=== RUN   TestConvertDate/single_date_Jan
+=== RUN   TestConvertDate/single_date_Feb
+=== RUN   TestConvertDate/single_date_Apr
+=== RUN   TestConvertDate/single_date_Aug
+=== RUN   TestConvertDate/single_date_Sep
+=== RUN   TestConvertDate/single_date_Oct
+=== RUN   TestConvertDate/single_date_Dec
+=== RUN   TestConvertDate/year_only
+=== RUN   TestConvertDate/range_Jan-Mar
+=== RUN   TestConvertDate/range_Feb-Apr
+=== RUN   TestConvertDate/range_year-year
+=== RUN   TestConvertDate/range_Present
+=== RUN   TestConvertDate/invalid_format
+=== RUN   TestConvertDate/wrong_month_length
+=== RUN   TestConvertDate/wrong_year_length
+--- PASS: TestConvertDate (0.00s)
+    --- PASS: TestConvertDate/empty (0.00s)
+    --- PASS: TestConvertDate/present_lowercase (0.00s)
+    --- PASS: TestConvertDate/present_uppercase (0.00s)
+    --- PASS: TestConvertDate/present_mixed_case (0.00s)
+    --- PASS: TestConvertDate/present_with_spaces (0.00s)
+    --- PASS: TestConvertDate/single_date_Jan (0.00s)
+    --- PASS: TestConvertDate/single_date_Feb (0.00s)
+    --- PASS: TestConvertDate/single_date_Apr (0.00s)
+    --- PASS: TestConvertDate/single_date_Aug (0.00s)
+    --- PASS: TestConvertDate/single_date_Sep (0.00s)
+    --- PASS: TestConvertDate/single_date_Oct (0.00s)
+    --- PASS: TestConvertDate/single_date_Dec (0.00s)
+    --- PASS: TestConvertDate/year_only (0.00s)
+    --- PASS: TestConvertDate/range_Jan-Mar (0.00s)
+    --- PASS: TestConvertDate/range_Feb-Apr (0.00s)
+    --- PASS: TestConvertDate/range_year-year (0.00s)
+    --- PASS: TestConvertDate/range_Present (0.00s)
+    --- PASS: TestConvertDate/invalid_format (0.00s)
+    --- PASS: TestConvertDate/wrong_month_length (0.00s)
+    --- PASS: TestConvertDate/wrong_year_length (0.00s)
+=== RUN   TestValidateDate
+=== RUN   TestValidateDate/empty
+=== RUN   TestValidateDate/present
+=== RUN   TestValidateDate/presente
+=== RUN   TestValidateDate/single_date
+=== RUN   TestValidateDate/year_only
+=== RUN   TestValidateDate/range_valid
+=== RUN   TestValidateDate/range_present
+=== RUN   TestValidateDate/range_invalid
+=== RUN   TestValidateDate/invalid_date
+=== RUN   TestValidateDate/invalid_month
+=== RUN   TestValidateDate/invalid_year
+=== RUN   TestValidateDate/random_text
+--- PASS: TestValidateDate (0.00s)
+    --- PASS: TestValidateDate/empty (0.00s)
+    --- PASS: TestValidateDate/present (0.00s)
+    --- PASS: TestValidateDate/presente (0.00s)
+    --- PASS: TestValidateDate/single_date (0.00s)
+    --- PASS: TestValidateDate/year_only (0.00s)
+    --- PASS: TestValidateDate/range_valid (0.00s)
+    --- PASS: TestValidateDate/range_present (0.00s)
+    --- PASS: TestValidateDate/range_invalid (0.00s)
+    --- PASS: TestValidateDate/invalid_date (0.00s)
+    --- PASS: TestValidateDate/invalid_month (0.00s)
+    --- PASS: TestValidateDate/invalid_year (0.00s)
+    --- PASS: TestValidateDate/random_text (0.00s)
+=== RUN   TestParseDateRange
+=== RUN   TestParseDateRange/empty
+=== RUN   TestParseDateRange/single_date
+=== RUN   TestParseDateRange/valid_range
+=== RUN   TestParseDateRange/range_with_spaces
+=== RUN   TestParseDateRange/range_with_present
+--- PASS: TestParseDateRange (0.00s)
+    --- PASS: TestParseDateRange/empty (0.00s)
+    --- PASS: TestParseDateRange/single_date (0.00s)
+    --- PASS: TestParseDateRange/valid_range (0.00s)
+    --- PASS: TestParseDateRange/range_with_spaces (0.00s)
+    --- PASS: TestParseDateRange/range_with_present (0.00s)
+=== RUN   TestNewEducationParser
+=== RUN   TestNewEducationParser/valid_file
+=== RUN   TestNewEducationParser/missing_required_column
+=== RUN   TestNewEducationParser/non-existent_file
+--- PASS: TestNewEducationParser (0.00s)
+    --- PASS: TestNewEducationParser/valid_file (0.00s)
+    --- PASS: TestNewEducationParser/missing_required_column (0.00s)
+    --- PASS: TestNewEducationParser/non-existent_file (0.00s)
+=== RUN   TestNewEducationParserFromReader
+=== RUN   TestNewEducationParserFromReader/invalid_csv_header
+=== RUN   TestNewEducationParserFromReader/simulated_read_error
+--- PASS: TestNewEducationParserFromReader (0.00s)
+    --- PASS: TestNewEducationParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewEducationParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestEducationParser_Close
+--- PASS: TestEducationParser_Close (0.00s)
+=== RUN   TestEducationParser_ParseAll
+--- PASS: TestEducationParser_ParseAll (0.00s)
+=== RUN   TestEducationParser_Validate
+=== RUN   TestEducationParser_Validate/valid_data
+=== RUN   TestEducationParser_Validate/missing_institution
+=== RUN   TestEducationParser_Validate/missing_degree
+=== RUN   TestEducationParser_Validate/missing_both_dates
+--- PASS: TestEducationParser_Validate (0.00s)
+    --- PASS: TestEducationParser_Validate/valid_data (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_institution (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_degree (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_both_dates (0.00s)
+=== RUN   TestEducationParser_ParseAll_Errors
+=== RUN   TestEducationParser_ParseAll_Errors/invalid_row_-_missing_school
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'institution': cannot be empty
+=== RUN   TestEducationParser_ParseAll_Errors/invalid_row_-_missing_degree
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'degree': cannot be empty
+--- PASS: TestEducationParser_ParseAll_Errors (0.00s)
+    --- PASS: TestEducationParser_ParseAll_Errors/invalid_row_-_missing_school (0.00s)
+    --- PASS: TestEducationParser_ParseAll_Errors/invalid_row_-_missing_degree (0.00s)
+=== RUN   TestEducationParser_Validate_Errors
+=== RUN   TestEducationParser_Validate_Errors/ParseAll_failure
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'dates': at least one date (start or end) must be present
+--- PASS: TestEducationParser_Validate_Errors (0.00s)
+    --- PASS: TestEducationParser_Validate_Errors/ParseAll_failure (0.00s)
+=== RUN   TestEducation_Validate
+=== RUN   TestEducation_Validate/valid_education
+=== RUN   TestEducation_Validate/missing_institution
+=== RUN   TestEducation_Validate/missing_degree
+=== RUN   TestEducation_Validate/missing_dates
+--- PASS: TestEducation_Validate (0.00s)
+    --- PASS: TestEducation_Validate/valid_education (0.00s)
+    --- PASS: TestEducation_Validate/missing_institution (0.00s)
+    --- PASS: TestEducation_Validate/missing_degree (0.00s)
+    --- PASS: TestEducation_Validate/missing_dates (0.00s)
+=== RUN   TestNewExperienceParser
+=== RUN   TestNewExperienceParser/valid_file
+=== RUN   TestNewExperienceParser/missing_required_column
+=== RUN   TestNewExperienceParser/non-existent_file
+--- PASS: TestNewExperienceParser (0.00s)
+    --- PASS: TestNewExperienceParser/valid_file (0.00s)
+    --- PASS: TestNewExperienceParser/missing_required_column (0.00s)
+    --- PASS: TestNewExperienceParser/non-existent_file (0.00s)
+=== RUN   TestNewExperienceParserFromReader
+=== RUN   TestNewExperienceParserFromReader/invalid_csv_header
+=== RUN   TestNewExperienceParserFromReader/simulated_read_error
+--- PASS: TestNewExperienceParserFromReader (0.00s)
+    --- PASS: TestNewExperienceParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewExperienceParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestExperienceParser_Close
+--- PASS: TestExperienceParser_Close (0.00s)
+=== RUN   TestExperienceParser_ParseAll
+--- PASS: TestExperienceParser_ParseAll (0.00s)
+=== RUN   TestExperienceParser_ParseAll_EmptyCSV
+--- PASS: TestExperienceParser_ParseAll_EmptyCSV (0.00s)
+=== RUN   TestExperienceParser_Validate
+=== RUN   TestExperienceParser_Validate/valid_data
+=== RUN   TestExperienceParser_Validate/missing_company
+=== RUN   TestExperienceParser_Validate/missing_title
+=== RUN   TestExperienceParser_Validate/invalid_date
+--- PASS: TestExperienceParser_Validate (0.00s)
+    --- PASS: TestExperienceParser_Validate/valid_data (0.00s)
+    --- PASS: TestExperienceParser_Validate/missing_company (0.00s)
+    --- PASS: TestExperienceParser_Validate/missing_title (0.00s)
+    --- PASS: TestExperienceParser_Validate/invalid_date (0.00s)
+=== RUN   TestExperienceParser_ParseAll_Errors
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_company
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'company': cannot be empty
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_title
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'title': cannot be empty
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_start_date
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'start_date': cannot be empty
+--- PASS: TestExperienceParser_ParseAll_Errors (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_company (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_title (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_start_date (0.00s)
+=== RUN   TestExperienceParser_Validate_Errors
+=== RUN   TestExperienceParser_Validate_Errors/ParseAll_failure_with_read_error
+--- PASS: TestExperienceParser_Validate_Errors (0.00s)
+    --- PASS: TestExperienceParser_Validate_Errors/ParseAll_failure_with_read_error (0.00s)
+=== RUN   TestExperience_Validate
+=== RUN   TestExperience_Validate/valid_experience
+=== RUN   TestExperience_Validate/missing_company
+=== RUN   TestExperience_Validate/missing_role
+=== RUN   TestExperience_Validate/missing_start_date
+--- PASS: TestExperience_Validate (0.00s)
+    --- PASS: TestExperience_Validate/valid_experience (0.00s)
+    --- PASS: TestExperience_Validate/missing_company (0.00s)
+    --- PASS: TestExperience_Validate/missing_role (0.00s)
+    --- PASS: TestExperience_Validate/missing_start_date (0.00s)
+=== RUN   TestConvertDate_Experiences
+--- PASS: TestConvertDate_Experiences (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/parser	(cached)
+=== RUN   TestSplitDescription
+=== RUN   TestSplitDescription/empty_string
+=== RUN   TestSplitDescription/paragraphs_with_double_newlines
+=== RUN   TestSplitDescription/with_bullet_markers
+=== RUN   TestSplitDescription/with_numbered_bullets
+=== RUN   TestSplitDescription/single_text_no_splits
+=== RUN   TestSplitDescription/with_sentences
+=== RUN   TestSplitDescription/with_Windows_line_endings
+--- PASS: TestSplitDescription (0.00s)
+    --- PASS: TestSplitDescription/empty_string (0.00s)
+    --- PASS: TestSplitDescription/paragraphs_with_double_newlines (0.00s)
+    --- PASS: TestSplitDescription/with_bullet_markers (0.00s)
+    --- PASS: TestSplitDescription/with_numbered_bullets (0.00s)
+    --- PASS: TestSplitDescription/single_text_no_splits (0.00s)
+    --- PASS: TestSplitDescription/with_sentences (0.00s)
+    --- PASS: TestSplitDescription/with_Windows_line_endings (0.00s)
+=== RUN   TestSplitByParagraphs
+=== RUN   TestSplitByParagraphs/normal_paragraphs
+=== RUN   TestSplitByParagraphs/Windows_line_endings
+=== RUN   TestSplitByParagraphs/single_paragraph
+--- PASS: TestSplitByParagraphs (0.00s)
+    --- PASS: TestSplitByParagraphs/normal_paragraphs (0.00s)
+    --- PASS: TestSplitByParagraphs/Windows_line_endings (0.00s)
+    --- PASS: TestSplitByParagraphs/single_paragraph (0.00s)
+=== RUN   TestSplitByBullets
+=== RUN   TestSplitByBullets/asterisk_bullets
+=== RUN   TestSplitByBullets/dash_bullets
+=== RUN   TestSplitByBullets/bullet_character
+=== RUN   TestSplitByBullets/numbered_items
+=== RUN   TestSplitByBullets/mixed_bullets
+--- PASS: TestSplitByBullets (0.00s)
+    --- PASS: TestSplitByBullets/asterisk_bullets (0.00s)
+    --- PASS: TestSplitByBullets/dash_bullets (0.00s)
+    --- PASS: TestSplitByBullets/bullet_character (0.00s)
+    --- PASS: TestSplitByBullets/numbered_items (0.00s)
+    --- PASS: TestSplitByBullets/mixed_bullets (0.00s)
+=== RUN   TestSplitBySentences
+=== RUN   TestSplitBySentences/multiple_sentences
+=== RUN   TestSplitBySentences/single_sentence
+--- PASS: TestSplitBySentences (0.00s)
+    --- PASS: TestSplitBySentences/multiple_sentences (0.00s)
+    --- PASS: TestSplitBySentences/single_sentence (0.00s)
+=== RUN   TestCleanBullets
+=== RUN   TestCleanBullets/with_trailing_periods
+=== RUN   TestCleanBullets/with_whitespace
+=== RUN   TestCleanBullets/empty_strings_filtered
+=== RUN   TestCleanBullets/no_changes_needed
+--- PASS: TestCleanBullets (0.00s)
+    --- PASS: TestCleanBullets/with_trailing_periods (0.00s)
+    --- PASS: TestCleanBullets/with_whitespace (0.00s)
+    --- PASS: TestCleanBullets/empty_strings_filtered (0.00s)
+    --- PASS: TestCleanBullets/no_changes_needed (0.00s)
+=== RUN   TestJoinBullets
+=== RUN   TestJoinBullets/default_separator
+=== RUN   TestJoinBullets/custom_separator
+=== RUN   TestJoinBullets/empty_bullets
+=== RUN   TestJoinBullets/single_bullet
+--- PASS: TestJoinBullets (0.00s)
+    --- PASS: TestJoinBullets/default_separator (0.00s)
+    --- PASS: TestJoinBullets/custom_separator (0.00s)
+    --- PASS: TestJoinBullets/empty_bullets (0.00s)
+    --- PASS: TestJoinBullets/single_bullet (0.00s)
+=== RUN   TestExtractTechStack
+=== RUN   TestExtractTechStack/US1:_Extract_tech_stack_with_'Tecnologias:'_pattern
+=== RUN   TestExtractTechStack/US1:_Extract_tech_stack_with_comma_separator
+=== RUN   TestExtractTechStack/US1:_Remove_tech_stack_bullet_from_description
+=== RUN   TestExtractTechStack/US2:_Extract_with_pipe_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_bullet_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_'Technologies:'_pattern
+=== RUN   TestExtractTechStack/US2:_Extract_with_'Tools:'_pattern
+=== RUN   TestExtractTechStack/US2:_Extract_with_'As_principais_tecnologias_e_ferramentas_utilizadas:'_pattern
+=== RUN   TestExtractTechStack/US3:_Description_without_tech_stack_-_preserve_all_bullets
+=== RUN   TestExtractTechStack/US3:_Empty_tech_stack_after_prefix
+=== RUN   TestExtractTechStack/Tech_stack_in_the_middle_-_preserve_other_bullets
+=== RUN   TestExtractTechStack/Case_insensitive_matching
+=== RUN   TestExtractTechStack/Multiple_patterns_-_use_last_one
+=== RUN   TestExtractTechStack/US2:_Extract_with_hyphen_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_semicolon_separator
+=== RUN   TestExtractTechStack/Empty_bullets
+=== RUN   TestExtractTechStack/Single_bullet_without_pattern
+=== RUN   TestExtractTechStack/Single_bullet_with_pattern
+--- PASS: TestExtractTechStack (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Extract_tech_stack_with_'Tecnologias:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Extract_tech_stack_with_comma_separator (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Remove_tech_stack_bullet_from_description (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_pipe_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_bullet_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'Technologies:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'Tools:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'As_principais_tecnologias_e_ferramentas_utilizadas:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US3:_Description_without_tech_stack_-_preserve_all_bullets (0.00s)
+    --- PASS: TestExtractTechStack/US3:_Empty_tech_stack_after_prefix (0.00s)
+    --- PASS: TestExtractTechStack/Tech_stack_in_the_middle_-_preserve_other_bullets (0.00s)
+    --- PASS: TestExtractTechStack/Case_insensitive_matching (0.00s)
+    --- PASS: TestExtractTechStack/Multiple_patterns_-_use_last_one (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_hyphen_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_semicolon_separator (0.00s)
+    --- PASS: TestExtractTechStack/Empty_bullets (0.00s)
+    --- PASS: TestExtractTechStack/Single_bullet_without_pattern (0.00s)
+    --- PASS: TestExtractTechStack/Single_bullet_with_pattern (0.00s)
+=== RUN   TestParseTechStack
+=== RUN   TestParseTechStack/Comma_separator
+=== RUN   TestParseTechStack/Semicolon_separator
+=== RUN   TestParseTechStack/Pipe_separator
+=== RUN   TestParseTechStack/Bullet_separator
+=== RUN   TestParseTechStack/Hyphen_separator
+=== RUN   TestParseTechStack/Mixed_separators
+=== RUN   TestParseTechStack/Empty_input
+=== RUN   TestParseTechStack/Single_tech
+=== RUN   TestParseTechStack/With_trailing_period
+=== RUN   TestParseTechStack/With_extra_spaces
+--- PASS: TestParseTechStack (0.00s)
+    --- PASS: TestParseTechStack/Comma_separator (0.00s)
+    --- PASS: TestParseTechStack/Semicolon_separator (0.00s)
+    --- PASS: TestParseTechStack/Pipe_separator (0.00s)
+    --- PASS: TestParseTechStack/Bullet_separator (0.00s)
+    --- PASS: TestParseTechStack/Hyphen_separator (0.00s)
+    --- PASS: TestParseTechStack/Mixed_separators (0.00s)
+    --- PASS: TestParseTechStack/Empty_input (0.00s)
+    --- PASS: TestParseTechStack/Single_tech (0.00s)
+    --- PASS: TestParseTechStack/With_trailing_period (0.00s)
+    --- PASS: TestParseTechStack/With_extra_spaces (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/transformer	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/ui	[no test files]
+=== RUN   TestLoad_ValidConfig
+--- PASS: TestLoad_ValidConfig (0.00s)
+=== RUN   TestLoad_FileNotFound
+--- PASS: TestLoad_FileNotFound (0.00s)
+=== RUN   TestLoad_InvalidYAML
+--- PASS: TestLoad_InvalidYAML (0.00s)
+=== RUN   TestLoad_EmptyParagraphs
+--- PASS: TestLoad_EmptyParagraphs (0.00s)
+=== RUN   TestLoad_AboutWithEmptyLines
+--- PASS: TestLoad_AboutWithEmptyLines (0.00s)
+=== RUN   TestSplitParagraphs
+=== RUN   TestSplitParagraphs/multiple_paragraphs
+=== RUN   TestSplitParagraphs/empty_lines
+=== RUN   TestSplitParagraphs/whitespace_trimming
+=== RUN   TestSplitParagraphs/empty_string
+=== RUN   TestSplitParagraphs/only_whitespace
+=== RUN   TestSplitParagraphs/single_line
+--- PASS: TestSplitParagraphs (0.00s)
+    --- PASS: TestSplitParagraphs/multiple_paragraphs (0.00s)
+    --- PASS: TestSplitParagraphs/empty_lines (0.00s)
+    --- PASS: TestSplitParagraphs/whitespace_trimming (0.00s)
+    --- PASS: TestSplitParagraphs/empty_string (0.00s)
+    --- PASS: TestSplitParagraphs/only_whitespace (0.00s)
+    --- PASS: TestSplitParagraphs/single_line (0.00s)
+=== RUN   TestCurrentYear
+--- PASS: TestCurrentYear (0.00s)
+=== RUN   TestToTemplateData
+--- PASS: TestToTemplateData (0.00s)
+=== RUN   TestToTemplateData_EmptyAbout
+--- PASS: TestToTemplateData_EmptyAbout (0.00s)
+=== RUN   TestConfigStructs
+--- PASS: TestConfigStructs (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/internal/config	(cached)
+=== RUN   TestE2E_FullPipeline
+    e2e_test.go:80: Running import pipeline...
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 2 encontradas
+✓ Educação: 1 encontradas
+✓ Certificações: 1 encontradas
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 4 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (2):[m
+[38;5;42m[m                  [38;5;42m  + Senior Software Engineer @ TechCorp[m
+[38;5;42m[m                                       [38;5;42m  + Fullstack Developer @ WebStart[m
+[38;5;42m[m                                  
+
+[1;38;5;39m🎓 Educação[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + B.S. Computer Science at University of Technology[m
+[38;5;42m[m                                                     
+
+[1;38;5;39m📜 Certificações[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + AWS Certified Solutions Architect (Amazon Web Services)[m
+[38;5;42m[m                                                           
+
+
+✓ Modo automático: aceitando todas as mudanças.
+
+✓ Importação concluída:
+  4 adições, 0 modificações, 0 remoções
+  Experiências: 2 adições, 0 modificações, 0 remoções
+  Educação: 1 adições, 0 modificações, 0 remoções
+  Certificações: 1 adições, 0 modificações, 0 remoções
+
+✓ Configuração salva em: /tmp/claude-1000/TestE2E_FullPipeline851177083/001/config.yaml
+    e2e_test.go:86: Running site generator...
+HTML minified: 13541 bytes -> 11993 bytes (saved 1548 bytes, 11.4%)
+Minified css/main.css: 7106 -> 5366 bytes (saved 1740 bytes, 24.5%)
+Minified js/accordion.js: 5768 -> 2482 bytes (saved 3286 bytes, 57.0%)
+Minified js/app.js: 7346 -> 2950 bytes (saved 4396 bytes, 59.8%)
+Minified js/fadein.js: 1296 -> 432 bytes (saved 864 bytes, 66.7%)
+Minified js/i18n.js: 7674 -> 3268 bytes (saved 4406 bytes, 57.4%)
+Minified js/theme.js: 5389 -> 2381 bytes (saved 3008 bytes, 55.8%)
+Minified js/utils.js: 4948 -> 1464 bytes (saved 3484 bytes, 70.4%)
+Site generated successfully in public/
+    e2e_test.go:92: Full pipeline completed in 6.948429ms
+=== RUN   TestE2E_FullPipeline/Experience
+=== RUN   TestE2E_FullPipeline/Education
+=== RUN   TestE2E_FullPipeline/Certifications
+--- PASS: TestE2E_FullPipeline (0.01s)
+    --- PASS: TestE2E_FullPipeline/Experience (0.00s)
+    --- PASS: TestE2E_FullPipeline/Education (0.00s)
+    --- PASS: TestE2E_FullPipeline/Certifications (0.00s)
+=== RUN   TestRun_Success
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_Success (0.00s)
+=== RUN   TestRun_NoCNAME
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_NoCNAME (0.00s)
+=== RUN   TestRun_MissingConfig
+--- PASS: TestRun_MissingConfig (0.00s)
+=== RUN   TestRun_MissingTemplates
+--- PASS: TestRun_MissingTemplates (0.00s)
+=== RUN   TestParseTemplates
+--- PASS: TestParseTemplates (0.00s)
+=== RUN   TestParseTemplates_MissingDir
+--- PASS: TestParseTemplates_MissingDir (0.00s)
+=== RUN   TestParseTemplates_InvalidTemplate
+--- PASS: TestParseTemplates_InvalidTemplate (0.00s)
+=== RUN   TestGenerateIndex
+HTML minified: 139 bytes -> 134 bytes (saved 5 bytes, 3.6%)
+--- PASS: TestGenerateIndex (0.00s)
+=== RUN   TestCopyAssets
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+--- PASS: TestCopyAssets (0.00s)
+=== RUN   TestCopyAssets_MissingDir
+--- PASS: TestCopyAssets_MissingDir (0.00s)
+=== RUN   TestCopyCNAME
+--- PASS: TestCopyCNAME (0.00s)
+=== RUN   TestCopyCNAME_MissingFile
+--- PASS: TestCopyCNAME_MissingFile (0.00s)
+=== RUN   TestCopyDir
+--- PASS: TestCopyDir (0.00s)
+=== RUN   TestCopyDir_MissingSource
+--- PASS: TestCopyDir_MissingSource (0.00s)
+=== RUN   TestCopyFile
+--- PASS: TestCopyFile (0.00s)
+=== RUN   TestCopyFile_MissingSource
+--- PASS: TestCopyFile_MissingSource (0.00s)
+=== RUN   TestCopyFile_InvalidDestination
+--- PASS: TestCopyFile_InvalidDestination (0.00s)
+=== RUN   TestTemplateAutoEscaping
+--- PASS: TestTemplateAutoEscaping (0.00s)
+=== RUN   TestMainFunction
+--- PASS: TestMainFunction (0.01s)
+=== RUN   TestRun_GenerateIndexError
+--- PASS: TestRun_GenerateIndexError (0.00s)
+=== RUN   TestGenerateIndex_TemplateDataTypes
+=== RUN   TestGenerateIndex_TemplateDataTypes/empty_data
+HTML minified: 121 bytes -> 116 bytes (saved 5 bytes, 4.1%)
+=== RUN   TestGenerateIndex_TemplateDataTypes/full_data
+HTML minified: 155 bytes -> 151 bytes (saved 4 bytes, 2.6%)
+=== RUN   TestGenerateIndex_TemplateDataTypes/with_content
+HTML minified: 133 bytes -> 128 bytes (saved 5 bytes, 3.8%)
+--- PASS: TestGenerateIndex_TemplateDataTypes (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/empty_data (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/full_data (0.00s)
+    --- PASS: TestGenerateIndex_TemplateDataTypes/with_content (0.00s)
+=== RUN   TestCopyCNAME_ReadError
+--- PASS: TestCopyCNAME_ReadError (0.00s)
+=== RUN   TestCopyDir_ReadDirError
+--- PASS: TestCopyDir_ReadDirError (0.00s)
+=== RUN   TestCopyFile_StatError
+--- PASS: TestCopyFile_StatError (0.00s)
+=== RUN   TestRun_FailCreatePublicDir
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_FailCreatePublicDir (0.00s)
+=== RUN   TestParseTemplates_NonHTMLFiles
+--- PASS: TestParseTemplates_NonHTMLFiles (0.00s)
+=== RUN   TestCopyAssets_NestedDirs
+Minified js/utils/helper.js: 9 -> 0 bytes (saved 9 bytes, 100.0%)
+--- PASS: TestCopyAssets_NestedDirs (0.00s)
+=== RUN   TestCopyCNAME_WriteError
+--- PASS: TestCopyCNAME_WriteError (0.00s)
+=== RUN   TestGenerateIndex_CreateFileError
+--- PASS: TestGenerateIndex_CreateFileError (0.00s)
+=== RUN   TestRunWithExitCode
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+Error: failed to load config: failed to read config file: open config.yaml: no such file or directory
+--- PASS: TestRunWithExitCode (0.00s)
+=== RUN   TestCopyAndMinifyDir_RecursiveError
+--- PASS: TestCopyAndMinifyDir_RecursiveError (0.00s)
+=== RUN   TestCopyAndMinifyDir_FileError
+--- PASS: TestCopyAndMinifyDir_FileError (0.00s)
+=== RUN   TestCopyDir_NestedErrors
+--- PASS: TestCopyDir_NestedErrors (0.00s)
+=== RUN   TestParseTemplates_FileReadError
+--- PASS: TestParseTemplates_FileReadError (0.00s)
+=== RUN   TestRun_CopyCNAMEError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+Site generated successfully in public/
+--- PASS: TestRun_CopyCNAMEError (0.00s)
+=== RUN   TestRun_CopyCNAME_ReturnsError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+Minified css/main.css: 22 -> 16 bytes (saved 6 bytes, 27.3%)
+Minified js/app.js: 20 -> 19 bytes (saved 1 bytes, 5.0%)
+--- PASS: TestRun_CopyCNAME_ReturnsError (0.00s)
+=== RUN   TestCopyCNAME_ReadErrorAfterStat
+--- PASS: TestCopyCNAME_ReadErrorAfterStat (0.00s)
+=== RUN   TestCopyAndMinifyDir_MkdirAllError
+--- PASS: TestCopyAndMinifyDir_MkdirAllError (0.00s)
+=== RUN   TestCopyAndMinifyFile_ReadError
+--- PASS: TestCopyAndMinifyFile_ReadError (0.00s)
+=== RUN   TestGenerateIndex_TemplateExecutionError
+--- PASS: TestGenerateIndex_TemplateExecutionError (0.00s)
+=== RUN   TestParseTemplates_WalkError
+--- PASS: TestParseTemplates_WalkError (0.00s)
+=== RUN   TestCopyAssets_ErrorInCopyAndMinify
+--- PASS: TestCopyAssets_ErrorInCopyAndMinify (0.00s)
+=== RUN   TestCopyAndMinifyFile_WithJSONLD
+Minified : 78 -> 64 bytes (saved 14 bytes, 17.9%)
+--- PASS: TestCopyAndMinifyFile_WithJSONLD (0.00s)
+=== RUN   TestCopyAndMinifyFile_UnsupportedExtension
+--- PASS: TestCopyAndMinifyFile_UnsupportedExtension (0.00s)
+=== RUN   TestCopyAndMinifyFile_NoSavings
+--- PASS: TestCopyAndMinifyFile_NoSavings (0.00s)
+=== RUN   TestRun_FailToCreatePublicDir
+--- PASS: TestRun_FailToCreatePublicDir (0.00s)
+=== RUN   TestCopyAndMinifyFile_MinificationError
+--- PASS: TestCopyAndMinifyFile_MinificationError (0.00s)
+=== RUN   TestCopyAndMinifyFile_HTMLExtension
+Minified : 66 -> 53 bytes (saved 13 bytes, 19.7%)
+--- PASS: TestCopyAndMinifyFile_HTMLExtension (0.00s)
+=== RUN   TestCopyAndMinifyFile_JSONExtension
+Minified : 34 -> 25 bytes (saved 9 bytes, 26.5%)
+--- PASS: TestCopyAndMinifyFile_JSONExtension (0.00s)
+=== RUN   TestCopyAndMinifyDir_CopyFileError
+--- PASS: TestCopyAndMinifyDir_CopyFileError (0.00s)
+=== RUN   TestParseTemplates_ParseError
+--- PASS: TestParseTemplates_ParseError (0.00s)
+=== RUN   TestCopyAndMinifyDir_StatError
+--- PASS: TestCopyAndMinifyDir_StatError (0.00s)
+=== RUN   TestRun_CopyAssetsError
+HTML minified: 154 bytes -> 150 bytes (saved 4 bytes, 2.6%)
+--- PASS: TestRun_CopyAssetsError (0.00s)
+=== RUN   TestGenerateIndex_MinificationFallback
+HTML minified: 125 bytes -> 120 bytes (saved 5 bytes, 4.0%)
+--- PASS: TestGenerateIndex_MinificationFallback (0.00s)
+=== RUN   TestParseTemplates_ReadFileError
+    main_test.go:1920: Expected error occurred: failed to read template templates/test.html: open templates/test.html: permission denied
+--- PASS: TestParseTemplates_ReadFileError (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/generator	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin	[no test files]
+=== RUN   TestExecute_Validate
+🔍 Validando arquivos CSV...
+
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestExecute_Validate (0.00s)
+=== RUN   TestConfig_Defaults
+--- PASS: TestConfig_Defaults (0.00s)
+=== RUN   TestRunImport_MissingFiles
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Experiências: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles4115544641/001/missing_exp.csv)
+⚠ Educação: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles4115544641/001/missing_edu.csv)
+⚠ Certificações: arquivo não encontrado (/tmp/claude-1000/TestRunImport_MissingFiles4115544641/001/missing_cert.csv)
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestRunImport_MissingFiles (0.00s)
+=== RUN   TestRunImport_DryRun
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: failed to create CSV reader: failed to read CSV header: EOF
+  - education: failed to create CSV reader: failed to read CSV header: EOF
+  - certifications: failed to create CSV reader: failed to read CSV header: EOF
+
+⚠ Criando novo config.yaml (arquivo atual não pôde ser lido: failed to parse config file: yaml: unmarshal errors:
+  line 1: cannot unmarshal !!str `initial...` into models.ConfigPortfolio)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_DryRun (0.00s)
+=== RUN   TestRunImport_WithValidFiles
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 1 encontradas
+✓ Educação: 1 encontradas
+✓ Certificações: 1 encontradas
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 3 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + Engineer @ Acme Corp[m
+[38;5;42m[m                        
+
+[1;38;5;39m🎓 Educação[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + BSc at MIT[m
+[38;5;42m[m              
+
+[1;38;5;39m📜 Certificações[m
+
+[38;5;42m+ Adicionadas (1):[m
+[38;5;42m[m                  [38;5;42m  + AWS Cert (Amazon)[m
+[38;5;42m[m                     
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_WithValidFiles (0.00s)
+=== RUN   TestRunImport_WithBackup
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+✓ Experiências: 2 encontradas
+
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 2 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+[1;38;5;39m💼 Experiências[m
+
+[38;5;42m+ Adicionadas (2):[m
+[38;5;42m[m                  [38;5;42m  + Engineer @ Acme Corp[m
+[38;5;42m[m                        [38;5;42m  + Dev @ Tech Inc[m
+[38;5;42m[m                  
+
+
+✓ Modo automático: aceitando todas as mudanças.
+✓ Backup criado: /tmp/claude-1000/TestRunImport_WithBackup2430164158/001/config.backup.20260531_135827.yaml
+
+✓ Importação concluída:
+  2 adições, 0 modificações, 0 remoções
+  Experiências: 2 adições, 0 modificações, 0 remoções
+
+✓ Configuração salva em: /tmp/claude-1000/TestRunImport_WithBackup2430164158/001/config.yaml
+--- PASS: TestRunImport_WithBackup (0.00s)
+=== RUN   TestRunImport_ParseErrors
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+
+⚠ Erros encontrados durante o parsing:
+  - experiences: missing required columns: [Company Name Title Started On]
+  - education: missing required columns: [School Name Degree Name]
+  - certifications: missing required columns: [Name Authority]
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+📋 Modo dry-run: nenhuma alteração foi aplicada.
+--- PASS: TestRunImport_ParseErrors (0.00s)
+=== RUN   TestExecute_UnknownCommand
+Unknown command: unknown
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+--- PASS: TestExecute_UnknownCommand (0.00s)
+=== RUN   TestExecute_Help
+=== RUN   TestExecute_Help/help_command
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+=== RUN   TestExecute_Help/--help_flag
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+=== RUN   TestExecute_Help/-h_flag
+LinkedIn Import CLI
+
+Usage:
+  linkedin-import <command> [flags]
+
+Commands:
+  import     Import data from LinkedIn CSV files
+  validate   Validate CSV files without importing
+  version    Show version information
+  help       Show this help message
+
+Use "linkedin-import <command> --help" for more information about a command.
+--- PASS: TestExecute_Help (0.00s)
+    --- PASS: TestExecute_Help/help_command (0.00s)
+    --- PASS: TestExecute_Help/--help_flag (0.00s)
+    --- PASS: TestExecute_Help/-h_flag (0.00s)
+=== RUN   TestExecute_Version
+linkedin-import version 1.0.0
+Go version: go1.26.2
+--- PASS: TestExecute_Version (0.00s)
+=== RUN   TestExecute_NoArgs
+📊 Análise de Dados do LinkedIn
+════════════════════════════════════════
+
+⚠ Experiências: arquivo não encontrado (Experiences.csv)
+⚠ Educação: arquivo não encontrado (Education.csv)
+⚠ Certificações: arquivo não encontrado (Certifications.csv)
+
+⚠ Criando novo config.yaml (arquivo não existe)
+📋 Comparando com config.yaml atual...
+
+[1;38;5;39m📊 Resumo de Mudanças[m
+────────────────────────────────────────
+[38;5;42m➕ Novas: 0 entradas[m
+[38;5;220m✏️  Modificadas: 0 entradas[m
+[38;5;196m➖ Removidas: 0 entradas[m
+
+
+✓ Nenhuma mudança detectada. Config.yaml já está atualizado.
+--- PASS: TestExecute_NoArgs (0.00s)
+=== RUN   TestExecute_VersionExtended
+linkedin-import version 1.0.0
+Go version: go1.26.2
+--- PASS: TestExecute_VersionExtended (0.00s)
+=== RUN   TestPrintVersionExtended
+LinkedIn Import CLI
+Version: 1.0.0
+Build Date: 2026-04-26
+Go version: go1.26.2
+
+For help, run: linkedin-import help
+--- PASS: TestPrintVersionExtended (0.00s)
+=== RUN   TestRunValidate_MalformedCSV
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv: missing required columns: [Company Name Started On]
+
+--- PASS: TestRunValidate_MalformedCSV (0.00s)
+=== RUN   TestRunValidate_ValidCSV
+🔍 Validando arquivos CSV...
+
+✓ Experiences.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_ValidCSV (0.00s)
+=== RUN   TestRunValidate_WithEducation
+🔍 Validando arquivos CSV...
+
+✓ Education.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_WithEducation (0.00s)
+=== RUN   TestRunValidate_WithCertifications
+🔍 Validando arquivos CSV...
+
+✓ Certifications.csv: 1 entradas válidas
+
+✓ Todos os arquivos são válidos!
+--- PASS: TestRunValidate_WithCertifications (0.00s)
+=== RUN   TestRunValidate_WithParseError
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv: missing required columns: [Company Name Title Started On]
+
+--- PASS: TestRunValidate_WithParseError (0.00s)
+=== RUN   TestRunValidate_WithValidationErrors
+🔍 Validando arquivos CSV...
+
+✗ Experiences.csv:
+  - parse error at line 2, column 'Company Name': cannot be empty
+
+--- PASS: TestRunValidate_WithValidationErrors (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/commands	(cached)
+=== RUN   TestApplyChanges
+--- PASS: TestApplyChanges (0.00s)
+=== RUN   TestApplyChanges_NilPointers
+--- PASS: TestApplyChanges_NilPointers (0.00s)
+=== RUN   TestApplyChanges_Comprehensive
+--- PASS: TestApplyChanges_Comprehensive (0.00s)
+=== RUN   TestMergeConfigs
+=== RUN   TestMergeConfigs/all_overridden
+=== RUN   TestMergeConfigs/some_overridden
+=== RUN   TestMergeConfigs/none_overridden
+--- PASS: TestMergeConfigs (0.00s)
+    --- PASS: TestMergeConfigs/all_overridden (0.00s)
+    --- PASS: TestMergeConfigs/some_overridden (0.00s)
+    --- PASS: TestMergeConfigs/none_overridden (0.00s)
+=== RUN   TestGetImportResult
+--- PASS: TestGetImportResult (0.00s)
+=== RUN   TestPrintImportResult
+
+✓ Importação concluída:
+  3 adições, 0 modificações, 0 remoções
+  Experiências: 1 adições, 0 modificações, 0 remoções
+  Educação: 1 adições, 0 modificações, 0 remoções
+  Certificações: 1 adições, 0 modificações, 0 remoções
+--- PASS: TestPrintImportResult (0.00s)
+=== RUN   TestCompareExperiences
+--- PASS: TestCompareExperiences (0.00s)
+=== RUN   TestCompareExperiences_WithModifications
+--- PASS: TestCompareExperiences_WithModifications (0.00s)
+=== RUN   TestCompareEducation
+=== RUN   TestCompareEducation/added_and_removed
+=== RUN   TestCompareEducation/modified
+=== RUN   TestCompareEducation/identical
+=== RUN   TestCompareEducation/all_removed
+--- PASS: TestCompareEducation (0.00s)
+    --- PASS: TestCompareEducation/added_and_removed (0.00s)
+    --- PASS: TestCompareEducation/modified (0.00s)
+    --- PASS: TestCompareEducation/identical (0.00s)
+    --- PASS: TestCompareEducation/all_removed (0.00s)
+=== RUN   TestCompareCertifications
+=== RUN   TestCompareCertifications/added_and_removed
+=== RUN   TestCompareCertifications/modified
+=== RUN   TestCompareCertifications/identical
+=== RUN   TestCompareCertifications/all_removed
+--- PASS: TestCompareCertifications (0.00s)
+    --- PASS: TestCompareCertifications/added_and_removed (0.00s)
+    --- PASS: TestCompareCertifications/modified (0.00s)
+    --- PASS: TestCompareCertifications/identical (0.00s)
+    --- PASS: TestCompareCertifications/all_removed (0.00s)
+=== RUN   TestNewDiff
+--- PASS: TestNewDiff (0.00s)
+=== RUN   TestDiff_HasChanges
+=== RUN   TestDiff_HasChanges/empty_diff
+=== RUN   TestDiff_HasChanges/with_added
+=== RUN   TestDiff_HasChanges/with_modified
+=== RUN   TestDiff_HasChanges/with_removed
+--- PASS: TestDiff_HasChanges (0.00s)
+    --- PASS: TestDiff_HasChanges/empty_diff (0.00s)
+    --- PASS: TestDiff_HasChanges/with_added (0.00s)
+    --- PASS: TestDiff_HasChanges/with_modified (0.00s)
+    --- PASS: TestDiff_HasChanges/with_removed (0.00s)
+=== RUN   TestGetChangedFields
+=== RUN   TestGetChangedFields/no_changes
+=== RUN   TestGetChangedFields/all_changes
+=== RUN   TestGetChangedFields/some_changes
+--- PASS: TestGetChangedFields (0.00s)
+    --- PASS: TestGetChangedFields/no_changes (0.00s)
+    --- PASS: TestGetChangedFields/all_changes (0.00s)
+    --- PASS: TestGetChangedFields/some_changes (0.00s)
+=== RUN   TestFormatID
+=== RUN   TestFormatID/experience
+=== RUN   TestFormatID/experience_pointer
+=== RUN   TestFormatID/experience_pointer_nil
+=== RUN   TestFormatID/education
+=== RUN   TestFormatID/education_pointer
+=== RUN   TestFormatID/education_pointer_nil
+=== RUN   TestFormatID/certification
+=== RUN   TestFormatID/certification_pointer
+=== RUN   TestFormatID/certification_pointer_nil
+=== RUN   TestFormatID/unknown
+--- PASS: TestFormatID (0.00s)
+    --- PASS: TestFormatID/experience (0.00s)
+    --- PASS: TestFormatID/experience_pointer (0.00s)
+    --- PASS: TestFormatID/experience_pointer_nil (0.00s)
+    --- PASS: TestFormatID/education (0.00s)
+    --- PASS: TestFormatID/education_pointer (0.00s)
+    --- PASS: TestFormatID/education_pointer_nil (0.00s)
+    --- PASS: TestFormatID/certification (0.00s)
+    --- PASS: TestFormatID/certification_pointer (0.00s)
+    --- PASS: TestFormatID/certification_pointer_nil (0.00s)
+    --- PASS: TestFormatID/unknown (0.00s)
+=== RUN   TestEqualityHelpers
+=== RUN   TestEqualityHelpers/experiencesEqual
+=== RUN   TestEqualityHelpers/educationEqual
+=== RUN   TestEqualityHelpers/certificationsEqual
+--- PASS: TestEqualityHelpers (0.00s)
+    --- PASS: TestEqualityHelpers/experiencesEqual (0.00s)
+    --- PASS: TestEqualityHelpers/educationEqual (0.00s)
+    --- PASS: TestEqualityHelpers/certificationsEqual (0.00s)
+=== RUN   TestCompareAll
+--- PASS: TestCompareAll (0.00s)
+=== RUN   TestIDGenerator
+=== RUN   TestIDGenerator/experience
+=== RUN   TestIDGenerator/experience_pointer
+=== RUN   TestIDGenerator/experience_pointer_nil
+=== RUN   TestIDGenerator/education
+=== RUN   TestIDGenerator/education_pointer
+=== RUN   TestIDGenerator/education_pointer_nil
+=== RUN   TestIDGenerator/certification
+=== RUN   TestIDGenerator/certification_pointer
+=== RUN   TestIDGenerator/certification_pointer_nil
+=== RUN   TestIDGenerator/unknown_entity
+=== RUN   TestIDGenerator/nil_entity
+--- PASS: TestIDGenerator (0.00s)
+    --- PASS: TestIDGenerator/experience (0.00s)
+    --- PASS: TestIDGenerator/experience_pointer (0.00s)
+    --- PASS: TestIDGenerator/experience_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/education (0.00s)
+    --- PASS: TestIDGenerator/education_pointer (0.00s)
+    --- PASS: TestIDGenerator/education_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/certification (0.00s)
+    --- PASS: TestIDGenerator/certification_pointer (0.00s)
+    --- PASS: TestIDGenerator/certification_pointer_nil (0.00s)
+    --- PASS: TestIDGenerator/unknown_entity (0.00s)
+    --- PASS: TestIDGenerator/nil_entity (0.00s)
+=== RUN   TestGetEntityType
+=== RUN   TestGetEntityType/experience
+=== RUN   TestGetEntityType/experience_pointer
+=== RUN   TestGetEntityType/education
+=== RUN   TestGetEntityType/education_pointer
+=== RUN   TestGetEntityType/certification
+=== RUN   TestGetEntityType/certification_pointer
+=== RUN   TestGetEntityType/unknown
+=== RUN   TestGetEntityType/nil
+--- PASS: TestGetEntityType (0.00s)
+    --- PASS: TestGetEntityType/experience (0.00s)
+    --- PASS: TestGetEntityType/experience_pointer (0.00s)
+    --- PASS: TestGetEntityType/education (0.00s)
+    --- PASS: TestGetEntityType/education_pointer (0.00s)
+    --- PASS: TestGetEntityType/certification (0.00s)
+    --- PASS: TestGetEntityType/certification_pointer (0.00s)
+    --- PASS: TestGetEntityType/unknown (0.00s)
+    --- PASS: TestGetEntityType/nil (0.00s)
+=== RUN   TestGenerateIDs
+--- PASS: TestGenerateIDs (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/comparator	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/config	[no test files]
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/integration	[no test files]
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/models	[no test files]
+=== RUN   TestNewCertificationParser
+=== RUN   TestNewCertificationParser/valid_file
+=== RUN   TestNewCertificationParser/missing_required_column
+=== RUN   TestNewCertificationParser/non-existent_file
+--- PASS: TestNewCertificationParser (0.00s)
+    --- PASS: TestNewCertificationParser/valid_file (0.00s)
+    --- PASS: TestNewCertificationParser/missing_required_column (0.00s)
+    --- PASS: TestNewCertificationParser/non-existent_file (0.00s)
+=== RUN   TestNewCertificationParserFromReader
+=== RUN   TestNewCertificationParserFromReader/invalid_csv_header
+=== RUN   TestNewCertificationParserFromReader/simulated_read_error
+--- PASS: TestNewCertificationParserFromReader (0.00s)
+    --- PASS: TestNewCertificationParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewCertificationParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestCertificationParser_ParseAll
+=== RUN   TestCertificationParser_ParseAll/valid_data
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_name
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'name': cannot be empty
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_organization
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'organization': cannot be empty
+=== RUN   TestCertificationParser_ParseAll/invalid_row_-_missing_issue_date
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'issue_date': cannot be empty
+--- PASS: TestCertificationParser_ParseAll (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/valid_data (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_name (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_organization (0.00s)
+    --- PASS: TestCertificationParser_ParseAll/invalid_row_-_missing_issue_date (0.00s)
+=== RUN   TestCertificationParser_Close
+--- PASS: TestCertificationParser_Close (0.00s)
+=== RUN   TestCertificationParser_Validate
+=== RUN   TestCertificationParser_Validate/valid_data
+=== RUN   TestCertificationParser_Validate/missing_name
+=== RUN   TestCertificationParser_Validate/missing_organization
+=== RUN   TestCertificationParser_Validate/invalid_date_format
+=== RUN   TestCertificationParser_Validate/multiple_errors
+--- PASS: TestCertificationParser_Validate (0.00s)
+    --- PASS: TestCertificationParser_Validate/valid_data (0.00s)
+    --- PASS: TestCertificationParser_Validate/missing_name (0.00s)
+    --- PASS: TestCertificationParser_Validate/missing_organization (0.00s)
+    --- PASS: TestCertificationParser_Validate/invalid_date_format (0.00s)
+    --- PASS: TestCertificationParser_Validate/multiple_errors (0.00s)
+=== RUN   TestCertificationParser_ReadFailure
+=== RUN   TestCertificationParser_ReadFailure/ParseAll_failure
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'issue_date': cannot be empty
+=== RUN   TestCertificationParser_ReadFailure/Validate_failure
+--- PASS: TestCertificationParser_ReadFailure (0.00s)
+    --- PASS: TestCertificationParser_ReadFailure/ParseAll_failure (0.00s)
+    --- PASS: TestCertificationParser_ReadFailure/Validate_failure (0.00s)
+=== RUN   TestCertification_Validate
+=== RUN   TestCertification_Validate/valid_certification
+=== RUN   TestCertification_Validate/missing_name
+=== RUN   TestCertification_Validate/missing_organization
+=== RUN   TestCertification_Validate/missing_issue_date
+--- PASS: TestCertification_Validate (0.00s)
+    --- PASS: TestCertification_Validate/valid_certification (0.00s)
+    --- PASS: TestCertification_Validate/missing_name (0.00s)
+    --- PASS: TestCertification_Validate/missing_organization (0.00s)
+    --- PASS: TestCertification_Validate/missing_issue_date (0.00s)
+=== RUN   TestNewCSVReaderFromIO
+=== RUN   TestNewCSVReaderFromIO/valid_csv
+=== RUN   TestNewCSVReaderFromIO/empty_input
+=== RUN   TestNewCSVReaderFromIO/only_header
+--- PASS: TestNewCSVReaderFromIO (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/valid_csv (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/empty_input (0.00s)
+    --- PASS: TestNewCSVReaderFromIO/only_header (0.00s)
+=== RUN   TestCSVReader_Next
+=== RUN   TestCSVReader_Next/regular_records
+=== RUN   TestCSVReader_Next/irregular_records_(too_short)
+=== RUN   TestCSVReader_Next/irregular_records_(too_long)
+--- PASS: TestCSVReader_Next (0.00s)
+    --- PASS: TestCSVReader_Next/regular_records (0.00s)
+    --- PASS: TestCSVReader_Next/irregular_records_(too_short) (0.00s)
+    --- PASS: TestCSVReader_Next/irregular_records_(too_long) (0.00s)
+=== RUN   TestCSVReader_GetHeader
+--- PASS: TestCSVReader_GetHeader (0.00s)
+=== RUN   TestCSVReader_HasColumn
+--- PASS: TestCSVReader_HasColumn (0.00s)
+=== RUN   TestCSVReader_Close
+--- PASS: TestCSVReader_Close (0.00s)
+=== RUN   TestCSVReader_ValidateColumns
+=== RUN   TestCSVReader_ValidateColumns/all_present
+=== RUN   TestCSVReader_ValidateColumns/some_missing
+=== RUN   TestCSVReader_ValidateColumns/all_missing
+--- PASS: TestCSVReader_ValidateColumns (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/all_present (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/some_missing (0.00s)
+    --- PASS: TestCSVReader_ValidateColumns/all_missing (0.00s)
+=== RUN   TestNewCSVReader
+=== RUN   TestNewCSVReader/valid_file
+=== RUN   TestNewCSVReader/non-existent_file
+--- PASS: TestNewCSVReader (0.00s)
+    --- PASS: TestNewCSVReader/valid_file (0.00s)
+    --- PASS: TestNewCSVReader/non-existent_file (0.00s)
+=== RUN   TestConvertDate
+=== RUN   TestConvertDate/empty
+=== RUN   TestConvertDate/present_lowercase
+=== RUN   TestConvertDate/present_uppercase
+=== RUN   TestConvertDate/present_mixed_case
+=== RUN   TestConvertDate/present_with_spaces
+=== RUN   TestConvertDate/single_date_Jan
+=== RUN   TestConvertDate/single_date_Feb
+=== RUN   TestConvertDate/single_date_Apr
+=== RUN   TestConvertDate/single_date_Aug
+=== RUN   TestConvertDate/single_date_Sep
+=== RUN   TestConvertDate/single_date_Oct
+=== RUN   TestConvertDate/single_date_Dec
+=== RUN   TestConvertDate/year_only
+=== RUN   TestConvertDate/range_Jan-Mar
+=== RUN   TestConvertDate/range_Feb-Apr
+=== RUN   TestConvertDate/range_year-year
+=== RUN   TestConvertDate/range_Present
+=== RUN   TestConvertDate/invalid_format
+=== RUN   TestConvertDate/wrong_month_length
+=== RUN   TestConvertDate/wrong_year_length
+--- PASS: TestConvertDate (0.00s)
+    --- PASS: TestConvertDate/empty (0.00s)
+    --- PASS: TestConvertDate/present_lowercase (0.00s)
+    --- PASS: TestConvertDate/present_uppercase (0.00s)
+    --- PASS: TestConvertDate/present_mixed_case (0.00s)
+    --- PASS: TestConvertDate/present_with_spaces (0.00s)
+    --- PASS: TestConvertDate/single_date_Jan (0.00s)
+    --- PASS: TestConvertDate/single_date_Feb (0.00s)
+    --- PASS: TestConvertDate/single_date_Apr (0.00s)
+    --- PASS: TestConvertDate/single_date_Aug (0.00s)
+    --- PASS: TestConvertDate/single_date_Sep (0.00s)
+    --- PASS: TestConvertDate/single_date_Oct (0.00s)
+    --- PASS: TestConvertDate/single_date_Dec (0.00s)
+    --- PASS: TestConvertDate/year_only (0.00s)
+    --- PASS: TestConvertDate/range_Jan-Mar (0.00s)
+    --- PASS: TestConvertDate/range_Feb-Apr (0.00s)
+    --- PASS: TestConvertDate/range_year-year (0.00s)
+    --- PASS: TestConvertDate/range_Present (0.00s)
+    --- PASS: TestConvertDate/invalid_format (0.00s)
+    --- PASS: TestConvertDate/wrong_month_length (0.00s)
+    --- PASS: TestConvertDate/wrong_year_length (0.00s)
+=== RUN   TestValidateDate
+=== RUN   TestValidateDate/empty
+=== RUN   TestValidateDate/present
+=== RUN   TestValidateDate/presente
+=== RUN   TestValidateDate/single_date
+=== RUN   TestValidateDate/year_only
+=== RUN   TestValidateDate/range_valid
+=== RUN   TestValidateDate/range_present
+=== RUN   TestValidateDate/range_invalid
+=== RUN   TestValidateDate/invalid_date
+=== RUN   TestValidateDate/invalid_month
+=== RUN   TestValidateDate/invalid_year
+=== RUN   TestValidateDate/random_text
+--- PASS: TestValidateDate (0.00s)
+    --- PASS: TestValidateDate/empty (0.00s)
+    --- PASS: TestValidateDate/present (0.00s)
+    --- PASS: TestValidateDate/presente (0.00s)
+    --- PASS: TestValidateDate/single_date (0.00s)
+    --- PASS: TestValidateDate/year_only (0.00s)
+    --- PASS: TestValidateDate/range_valid (0.00s)
+    --- PASS: TestValidateDate/range_present (0.00s)
+    --- PASS: TestValidateDate/range_invalid (0.00s)
+    --- PASS: TestValidateDate/invalid_date (0.00s)
+    --- PASS: TestValidateDate/invalid_month (0.00s)
+    --- PASS: TestValidateDate/invalid_year (0.00s)
+    --- PASS: TestValidateDate/random_text (0.00s)
+=== RUN   TestParseDateRange
+=== RUN   TestParseDateRange/empty
+=== RUN   TestParseDateRange/single_date
+=== RUN   TestParseDateRange/valid_range
+=== RUN   TestParseDateRange/range_with_spaces
+=== RUN   TestParseDateRange/range_with_present
+--- PASS: TestParseDateRange (0.00s)
+    --- PASS: TestParseDateRange/empty (0.00s)
+    --- PASS: TestParseDateRange/single_date (0.00s)
+    --- PASS: TestParseDateRange/valid_range (0.00s)
+    --- PASS: TestParseDateRange/range_with_spaces (0.00s)
+    --- PASS: TestParseDateRange/range_with_present (0.00s)
+=== RUN   TestNewEducationParser
+=== RUN   TestNewEducationParser/valid_file
+=== RUN   TestNewEducationParser/missing_required_column
+=== RUN   TestNewEducationParser/non-existent_file
+--- PASS: TestNewEducationParser (0.00s)
+    --- PASS: TestNewEducationParser/valid_file (0.00s)
+    --- PASS: TestNewEducationParser/missing_required_column (0.00s)
+    --- PASS: TestNewEducationParser/non-existent_file (0.00s)
+=== RUN   TestNewEducationParserFromReader
+=== RUN   TestNewEducationParserFromReader/invalid_csv_header
+=== RUN   TestNewEducationParserFromReader/simulated_read_error
+--- PASS: TestNewEducationParserFromReader (0.00s)
+    --- PASS: TestNewEducationParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewEducationParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestEducationParser_Close
+--- PASS: TestEducationParser_Close (0.00s)
+=== RUN   TestEducationParser_ParseAll
+--- PASS: TestEducationParser_ParseAll (0.00s)
+=== RUN   TestEducationParser_Validate
+=== RUN   TestEducationParser_Validate/valid_data
+=== RUN   TestEducationParser_Validate/missing_institution
+=== RUN   TestEducationParser_Validate/missing_degree
+=== RUN   TestEducationParser_Validate/missing_both_dates
+--- PASS: TestEducationParser_Validate (0.00s)
+    --- PASS: TestEducationParser_Validate/valid_data (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_institution (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_degree (0.00s)
+    --- PASS: TestEducationParser_Validate/missing_both_dates (0.00s)
+=== RUN   TestEducationParser_ParseAll_Errors
+=== RUN   TestEducationParser_ParseAll_Errors/invalid_row_-_missing_school
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'institution': cannot be empty
+=== RUN   TestEducationParser_ParseAll_Errors/invalid_row_-_missing_degree
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'degree': cannot be empty
+--- PASS: TestEducationParser_ParseAll_Errors (0.00s)
+    --- PASS: TestEducationParser_ParseAll_Errors/invalid_row_-_missing_school (0.00s)
+    --- PASS: TestEducationParser_ParseAll_Errors/invalid_row_-_missing_degree (0.00s)
+=== RUN   TestEducationParser_Validate_Errors
+=== RUN   TestEducationParser_Validate_Errors/ParseAll_failure
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'dates': at least one date (start or end) must be present
+--- PASS: TestEducationParser_Validate_Errors (0.00s)
+    --- PASS: TestEducationParser_Validate_Errors/ParseAll_failure (0.00s)
+=== RUN   TestEducation_Validate
+=== RUN   TestEducation_Validate/valid_education
+=== RUN   TestEducation_Validate/missing_institution
+=== RUN   TestEducation_Validate/missing_degree
+=== RUN   TestEducation_Validate/missing_dates
+--- PASS: TestEducation_Validate (0.00s)
+    --- PASS: TestEducation_Validate/valid_education (0.00s)
+    --- PASS: TestEducation_Validate/missing_institution (0.00s)
+    --- PASS: TestEducation_Validate/missing_degree (0.00s)
+    --- PASS: TestEducation_Validate/missing_dates (0.00s)
+=== RUN   TestNewExperienceParser
+=== RUN   TestNewExperienceParser/valid_file
+=== RUN   TestNewExperienceParser/missing_required_column
+=== RUN   TestNewExperienceParser/non-existent_file
+--- PASS: TestNewExperienceParser (0.00s)
+    --- PASS: TestNewExperienceParser/valid_file (0.00s)
+    --- PASS: TestNewExperienceParser/missing_required_column (0.00s)
+    --- PASS: TestNewExperienceParser/non-existent_file (0.00s)
+=== RUN   TestNewExperienceParserFromReader
+=== RUN   TestNewExperienceParserFromReader/invalid_csv_header
+=== RUN   TestNewExperienceParserFromReader/simulated_read_error
+--- PASS: TestNewExperienceParserFromReader (0.00s)
+    --- PASS: TestNewExperienceParserFromReader/invalid_csv_header (0.00s)
+    --- PASS: TestNewExperienceParserFromReader/simulated_read_error (0.00s)
+=== RUN   TestExperienceParser_Close
+--- PASS: TestExperienceParser_Close (0.00s)
+=== RUN   TestExperienceParser_ParseAll
+--- PASS: TestExperienceParser_ParseAll (0.00s)
+=== RUN   TestExperienceParser_ParseAll_EmptyCSV
+--- PASS: TestExperienceParser_ParseAll_EmptyCSV (0.00s)
+=== RUN   TestExperienceParser_Validate
+=== RUN   TestExperienceParser_Validate/valid_data
+=== RUN   TestExperienceParser_Validate/missing_company
+=== RUN   TestExperienceParser_Validate/missing_title
+=== RUN   TestExperienceParser_Validate/invalid_date
+--- PASS: TestExperienceParser_Validate (0.00s)
+    --- PASS: TestExperienceParser_Validate/valid_data (0.00s)
+    --- PASS: TestExperienceParser_Validate/missing_company (0.00s)
+    --- PASS: TestExperienceParser_Validate/missing_title (0.00s)
+    --- PASS: TestExperienceParser_Validate/invalid_date (0.00s)
+=== RUN   TestExperienceParser_ParseAll_Errors
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_company
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'company': cannot be empty
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_title
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'title': cannot be empty
+=== RUN   TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_start_date
+⚠ Warning: skipping row 2: validation error at line 2: validation error for field 'start_date': cannot be empty
+--- PASS: TestExperienceParser_ParseAll_Errors (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_company (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_title (0.00s)
+    --- PASS: TestExperienceParser_ParseAll_Errors/invalid_row_-_missing_start_date (0.00s)
+=== RUN   TestExperienceParser_Validate_Errors
+=== RUN   TestExperienceParser_Validate_Errors/ParseAll_failure_with_read_error
+--- PASS: TestExperienceParser_Validate_Errors (0.00s)
+    --- PASS: TestExperienceParser_Validate_Errors/ParseAll_failure_with_read_error (0.00s)
+=== RUN   TestExperience_Validate
+=== RUN   TestExperience_Validate/valid_experience
+=== RUN   TestExperience_Validate/missing_company
+=== RUN   TestExperience_Validate/missing_role
+=== RUN   TestExperience_Validate/missing_start_date
+--- PASS: TestExperience_Validate (0.00s)
+    --- PASS: TestExperience_Validate/valid_experience (0.00s)
+    --- PASS: TestExperience_Validate/missing_company (0.00s)
+    --- PASS: TestExperience_Validate/missing_role (0.00s)
+    --- PASS: TestExperience_Validate/missing_start_date (0.00s)
+=== RUN   TestConvertDate_Experiences
+--- PASS: TestConvertDate_Experiences (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/parser	(cached)
+=== RUN   TestSplitDescription
+=== RUN   TestSplitDescription/empty_string
+=== RUN   TestSplitDescription/paragraphs_with_double_newlines
+=== RUN   TestSplitDescription/with_bullet_markers
+=== RUN   TestSplitDescription/with_numbered_bullets
+=== RUN   TestSplitDescription/single_text_no_splits
+=== RUN   TestSplitDescription/with_sentences
+=== RUN   TestSplitDescription/with_Windows_line_endings
+--- PASS: TestSplitDescription (0.00s)
+    --- PASS: TestSplitDescription/empty_string (0.00s)
+    --- PASS: TestSplitDescription/paragraphs_with_double_newlines (0.00s)
+    --- PASS: TestSplitDescription/with_bullet_markers (0.00s)
+    --- PASS: TestSplitDescription/with_numbered_bullets (0.00s)
+    --- PASS: TestSplitDescription/single_text_no_splits (0.00s)
+    --- PASS: TestSplitDescription/with_sentences (0.00s)
+    --- PASS: TestSplitDescription/with_Windows_line_endings (0.00s)
+=== RUN   TestSplitByParagraphs
+=== RUN   TestSplitByParagraphs/normal_paragraphs
+=== RUN   TestSplitByParagraphs/Windows_line_endings
+=== RUN   TestSplitByParagraphs/single_paragraph
+--- PASS: TestSplitByParagraphs (0.00s)
+    --- PASS: TestSplitByParagraphs/normal_paragraphs (0.00s)
+    --- PASS: TestSplitByParagraphs/Windows_line_endings (0.00s)
+    --- PASS: TestSplitByParagraphs/single_paragraph (0.00s)
+=== RUN   TestSplitByBullets
+=== RUN   TestSplitByBullets/asterisk_bullets
+=== RUN   TestSplitByBullets/dash_bullets
+=== RUN   TestSplitByBullets/bullet_character
+=== RUN   TestSplitByBullets/numbered_items
+=== RUN   TestSplitByBullets/mixed_bullets
+--- PASS: TestSplitByBullets (0.00s)
+    --- PASS: TestSplitByBullets/asterisk_bullets (0.00s)
+    --- PASS: TestSplitByBullets/dash_bullets (0.00s)
+    --- PASS: TestSplitByBullets/bullet_character (0.00s)
+    --- PASS: TestSplitByBullets/numbered_items (0.00s)
+    --- PASS: TestSplitByBullets/mixed_bullets (0.00s)
+=== RUN   TestSplitBySentences
+=== RUN   TestSplitBySentences/multiple_sentences
+=== RUN   TestSplitBySentences/single_sentence
+--- PASS: TestSplitBySentences (0.00s)
+    --- PASS: TestSplitBySentences/multiple_sentences (0.00s)
+    --- PASS: TestSplitBySentences/single_sentence (0.00s)
+=== RUN   TestCleanBullets
+=== RUN   TestCleanBullets/with_trailing_periods
+=== RUN   TestCleanBullets/with_whitespace
+=== RUN   TestCleanBullets/empty_strings_filtered
+=== RUN   TestCleanBullets/no_changes_needed
+--- PASS: TestCleanBullets (0.00s)
+    --- PASS: TestCleanBullets/with_trailing_periods (0.00s)
+    --- PASS: TestCleanBullets/with_whitespace (0.00s)
+    --- PASS: TestCleanBullets/empty_strings_filtered (0.00s)
+    --- PASS: TestCleanBullets/no_changes_needed (0.00s)
+=== RUN   TestJoinBullets
+=== RUN   TestJoinBullets/default_separator
+=== RUN   TestJoinBullets/custom_separator
+=== RUN   TestJoinBullets/empty_bullets
+=== RUN   TestJoinBullets/single_bullet
+--- PASS: TestJoinBullets (0.00s)
+    --- PASS: TestJoinBullets/default_separator (0.00s)
+    --- PASS: TestJoinBullets/custom_separator (0.00s)
+    --- PASS: TestJoinBullets/empty_bullets (0.00s)
+    --- PASS: TestJoinBullets/single_bullet (0.00s)
+=== RUN   TestExtractTechStack
+=== RUN   TestExtractTechStack/US1:_Extract_tech_stack_with_'Tecnologias:'_pattern
+=== RUN   TestExtractTechStack/US1:_Extract_tech_stack_with_comma_separator
+=== RUN   TestExtractTechStack/US1:_Remove_tech_stack_bullet_from_description
+=== RUN   TestExtractTechStack/US2:_Extract_with_pipe_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_bullet_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_'Technologies:'_pattern
+=== RUN   TestExtractTechStack/US2:_Extract_with_'Tools:'_pattern
+=== RUN   TestExtractTechStack/US2:_Extract_with_'As_principais_tecnologias_e_ferramentas_utilizadas:'_pattern
+=== RUN   TestExtractTechStack/US3:_Description_without_tech_stack_-_preserve_all_bullets
+=== RUN   TestExtractTechStack/US3:_Empty_tech_stack_after_prefix
+=== RUN   TestExtractTechStack/Tech_stack_in_the_middle_-_preserve_other_bullets
+=== RUN   TestExtractTechStack/Case_insensitive_matching
+=== RUN   TestExtractTechStack/Multiple_patterns_-_use_last_one
+=== RUN   TestExtractTechStack/US2:_Extract_with_hyphen_separator
+=== RUN   TestExtractTechStack/US2:_Extract_with_semicolon_separator
+=== RUN   TestExtractTechStack/Empty_bullets
+=== RUN   TestExtractTechStack/Single_bullet_without_pattern
+=== RUN   TestExtractTechStack/Single_bullet_with_pattern
+--- PASS: TestExtractTechStack (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Extract_tech_stack_with_'Tecnologias:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Extract_tech_stack_with_comma_separator (0.00s)
+    --- PASS: TestExtractTechStack/US1:_Remove_tech_stack_bullet_from_description (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_pipe_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_bullet_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'Technologies:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'Tools:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_'As_principais_tecnologias_e_ferramentas_utilizadas:'_pattern (0.00s)
+    --- PASS: TestExtractTechStack/US3:_Description_without_tech_stack_-_preserve_all_bullets (0.00s)
+    --- PASS: TestExtractTechStack/US3:_Empty_tech_stack_after_prefix (0.00s)
+    --- PASS: TestExtractTechStack/Tech_stack_in_the_middle_-_preserve_other_bullets (0.00s)
+    --- PASS: TestExtractTechStack/Case_insensitive_matching (0.00s)
+    --- PASS: TestExtractTechStack/Multiple_patterns_-_use_last_one (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_hyphen_separator (0.00s)
+    --- PASS: TestExtractTechStack/US2:_Extract_with_semicolon_separator (0.00s)
+    --- PASS: TestExtractTechStack/Empty_bullets (0.00s)
+    --- PASS: TestExtractTechStack/Single_bullet_without_pattern (0.00s)
+    --- PASS: TestExtractTechStack/Single_bullet_with_pattern (0.00s)
+=== RUN   TestParseTechStack
+=== RUN   TestParseTechStack/Comma_separator
+=== RUN   TestParseTechStack/Semicolon_separator
+=== RUN   TestParseTechStack/Pipe_separator
+=== RUN   TestParseTechStack/Bullet_separator
+=== RUN   TestParseTechStack/Hyphen_separator
+=== RUN   TestParseTechStack/Mixed_separators
+=== RUN   TestParseTechStack/Empty_input
+=== RUN   TestParseTechStack/Single_tech
+=== RUN   TestParseTechStack/With_trailing_period
+=== RUN   TestParseTechStack/With_extra_spaces
+--- PASS: TestParseTechStack (0.00s)
+    --- PASS: TestParseTechStack/Comma_separator (0.00s)
+    --- PASS: TestParseTechStack/Semicolon_separator (0.00s)
+    --- PASS: TestParseTechStack/Pipe_separator (0.00s)
+    --- PASS: TestParseTechStack/Bullet_separator (0.00s)
+    --- PASS: TestParseTechStack/Hyphen_separator (0.00s)
+    --- PASS: TestParseTechStack/Mixed_separators (0.00s)
+    --- PASS: TestParseTechStack/Empty_input (0.00s)
+    --- PASS: TestParseTechStack/Single_tech (0.00s)
+    --- PASS: TestParseTechStack/With_trailing_period (0.00s)
+    --- PASS: TestParseTechStack/With_extra_spaces (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/transformer	(cached)
+?   	github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/ui	[no test files]
+=== RUN   TestLoad_ValidConfig
+--- PASS: TestLoad_ValidConfig (0.00s)
+=== RUN   TestLoad_FileNotFound
+--- PASS: TestLoad_FileNotFound (0.00s)
+=== RUN   TestLoad_InvalidYAML
+--- PASS: TestLoad_InvalidYAML (0.00s)
+=== RUN   TestLoad_EmptyParagraphs
+--- PASS: TestLoad_EmptyParagraphs (0.00s)
+=== RUN   TestLoad_AboutWithEmptyLines
+--- PASS: TestLoad_AboutWithEmptyLines (0.00s)
+=== RUN   TestSplitParagraphs
+=== RUN   TestSplitParagraphs/multiple_paragraphs
+=== RUN   TestSplitParagraphs/empty_lines
+=== RUN   TestSplitParagraphs/whitespace_trimming
+=== RUN   TestSplitParagraphs/empty_string
+=== RUN   TestSplitParagraphs/only_whitespace
+=== RUN   TestSplitParagraphs/single_line
+--- PASS: TestSplitParagraphs (0.00s)
+    --- PASS: TestSplitParagraphs/multiple_paragraphs (0.00s)
+    --- PASS: TestSplitParagraphs/empty_lines (0.00s)
+    --- PASS: TestSplitParagraphs/whitespace_trimming (0.00s)
+    --- PASS: TestSplitParagraphs/empty_string (0.00s)
+    --- PASS: TestSplitParagraphs/only_whitespace (0.00s)
+    --- PASS: TestSplitParagraphs/single_line (0.00s)
+=== RUN   TestCurrentYear
+--- PASS: TestCurrentYear (0.00s)
+=== RUN   TestToTemplateData
+--- PASS: TestToTemplateData (0.00s)
+=== RUN   TestToTemplateData_EmptyAbout
+--- PASS: TestToTemplateData_EmptyAbout (0.00s)
+=== RUN   TestConfigStructs
+--- PASS: TestConfigStructs (0.00s)
+PASS
+ok  	github.com/vagnerbarbosa/vagnerbarbosa.github.io/internal/config	(cached)
