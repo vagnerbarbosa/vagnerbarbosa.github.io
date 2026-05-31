@@ -55,7 +55,7 @@ Site pessoal minimalista inspirado no design clean e tipografia do [annamonaco.c
 
 ## Spec Kit (Speckit)
 
-Este projeto utiliza [Spec Kit](https://speckit và-spec.org/) - um toolkit de desenvolvimento dirigido por especificações da GitHub.
+Este projeto utiliza [Spec Kit](https://speckit-spec.org/) - um toolkit de desenvolvimento dirigido por especificações da GitHub.
 
 ### Comandos disponíveis
 
