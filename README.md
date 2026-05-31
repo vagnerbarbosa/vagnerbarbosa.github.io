@@ -318,7 +318,7 @@ O arquivo `.github/workflows/deploy.yml` configura:
 | v3.x | Go gerador estático | Mar 2026 – Abr 2026 |
 | **v4.x** | **Go gerador estático + Versionamento + Ajustes de UX** | **Abr 2026 – presente** |
 
-O site nasceu em 2015 como um portfolio Jekyll. Em março de 2026, foi completamente reescrito em Go, motivdo pela adoção do design minimalista do [annamona.co](https://annamona.co) e como oportunidade de treinar Go em um projeto real.
+O site nasceu em 2015 como um portfolio Jekyll. Em março de 2026, foi completamente reescrito em Go, motivado pela adoção do design minimalista do [annamona.co](https://annamona.co) e como oportunidade de treinar Go em um projeto real.
 
 Em abril de 2026, foi implementado o sistema de versionamento automatizado com tags e releases, marcando a transição para a v4.x. Este sistema detecta automaticamente merges na branch main, cria tags semver baseadas em Conventional Commits e gera releases no GitHub com changelog em português.
 
