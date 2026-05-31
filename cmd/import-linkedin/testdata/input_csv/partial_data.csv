@@ -1,0 +1,4 @@
+Company Name,Title,Started On,Finished On,Description,Location
+Company Partial,Dev,2020-01-01,,"Some description",Cidadao
+,Missing Company,2020-01-01,,"Description",Cidadao
+Company No Date,Dev,,,"Description",Cidadao

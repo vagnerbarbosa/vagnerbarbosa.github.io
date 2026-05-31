@@ -189,16 +189,19 @@ func TestEducationParser_ParseAll_Errors(t *testing.T) {
 		name        string
 		csvData     string
 		expectError bool
+		expectedLen int
 	}{
 		{
 			name:        "invalid row - missing school",
 			csvData:     "School Name,Degree Name,Start Date,End Date\n,BSc,Jan 2020,Jan 2024",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name:        "invalid row - missing degree",
 			csvData:     "School Name,Degree Name,Start Date,End Date\nMIT,,Jan 2020,Jan 2024",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 	}
 
@@ -209,9 +212,13 @@ func TestEducationParser_ParseAll_Errors(t *testing.T) {
 				t.Fatalf("Failed to create parser: %v", err)
 			}
 
-			_, err = parser.ParseAll()
+			education, err := parser.ParseAll()
 			if (err != nil) != tt.expectError {
 				t.Errorf("ParseAll() error = %v, expectError %v", err, tt.expectError)
+			}
+
+			if len(education) != tt.expectedLen {
+				t.Errorf("Expected %d education entries, got %d", tt.expectedLen, len(education))
 			}
 		})
 	}

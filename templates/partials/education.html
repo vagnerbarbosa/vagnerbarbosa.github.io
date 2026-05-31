@@ -14,16 +14,16 @@
       <div class="lang-pt">
 {{range .Content.Education}}
         <div class="education-item">
-          <h2 class="education-title">{{.Title}}</h2>
-          <p class="education-school">{{.School}} • {{.Period}}</p>
+          <h2 class="education-title">{{.Degree}}</h2>
+          <p class="education-school">{{.Institution}} • {{.StartDate}}{{if .EndDate}} - {{.EndDate}}{{else}} - Presente{{end}}</p>
         </div>
 {{end}}
       </div>
       <div class="lang-en" style="display: none;">
 {{range .Content.Education}}
         <div class="education-item">
-          <h2 class="education-title">{{.TitleEN}}</h2>
-          <p class="education-school">{{.School}} • {{.PeriodEN}}</p>
+          <h2 class="education-title">{{.Degree}}</h2>
+          <p class="education-school">{{.Institution}} • {{.StartDate}}{{if .EndDate}} - {{.EndDate}}{{else}} - Present{{end}}</p>
         </div>
 {{end}}
       </div>

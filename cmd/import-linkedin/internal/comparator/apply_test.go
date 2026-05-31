@@ -8,20 +8,22 @@ import (
 
 func TestApplyChanges(t *testing.T) {
 	config := &models.ConfigPortfolio{
-		Experiences: []models.Experience{
-			{Company: "OldCo", Role: "Dev", StartDate: "Jan 2020"},
-		},
-		Education: []models.Education{
-			{Institution: "OldUni", Degree: "BS", StartDate: "Jan 2010"},
-		},
-		Certifications: []models.Certification{
-			{Name: "OldCert", Organization: "OldOrg", IssueDate: "Jan 2015"},
+		Content: models.Content{
+			Experiences: []models.Experience{
+				{Company: "OldCo", Title: "Dev", StartDate: "Jan 2020"},
+			},
+			Education: []models.Education{
+				{Institution: "OldUni", Degree: "BS", StartDate: "Jan 2010"},
+			},
+			Certifications: []models.Certification{
+				{Name: "OldCert", Organization: "OldOrg", IssueDate: "Jan 2015"},
+			},
 		},
 	}
 
 	diff := NewDiff()
 	diff.Experiences.Added = []models.Experience{
-		{Company: "NewCo", Role: "Dev", StartDate: "Jan 2021"},
+		{Company: "NewCo", Title: "Dev", StartDate: "Jan 2021"},
 	}
 	diff.Education.Modified = []ChangePair[models.Education]{
 		{
@@ -39,18 +41,18 @@ func TestApplyChanges(t *testing.T) {
 	}
 
 	// Verify Experiences
-	if len(config.Experiences) != 2 {
-		t.Errorf("Expected 2 experiences, got %d", len(config.Experiences))
+	if len(config.Content.Experiences) != 2 {
+		t.Errorf("Expected 2 experiences, got %d", len(config.Content.Experiences))
 	}
 
 	// Verify Education
-	if len(config.Education) != 1 || config.Education[0].StartDate != "Jan 2011" {
-		t.Errorf("Expected education to be updated to Jan 2011, got %v", config.Education)
+	if len(config.Content.Education) != 1 || config.Content.Education[0].StartDate != "Jan 2011" {
+		t.Errorf("Expected education to be updated to Jan 2011, got %v", config.Content.Education)
 	}
 
 	// Verify Certifications
-	if len(config.Certifications) != 0 {
-		t.Errorf("Expected 0 certifications, got %d", len(config.Certifications))
+	if len(config.Content.Certifications) != 0 {
+		t.Errorf("Expected 0 certifications, got %d", len(config.Content.Certifications))
 	}
 }
 
@@ -68,34 +70,36 @@ func TestApplyChanges_NilPointers(t *testing.T) {
 
 func TestApplyChanges_Comprehensive(t *testing.T) {
 	config := &models.ConfigPortfolio{
-		Experiences: []models.Experience{
-			{Company: "Exp1", Role: "R1", StartDate: "S1"},
-			{Company: "Exp2", Role: "R2", StartDate: "S2"},
-			{Company: "Exp3", Role: "R3", StartDate: "S3"},
-		},
-		Education: []models.Education{
-			{Institution: "Edu1", Degree: "D1", StartDate: "S1"},
-			{Institution: "Edu2", Degree: "D2", StartDate: "S2"},
-			{Institution: "Edu3", Degree: "D3", StartDate: "S3"},
-		},
-		Certifications: []models.Certification{
-			{Name: "Cert1", Organization: "O1", IssueDate: "I1"},
-			{Name: "Cert2", Organization: "O2", IssueDate: "I2"},
-			{Name: "Cert3", Organization: "O3", IssueDate: "I3"},
+		Content: models.Content{
+			Experiences: []models.Experience{
+				{Company: "Exp1", Title: "R1", StartDate: "S1"},
+				{Company: "Exp2", Title: "R2", StartDate: "S2"},
+				{Company: "Exp3", Title: "R3", StartDate: "S3"},
+			},
+			Education: []models.Education{
+				{Institution: "Edu1", Degree: "D1", StartDate: "S1"},
+				{Institution: "Edu2", Degree: "D2", StartDate: "S2"},
+				{Institution: "Edu3", Degree: "D3", StartDate: "S3"},
+			},
+			Certifications: []models.Certification{
+				{Name: "Cert1", Organization: "O1", IssueDate: "I1"},
+				{Name: "Cert2", Organization: "O2", IssueDate: "I2"},
+				{Name: "Cert3", Organization: "O3", IssueDate: "I3"},
+			},
 		},
 	}
 
 	diff := NewDiff()
 
 	// Experiences
-	diff.Experiences.Added = []models.Experience{{Company: "ExpAdd", Role: "RAdd", StartDate: "SAdd"}}
+	diff.Experiences.Added = []models.Experience{{Company: "ExpAdd", Title: "RAdd", StartDate: "SAdd"}}
 	diff.Experiences.Modified = []ChangePair[models.Experience]{
 		{
-			Old: models.Experience{Company: "Exp1", Role: "R1", StartDate: "S1"},
-			New: models.Experience{Company: "Exp1", Role: "R1", StartDate: "S1-mod"},
+			Old: models.Experience{Company: "Exp1", Title: "R1", StartDate: "S1"},
+			New: models.Experience{Company: "Exp1", Title: "R1", StartDate: "S1-mod"},
 		},
 	}
-	diff.Experiences.Removed = []models.Experience{{Company: "Exp2", Role: "R2", StartDate: "S2"}}
+	diff.Experiences.Removed = []models.Experience{{Company: "Exp2", Title: "R2", StartDate: "S2"}}
 
 	// Education
 	diff.Education.Added = []models.Education{{Institution: "EduAdd", Degree: "DAdd", StartDate: "SAdd"}}
@@ -122,14 +126,14 @@ func TestApplyChanges_Comprehensive(t *testing.T) {
 		t.Fatalf("ApplyChanges failed: %v", err)
 	}
 
-	if len(config.Experiences) != 3 { // 3 - 1 (removed) + 1 (added) = 3
-		t.Errorf("Expected 3 experiences, got %d", len(config.Experiences))
+	if len(config.Content.Experiences) != 3 { // 3 - 1 (removed) + 1 (added) = 3
+		t.Errorf("Expected 3 experiences, got %d", len(config.Content.Experiences))
 	}
-	if len(config.Education) != 3 {
-		t.Errorf("Expected 3 educations, got %d", len(config.Education))
+	if len(config.Content.Education) != 3 {
+		t.Errorf("Expected 3 educations, got %d", len(config.Content.Education))
 	}
-	if len(config.Certifications) != 3 {
-		t.Errorf("Expected 3 certifications, got %d", len(config.Certifications))
+	if len(config.Content.Certifications) != 3 {
+		t.Errorf("Expected 3 certifications, got %d", len(config.Content.Certifications))
 	}
 }
 
@@ -143,50 +147,60 @@ func TestMergeConfigs(t *testing.T) {
 		{
 			name: "all overridden",
 			existing: &models.ConfigPortfolio{
-				Experiences:    []models.Experience{{Company: "OldCo"}},
-				Education:      []models.Education{{Institution: "OldUni"}},
-				Certifications: []models.Certification{{Name: "OldCert"}},
+				Content: models.Content{
+					Experiences:    []models.Experience{{Company: "OldCo"}},
+					Education:      []models.Education{{Institution: "OldUni"}},
+					Certifications: []models.Certification{{Name: "OldCert"}},
+				},
 			},
 			linkedin: &models.ConfigPortfolio{
-				Experiences:    []models.Experience{{Company: "NewCo"}},
-				Education:      []models.Education{{Institution: "NewUni"}},
-				Certifications: []models.Certification{{Name: "NewCert"}},
+				Content: models.Content{
+					Experiences:    []models.Experience{{Company: "NewCo"}},
+					Education:      []models.Education{{Institution: "NewUni"}},
+					Certifications: []models.Certification{{Name: "NewCert"}},
+				},
 			},
 			verify: func(m *models.ConfigPortfolio) bool {
-				return len(m.Experiences) == 1 && m.Experiences[0].Company == "NewCo" &&
-					len(m.Education) == 1 && m.Education[0].Institution == "NewUni" &&
-					len(m.Certifications) == 1 && m.Certifications[0].Name == "NewCert"
+				return len(m.Content.Experiences) == 1 && m.Content.Experiences[0].Company == "NewCo" &&
+					len(m.Content.Education) == 1 && m.Content.Education[0].Institution == "NewUni" &&
+					len(m.Content.Certifications) == 1 && m.Content.Certifications[0].Name == "NewCert"
 			},
 		},
 		{
 			name: "some overridden",
 			existing: &models.ConfigPortfolio{
-				Experiences:    []models.Experience{{Company: "OldCo"}},
-				Education:      []models.Education{{Institution: "OldUni"}},
-				Certifications: []models.Certification{{Name: "OldCert"}},
+				Content: models.Content{
+					Experiences:    []models.Experience{{Company: "OldCo"}},
+					Education:      []models.Education{{Institution: "OldUni"}},
+					Certifications: []models.Certification{{Name: "OldCert"}},
+				},
 			},
 			linkedin: &models.ConfigPortfolio{
-				Experiences: []models.Experience{{Company: "NewCo"}},
-				// Education and Certifications are empty
+				Content: models.Content{
+					Experiences: []models.Experience{{Company: "NewCo"}},
+					// Education and Certifications are empty
+				},
 			},
 			verify: func(m *models.ConfigPortfolio) bool {
-				return len(m.Experiences) == 1 && m.Experiences[0].Company == "NewCo" &&
-					len(m.Education) == 1 && m.Education[0].Institution == "OldUni" &&
-					len(m.Certifications) == 1 && m.Certifications[0].Name == "OldCert"
+				return len(m.Content.Experiences) == 1 && m.Content.Experiences[0].Company == "NewCo" &&
+					len(m.Content.Education) == 1 && m.Content.Education[0].Institution == "OldUni" &&
+					len(m.Content.Certifications) == 1 && m.Content.Certifications[0].Name == "OldCert"
 			},
 		},
 		{
 			name: "none overridden",
 			existing: &models.ConfigPortfolio{
-				Experiences:    []models.Experience{{Company: "OldCo"}},
-				Education:      []models.Education{{Institution: "OldUni"}},
-				Certifications: []models.Certification{{Name: "OldCert"}},
+				Content: models.Content{
+					Experiences:    []models.Experience{{Company: "OldCo"}},
+					Education:      []models.Education{{Institution: "OldUni"}},
+					Certifications: []models.Certification{{Name: "OldCert"}},
+				},
 			},
 			linkedin: &models.ConfigPortfolio{},
 			verify: func(m *models.ConfigPortfolio) bool {
-				return len(m.Experiences) == 1 && m.Experiences[0].Company == "OldCo" &&
-					len(m.Education) == 1 && m.Education[0].Institution == "OldUni" &&
-					len(m.Certifications) == 1 && m.Certifications[0].Name == "OldCert"
+				return len(m.Content.Experiences) == 1 && m.Content.Experiences[0].Company == "OldCo" &&
+					len(m.Content.Education) == 1 && m.Content.Education[0].Institution == "OldUni" &&
+					len(m.Content.Certifications) == 1 && m.Content.Certifications[0].Name == "OldCert"
 			},
 		},
 	}

@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/models"
-	"go.yaml.in/yaml/v4"
+	"gopkg.in/yaml.v3"
 )
 
 // ReadYAML reads the config.yaml file and returns the parsed configuration.
@@ -25,7 +25,6 @@ func ReadYAML(filepath string) (*models.ConfigPortfolio, error) {
 }
 
 // WriteYAML writes the configuration to a YAML file.
-// Preserves comments if using yaml.Node (advanced usage).
 func WriteYAML(filepath string, config *models.ConfigPortfolio) error {
 	data, err := yaml.Marshal(config)
 	if err != nil {
@@ -40,7 +39,6 @@ func WriteYAML(filepath string, config *models.ConfigPortfolio) error {
 }
 
 // YAMLManager handles YAML file operations with node preservation.
-// This allows preserving comments and formatting.
 type YAMLManager struct {
 	filepath string
 	root     *yaml.Node
@@ -59,7 +57,6 @@ func NewYAMLManager(filepath string) (*YAMLManager, error) {
 		return nil, fmt.Errorf("failed to parse config file: %w", err)
 	}
 
-	// Also parse into struct for easier access
 	var config models.ConfigPortfolio
 	if err := yaml.Unmarshal(data, &config); err != nil {
 		return nil, fmt.Errorf("failed to parse config into struct: %w", err)
@@ -79,29 +76,24 @@ func (m *YAMLManager) GetConfig() *models.ConfigPortfolio {
 
 // UpdateExperiences updates the experiences section.
 func (m *YAMLManager) UpdateExperiences(experiences []models.Experience) error {
-	m.config.Experiences = experiences
+	m.config.Content.Experiences = experiences
 	return nil
 }
 
 // UpdateEducation updates the education section.
 func (m *YAMLManager) UpdateEducation(education []models.Education) error {
-	m.config.Education = education
+	m.config.Content.Education = education
 	return nil
 }
 
 // UpdateCertifications updates the certifications section.
 func (m *YAMLManager) UpdateCertifications(certifications []models.Certification) error {
-	m.config.Certifications = certifications
+	m.config.Content.Certifications = certifications
 	return nil
 }
 
 // Save writes the updated configuration back to the file.
 func (m *YAMLManager) Save() error {
-	encoder := yaml.NewEncoder(os.Stdout)
-	defer encoder.Close()
-
-	// For now, use the simple marshal approach
-	// Preserving comments requires more complex node manipulation
 	return WriteYAML(m.filepath, m.config)
 }
 

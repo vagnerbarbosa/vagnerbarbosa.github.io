@@ -77,7 +77,8 @@ func (p *CertificationParser) ParseAll() ([]models.Certification, error) {
 
 		cert, err := p.parseRow(row, lineNum)
 		if err != nil {
-			return nil, err
+			fmt.Printf("⚠ Warning: skipping row %d: %v\n", lineNum, err)
+			continue
 		}
 
 		certifications = append(certifications, *cert)

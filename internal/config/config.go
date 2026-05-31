@@ -21,25 +21,39 @@ type SiteConfig struct {
 	Email           string `yaml:"email"`
 }
 
-// Experience represents a work experience entry
 type Experience struct {
-	Title      string   `yaml:"title"`
-	TitleEN    string   `yaml:"title_en"`
-	Company    string   `yaml:"company"`
-	Period     string   `yaml:"period"`
-	PeriodEN   string   `yaml:"period_en"`
-	Details    []string `yaml:"details"`
-	DetailsEN  []string `yaml:"details_en"`
-	TechStack  string   `yaml:"tech_stack"`
+	Title       string   `yaml:"title"`
+	TitleEN     string   `yaml:"title_en,omitempty"`
+	Company     string   `yaml:"company"`
+	StartDate   string   `yaml:"start_date"`
+	StartDateEN string   `yaml:"start_date_en,omitempty"`
+	EndDate     string   `yaml:"end_date"`
+	EndDateEN   string   `yaml:"end_date_en,omitempty"`
+	Description []string `yaml:"description"`
+	DescriptionEN []string `yaml:"description_en,omitempty"`
+	TechStack   string   `yaml:"tech_stack"`
+	Location    string   `yaml:"location,omitempty"`
 }
 
-// Education represents an education entry
 type Education struct {
-	Title    string `yaml:"title"`
-	TitleEN  string `yaml:"title_en"`
-	School   string `yaml:"school"`
-	Period   string `yaml:"period"`
-	PeriodEN string `yaml:"period_en"`
+	Institution string   `yaml:"institution"`
+	Degree      string   `yaml:"degree"`
+	DegreeEN    string   `yaml:"degree_en,omitempty"`
+	Field       string   `yaml:"field,omitempty"`
+	StartDate   string   `yaml:"start_date,omitempty"`
+	StartDateEN string   `yaml:"start_date_en,omitempty"`
+	EndDate     string   `yaml:"end_date,omitempty"`
+	EndDateEN   string   `yaml:"end_date_en,omitempty"`
+	Description []string `yaml:"description,omitempty"`
+}
+
+type Certification struct {
+	Name            string `yaml:"name"`
+	Organization    string `yaml:"organization"`
+	IssueDate       string `yaml:"issue_date"`
+	ExpirationDate  string `yaml:"expiration_date,omitempty"`
+	CredentialID    string `yaml:"credential_id,omitempty"`
+	CredentialURL   string `yaml:"credential_url,omitempty"`
 }
 
 // AboutContent holds the about section content
@@ -60,6 +74,7 @@ type Content struct {
 	ParsedAbout  ParsedAbout
 	Experiences  []Experience `yaml:"experiences"`
 	Education    []Education  `yaml:"education"`
+	Certifications []Certification `yaml:"certifications"`
 	Technologies []string     `yaml:"technologies"`
 	Privacy      AboutContent `yaml:"privacy"`
 }

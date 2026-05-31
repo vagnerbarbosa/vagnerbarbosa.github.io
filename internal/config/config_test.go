@@ -9,9 +9,7 @@ import (
 )
 
 // TestLoad_ValidConfig verifica o carregamento de uma configuração YAML válida completa.
-// TestLoad_ValidConfig verifies loading of a complete valid YAML configuration.
 func TestLoad_ValidConfig(t *testing.T) {
-	// Create a temporary config file
 	tmpDir := t.TempDir()
 	configPath := filepath.Join(tmpDir, "config.yaml")
 
@@ -36,21 +34,23 @@ content:
     - title: "Cargo PT"
       title_en: "Job Title"
       company: "Company"
-      period: "Jan 2020 - Presente"
-      period_en: "Jan 2020 - Present"
-      details:
+      start_date: "Jan 2020"
+      end_date: "Presente"
+      start_date_en: "Jan 2020"
+      end_date_en: "Present"
+      description:
         - "Detalhe 1"
         - "Detalhe 2"
-      details_en:
+      description_en:
         - "Detail 1"
         - "Detail 2"
       tech_stack: "Go"
   education:
-    - title: "Título PT"
-      title_en: "Title EN"
-      school: "School"
-      period: "2015-2019"
-      period_en: "2015-2019"
+    - degree: "Título PT"
+      degree_en: "Title EN"
+      institution: "School"
+      start_date: "2015-2019"
+      start_date_en: "2015-2019"
   technologies:
     - "Go"
     - "Python"
@@ -65,7 +65,6 @@ content:
 		t.Fatalf("Load() error = %v", err)
 	}
 
-	// Verify site config
 	if cfg.Site.Title != "Test Site" {
 		t.Errorf("Site.Title = %v, want %v", cfg.Site.Title, "Test Site")
 	}
@@ -88,7 +87,6 @@ content:
 		t.Errorf("Site.Email = %v, want %v", cfg.Site.Email, "test@test.com")
 	}
 
-	// Verify about paragraphs
 	if len(cfg.Content.ParsedAbout.ParagraphsPT) != 2 {
 		t.Errorf("len(ParsedAbout.ParagraphsPT) = %v, want %v", len(cfg.Content.ParsedAbout.ParagraphsPT), 2)
 	}
@@ -99,7 +97,6 @@ content:
 		t.Errorf("len(ParsedAbout.ParagraphsEN) = %v, want %v", len(cfg.Content.ParsedAbout.ParagraphsEN), 2)
 	}
 
-	// Verify experiences
 	if len(cfg.Content.Experiences) != 1 {
 		t.Errorf("len(Experiences) = %v, want %v", len(cfg.Content.Experiences), 1)
 	}
@@ -112,46 +109,50 @@ content:
 	if cfg.Content.Experiences[0].Company != "Company" {
 		t.Errorf("Experiences[0].Company = %v, want %v", cfg.Content.Experiences[0].Company, "Company")
 	}
-	if cfg.Content.Experiences[0].Period != "Jan 2020 - Presente" {
-		t.Errorf("Experiences[0].Period = %v, want %v", cfg.Content.Experiences[0].Period, "Jan 2020 - Presente")
+	if cfg.Content.Experiences[0].StartDate != "Jan 2020" {
+		t.Errorf("Experiences[0].StartDate = %v, want %v", cfg.Content.Experiences[0].StartDate, "Jan 2020")
 	}
-	if cfg.Content.Experiences[0].PeriodEN != "Jan 2020 - Present" {
-		t.Errorf("Experiences[0].PeriodEN = %v, want %v", cfg.Content.Experiences[0].PeriodEN, "Jan 2020 - Present")
+	if cfg.Content.Experiences[0].EndDate != "Presente" {
+		t.Errorf("Experiences[0].EndDate = %v, want %v", cfg.Content.Experiences[0].EndDate, "Presente")
 	}
-	if len(cfg.Content.Experiences[0].Details) != 2 {
-		t.Errorf("len(Experiences[0].Details) = %v, want %v", len(cfg.Content.Experiences[0].Details), 2)
+	if cfg.Content.Experiences[0].StartDateEN != "Jan 2020" {
+		t.Errorf("Experiences[0].StartDateEN = %v, want %v", cfg.Content.Experiences[0].StartDateEN, "Jan 2020")
 	}
-	if cfg.Content.Experiences[0].Details[0] != "Detalhe 1" {
-		t.Errorf("Experiences[0].Details[0] = %v, want %v", cfg.Content.Experiences[0].Details[0], "Detalhe 1")
+	if cfg.Content.Experiences[0].EndDateEN != "Present" {
+		t.Errorf("Experiences[0].EndDateEN = %v, want %v", cfg.Content.Experiences[0].EndDateEN, "Present")
 	}
-	if len(cfg.Content.Experiences[0].DetailsEN) != 2 {
-		t.Errorf("len(Experiences[0].DetailsEN) = %v, want %v", len(cfg.Content.Experiences[0].DetailsEN), 2)
+	if len(cfg.Content.Experiences[0].Description) != 2 {
+		t.Errorf("len(Experiences[0].Description) = %v, want %v", len(cfg.Content.Experiences[0].Description), 2)
+	}
+	if cfg.Content.Experiences[0].Description[0] != "Detalhe 1" {
+		t.Errorf("Experiences[0].Description[0] = %v, want %v", cfg.Content.Experiences[0].Description[0], "Detalhe 1")
+	}
+	if len(cfg.Content.Experiences[0].DescriptionEN) != 2 {
+		t.Errorf("len(Experiences[0].DescriptionEN) = %v, want %v", len(cfg.Content.Experiences[0].DescriptionEN), 2)
 	}
 	if cfg.Content.Experiences[0].TechStack != "Go" {
 		t.Errorf("Experiences[0].TechStack = %v, want %v", cfg.Content.Experiences[0].TechStack, "Go")
 	}
 
-	// Verify education
 	if len(cfg.Content.Education) != 1 {
 		t.Errorf("len(Education) = %v, want %v", len(cfg.Content.Education), 1)
 	}
-	if cfg.Content.Education[0].Title != "Título PT" {
-		t.Errorf("Education[0].Title = %v, want %v", cfg.Content.Education[0].Title, "Título PT")
+	if cfg.Content.Education[0].Degree != "Título PT" {
+		t.Errorf("Education[0].Degree = %v, want %v", cfg.Content.Education[0].Degree, "Título PT")
 	}
-	if cfg.Content.Education[0].TitleEN != "Title EN" {
-		t.Errorf("Education[0].TitleEN = %v, want %v", cfg.Content.Education[0].TitleEN, "Title EN")
+	if cfg.Content.Education[0].DegreeEN != "Title EN" {
+		t.Errorf("Education[0].DegreeEN = %v, want %v", cfg.Content.Education[0].DegreeEN, "Title EN")
 	}
-	if cfg.Content.Education[0].School != "School" {
-		t.Errorf("Education[0].School = %v, want %v", cfg.Content.Education[0].School, "School")
+	if cfg.Content.Education[0].Institution != "School" {
+		t.Errorf("Education[0].Institution = %v, want %v", cfg.Content.Education[0].Institution, "School")
 	}
-	if cfg.Content.Education[0].Period != "2015-2019" {
-		t.Errorf("Education[0].Period = %v, want %v", cfg.Content.Education[0].Period, "2015-2019")
+	if cfg.Content.Education[0].StartDate != "2015-2019" {
+		t.Errorf("Education[0].StartDate = %v, want %v", cfg.Content.Education[0].StartDate, "2015-2019")
 	}
-	if cfg.Content.Education[0].PeriodEN != "2015-2019" {
-		t.Errorf("Education[0].PeriodEN = %v, want %v", cfg.Content.Education[0].PeriodEN, "2015-2019")
+	if cfg.Content.Education[0].StartDateEN != "2015-2019" {
+		t.Errorf("Education[0].StartDateEN = %v, want %v", cfg.Content.Education[0].StartDateEN, "2015-2019")
 	}
 
-	// Verify technologies
 	if len(cfg.Content.Technologies) != 2 {
 		t.Errorf("len(Technologies) = %v, want %v", len(cfg.Content.Technologies), 2)
 	}
@@ -163,8 +164,6 @@ content:
 	}
 }
 
-// TestLoad_FileNotFound verifica o comportamento quando o arquivo de configuração não existe.
-// TestLoad_FileNotFound verifies the behavior when the configuration file does not exist.
 func TestLoad_FileNotFound(t *testing.T) {
 	_, err := Load("/nonexistent/path/config.yaml")
 	if err == nil {
@@ -175,13 +174,10 @@ func TestLoad_FileNotFound(t *testing.T) {
 	}
 }
 
-// TestLoad_InvalidYAML verifica o tratamento de erro para conteúdo YAML inválido.
-// TestLoad_InvalidYAML verifies error handling for invalid YAML content.
 func TestLoad_InvalidYAML(t *testing.T) {
 	tmpDir := t.TempDir()
 	configPath := filepath.Join(tmpDir, "config.yaml")
 
-	// Invalid YAML
 	invalidYAML := `site: [invalid yaml content: ::::`
 
 	if err := os.WriteFile(configPath, []byte(invalidYAML), 0644); err != nil {
@@ -197,13 +193,10 @@ func TestLoad_InvalidYAML(t *testing.T) {
 	}
 }
 
-// TestLoad_EmptyParagraphs verifica o comportamento com conteúdo 'about' vazio.
-// TestLoad_EmptyParagraphs verifies behavior with empty 'about' content.
 func TestLoad_EmptyParagraphs(t *testing.T) {
 	tmpDir := t.TempDir()
 	configPath := filepath.Join(tmpDir, "config.yaml")
 
-	// Config with empty lines in about
 	configContent := `site:
   title: "Test"
   description: "Test"
@@ -230,7 +223,6 @@ content:
 		t.Fatalf("Load() error = %v", err)
 	}
 
-	// Empty about should result in empty paragraphs
 	if len(cfg.Content.ParsedAbout.ParagraphsPT) != 0 {
 		t.Errorf("len(ParsedAbout.ParagraphsPT) = %v, want %v", len(cfg.Content.ParsedAbout.ParagraphsPT), 0)
 	}
@@ -239,13 +231,10 @@ content:
 	}
 }
 
-// TestLoad_AboutWithEmptyLines verifica que linhas vazias entre parágrafos são ignoradas.
-// TestLoad_AboutWithEmptyLines verifies that empty lines between paragraphs are skipped.
 func TestLoad_AboutWithEmptyLines(t *testing.T) {
 	tmpDir := t.TempDir()
 	configPath := filepath.Join(tmpDir, "config.yaml")
 
-	// Config with empty lines between paragraphs
 	configContent := `site:
   title: "Test"
   description: "Test"
@@ -278,7 +267,6 @@ content:
 		t.Fatalf("Load() error = %v", err)
 	}
 
-	// Should skip empty lines
 	if len(cfg.Content.ParsedAbout.ParagraphsPT) != 3 {
 		t.Errorf("len(ParsedAbout.ParagraphsPT) = %v, want %v", len(cfg.Content.ParsedAbout.ParagraphsPT), 3)
 	}
@@ -293,8 +281,6 @@ content:
 	}
 }
 
-// TestSplitParagraphs testa a função splitParagraphs com múltiplos cenários de entrada.
-// TestSplitParagraphs tests the splitParagraphs function with multiple input scenarios.
 func TestSplitParagraphs(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -349,8 +335,6 @@ func TestSplitParagraphs(t *testing.T) {
 	}
 }
 
-// TestCurrentYear verifica se a função CurrentYear retorna o ano atual corretamente.
-// TestCurrentYear verifies that CurrentYear returns the current year correctly.
 func TestCurrentYear(t *testing.T) {
 	expected := time.Now().Year()
 	result := CurrentYear()
@@ -359,8 +343,6 @@ func TestCurrentYear(t *testing.T) {
 	}
 }
 
-// TestToTemplateData verifica a conversão de Config para TemplateData com todos os campos.
-// TestToTemplateData verifies the conversion from Config to TemplateData with all fields.
 func TestToTemplateData(t *testing.T) {
 	cfg := &Config{
 		Site: SiteConfig{
@@ -382,20 +364,20 @@ func TestToTemplateData(t *testing.T) {
 					Title:     "Dev",
 					TitleEN:     "Developer",
 					Company:   "Test Co",
-					Period:    "2020-2021",
-					PeriodEN:  "2020-2021",
-					Details:   []string{"Detail 1"},
-					DetailsEN: []string{"Detail EN 1"},
+					StartDate:    "2020-2021",
+					StartDateEN:  "2020-2021",
+					Description:   []string{"Detail 1"},
+					DescriptionEN: []string{"Detail EN 1"},
 					TechStack: "Go",
 				},
 			},
 			Education: []Education{
 				{
-					Title:    "Degree",
-					TitleEN:  "Degree",
-					School:   "University",
-					Period:   "2015-2019",
-					PeriodEN: "2015-2019",
+					Degree:    "Degree",
+					DegreeEN:  "Degree",
+					Institution: "University",
+					StartDate:   "2015-2019",
+					StartDateEN: "2015-2019",
 				},
 			},
 			Technologies: []string{"Go", "Python"},
@@ -404,17 +386,12 @@ func TestToTemplateData(t *testing.T) {
 
 	data := cfg.ToTemplateData()
 
-	// Verify Site data is copied
 	if data.Site.Title != cfg.Site.Title {
 		t.Errorf("TemplateData.Site.Title = %v, want %v", data.Site.Title, cfg.Site.Title)
 	}
-
-	// Verify Content data is copied
 	if data.Content.About.PT != cfg.Content.About.PT {
 		t.Errorf("TemplateData.Content.About.PT = %v, want %v", data.Content.About.PT, cfg.Content.About.PT)
 	}
-
-	// Verify ParsedAbout is populated
 	if len(data.Content.ParsedAbout.ParagraphsPT) != 2 {
 		t.Errorf("len(TemplateData.Content.ParsedAbout.ParagraphsPT) = %v, want %v", len(data.Content.ParsedAbout.ParagraphsPT), 2)
 	}
@@ -427,30 +404,22 @@ func TestToTemplateData(t *testing.T) {
 	if data.Content.ParsedAbout.ParagraphsEN[0] != "Paragraph EN 1." {
 		t.Errorf("ParsedAbout.ParagraphsEN[0] = %v, want %v", data.Content.ParsedAbout.ParagraphsEN[0], "Paragraph EN 1.")
 	}
-
-	// Verify Year is set
 	expectedYear := time.Now().Year()
 	if data.Year != expectedYear {
 		t.Errorf("TemplateData.Year = %v, want %v", data.Year, expectedYear)
 	}
-
-	// Verify experiences are copied
 	if len(data.Content.Experiences) != 1 {
 		t.Errorf("len(TemplateData.Content.Experiences) = %v, want %v", len(data.Content.Experiences), 1)
 	}
 	if data.Content.Experiences[0].Company != "Test Co" {
 		t.Errorf("Experiences[0].Company = %v, want %v", data.Content.Experiences[0].Company, "Test Co")
 	}
-
-	// Verify education is copied
 	if len(data.Content.Education) != 1 {
 		t.Errorf("len(TemplateData.Content.Education) = %v, want %v", len(data.Content.Education), 1)
 	}
-	if data.Content.Education[0].School != "University" {
-		t.Errorf("Education[0].School = %v, want %v", data.Content.Education[0].School, "University")
+	if data.Content.Education[0].Institution != "University" {
+		t.Errorf("Education[0].Institution = %v, want %v", data.Content.Education[0].Institution, "University")
 	}
-
-	// Verify technologies are copied
 	if len(data.Content.Technologies) != 2 {
 		t.Errorf("len(TemplateData.Content.Technologies) = %v, want %v", len(data.Content.Technologies), 2)
 	}
@@ -459,8 +428,6 @@ func TestToTemplateData(t *testing.T) {
 	}
 }
 
-// TestToTemplateData_EmptyAbout verifica o comportamento com about vazio (graceful handling).
-// TestToTemplateData_EmptyAbout verifies behavior with empty about (graceful handling).
 func TestToTemplateData_EmptyAbout(t *testing.T) {
 	cfg := &Config{
 		Site: SiteConfig{
@@ -476,7 +443,6 @@ func TestToTemplateData_EmptyAbout(t *testing.T) {
 
 	data := cfg.ToTemplateData()
 
-	// Should handle empty about gracefully
 	if len(data.Content.ParsedAbout.ParagraphsPT) != 0 {
 		t.Errorf("len(ParsedAbout.ParagraphsPT) = %v, want %v", len(data.Content.ParsedAbout.ParagraphsPT), 0)
 	}
@@ -485,37 +451,32 @@ func TestToTemplateData_EmptyAbout(t *testing.T) {
 	}
 }
 
-// TestConfigStructs verifica a criação e acesso a todas as structs do pacote config.
-// TestConfigStructs verifies the creation and access to all structs in the config package.
 func TestConfigStructs(t *testing.T) {
-	// Test Experience struct
 	exp := Experience{
 		Title:     "Dev",
 		TitleEN:   "Developer",
 		Company:   "Company",
-		Period:    "2020-2021",
-		PeriodEN:  "2020-2021",
-		Details:   []string{"detail"},
-		DetailsEN: []string{"detail"},
+		StartDate:    "2020-2021",
+		StartDateEN:  "2020-2021",
+		Description:   []string{"detail"},
+		DescriptionEN: []string{"detail"},
 		TechStack: "Go",
 	}
 	if exp.Title != "Dev" {
 		t.Errorf("Experience.Title = %v, want %v", exp.Title, "Dev")
 	}
 
-	// Test Education struct
 	edu := Education{
-		Title:    "Degree",
-		TitleEN:  "Degree",
-		School:   "School",
-		Period:   "2015-2019",
-		PeriodEN: "2015-2019",
+		Degree:    "Degree",
+		DegreeEN:  "Degree",
+		Institution: "School",
+		StartDate:   "2015-2019",
+		StartDateEN: "2015-2019",
 	}
-	if edu.School != "School" {
-		t.Errorf("Education.School = %v, want %v", edu.School, "School")
+	if edu.Institution != "School" {
+		t.Errorf("Education.Institution = %v, want %v", edu.Institution, "School")
 	}
 
-	// Test AboutContent struct
 	about := AboutContent{
 		PT: "Portuguese",
 		EN: "English",
@@ -524,7 +485,6 @@ func TestConfigStructs(t *testing.T) {
 		t.Errorf("AboutContent.PT = %v, want %v", about.PT, "Portuguese")
 	}
 
-	// Test ParsedAbout struct
 	parsed := ParsedAbout{
 		ParagraphsPT: []string{"PT"},
 		ParagraphsEN: []string{"EN"},
@@ -533,7 +493,6 @@ func TestConfigStructs(t *testing.T) {
 		t.Errorf("len(ParsedAbout.ParagraphsPT) = %v, want %v", len(parsed.ParagraphsPT), 1)
 	}
 
-	// Test SiteConfig struct
 	site := SiteConfig{
 		Title:           "Title",
 		Description:     "Desc",
@@ -547,7 +506,6 @@ func TestConfigStructs(t *testing.T) {
 		t.Errorf("SiteConfig.Email = %v, want %v", site.Email, "email@example.com")
 	}
 
-	// Test Content struct
 	content := Content{
 		About:        about,
 		ParsedAbout:  parsed,
@@ -562,7 +520,6 @@ func TestConfigStructs(t *testing.T) {
 		t.Errorf("len(Content.Technologies) = %v, want %v", len(content.Technologies), 1)
 	}
 
-	// Test Config struct
 	cfg := Config{
 		Site:    site,
 		Content: content,
@@ -571,7 +528,6 @@ func TestConfigStructs(t *testing.T) {
 		t.Errorf("Config.Site.Title = %v, want %v", cfg.Site.Title, "Title")
 	}
 
-	// Test TemplateData struct
 	td := TemplateData{
 		Site:    site,
 		Content: content,

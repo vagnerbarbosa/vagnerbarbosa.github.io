@@ -88,11 +88,13 @@ vagnerbarbosa.github.io/
 ├── cmd/
 │   ├── generator/            # Gerador de site estático em Go
 │   │   ├── main.go           # Entry point do gerador
-│   │   └── main_test.go      # Testes unitários do gerador
+│   │   ├── main_test.go      # Testes unitários
+│   │   └── e2e_test.go       # Testes End-to-End (pipeline completo)
 │   └── import-linkedin/      # Ferramenta CLI para importar dados do LinkedIn
 │       ├── main.go           # Entry point da ferramenta
 │       ├── commands/         # Comandos CLI (import, validate, version)
 │       ├── internal/         # Parser, models, comparator, transformer, UI
+│       │   └── integration/  # Testes de integração (Golden Files)
 │       └── testdata/         # Dados de teste (CSVs malformados, etc.)
 ├── internal/
 │   └── config/
@@ -107,7 +109,7 @@ vagnerbarbosa.github.io/
 │       ├── experience.html
 │       ├── skills.html
 │       ├── education.html
-│       ├── contact.html
+│       ├── certifications.html # Template de certificações
 │       └── footer.html
 ├── assets/                   # Assets estáticos
 │   ├── css/
@@ -123,10 +125,12 @@ vagnerbarbosa.github.io/
 │   └── favicon.png
 ├── docs/                     # Documentação
 │   ├── LINKEDIN-IMPORT.md    # Guia da ferramenta LinkedIn Import CLI
-│   └── VERSIONING.md         # Documentação de versionamento
+│   ├── VERSIONING.md         # Documentação de versionamento
+│   └── TESTING.md            # Guia de estratégia de testes
 ├── config.yaml               # Configuração do site
 ├── go.mod                    # Módulo Go
 ├── go.sum                    # Checksums de dependências
+├── SECURITY.md               # Política de segurança do projeto
 ├── .github/
 │   ├── scripts/              # Scripts para GitHub Actions
 │   │   ├── package.json      # Dependências Node.js (semantic-release)
@@ -140,35 +144,14 @@ vagnerbarbosa.github.io/
 ├── hooks/                    # Git hooks
 │   └── pre-push              # Hook para prevenir push direto na main
 ├── la-linkedin/              # Dados exportados do LinkedIn (importados via CLI)
-│   └── testdata/             # Dados de teste para importação
+│   └── testdata             # Dados de teste para importação
 ├── specs/                    # Especificações de funcionalidades (Spec Kit)
 │   ├── 001-versionamento-automatizado/
-│   │   ├── spec.md
-│   │   ├── plan.md
-│   │   └── tasks.md
 │   ├── 002-theme-language-adjustments/
-│   │   ├── spec.md
-│   │   ├── plan.md
-│   │   └── tasks.md
 │   ├── 003-linkedin-import/
-│   │   ├── spec.md
-│   │   ├── plan.md
-│   │   ├── tasks.md
-│   │   └── ...
 │   ├── 004-tech-stack-extraction/
-│   │   ├── spec.md
-│   │   ├── plan.md
-│   │   ├── tasks.md
-│   │   ├── data-model.md
-│   │   ├── research.md
-│   │   └── quickstart.md
-│   └── 005-test-coverage-total/
-│       ├── spec.md
-│       ├── plan.md
-│       ├── tasks.md
-│       ├── research.md
-│       └── checklists/
-│           └── requirements.md
+│   ├── 005-test-coverage-total/
+│   └── 006-integration-e2e-tests/ # Implementação de testes de integração e E2E
 ├── .claude/
 │   ├── CLAUDE.md             # Regras de colaboração
 │   └── skills/               # Skills do Spec Kit
@@ -217,7 +200,10 @@ go mod download
 | `./generator` | Executa o gerador compilado |
 | `go run cmd/import-linkedin/main.go import` | Importa dados do LinkedIn (modo interativo) |
 | `go run cmd/import-linkedin/main.go import --dry-run` | Visualiza importação sem aplicar |
+| `go run cmd/import-linkedin/main.go validate` | Valida os arquivos CSV do LinkedIn |
 | `go test ./...` | Executa testes unitários |
+| `go test -v -tags=integration ./...` | Executa testes de integração (Golden Files) |
+| `go test -v -tags=e2e ./...` | Executa testes de ponta a ponta (E2E) |
 
 O site gerado estará disponível em `public/index.html`.
 
@@ -239,6 +225,21 @@ Minified js/utils.js: 4901 -> 1438 bytes (saved 3463 bytes, 70.7%)
 Minified css/main.css: 6308 -> 4712 bytes (saved 1596 bytes, 25.3%)
 Site generated successfully in public/
 ```
+
+## Qualidade e Testes
+
+O projeto utiliza uma estratégia de testes em múltiplas camadas para garantir que os dados importados do de LinkedIn sejam renderizados corretamente:
+
+- **Testes Unitários**: Validam componentes isolados do parser e gerador.
+- **Testes de Integração**: Usam **Golden Files** para validar a deterministicidade do pipeline CSV $\rightarrow$ YAML.
+- **Testes E2E (End-to-End)**: Validam o fluxo completo CSV $\rightarrow$ YAML $\rightarrow$ HTML, verificando a presença de marcadores de dados no output final.
+
+Para executar todos os testes:
+```bash
+go test -v ./...
+```
+
+Mais detalhes em [docs/TESTING.md](docs/TESTING.md).
 
 ## Configuração
 
@@ -265,14 +266,27 @@ content:
   experiences:
     - title: "Título do cargo"
       company: "Nome da empresa"
-      period: "Jan 2020 – Presente"
-      details:
+      start_date: "2020-01-01"
+      end_date: "2022-12-31"
+      description:
         - "Descrição da atividade 1"
         - "Descrição da atividade 2"
+      tech_stack: "Go, Kubernetes"
+      location: "Remoto"
   education:
-    - title: "Curso"
-      school: "Instituição"
-      period: "2018 – 2022"
+    - institution: "Universidade X"
+      degree: "B.S. Computer Science"
+      field: "Ciência da Computação"
+      start_date: "2016-01-01"
+      end_date: "2020-12-31"
+      description:
+        - "Foco em Sistemas Distribuídos"
+  certifications:
+    - name: "AWS Certified Solutions Architect"
+      organization: "Amazon Web Services"
+      issue_date: "2021-01-01"
+      credential_id: "AWS-12345"
+      credential_url: "https://aws.amazon.com/cert"
   technologies:
     - "Go"
     - "JavaScript"
@@ -308,7 +322,7 @@ O site nasceu em 2015 como um portfolio Jekyll. Em março de 2026, foi completam
 
 Em abril de 2026, foi implementado o sistema de versionamento automatizado com tags e releases, marcando a transição para a v4.x. Este sistema detecta automaticamente merges na branch main, cria tags semver baseadas em Conventional Commits e gera releases no GitHub com changelog em português.
 
-## Migração v2 → v3 (Jekyll para Go)
+## Migração v2 $\rightarrow$ v3 (Jekyll para Go)
 
 As principais mudanças na migração para v3.0.0:
 

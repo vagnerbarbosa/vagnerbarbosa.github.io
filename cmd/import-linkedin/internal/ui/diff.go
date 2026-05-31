@@ -81,7 +81,7 @@ func (r *DiffRenderer) RenderExperiencesDiff(diff comparator.EntityDiff[models.E
 	if len(diff.Added) > 0 {
 		sb.WriteString(r.formatSectionHeader("Adicionadas", len(diff.Added), "+"))
 		for _, exp := range diff.Added {
-			sb.WriteString(r.formatAddedItem(fmt.Sprintf("%s @ %s", exp.Role, exp.Company)))
+			sb.WriteString(r.formatAddedItem(fmt.Sprintf("%s @ %s", exp.Title, exp.Company)))
 		}
 		sb.WriteString("\n")
 	}
@@ -90,7 +90,7 @@ func (r *DiffRenderer) RenderExperiencesDiff(diff comparator.EntityDiff[models.E
 	if len(diff.Modified) > 0 {
 		sb.WriteString(r.formatSectionHeader("Modificadas", len(diff.Modified), "~"))
 		for _, pair := range diff.Modified {
-			sb.WriteString(r.formatModifiedItem(fmt.Sprintf("%s @ %s", pair.New.Role, pair.New.Company)))
+			sb.WriteString(r.formatModifiedItem(fmt.Sprintf("%s @ %s", pair.New.Title, pair.New.Company)))
 			// Show changed fields
 			fields := comparator.GetChangedFields(pair.Old, pair.New)
 			if len(fields) > 0 {
@@ -104,7 +104,7 @@ func (r *DiffRenderer) RenderExperiencesDiff(diff comparator.EntityDiff[models.E
 	if len(diff.Removed) > 0 {
 		sb.WriteString(r.formatSectionHeader("Removidas", len(diff.Removed), "-"))
 		for _, exp := range diff.Removed {
-			sb.WriteString(r.formatRemovedItem(fmt.Sprintf("%s @ %s", exp.Role, exp.Company)))
+			sb.WriteString(r.formatRemovedItem(fmt.Sprintf("%s @ %s", exp.Title, exp.Company)))
 		}
 		sb.WriteString("\n")
 	}

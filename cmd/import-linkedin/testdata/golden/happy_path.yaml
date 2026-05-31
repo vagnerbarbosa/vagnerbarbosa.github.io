@@ -1,0 +1,31 @@
+site:
+    title: ""
+    description: ""
+    baseurl: ""
+    username: ""
+    user_description: ""
+    user_title: ""
+    email: ""
+    social: {}
+content:
+    about:
+        en: ""
+        pt: ""
+    experiences:
+        - company: Company A
+          title: Software Engineer
+          start_date: 2020 - 01 - 01
+          end_date: 2022 - 12 - 31
+          description:
+            - Developing awesome things in Go
+          location: São Paulo
+        - company: Company B
+          title: Junior Developer
+          start_date: 2018 - 01 - 01
+          end_date: 2019 - 12 - 31
+          description:
+            - Learning the ropes of software engineering
+          location: Rio de Janeiro
+    education: []
+    certifications: []
+    technologies: []

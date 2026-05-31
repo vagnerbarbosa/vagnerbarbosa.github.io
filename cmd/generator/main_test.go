@@ -141,8 +141,8 @@ func TestRun_Success(t *testing.T) {
 	}
 
 	// Run the main function
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 
 	// Verify public/index.html was created
@@ -204,8 +204,8 @@ func TestRun_NoCNAME(t *testing.T) {
 	}
 
 	// Run should succeed even without CNAME
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 
 	// Verify public/index.html was still created
@@ -238,8 +238,8 @@ func TestRun_MissingConfig(t *testing.T) {
 	}
 
 	// Run should fail
-	if err := run(); err == nil {
-		t.Errorf("run() should return error for missing config")
+	if err := Run(); err == nil {
+		t.Errorf("Run() should return error for missing config")
 	}
 }
 
@@ -261,9 +261,9 @@ func TestRun_MissingTemplates(t *testing.T) {
 	}
 
 	// Run should fail - templates are required
-	err = run()
+	err = Run()
 	if err == nil {
-		t.Errorf("run() should return error for missing templates")
+		t.Errorf("Run() should return error for missing templates")
 	}
 }
 
@@ -621,7 +621,7 @@ func TestCopyDir_MissingSource(t *testing.T) {
 
 	err := copyAndMinifyDir(src, dst)
 	if err == nil {
-		t.Error("copyAndMinifyDir() should return error for non-existent source")
+		t.Error("copyAndMinifyDir() should return error when source doesn't exist")
 	}
 }
 
@@ -669,7 +669,7 @@ func TestCopyFile_MissingSource(t *testing.T) {
 
 	err := copyAndMinifyFile(src, dst)
 	if err == nil {
-		t.Error("copyAndMinifyFile() should return error for non-existent source")
+		t.Error("copyAndMinifyFile() should return error when source doesn't exist")
 	}
 }
 
@@ -790,9 +790,9 @@ func TestRun_GenerateIndexError(t *testing.T) {
 		t.Fatalf("failed to create blocking file: %v", err)
 	}
 
-	err := run()
+	err := Run()
 	if err == nil {
-		t.Error("run() should return error when generateIndex fails")
+		t.Error("Run() should return error when generateIndex fails")
 	}
 }
 
@@ -878,8 +878,6 @@ func TestGenerateIndex_TemplateDataTypes(t *testing.T) {
 	}
 }
 
-// Testes adicionais para cobertura completa / Additional tests for complete coverage
-
 // TestCopyCNAME_ReadError verifica leitura do CNAME quando arquivo existe.
 // TestCopyCNAME_ReadError verifies CNAME reading when file exists.
 func TestCopyCNAME_ReadError(t *testing.T) {
@@ -955,9 +953,7 @@ func TestCopyFile_StatError(t *testing.T) {
 
 // TestRun_FailCreatePublicDir verifica execução normal do run.
 // TestRun_FailCreatePublicDir verifies normal execution of run.
-func TestRun_FailCreatePublicDir(t *testing.T) {
-	// This tests when MkdirAll fails
-	// Hard to simulate, but we test the error path in run()
+func TestRun_FailToCreatePublicDir(t *testing.T) {
 	fs := setupTestFs(t)
 	fs.setupConfig(t)
 	fs.setupTemplates(t)
@@ -973,9 +969,15 @@ func TestRun_FailCreatePublicDir(t *testing.T) {
 		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// Test that run() succeeds under normal conditions
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	// Create a file named "public" to block directory creation
+	publicFile := filepath.Join(fs.root, "public")
+	if err := os.WriteFile(publicFile, []byte("not a dir"), 0644); err != nil {
+		t.Fatalf("Failed to create blocking file: %v", err)
+	}
+
+	err = Run()
+	if err == nil {
+		t.Error("Run() should return error when cannot create public directory")
 	}
 }
 
@@ -1301,17 +1303,17 @@ func TestRun_CopyCNAMEError(t *testing.T) {
 		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// Remove the fake public file so run() can create the directory
+	// Remove the fake public file so Run() can create the directory
 	os.Remove(publicFile)
 
 	// Now run should succeed
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 }
 
-// TestRun_CopyCNAME_ReturnsError verifica que run() retorna erro quando copyCNAME falha.
-// TestRun_CopyCNAME_ReturnsError verifies that run() returns error when copyCNAME fails.
+// TestRun_CopyCNAME_ReturnsError verifica que Run() retorna erro quando copyCNAME falha.
+// TestRun_CopyCNAME_ReturnsError verifies that Run() returns error when copyCNAME fails.
 func TestRun_CopyCNAME_ReturnsError(t *testing.T) {
 	// Setup filesystem
 	fs := setupTestFs(t)
@@ -1347,10 +1349,10 @@ func TestRun_CopyCNAME_ReturnsError(t *testing.T) {
 		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// run() should fail because it cannot write CNAME (a directory exists with that name)
-	err = run()
+	// Run() should fail because it cannot write CNAME (a directory exists with that name)
+	err = Run()
 	if err == nil {
-		t.Error("run() should return error when copyCNAME fails")
+		t.Error("Run() should return error when copyCNAME fails")
 	}
 }
 
@@ -1542,10 +1544,10 @@ func TestCopyAndMinifyFile_WithJSONLD(t *testing.T) {
 
 	// Create JSON-LD source file with extra whitespace
 	jsonldContent := `{
-		"@context": "https://schema.org",
-		"@type": "Person",
-		"name": "Test"
-	}`
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Test"
+		}`
 	if err := os.WriteFile(srcFile, []byte(jsonldContent), 0644); err != nil {
 		t.Fatalf("Failed to write source file: %v", err)
 	}
@@ -1590,7 +1592,6 @@ func TestCopyAndMinifyFile_UnsupportedExtension(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to read destination file: %v", err)
 	}
-
 	if string(result) != content {
 		t.Errorf("Content mismatch: got %s, want %s", string(result), content)
 	}
@@ -1619,35 +1620,6 @@ func TestCopyAndMinifyFile_NoSavings(t *testing.T) {
 	}
 }
 
-// TestRun_FailToCreatePublicDir verifica erro ao criar diretório public.
-// TestRun_FailToCreatePublicDir verifies error when creating public directory.
-func TestRun_FailToCreatePublicDir(t *testing.T) {
-	fs := setupTestFs(t)
-	fs.setupConfig(t)
-	fs.setupTemplates(t)
-
-	originalCwd, err := os.Getwd()
-	if err != nil {
-		t.Fatalf("Failed to get cwd: %v", err)
-	}
-	defer os.Chdir(originalCwd)
-
-	if err := os.Chdir(fs.root); err != nil {
-		t.Fatalf("Failed to chdir: %v", err)
-	}
-
-	// Create a file named "public" to block directory creation
-	publicFile := filepath.Join(fs.root, "public")
-	if err := os.WriteFile(publicFile, []byte("not a dir"), 0644); err != nil {
-		t.Fatalf("Failed to create blocking file: %v", err)
-	}
-
-	// run() should fail when it cannot create public directory
-	err = run()
-	if err == nil {
-		t.Error("run() should return error when cannot create public directory")
-	}
-}
 
 // TestCopyAndMinifyFile_MinificationError verifica erro na minificação.
 // TestCopyAndMinifyFile_MinificationError verifies minification error handling.
@@ -1795,8 +1767,8 @@ func TestCopyAndMinifyDir_StatError(t *testing.T) {
 	}
 }
 
-// TestRun_CopyAssetsError verifica erro em run() quando copyAssets falha.
-// TestRun_CopyAssetsError verifies error in run() when copyAssets fails.
+// TestRun_CopyAssetsError verifica erro em Run() quando copyAssets falha.
+// TestRun_CopyAssetsError verifies error in Run() when copyAssets fails.
 func TestRun_CopyAssetsError(t *testing.T) {
 	fs := setupTestFs(t)
 	fs.setupConfig(t)
@@ -1827,10 +1799,10 @@ func TestRun_CopyAssetsError(t *testing.T) {
 		t.Fatalf("Failed to create blocking file: %v", err)
 	}
 
-	// run() should fail when copyAssets fails
-	err = run()
+	// Run() should fail when copyAssets fails
+	err = Run()
 	if err == nil {
-		t.Error("run() should return error when copyAssets fails")
+		t.Error("copyAssets() should return error when assets is not a directory")
 	}
 }
 
@@ -1918,5 +1890,184 @@ func TestParseTemplates_ReadFileError(t *testing.T) {
 	if err != nil {
 		// Expected - file could not be read
 		t.Logf("Expected error occurred: %v", err)
+	}
+}
+
+func TestGenerateSEOFiles(t *testing.T) {
+	fs := setupTestFs(t)
+	fs.setupConfig(t)
+
+	originalCwd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get cwd: %v", err)
+	}
+	defer os.Chdir(originalCwd)
+
+	if err := os.Chdir(fs.root); err != nil {
+		t.Fatalf("Failed to chdir: %v", err)
+	}
+
+	// Create public directory
+	if err := os.MkdirAll(filepath.Join(fs.root, "public"), 0755); err != nil {
+		t.Fatalf("Failed to create public dir: %v", err)
+	}
+
+	cfg := &config.Config{
+		Site: config.SiteConfig{
+			BaseURL: "https://test.com",
+		},
+	}
+
+	err = generateSEOFiles(cfg)
+	if err != nil {
+		t.Fatalf("generateSEOFiles() error = %v", err)
+	}
+
+	// Verify sitemap.xml
+	if _, err := os.Stat(filepath.Join(fs.root, "public", "sitemap.xml")); os.IsNotExist(err) {
+		t.Error("sitemap.xml was not created")
+	}
+
+	// Verify robots.txt
+	if _, err := os.Stat(filepath.Join(fs.root, "public", "robots.txt")); os.IsNotExist(err) {
+		t.Error("robots.txt was not created")
+	}
+
+	// Verify site.webmanifest
+	if _, err := os.Stat(filepath.Join(fs.root, "public", "site.webmanifest")); os.IsNotExist(err) {
+		t.Error("site.webmanifest was not created")
+	}
+}
+
+func TestGenerateSEOFiles_DefaultURL(t *testing.T) {
+	fs := setupTestFs(t)
+
+	originalCwd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get cwd: %v", err)
+	}
+	defer os.Chdir(originalCwd)
+
+	if err := os.Chdir(fs.root); err != nil {
+		t.Fatalf("Failed to chdir: %v", err)
+	}
+	os.MkdirAll(filepath.Join(fs.root, "public"), 0755)
+
+	cfg := &config.Config{
+		Site: config.SiteConfig{
+			BaseURL: "", // Trigger default
+		},
+	}
+
+	err = generateSEOFiles(cfg)
+	if err != nil {
+		t.Fatalf("generateSEOFiles() error = %v", err)
+	}
+
+	robotsContent, _ := os.ReadFile("public/robots.txt")
+	if !strings.Contains(string(robotsContent), "https://vagnerbarbosa.github.io") {
+		t.Errorf("Expected default URL in robots.txt, got: %s", string(robotsContent))
+	}
+}
+
+func TestRun_CNAMEReadError(t *testing.T) {
+	fs := setupTestFs(t)
+	fs.setupConfig(t)
+	fs.setupTemplates(t)
+	fs.setupAssets(t)
+
+	// Create a directory named CNAME to make os.ReadFile fail
+	if err := os.Mkdir(filepath.Join(fs.root, "CNAME"), 0755); err != nil {
+		t.Fatalf("Failed to create CNAME directory: %v", err)
+	}
+
+	originalCwd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get cwd: %v", err)
+	}
+	defer os.Chdir(originalCwd)
+
+	if err := os.Chdir(fs.root); err != nil {
+		t.Fatalf("Failed to chdir: %v", err)
+	}
+
+	err = Run()
+	if err == nil {
+		t.Error("Run() should return error when CNAME is a directory and cannot be read")
+	}
+}
+
+func TestRun_EmptyBaseURL(t *testing.T) {
+	fs := setupTestFs(t)
+	fs.setupConfig(t)
+	fs.setupTemplates(t)
+	fs.setupAssets(t)
+
+	// Override config with empty BaseURL
+	cfgFile := filepath.Join(fs.root, "config.yaml")
+	os.WriteFile(cfgFile, []byte("site:\n  title: \"Test\"\n  username: \"test\"\n  base_url: \"\"\n"), 0644)
+
+	originalCwd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get cwd: %v", err)
+	}
+	defer os.Chdir(originalCwd)
+
+	if err := os.Chdir(fs.root); err != nil {
+		t.Fatalf("Failed to chdir: %v", err)
+	}
+
+	err = Run()
+	if err != nil {
+		t.Errorf("Run() should succeed with empty BaseURL (uses default), got: %v", err)
+	}
+}
+
+func TestCopyAndMinifyFile_UnknownExtension(t *testing.T) {
+	tmpDir := t.TempDir()
+	srcFile := filepath.Join(tmpDir, "test.txt")
+	dstFile := filepath.Join(tmpDir, "dest.txt")
+
+	content := "This is a plain text file."
+	os.WriteFile(srcFile, []byte(content), 0644)
+
+	if err := copyAndMinifyFile(srcFile, dstFile); err != nil {
+		t.Fatalf("copyAndMinifyFile() error = %v", err)
+	}
+
+	result, _ := os.ReadFile(dstFile)
+	if string(result) != content {
+		t.Errorf("Content changed unexpectedly: got %s, want %s", string(result), content)
+	}
+}
+
+func TestCopyCNAME_Exists(t *testing.T) {
+	fs := setupTestFs(t)
+	fs.setupConfig(t)
+	fs.setupTemplates(t)
+	fs.setupAssets(t)
+
+	cnameContent := "vagnerbarbosa.com"
+		os.MkdirAll(filepath.Join(fs.root, "public"), 0755)
+	os.WriteFile(filepath.Join(fs.root, "CNAME"), []byte(cnameContent), 0644)
+
+	originalCwd, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("Failed to get cwd: %v", err)
+	}
+	defer os.Chdir(originalCwd)
+
+	if err := os.Chdir(fs.root); err != nil {
+		t.Fatalf("Failed to chdir: %v", err)
+	}
+
+	err = copyCNAME()
+	if err != nil {
+		t.Errorf("copyCNAME() error = %v", err)
+	}
+
+	result, _ := os.ReadFile(filepath.Join(fs.root, "public/CNAME"))
+	if string(result) != cnameContent {
+		t.Errorf("CNAME content mismatch: got %s, want %s", string(result), cnameContent)
 	}
 }

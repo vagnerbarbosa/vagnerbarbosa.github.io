@@ -83,7 +83,6 @@ func CompareExperiences(linkedin []models.Experience, current []models.Experienc
 		Removed:  make([]models.Experience, 0),
 	}
 
-	// Create maps for easier lookup
 	currentMap := make(map[string]models.Experience)
 	for _, exp := range current {
 		currentMap[exp.ID()] = exp
@@ -94,10 +93,8 @@ func CompareExperiences(linkedin []models.Experience, current []models.Experienc
 		linkedinMap[exp.ID()] = exp
 	}
 
-	// Find added and modified
 	for id, linkedinExp := range linkedinMap {
 		if currentExp, exists := currentMap[id]; exists {
-			// Check if modified
 			if !experiencesEqual(linkedinExp, currentExp) {
 				result.Modified = append(result.Modified, ChangePair[models.Experience]{
 					Old: currentExp,
@@ -109,7 +106,6 @@ func CompareExperiences(linkedin []models.Experience, current []models.Experienc
 		}
 	}
 
-	// Find removed
 	for id, currentExp := range currentMap {
 		if _, exists := linkedinMap[id]; !exists {
 			result.Removed = append(result.Removed, currentExp)
@@ -212,10 +208,9 @@ func CompareAll(linkedinExp []models.Experience, currentExp []models.Experience,
 	return diff
 }
 
-// Helper functions for equality checks
 func experiencesEqual(a, b models.Experience) bool {
 	return a.Company == b.Company &&
-		a.Role == b.Role &&
+		a.Title == b.Title &&
 		a.StartDate == b.StartDate &&
 		a.EndDate == b.EndDate &&
 		a.Location == b.Location &&
@@ -246,8 +241,8 @@ func GetChangedFields(old, new models.Experience) []string {
 	if old.Company != new.Company {
 		fields = append(fields, "company")
 	}
-	if old.Role != new.Role {
-		fields = append(fields, "role")
+	if old.Title != new.Title {
+		fields = append(fields, "title")
 	}
 	if old.StartDate != new.StartDate {
 		fields = append(fields, "start_date")
@@ -268,12 +263,12 @@ func GetChangedFields(old, new models.Experience) []string {
 func FormatID(entity any) string {
 	switch e := entity.(type) {
 	case models.Experience:
-		return fmt.Sprintf("%s @ %s", e.Role, e.Company)
+		return fmt.Sprintf("%s @ %s", e.Title, e.Company)
 	case *models.Experience:
 		if e == nil {
 			return ""
 		}
-		return fmt.Sprintf("%s @ %s", e.Role, e.Company)
+		return fmt.Sprintf("%s @ %s", e.Title, e.Company)
 	case models.Education:
 		return fmt.Sprintf("%s at %s", e.Degree, e.Institution)
 	case *models.Education:

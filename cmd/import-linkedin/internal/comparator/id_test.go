@@ -16,12 +16,12 @@ func TestIDGenerator(t *testing.T) {
 	}{
 		{
 			name:     "experience",
-			entity:   models.Experience{Company: "Google", Role: "Engineer"},
+			entity:   models.Experience{Company: "Google", Title: "Engineer"},
 			expected: "Google#Engineer",
 		},
 		{
 			name:     "experience pointer",
-			entity:   &models.Experience{Company: "Google", Role: "Engineer"},
+			entity:   &models.Experience{Company: "Google", Title: "Engineer"},
 			expected: "Google#Engineer",
 		},
 		{
@@ -138,7 +138,7 @@ func TestGetEntityType(t *testing.T) {
 }
 
 func TestGenerateIDs(t *testing.T) {
-	exp := models.Experience{Company: "Google", Role: "Engineer"}
+	exp := models.Experience{Company: "Google", Title: "Engineer"}
 	if GenerateExperienceID(exp) != "Google#Engineer" {
 		t.Error("GenerateExperienceID failed")
 	}

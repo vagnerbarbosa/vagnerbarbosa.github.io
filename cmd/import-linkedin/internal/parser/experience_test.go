@@ -108,8 +108,8 @@ StartupXYZ,Intern,Jun 2019,Dec 2019,Learned the ropes,Remote`
 	if exp1.Company != "Acme Corp" {
 		t.Errorf("Expected company 'Acme Corp', got '%s'", exp1.Company)
 	}
-	if exp1.Role != "Software Engineer" {
-		t.Errorf("Expected role 'Software Engineer', got '%s'", exp1.Role)
+	if exp1.Title != "Software Engineer" {
+		t.Errorf("Expected role 'Software Engineer', got '%s'", exp1.Title)
 	}
 	if exp1.StartDate != "Jan 2020" {
 		t.Errorf("Expected start date 'Jan 2020', got '%s'", exp1.StartDate)
@@ -219,21 +219,25 @@ func TestExperienceParser_ParseAll_Errors(t *testing.T) {
 		name        string
 		csvData     string
 		expectError bool
+		expectedLen int
 	}{
 		{
 			name:        "invalid row - missing company",
 			csvData:     "Company Name,Title,Started On\n,Engineer,Jan 2020",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name:        "invalid row - missing title",
 			csvData:     "Company Name,Title,Started On\nAcme Corp,,Jan 2020",
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name:        "invalid row - missing start date",
-			csvData:     "Company Name,Title,Started On\nAcme Corp,Engineer,",
-			expectError: true,
+			csvData:     "Company Name,Title, Started On\nAcme Corp,Engineer,",
+			expectError: false,
+			expectedLen: 0,
 		},
 	}
 
@@ -244,9 +248,13 @@ func TestExperienceParser_ParseAll_Errors(t *testing.T) {
 				t.Fatalf("Failed to create parser: %v", err)
 			}
 
-			_, err = parser.ParseAll()
+			experiences, err := parser.ParseAll()
 			if (err != nil) != tt.expectError {
 				t.Errorf("ParseAll() error = %v, expectError %v", err, tt.expectError)
+			}
+
+			if len(experiences) != tt.expectedLen {
+				t.Errorf("Expected %d experiences, got %d", tt.expectedLen, len(experiences))
 			}
 		})
 	}
@@ -278,7 +286,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "valid experience",
 			exp: models.Experience{
 				Company:   "Acme Corp",
-				Role:      "Engineer",
+				Title:      "Engineer",
 				StartDate: "Jan 2020",
 			},
 			wantErr: false,
@@ -287,7 +295,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "missing company",
 			exp: models.Experience{
 				Company:   "",
-				Role:      "Engineer",
+				Title:      "Engineer",
 				StartDate: "Jan 2020",
 			},
 			wantErr: true,
@@ -296,7 +304,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "missing role",
 			exp: models.Experience{
 				Company:   "Acme Corp",
-				Role:      "",
+				Title:      "",
 				StartDate: "Jan 2020",
 			},
 			wantErr: true,
@@ -305,7 +313,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "missing start date",
 			exp: models.Experience{
 				Company:   "Acme Corp",
-				Role:      "Engineer",
+				Title:      "Engineer",
 				StartDate: "",
 			},
 			wantErr: true,
