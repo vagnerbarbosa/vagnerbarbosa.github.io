@@ -22,7 +22,8 @@ fi
 
 # Extract and aggregate coverage percentages
 while read -r line; do
-    if [[ $line == *"coverage: "* ]]; then
+    # Only process lines that indicate a successful test run with coverage data
+    if [[ $line == ok* ]] && [[ $line == *"coverage: "* ]]; then
         pkg=$(echo $line | awk '{print $2}')
         cov=$(echo $line | grep -oP 'coverage: \K[0-9.]+')
 
