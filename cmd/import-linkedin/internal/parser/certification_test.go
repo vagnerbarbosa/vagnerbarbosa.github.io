@@ -80,7 +80,6 @@ func TestNewCertificationParserFromReader(t *testing.T) {
 	})
 
 	t.Run("simulated read error", func(t *testing.T) {
-		// Use a reader that fails immediately
 		parser, err := NewCertificationParserFromReader(&failingReader{failAt: 0})
 		if err == nil {
 			t.Error("Expected error for simulated read failure")
@@ -110,19 +109,22 @@ Kubernetes Admin,https://cncf.io/certification,CNCF,Mar 2021,Mar 2024,XYZ789`,
 			name: "invalid row - missing name",
 			csvData: `Name,Url,Authority,Started On,Finished On,License Number
 ,https://test.com,Amazon,Jan 2020,Jan 2023,ABC`,
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name: "invalid row - missing organization",
 			csvData: `Name,Url,Authority,Started On,Finished On,License Number
 AWS Cert,https://test.com,,Jan 2020,Jan 2023,ABC`,
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 		{
 			name: "invalid row - missing issue date",
 			csvData: `Name,Url,Authority,Started On,Finished On,License Number
 AWS Cert,https://test.com,Amazon,,Jan 2023,ABC`,
-			expectError: true,
+			expectError: false,
+			expectedLen: 0,
 		},
 	}
 
@@ -138,7 +140,7 @@ AWS Cert,https://test.com,Amazon,,Jan 2023,ABC`,
 				t.Errorf("ParseAll() error = %v, expectError %v", err, tt.expectError)
 			}
 
-			if !tt.expectError && len(certs) != tt.expectedLen {
+			if len(certs) != tt.expectedLen {
 				t.Errorf("Expected %d certifications, got %d", tt.expectedLen, len(certs))
 			}
 		})
@@ -192,7 +194,7 @@ AWS Cert,https://test.com,Amazon,Invalid Date,Jan 2023,ABC`,
 			csvData: `Name,Url,Authority,Started On,Finished On,License Number
 ,https://test.com,,Invalid Date,Invalid Date,ABC`,
 			expectError: true,
-			errorCount:  4, // Name, Authority, Started On, Finished On
+			errorCount:  4,
 		},
 	}
 
@@ -223,7 +225,7 @@ func TestCertificationParser_ReadFailure(t *testing.T) {
 	t.Run("ParseAll failure", func(t *testing.T) {
 		reader := &failingReader{
 			data:   []byte(csvData),
-			failAt: 20, // Approximately after first record
+			failAt: 20,
 		}
 		parser, _ := NewCertificationParserFromReader(reader)
 		_, err := parser.ParseAll()

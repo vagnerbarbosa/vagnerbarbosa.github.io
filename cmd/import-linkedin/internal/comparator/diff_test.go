@@ -9,13 +9,13 @@ import (
 
 func TestCompareExperiences(t *testing.T) {
 	linkedin := []models.Experience{
-		{Company: "Google", Role: "Engineer", StartDate: "Jan 2020"},
-		{Company: "Microsoft", Role: "Dev", StartDate: "Jan 2021"},
+		{Company: "Google", Title: "Engineer", StartDate: "Jan 2020"},
+		{Company: "Microsoft", Title: "Dev", StartDate: "Jan 2021"},
 	}
 
 	current := []models.Experience{
-		{Company: "Google", Role: "Engineer", StartDate: "Jan 2020"},
-		{Company: "Apple", Role: "Designer", StartDate: "Jan 2019"},
+		{Company: "Google", Title: "Engineer", StartDate: "Jan 2020"},
+		{Company: "Apple", Title: "Designer", StartDate: "Jan 2019"},
 	}
 
 	diff := CompareExperiences(linkedin, current)
@@ -37,11 +37,11 @@ func TestCompareExperiences_WithModifications(t *testing.T) {
 	// Note: When role changes, the ID (company#role) changes, so it's treated
 	// as remove + add, not modify. This is expected behavior.
 	linkedin := []models.Experience{
-		{Company: "Google", Role: "Senior Engineer", StartDate: "Jan 2020", Location: "SF"},
+		{Company: "Google", Title: "Senior Engineer", StartDate: "Jan 2020", Location: "SF"},
 	}
 
 	current := []models.Experience{
-		{Company: "Google", Role: "Engineer", StartDate: "Jan 2020", Location: "NYC"},
+		{Company: "Google", Title: "Engineer", StartDate: "Jan 2020", Location: "NYC"},
 	}
 
 	diff := CompareExperiences(linkedin, current)
@@ -229,7 +229,7 @@ func TestDiff_HasChanges(t *testing.T) {
 			name: "with added",
 			diff: &Diff{
 				Experiences: EntityDiff[models.Experience]{
-					Added: []models.Experience{{Company: "Test", Role: "Dev"}},
+					Added: []models.Experience{{Company: "Test", Title: "Dev"}},
 				},
 			},
 			expected: true,
@@ -273,11 +273,11 @@ func TestGetChangedFields(t *testing.T) {
 		{
 			name: "no changes",
 			old: models.Experience{
-				Company: "Google", Role: "Engineer", StartDate: "Jan 2020",
+				Company: "Google", Title: "Engineer", StartDate: "Jan 2020",
 				EndDate: "Dec 2022", Location: "NYC", Description: []string{"work"},
 			},
 			new: models.Experience{
-				Company: "Google", Role: "Engineer", StartDate: "Jan 2020",
+				Company: "Google", Title: "Engineer", StartDate: "Jan 2020",
 				EndDate: "Dec 2022", Location: "NYC", Description: []string{"work"},
 			},
 			expected: []string{},
@@ -285,26 +285,26 @@ func TestGetChangedFields(t *testing.T) {
 		{
 			name: "all changes",
 			old: models.Experience{
-				Company: "Google", Role: "Engineer", StartDate: "Jan 2020",
+				Company: "Google", Title: "Engineer", StartDate: "Jan 2020",
 				EndDate: "Dec 2022", Location: "NYC", Description: []string{"work"},
 			},
 			new: models.Experience{
-				Company: "Microsoft", Role: "Senior Engineer", StartDate: "Feb 2020",
+				Company: "Microsoft", Title: "Senior Engineer", StartDate: "Feb 2020",
 				EndDate: "Jan 2023", Location: "Seattle", Description: []string{"work", "lead"},
 			},
-			expected: []string{"company", "role", "start_date", "end_date", "location", "description"},
+			expected: []string{"company", "title", "start_date", "end_date", "location", "description"},
 		},
 		{
 			name: "some changes",
 			old: models.Experience{
-				Company: "Google", Role: "Engineer", StartDate: "Jan 2020",
+				Company: "Google", Title: "Engineer", StartDate: "Jan 2020",
 				EndDate: "", Location: "NYC", Description: []string{"work"},
 			},
 			new: models.Experience{
-				Company: "Google", Role: "Senior Engineer", StartDate: "Jan 2020",
+				Company: "Google", Title: "Senior Engineer", StartDate: "Jan 2020",
 				EndDate: "Dec 2022", Location: "NYC", Description: []string{"work", "lead"},
 			},
-			expected: []string{"role", "end_date", "description"},
+			expected: []string{"title", "end_date", "description"},
 		},
 	}
 
@@ -337,12 +337,12 @@ func TestFormatID(t *testing.T) {
 	}{
 		{
 			name:     "experience",
-			entity:   models.Experience{Company: "Google", Role: "Engineer"},
+			entity:   models.Experience{Company: "Google", Title: "Engineer"},
 			expected: "Engineer @ Google",
 		},
 		{
 			name:     "experience pointer",
-			entity:   &models.Experience{Company: "Google", Role: "Engineer"},
+			entity:   &models.Experience{Company: "Google", Title: "Engineer"},
 			expected: "Engineer @ Google",
 		},
 		{
@@ -399,15 +399,15 @@ func TestFormatID(t *testing.T) {
 func TestEqualityHelpers(t *testing.T) {
 	t.Run("experiencesEqual", func(t *testing.T) {
 		exp1 := models.Experience{
-			Company: "Google", Role: "Engineer", StartDate: "Jan 2020",
+			Company: "Google", Title: "Engineer", StartDate: "Jan 2020",
 			EndDate: "Dec 2022", Location: "NYC", Description: []string{"desc1"},
 		}
 		exp2 := models.Experience{
-			Company: "Google", Role: "Engineer", StartDate: "Jan 2020",
+			Company: "Google", Title: "Engineer", StartDate: "Jan 2020",
 			EndDate: "Dec 2022", Location: "NYC", Description: []string{"desc1"},
 		}
 		exp3 := models.Experience{
-			Company: "Google", Role: "Lead", StartDate: "Jan 2020",
+			Company: "Google", Title: "Lead", StartDate: "Jan 2020",
 			EndDate: "Dec 2022", Location: "NYC", Description: []string{"desc1"},
 		}
 
@@ -466,12 +466,12 @@ func TestEqualityHelpers(t *testing.T) {
 
 func TestCompareAll(t *testing.T) {
 	linkedinExp := []models.Experience{
-		{Company: "Google", Role: "Engineer", StartDate: "Jan 2020"}, // Modified
-		{Company: "Microsoft", Role: "Dev", StartDate: "Jan 2021"},   // Added
+		{Company: "Google", Title: "Engineer", StartDate: "Jan 2020"}, // Modified
+		{Company: "Microsoft", Title: "Dev", StartDate: "Jan 2021"},   // Added
 	}
 	currentExp := []models.Experience{
-		{Company: "Google", Role: "Engineer", StartDate: "Jan 2019"}, // Modified (StartDate differs)
-		{Company: "Apple", Role: "Designer", StartDate: "Jan 2018"},   // Removed
+		{Company: "Google", Title: "Engineer", StartDate: "Jan 2019"}, // Modified (StartDate differs)
+		{Company: "Apple", Title: "Designer", StartDate: "Jan 2018"},   // Removed
 	}
 
 	linkedinEdu := []models.Education{

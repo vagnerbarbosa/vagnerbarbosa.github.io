@@ -1,18 +1,24 @@
-title:
-    en: ""
-    pt: ""
-name: ""
-about:
-    en: ""
-    pt: ""
-social: {}
-experiences:
-    - company: Company Partial
-      role: Dev
-      start_date: 2020 - 01 - 01
-      end_date: ""
-      description:
-        - Some description
-      location: Cidadao
-education: []
-certifications: []
+site:
+    title: ""
+    description: ""
+    baseurl: ""
+    username: ""
+    user_description: ""
+    user_title: ""
+    email: ""
+    social: {}
+content:
+    about:
+        en: ""
+        pt: ""
+    experiences:
+        - company: Company Partial
+          title: Dev
+          start_date: 2020 - 01 - 01
+          end_date: ""
+          description:
+            - Some description
+          location: Cidadao
+    education: []
+    certifications: []
+    technologies: []

@@ -23,10 +23,14 @@ type SiteConfig struct {
 
 type Experience struct {
 	Title       string   `yaml:"title"`
+	TitleEN     string   `yaml:"title_en,omitempty"`
 	Company     string   `yaml:"company"`
 	StartDate   string   `yaml:"start_date"`
+	StartDateEN string   `yaml:"start_date_en,omitempty"`
 	EndDate     string   `yaml:"end_date"`
+	EndDateEN   string   `yaml:"end_date_en,omitempty"`
 	Description []string `yaml:"description"`
+	DescriptionEN []string `yaml:"description_en,omitempty"`
 	TechStack   string   `yaml:"tech_stack"`
 	Location    string   `yaml:"location,omitempty"`
 }
@@ -34,9 +38,12 @@ type Experience struct {
 type Education struct {
 	Institution string   `yaml:"institution"`
 	Degree      string   `yaml:"degree"`
+	DegreeEN    string   `yaml:"degree_en,omitempty"`
 	Field       string   `yaml:"field,omitempty"`
 	StartDate   string   `yaml:"start_date,omitempty"`
+	StartDateEN string   `yaml:"start_date_en,omitempty"`
 	EndDate     string   `yaml:"end_date,omitempty"`
+	EndDateEN   string   `yaml:"end_date_en,omitempty"`
 	Description []string `yaml:"description,omitempty"`
 }
 

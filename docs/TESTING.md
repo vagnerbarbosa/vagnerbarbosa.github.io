@@ -1,53 +1,53 @@
-# Testing Strategy
+# Estratégia de Testes
 
-This document describes the testing strategy for the professional portfolio website and its import pipeline.
+Este documento descreve a estratégia de testes para o site de portfólio e seu pipeline de importação.
 
-## Overview
+## Visão Geral
 
-The project employs a multi-layered testing approach to ensure data integrity from LinkedIn import to the final rendered HTML.
+O projeto utiliza uma abordagem de testes em múltiplas camadas para garantir a integridade dos dados, desde a importação do LinkedIn até a renderização final do HTML.
 
-## Testing Layers
+## Camadas de Teste
 
-### 1. Unit Tests
-- **Focus**: Small, isolated components (parsers, transformers, config managers).
-- **Goal**: Validate that individual functions behave correctly under various inputs.
-- **Execution**: `go test ./...`
+### 1. Testes Unitários
+- **Foco**: Componentes pequenos e isolados (parsers, transformadores, gerenciadores de configuração).
+- **Objetivo**: Validar que funções individuais se comportem corretamente sob várias entradas.
+- **Execução**: `go test ./...`
 
-### 2. Integration Tests (Import Pipeline)
-- **Focus**: The flow from CSV files $\rightarrow$ YAML configuration.
-- **Method**: **Golden Files**.
-  - Reference CSVs are parsed.
-  - The resulting YAML is compared against a "golden" reference file.
-  - Semantic comparison is used (unmarshaling to structs) to ignore insignificant formatting differences.
-- **Goal**: Ensure the import pipeline is deterministic and correct.
+### 2. Testes de Integração (Pipeline de Importação)
+- **Foco**: O fluxo de arquivos CSV $\rightarrow$ configuração YAML.
+- **Método**: **Golden Files**.
+  - CSVs de referência são processados.
+  - O YAML resultante é comparado com um arquivo de referência "golden".
+  - É utilizada a comparação semântica (unmarshaling para structs) para ignorar diferenças insignificantes de formatação.
+- **Objetivo**: Garantir que o pipeline de importação seja determinístico e correto.
 
-### 3. End-to-End (E2E) Tests
-- **Focus**: Full pipeline from CSV $\rightarrow$ YAML $\rightarrow$ HTML.
-- **Method**:
-  - A temporary environment is created with a subset of templates and assets.
-  - The import pipeline is triggered using test CSV data.
-  - The site generator is run.
-  - The resulting `index.html` is scanned for specific "markers" (unique strings) that must be present for each section (Experience, Education, Certifications).
-- **Goal**: Guarantee that imported data actually renders on the final website.
+### 3. Testes End-to-End (E2E)
+- **Foco**: Fluxo completo de CSV $\rightarrow$ YAML $\rightarrow$ HTML.
+- **Método**:
+  - Um ambiente temporário é criado com um subconjunto de templates e assets.
+  - O pipeline de importação é disparado usando dados de teste em CSV.
+  - O gerador do site é executado.
+  - O `index.html` resultante é escaneado em busca de "marcadores" específicos (strings únicas) que devem estar presentes para cada seção (Experiência, Educação, Certificações).
+- **Objetivo**: Garantir que os dados importados realmente sejam renderizados no site final.
 
-## Test Data
+## Dados de Teste
 
-Test data for integration and E2E tests is located in:
+Os dados de teste para integração e E2E estão localizados em:
 `cmd/import-linkedin/testdata/e2e/`
 
-## Running Tests
+## Executando os Testes
 
-### All Tests
+### Todos os Testes
 ```bash
 go test -v ./...
 ```
 
-### E2E Tests Only
+### Apenas Testes E2E
 ```bash
 go test -v ./cmd/generator/...
 ```
 
-## Quality Gates
+## Portões de Qualidade (Quality Gates)
 
-- **Code Coverage**: The project aims for high test coverage, particularly in the import pipeline (targeting >95%).
-- **CI/CD**: All tests are executed automatically on every Pull Request via GitHub Actions.
+- **Cobertura de Código**: O projeto busca alta cobertura de testes, particularmente no pipeline de importação (meta >95%).
+- **CI/CD**: Todos os testes são executados automaticamente em cada Pull Request via GitHub Actions.

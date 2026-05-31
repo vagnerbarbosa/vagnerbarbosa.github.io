@@ -65,7 +65,7 @@ func TestRunImport_MissingFiles(t *testing.T) {
 	Config.ConfigPath = filepath.Join(tmpDir, "config.yaml")
 	Config.Yes = true // Avoid interactive prompt
 
-	err := runImport([]string{})
+	err := RunImport([]string{})
 	if err != nil {
 		t.Errorf("Expected no error when CSV files are missing, got: %v", err)
 	}
@@ -113,7 +113,7 @@ func TestRunImport_DryRun(t *testing.T) {
 	os.WriteFile(Config.EducationPath, []byte(""), 0644)
 	os.WriteFile(Config.CertificationsPath, []byte(""), 0644)
 
-	err = runImport([]string{"--dry-run"})
+	err = RunImport([]string{"--dry-run"})
 	if err != nil {
 		t.Errorf("Expected no error during dry-run, got: %v", err)
 	}
@@ -170,7 +170,7 @@ func TestRunImport_WithValidFiles(t *testing.T) {
 	Config.Yes = true
 	Config.Backup = true
 
-	err := runImport([]string{})
+	err := RunImport([]string{})
 	if err != nil {
 		t.Errorf("Expected no error with valid files, got: %v", err)
 	}
@@ -215,7 +215,7 @@ func TestRunImport_WithBackup(t *testing.T) {
 	Config.Yes = true
 	Config.Backup = true
 
-	err := runImport([]string{})
+	err := RunImport([]string{})
 	if err != nil {
 		t.Errorf("Expected no error with backup enabled, got: %v", err)
 	}
@@ -259,7 +259,7 @@ func TestRunImport_ParseErrors(t *testing.T) {
 	Config.Yes = true
 
 	// Should handle parse errors gracefully
-	err := runImport([]string{})
+	err := RunImport([]string{})
 	// Errors are logged but not returned in dry-run mode
 	_ = err
 }

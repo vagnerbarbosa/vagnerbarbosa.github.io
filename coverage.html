@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>generator: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/generator/main.go (91.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Generator builds the static site from templates and config
+package main
+
+import (
+        "bytes"
+        "fmt"
+        "html/template"
+        "os"
+        "path/filepath"
+        "strings"
+
+        "github.com/tdewolff/minify/v2"
+        "github.com/tdewolff/minify/v2/css"
+        "github.com/tdewolff/minify/v2/html"
+        "github.com/tdewolff/minify/v2/js"
+        "github.com/tdewolff/minify/v2/json"
+        "github.com/vagnerbarbosa/vagnerbarbosa.github.io/internal/config"
+)
+
+// minifier instance configured for optimal compression
+var minifier *minify.M
+
+func init() <span class="cov8" title="1">{
+        minifier = minify.New()
+
+        // JavaScript: aggressive minification
+        minifier.AddFunc("application/javascript", js.Minify)
+        minifier.AddFunc("text/javascript", js.Minify)
+
+        // CSS: clean minification preserving semantics
+        minifier.AddFunc("text/css", css.Minify)
+
+        // JSON: compact representation
+        minifier.AddFunc("application/json", json.Minify)
+        minifier.AddFunc("application/ld+json", json.Minify)
+
+        // HTML: minify while keeping essential whitespace
+        minifier.Add("text/html", &amp;html.Minifier{
+                KeepDocumentTags: true,
+                KeepEndTags:      true,
+                KeepQuotes:       true,
+                KeepWhitespace:   false,
+        })
+}</span>
+
+func main() <span class="cov0" title="0">{
+        os.Exit(runWithExitCode())
+}</span>
+
+func runWithExitCode() int <span class="cov0" title="0">{
+        if err := run(); err != nil </span><span class="cov0" title="0">{
+                fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+                return 1
+        }</span>
+        <span class="cov0" title="0">return 0</span>
+}
+
+func run() error <span class="cov8" title="1">{
+        // Load configuration
+        cfg, err := config.Load("config.yaml")
+        if err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to load config: %w", err)
+        }</span>
+
+        // Create output directory
+        <span class="cov8" title="1">if err := os.MkdirAll("public", 0755); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to create public directory: %w", err)
+        }</span>
+
+        // Parse templates
+        <span class="cov8" title="1">tmpl, err := parseTemplates()
+        if err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to parse templates: %w", err)
+        }</span>
+
+        // Generate index.html (minified)
+        <span class="cov8" title="1">data := cfg.ToTemplateData()
+        if err := generateIndex(tmpl, data); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to generate index: %w", err)
+        }</span>
+
+        // Copy and minify static assets
+        <span class="cov8" title="1">if err := copyAssets(); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to copy assets: %w", err)
+        }</span>
+
+        // Copy CNAME if exists
+        <span class="cov8" title="1">if err := copyCNAME(); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to copy CNAME: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">fmt.Println("Site generated successfully in public/")
+        return nil</span>
+}
+
+func parseTemplates() (*template.Template, error) <span class="cov8" title="1">{
+        // Templates use auto-escaping by default - safeHTML removed to prevent XSS
+        // All content from config.yaml is treated as plain text
+        tmpl := template.New("")
+
+        // Walk templates directory
+        err := filepath.Walk("templates", func(path string, info os.FileInfo, err error) error </span><span class="cov8" title="1">{
+                if err != nil </span><span class="cov8" title="1">{
+                        return err
+                }</span>
+                <span class="cov8" title="1">if info.IsDir() </span><span class="cov8" title="1">{
+                        return nil
+                }</span>
+                <span class="cov8" title="1">if !strings.HasSuffix(path, ".html") </span><span class="cov8" title="1">{
+                        return nil
+                }</span>
+
+                <span class="cov8" title="1">content, err := os.ReadFile(path)
+                if err != nil </span><span class="cov8" title="1">{
+                        return fmt.Errorf("failed to read template %s: %w", path, err)
+                }</span>
+
+                <span class="cov8" title="1">_, err = tmpl.Parse(string(content))
+                if err != nil </span><span class="cov8" title="1">{
+                        return fmt.Errorf("failed to parse template %s: %w", path, err)
+                }</span>
+
+                <span class="cov8" title="1">return nil</span>
+        })
+
+        <span class="cov8" title="1">if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return tmpl, nil</span>
+}
+
+func generateIndex(tmpl *template.Template, data config.TemplateData) error <span class="cov8" title="1">{
+        // Execute template to buffer first
+        var buf bytes.Buffer
+        if err := tmpl.ExecuteTemplate(&amp;buf, "index", data); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to execute template: %w", err)
+        }</span>
+
+        // Minify HTML before writing
+        <span class="cov8" title="1">minified, err := minifier.Bytes("text/html", buf.Bytes())
+        if err != nil </span><span class="cov0" title="0">{
+                // Fallback to unminified if minification fails
+                minified = buf.Bytes()
+        }</span>
+
+        <span class="cov8" title="1">if err := os.WriteFile("public/index.html", minified, 0644); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to write index.html: %w", err)
+        }</span>
+
+        // Print stats
+        <span class="cov8" title="1">savings := len(buf.Bytes()) - len(minified)
+        if savings &gt; 0 </span><span class="cov8" title="1">{
+                percent := float64(savings) * 100 / float64(len(buf.Bytes()))
+                fmt.Printf("HTML minified: %d bytes -&gt; %d bytes (saved %d bytes, %.1f%%)\n",
+                        len(buf.Bytes()), len(minified), savings, percent)
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func copyAssets() error <span class="cov8" title="1">{
+        if err := copyAndMinifyDir("assets", "public/assets"); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to copy assets directory: %w", err)
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func copyCNAME() error <span class="cov8" title="1">{
+        if _, err := os.Stat("CNAME"); os.IsNotExist(err) </span><span class="cov8" title="1">{
+                return nil
+        }</span>
+
+        <span class="cov8" title="1">content, err := os.ReadFile("CNAME")
+        if err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to read CNAME: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">if err := os.WriteFile("public/CNAME", content, 0644); err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("failed to write CNAME: %w", err)
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+// copyAndMinifyDir recursively copies a directory, minifying supported file types
+func copyAndMinifyDir(src, dst string) error <span class="cov8" title="1">{
+        info, err := os.Stat(src)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if err := os.MkdirAll(dst, info.Mode()); err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">entries, err := os.ReadDir(src)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">for _, entry := range entries </span><span class="cov8" title="1">{
+                srcPath := filepath.Join(src, entry.Name())
+                dstPath := filepath.Join(dst, entry.Name())
+
+                if entry.IsDir() </span><span class="cov8" title="1">{
+                        if err := copyAndMinifyDir(srcPath, dstPath); err != nil </span><span class="cov0" title="0">{
+                                return err
+                        }</span>
+                } else<span class="cov8" title="1"> {
+                        if err := copyAndMinifyFile(srcPath, dstPath); err != nil </span><span class="cov0" title="0">{
+                                return err
+                        }</span>
+                }
+        }
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+// copyAndMinifyFile copies a file, minifying if it's a supported type
+func copyAndMinifyFile(src, dst string) error <span class="cov8" title="1">{
+        content, err := os.ReadFile(src)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">info, err := os.Stat(src)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        // Determine mime type and minify if supported
+        <span class="cov8" title="1">ext := strings.ToLower(filepath.Ext(src))
+        var mimeType string
+
+        switch ext </span>{
+        case ".js":<span class="cov8" title="1">
+                mimeType = "application/javascript"</span>
+        case ".css":<span class="cov8" title="1">
+                mimeType = "text/css"</span>
+        case ".html", ".htm":<span class="cov8" title="1">
+                mimeType = "text/html"</span>
+        case ".json":<span class="cov8" title="1">
+                mimeType = "application/json"</span>
+        case ".jsonld":<span class="cov8" title="1">
+                mimeType = "application/ld+json"</span>
+        }
+
+        <span class="cov8" title="1">if mimeType != "" </span><span class="cov8" title="1">{
+                minified, err := minifier.Bytes(mimeType, content)
+                if err == nil &amp;&amp; len(minified) &lt; len(content) </span><span class="cov8" title="1">{
+                        savings := len(content) - len(minified)
+                        percent := float64(savings) * 100 / float64(len(content))
+                        relPath, _ := filepath.Rel("assets", src)
+                        fmt.Printf("Minified %s: %d -&gt; %d bytes (saved %d bytes, %.1f%%)\n",
+                                relPath, len(content), len(minified), savings, percent)
+                        content = minified
+                }</span>
+        }
+
+        <span class="cov8" title="1">return os.WriteFile(dst, content, info.Mode())</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
