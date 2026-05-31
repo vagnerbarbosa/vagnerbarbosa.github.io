@@ -15,9 +15,9 @@
 {{range .Content.Experiences}}
         <div class="experience-item">
           <h2 class="experience-title">{{.Title}}</h2>
-          <p class="experience-company">{{.Company}} • {{.Period}}</p>
+          <p class="experience-company">{{.Company}} • {{.StartDate}}{{if .EndDate}} - {{.EndDate}}{{else}} - Presente{{end}}</p>
           <ul>
-{{range .Details}}
+{{range .Description}}
             <li>{{.}}</li>
 {{end}}
           </ul>
@@ -28,10 +28,10 @@
       <div class="lang-en" style="display: none;">
 {{range .Content.Experiences}}
         <div class="experience-item">
-          <h2 class="experience-title">{{.TitleEN}}</h2>
-          <p class="experience-company">{{.Company}} • {{.PeriodEN}}</p>
+          <h2 class="experience-title">{{.Title}}</h2>
+          <p class="experience-company">{{.Company}} • {{.StartDate}}{{if .EndDate}} - {{.EndDate}}{{else}} - Present{{end}}</p>
           <ul>
-{{range .DetailsEN}}
+{{range .Description}}
             <li>{{.}}</li>
 {{end}}
           </ul>

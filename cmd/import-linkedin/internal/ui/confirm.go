@@ -95,7 +95,7 @@ func ConfirmWithSelect(diff *comparator.Diff) ([]Confirmation, error) {
 	if len(diff.Experiences.Added) > 0 {
 		fmt.Println("\n💼 Experiências - Adicionar:")
 		for _, exp := range diff.Experiences.Added {
-			confirmed, err := ConfirmSimple(fmt.Sprintf("Adicionar: %s @ %s?", exp.Role, exp.Company))
+			confirmed, err := ConfirmSimple(fmt.Sprintf("Adicionar: %s @ %s?", exp.Title, exp.Company))
 			if err != nil {
 				return nil, err
 			}
@@ -114,7 +114,7 @@ func ConfirmWithSelect(diff *comparator.Diff) ([]Confirmation, error) {
 	if len(diff.Experiences.Modified) > 0 {
 		fmt.Println("\n💼 Experiências - Modificar:")
 		for _, pair := range diff.Experiences.Modified {
-			confirmed, err := ConfirmSimple(fmt.Sprintf("Modificar: %s @ %s?", pair.New.Role, pair.New.Company))
+			confirmed, err := ConfirmSimple(fmt.Sprintf("Modificar: %s @ %s?", pair.New.Title, pair.New.Company))
 			if err != nil {
 				return nil, err
 			}
@@ -216,7 +216,6 @@ func ConfirmWithSelect(diff *comparator.Diff) ([]Confirmation, error) {
 
 // ApplyConfirmations applies the confirmed changes to the config.
 func ApplyConfirmations(config *models.ConfigPortfolio, confirmations []Confirmation) {
-	// Group by entity type
 	var (
 		experiences    []models.Experience
 		education      []models.Education
@@ -244,15 +243,14 @@ func ApplyConfirmations(config *models.ConfigPortfolio, confirmations []Confirma
 		}
 	}
 
-	// Update config
 	if len(experiences) > 0 {
-		config.Experiences = experiences
+		config.Content.Experiences = experiences
 	}
 	if len(education) > 0 {
-		config.Education = education
+		config.Content.Education = education
 	}
 	if len(certifications) > 0 {
-		config.Certifications = certifications
+		config.Content.Certifications = certifications
 	}
 }
 

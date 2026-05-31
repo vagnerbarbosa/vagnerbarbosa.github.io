@@ -4,7 +4,7 @@ package models
 // Experience represents a professional work experience imported from LinkedIn.
 type Experience struct {
 	Company     string   `yaml:"company" json:"company"`
-	Role        string   `yaml:"role" json:"role"`
+	Title       string   `yaml:"title" json:"title"`
 	StartDate   string   `yaml:"start_date" json:"start_date"`
 	EndDate     string   `yaml:"end_date" json:"end_date"`
 	Description []string `yaml:"description" json:"description"`
@@ -13,9 +13,9 @@ type Experience struct {
 }
 
 // ID returns a unique identifier for this experience.
-// Format: company#role
+// Format: company#title
 func (e Experience) ID() string {
-	return e.Company + "#" + e.Role
+	return e.Company + "#" + e.Title
 }
 
 // Validate checks if the experience has all required fields.
@@ -23,8 +23,8 @@ func (e Experience) Validate() error {
 	if e.Company == "" {
 		return NewValidationError("company", "cannot be empty")
 	}
-	if e.Role == "" {
-		return NewValidationError("role", "cannot be empty")
+	if e.Title == "" {
+		return NewValidationError("title", "cannot be empty")
 	}
 	if e.StartDate == "" {
 		return NewValidationError("start_date", "cannot be empty")

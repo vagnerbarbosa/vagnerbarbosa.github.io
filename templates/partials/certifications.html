@@ -1,0 +1,35 @@
+{{define "certifications"}}
+<div class="accordion fade-in fade-in-delay-3" id="certifications" role="region" aria-label="Certificações">
+  <button class="accordion-header" aria-expanded="false" aria-controls="certifications-content">
+    <span class="accordion-header-content">
+      <span class="lang-pt"><span class="bracket">[</span>Certificações<span class="bracket">]</span></span>
+      <span class="lang-en" style="display: none;"><span class="bracket">[</span>Certifications<span class="bracket">]</span></span>
+    </span>
+    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="accordion-content" id="certifications-content">
+    <div class="accordion-content-inner">
+      <div class="lang-pt">
+{{range .Content.Certifications}}
+        <div class="certification-item">
+          <h2 class="certification-title">{{.Name}}</h2>
+          <p class="certification-org">{{.Organization}} • {{.IssueDate}}</p>
+          {{if .CredentialURL}}<a href="{{.CredentialURL}}" target="_blank" class="certification-link">Ver credencial</a>{{end}}
+        </div>
+{{end}}
+      </div>
+      <div class="lang-en" style="display: none;">
+{{range .Content.Certifications}}
+        <div class="certification-item">
+          <h2 class="certification-title">{{.Name}}</h2>
+          <p class="certification-org">{{.Organization}} • {{.IssueDate}}</p>
+          {{if .CredentialURL}}<a href="{{.CredentialURL}}" target="_blank" class="certification-link">View credential</a>{{end}}
+        </div>
+{{end}}
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}

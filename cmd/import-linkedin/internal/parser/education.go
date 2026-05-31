@@ -78,7 +78,8 @@ func (p *EducationParser) ParseAll() ([]models.Education, error) {
 
 		edu, err := p.parseRow(row, lineNum)
 		if err != nil {
-			return nil, err
+			fmt.Printf("⚠ Warning: skipping row %d: %v\n", lineNum, err)
+			continue
 		}
 
 		education = append(education, *edu)

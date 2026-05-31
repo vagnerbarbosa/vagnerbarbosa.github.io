@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/css"
@@ -48,14 +49,14 @@ func main() {
 }
 
 func runWithExitCode() int {
-	if err := run(); err != nil {
+	if err := Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		return 1
 	}
 	return 0
 }
 
-func run() error {
+func Run() error {
 	// Load configuration
 	cfg, err := config.Load("config.yaml")
 	if err != nil {
@@ -79,6 +80,11 @@ func run() error {
 		return fmt.Errorf("failed to generate index: %w", err)
 	}
 
+	// Generate SEO files
+	if err := generateSEOFiles(cfg); err != nil {
+		return fmt.Errorf("failed to generate SEO files: %w", err)
+	}
+
 	// Copy and minify static assets
 	if err := copyAssets(); err != nil {
 		return fmt.Errorf("failed to copy assets: %w", err)
@@ -94,11 +100,8 @@ func run() error {
 }
 
 func parseTemplates() (*template.Template, error) {
-	// Templates use auto-escaping by default - safeHTML removed to prevent XSS
-	// All content from config.yaml is treated as plain text
 	tmpl := template.New("")
 
-	// Walk templates directory
 	err := filepath.Walk("templates", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -131,16 +134,13 @@ func parseTemplates() (*template.Template, error) {
 }
 
 func generateIndex(tmpl *template.Template, data config.TemplateData) error {
-	// Execute template to buffer first
 	var buf bytes.Buffer
 	if err := tmpl.ExecuteTemplate(&buf, "index", data); err != nil {
 		return fmt.Errorf("failed to execute template: %w", err)
 	}
 
-	// Minify HTML before writing
 	minified, err := minifier.Bytes("text/html", buf.Bytes())
 	if err != nil {
-		// Fallback to unminified if minification fails
 		minified = buf.Bytes()
 	}
 
@@ -148,12 +148,60 @@ func generateIndex(tmpl *template.Template, data config.TemplateData) error {
 		return fmt.Errorf("failed to write index.html: %w", err)
 	}
 
-	// Print stats
 	savings := len(buf.Bytes()) - len(minified)
 	if savings > 0 {
 		percent := float64(savings) * 100 / float64(len(buf.Bytes()))
 		fmt.Printf("HTML minified: %d bytes -> %d bytes (saved %d bytes, %.1f%%)\n",
 			len(buf.Bytes()), len(minified), savings, percent)
+	}
+
+	return nil
+}
+
+func generateSEOFiles(cfg *config.Config) error {
+	baseURL := cfg.Site.BaseURL
+	if baseURL == "" {
+		baseURL = "https://vagnerbarbosa.github.io"
+	}
+
+	// 1. Sitemap.xml
+	sitemap := fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>%s</loc>
+    <lastmod>%s</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`, baseURL, time.Now().Format("2006-01-02"))
+	if err := os.WriteFile("public/sitemap.xml", []byte(sitemap), 0644); err != nil {
+		return fmt.Errorf("failed to write sitemap.xml: %w", err)
+	}
+
+	// 2. Robots.txt
+	robots := fmt.Sprintf("User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n", baseURL)
+	if err := os.WriteFile("public/robots.txt", []byte(robots), 0644); err != nil {
+		return fmt.Errorf("failed to write robots.txt: %w", err)
+	}
+
+	// 3. site.webmanifest
+	manifest := fmt.Sprintf(`{
+  "name": "%s",
+  "short_name": "%s",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "assets/favicon.webp",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/webp"
+    }
+  ]
+}`, cfg.Site.Title, cfg.Site.Username)
+	if err := os.WriteFile("public/site.webmanifest", []byte(manifest), 0644); err != nil {
+		return fmt.Errorf("failed to write site.webmanifest: %w", err)
 	}
 
 	return nil
@@ -183,7 +231,6 @@ func copyCNAME() error {
 	return nil
 }
 
-// copyAndMinifyDir recursively copies a directory, minifying supported file types
 func copyAndMinifyDir(src, dst string) error {
 	info, err := os.Stat(src)
 	if err != nil {
@@ -217,7 +264,6 @@ func copyAndMinifyDir(src, dst string) error {
 	return nil
 }
 
-// copyAndMinifyFile copies a file, minifying if it's a supported type
 func copyAndMinifyFile(src, dst string) error {
 	content, err := os.ReadFile(src)
 	if err != nil {
@@ -229,7 +275,6 @@ func copyAndMinifyFile(src, dst string) error {
 		return err
 	}
 
-	// Determine mime type and minify if supported
 	ext := strings.ToLower(filepath.Ext(src))
 	var mimeType string
 

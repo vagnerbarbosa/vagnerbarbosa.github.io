@@ -53,7 +53,7 @@ func Execute(args []string) int {
 
 	switch cmd {
 	case "import":
-		if err := runImport(args[1:]); err != nil {
+		if err := RunImport(args[1:]); err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			return ExitErrorGeneric
 		}

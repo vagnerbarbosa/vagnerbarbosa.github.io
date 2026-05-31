@@ -3,6 +3,7 @@ package comparator
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/models"
 )
@@ -33,105 +34,94 @@ func ApplyChanges(diff *Diff, config *models.ConfigPortfolio) error {
 
 // applyExperienceChanges applies experience changes to the config.
 func applyExperienceChanges(diff EntityDiff[models.Experience], config *models.ConfigPortfolio) error {
-	// Create a map of current experiences
 	currentMap := config.GetExperienceMap()
 
-	// Add new experiences
 	for _, exp := range diff.Added {
 		currentMap[exp.ID()] = exp
 	}
-
-	// Update modified experiences
 	for _, pair := range diff.Modified {
 		currentMap[pair.New.ID()] = pair.New
 	}
-
-	// Remove deleted experiences
 	for _, exp := range diff.Removed {
 		delete(currentMap, exp.ID())
 	}
 
-	// Convert map back to slice
-	config.Experiences = make([]models.Experience, 0, len(currentMap))
+	config.Content.Experiences = make([]models.Experience, 0, len(currentMap))
 	for _, exp := range currentMap {
-		config.Experiences = append(config.Experiences, exp)
+		config.Content.Experiences = append(config.Content.Experiences, exp)
 	}
+
+	sort.Slice(config.Content.Experiences, func(i, j int) bool {
+		return config.Content.Experiences[i].StartDate > config.Content.Experiences[j].StartDate
+	})
 
 	return nil
 }
 
 // applyEducationChanges applies education changes to the config.
 func applyEducationChanges(diff EntityDiff[models.Education], config *models.ConfigPortfolio) error {
-	// Create a map of current education
 	currentMap := config.GetEducationMap()
 
-	// Add new education
 	for _, edu := range diff.Added {
 		currentMap[edu.ID()] = edu
 	}
-
-	// Update modified education
 	for _, pair := range diff.Modified {
 		currentMap[pair.New.ID()] = pair.New
 	}
-
-	// Remove deleted education
 	for _, edu := range diff.Removed {
 		delete(currentMap, edu.ID())
 	}
 
-	// Convert map back to slice
-	config.Education = make([]models.Education, 0, len(currentMap))
+	config.Content.Education = make([]models.Education, 0, len(currentMap))
 	for _, edu := range currentMap {
-		config.Education = append(config.Education, edu)
+		config.Content.Education = append(config.Content.Education, edu)
 	}
+
+	sort.Slice(config.Content.Education, func(i, j int) bool {
+		return config.Content.Education[i].StartDate > config.Content.Education[j].StartDate
+	})
 
 	return nil
 }
 
 // applyCertificationChanges applies certification changes to the config.
 func applyCertificationChanges(diff EntityDiff[models.Certification], config *models.ConfigPortfolio) error {
-	// Create a map of current certifications
 	currentMap := config.GetCertificationMap()
 
-	// Add new certifications
 	for _, cert := range diff.Added {
 		currentMap[cert.ID()] = cert
 	}
-
-	// Update modified certifications
 	for _, pair := range diff.Modified {
 		currentMap[pair.New.ID()] = pair.New
 	}
-
-	// Remove deleted certifications
 	for _, cert := range diff.Removed {
 		delete(currentMap, cert.ID())
 	}
 
-	// Convert map back to slice
-	config.Certifications = make([]models.Certification, 0, len(currentMap))
+	config.Content.Certifications = make([]models.Certification, 0, len(currentMap))
 	for _, cert := range currentMap {
-		config.Certifications = append(config.Certifications, cert)
+		config.Content.Certifications = append(config.Content.Certifications, cert)
 	}
+
+	sort.Slice(config.Content.Certifications, func(i, j int) bool {
+		return config.Content.Certifications[i].IssueDate > config.Content.Certifications[j].IssueDate
+	})
 
 	return nil
 }
 
 // MergeConfigs merges LinkedIn data with existing config.
-// Returns a new config with all LinkedIn data, preserving other sections.
 func MergeConfigs(linkedinData *models.ConfigPortfolio, existingConfig *models.ConfigPortfolio) *models.ConfigPortfolio {
 	result := *existingConfig
 
-	// Override with LinkedIn data
-	if len(linkedinData.Experiences) > 0 {
-		result.Experiences = linkedinData.Experiences
+	if len(linkedinData.Content.Experiences) > 0 {
+		result.Content.Experiences = linkedinData.Content.Experiences
 	}
-	if len(linkedinData.Education) > 0 {
-		result.Education = linkedinData.Education
+	if len(linkedinData.Content.Education) > 0 {
+		result.Content.Education = linkedinData.Content.Education
 	}
-	if len(linkedinData.Certifications) > 0 {
-		result.Certifications = linkedinData.Certifications
+	if len(linkedinData.Content.Certifications) > 0 {
+		result.Content.Certifications = linkedinData.Content.Certifications
 	}
 
 	return &result

@@ -141,8 +141,8 @@ func TestRun_Success(t *testing.T) {
 	}
 
 	// Run the main function
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 
 	// Verify public/index.html was created
@@ -204,8 +204,8 @@ func TestRun_NoCNAME(t *testing.T) {
 	}
 
 	// Run should succeed even without CNAME
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 
 	// Verify public/index.html was still created
@@ -238,8 +238,8 @@ func TestRun_MissingConfig(t *testing.T) {
 	}
 
 	// Run should fail
-	if err := run(); err == nil {
-		t.Errorf("run() should return error for missing config")
+	if err := Run(); err == nil {
+		t.Errorf("Run() should return error for missing config")
 	}
 }
 
@@ -261,9 +261,9 @@ func TestRun_MissingTemplates(t *testing.T) {
 	}
 
 	// Run should fail - templates are required
-	err = run()
+	err = Run()
 	if err == nil {
-		t.Errorf("run() should return error for missing templates")
+		t.Errorf("Run() should return error for missing templates")
 	}
 }
 
@@ -790,9 +790,9 @@ func TestRun_GenerateIndexError(t *testing.T) {
 		t.Fatalf("failed to create blocking file: %v", err)
 	}
 
-	err := run()
+	err := Run()
 	if err == nil {
-		t.Error("run() should return error when generateIndex fails")
+		t.Error("Run() should return error when generateIndex fails")
 	}
 }
 
@@ -957,7 +957,7 @@ func TestCopyFile_StatError(t *testing.T) {
 // TestRun_FailCreatePublicDir verifies normal execution of run.
 func TestRun_FailCreatePublicDir(t *testing.T) {
 	// This tests when MkdirAll fails
-	// Hard to simulate, but we test the error path in run()
+	// Hard to simulate, but we test the error path in Run()
 	fs := setupTestFs(t)
 	fs.setupConfig(t)
 	fs.setupTemplates(t)
@@ -973,9 +973,9 @@ func TestRun_FailCreatePublicDir(t *testing.T) {
 		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// Test that run() succeeds under normal conditions
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	// Test that Run() succeeds under normal conditions
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 }
 
@@ -1301,17 +1301,17 @@ func TestRun_CopyCNAMEError(t *testing.T) {
 		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// Remove the fake public file so run() can create the directory
+	// Remove the fake public file so Run() can create the directory
 	os.Remove(publicFile)
 
 	// Now run should succeed
-	if err := run(); err != nil {
-		t.Errorf("run() error = %v", err)
+	if err := Run(); err != nil {
+		t.Errorf("Run() error = %v", err)
 	}
 }
 
-// TestRun_CopyCNAME_ReturnsError verifica que run() retorna erro quando copyCNAME falha.
-// TestRun_CopyCNAME_ReturnsError verifies that run() returns error when copyCNAME fails.
+// TestRun_CopyCNAME_ReturnsError verifica que Run() retorna erro quando copyCNAME falha.
+// TestRun_CopyCNAME_ReturnsError verifies that Run() returns error when copyCNAME fails.
 func TestRun_CopyCNAME_ReturnsError(t *testing.T) {
 	// Setup filesystem
 	fs := setupTestFs(t)
@@ -1347,10 +1347,10 @@ func TestRun_CopyCNAME_ReturnsError(t *testing.T) {
 		t.Fatalf("Failed to chdir: %v", err)
 	}
 
-	// run() should fail because it cannot write CNAME (a directory exists with that name)
-	err = run()
+	// Run() should fail because it cannot write CNAME (a directory exists with that name)
+	err = Run()
 	if err == nil {
-		t.Error("run() should return error when copyCNAME fails")
+		t.Error("Run() should return error when copyCNAME fails")
 	}
 }
 
@@ -1642,10 +1642,10 @@ func TestRun_FailToCreatePublicDir(t *testing.T) {
 		t.Fatalf("Failed to create blocking file: %v", err)
 	}
 
-	// run() should fail when it cannot create public directory
-	err = run()
+	// Run() should fail when it cannot create public directory
+	err = Run()
 	if err == nil {
-		t.Error("run() should return error when cannot create public directory")
+		t.Error("Run() should return error when cannot create public directory")
 	}
 }
 
@@ -1795,8 +1795,8 @@ func TestCopyAndMinifyDir_StatError(t *testing.T) {
 	}
 }
 
-// TestRun_CopyAssetsError verifica erro em run() quando copyAssets falha.
-// TestRun_CopyAssetsError verifies error in run() when copyAssets fails.
+// TestRun_CopyAssetsError verifica erro em Run() quando copyAssets falha.
+// TestRun_CopyAssetsError verifies error in Run() when copyAssets fails.
 func TestRun_CopyAssetsError(t *testing.T) {
 	fs := setupTestFs(t)
 	fs.setupConfig(t)
@@ -1827,10 +1827,10 @@ func TestRun_CopyAssetsError(t *testing.T) {
 		t.Fatalf("Failed to create blocking file: %v", err)
 	}
 
-	// run() should fail when copyAssets fails
-	err = run()
+	// Run() should fail when copyAssets fails
+	err = Run()
 	if err == nil {
-		t.Error("run() should return error when copyAssets fails")
+		t.Error("Run() should return error when copyAssets fails")
 	}
 }
 

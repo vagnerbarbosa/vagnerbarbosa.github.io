@@ -14,7 +14,7 @@ import (
 	"github.com/vagnerbarbosa/vagnerbarbosa.github.io/cmd/import-linkedin/internal/ui"
 )
 
-func runImport(args []string) error {
+func RunImport(args []string) error {
 	// Parse flags
 	fs := flag.NewFlagSet("import", flag.ExitOnError)
 	fs.StringVar(&Config.ExperiencesPath, "experiences", Config.ExperiencesPath, "Path to Experiences.csv")
@@ -132,9 +132,9 @@ func runImport(args []string) error {
 	fmt.Println()
 
 	diff := comparator.CompareAll(
-		experiences, currentConfig.Experiences,
-		education, currentConfig.Education,
-		certifications, currentConfig.Certifications,
+		experiences, currentConfig.Content.Experiences,
+		education, currentConfig.Content.Education,
+		certifications, currentConfig.Content.Certifications,
 	)
 
 	// Show diff
@@ -170,14 +170,12 @@ func runImport(args []string) error {
 			fmt.Println("\n✓ Mudanças rejeitadas. Nenhuma alteração foi aplicada.")
 			return nil
 		case ui.ConfirmSelect:
-			// Handle selective confirmation
 			confirmations, err := ui.ConfirmWithSelect(diff)
 			if err != nil {
 				return fmt.Errorf("selective confirmation failed: %w", err)
 			}
 			ui.ApplyConfirmations(currentConfig, confirmations)
 			ui.PrintConfirmationSummary(confirmations)
-			// Skip the full apply below since we applied selectively
 			confirmed = false
 		case ui.ConfirmCancel:
 			fmt.Println("\n✓ Operação cancelada.")

@@ -78,7 +78,8 @@ func (p *ExperienceParser) ParseAll() ([]models.Experience, error) {
 
 		experience, err := p.parseRow(row, lineNum)
 		if err != nil {
-			return nil, err
+			fmt.Printf("⚠ Warning: skipping row %d: %v\n", lineNum, err)
+			continue
 		}
 
 		experiences = append(experiences, *experience)
@@ -91,7 +92,7 @@ func (p *ExperienceParser) ParseAll() ([]models.Experience, error) {
 func (p *ExperienceParser) parseRow(row map[string]string, lineNum int) (*models.Experience, error) {
 	experience := models.Experience{
 		Company:   row["Company Name"],
-		Role:      row["Title"],
+		Title:     row["Title"],
 		StartDate: ConvertDate(row["Started On"]),
 		EndDate:   ConvertDate(row["Finished On"]),
 		Location:  row["Location"],
@@ -120,7 +121,6 @@ func (p *ExperienceParser) Close() error {
 }
 
 // Validate validates the experiences CSV file without parsing all entries.
-// Returns a slice of validation errors found.
 func (p *ExperienceParser) Validate() []error {
 	var errors []error
 	lineNum := 1

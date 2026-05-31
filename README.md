@@ -240,6 +240,36 @@ Minified css/main.css: 6308 -> 4712 bytes (saved 1596 bytes, 25.3%)
 Site generated successfully in public/
 ```
 
+## Qualidade e Testes
+
+O projeto utiliza uma estratégia de testes em múltiplas camadas para garantir que os dados importados do LinkedIn sejam renderizados corretamente:
+
+- **Testes Unitários**: Validam componentes isolados do parser e gerador.
+- **Testes de Integração**: Usam **Golden Files** para validar a deterministicidade do pipeline CSV $\rightarrow$ YAML.
+- **Testes E2E (End-to-End)**: Validam o fluxo completo CSV $\rightarrow$ YAML $\rightarrow$ HTML, verificando a presença de marcadores de dados no output final.
+
+Para executar todos os testes:
+```bash
+go test -v ./...
+```
+
+Mais detalhes em [docs/TESTING.md](docs/TESTING.md).
+
+## Qualidade e Testes
+
+O projeto utiliza uma estratégia de testes em múltiplas camadas para garantir que os dados importados do LinkedIn sejam renderizados corretamente:
+
+- **Testes Unitários**: Validam componentes isolados do parser e gerador.
+- **Testes de Integração**: Usam **Golden Files** para validar a deterministicidade do pipeline CSV $\rightarrow$ YAML.
+- **Testes E2E (End-to-End)**: Validam o fluxo completo CSV $\rightarrow$ YAML $\rightarrow$ HTML, verificando a presença de marcadores de dados no output final.
+
+Para executar todos os testes:
+```bash
+go test -v ./...
+```
+
+Mais detalhes em [docs/TESTING.md](docs/TESTING.md).
+
 ## Configuração
 
 ### Site (`config.yaml`)
@@ -265,14 +295,27 @@ content:
   experiences:
     - title: "Título do cargo"
       company: "Nome da empresa"
-      period: "Jan 2020 – Presente"
-      details:
+      start_date: "2020-01-01"
+      end_date: "2022-12-31"
+      description:
         - "Descrição da atividade 1"
         - "Descrição da atividade 2"
+      tech_stack: "Go, Kubernetes"
+      location: "Remoto"
   education:
-    - title: "Curso"
-      school: "Instituição"
-      period: "2018 – 2022"
+    - institution: "Universidade X"
+      degree: "B.S. Computer Science"
+      field: "Ciência da Computação"
+      start_date: "2016-01-01"
+      end_date: "2020-12-31"
+      description:
+        - "Foco em Sistemas Distribuídos"
+  certifications:
+    - name: "AWS Certified Solutions Architect"
+      organization: "Amazon Web Services"
+      issue_date: "2021-01-01"
+      credential_id: "AWS-12345"
+      credential_url: "https://aws.amazon.com/cert"
   technologies:
     - "Go"
     - "JavaScript"
