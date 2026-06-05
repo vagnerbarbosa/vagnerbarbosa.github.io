@@ -4,6 +4,9 @@
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-222?logo=github)](https://vagnerbarbosa.github.io)
 [![Version](https://img.shields.io/github/v/release/vagnerbarbosa/vagnerbarbosa.github.io?label=vers%C3%A3o)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/releases/latest)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-passing-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
+[![Integration Tests](https://img.shields.io/badge/Integration%20Tests-passing-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
+[![E2E Tests](https://img.shields.io/badge/E2E%20Tests-passing-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
 
 > Personal website and portfolio of Vagner Barbosa - Software Engineer
 

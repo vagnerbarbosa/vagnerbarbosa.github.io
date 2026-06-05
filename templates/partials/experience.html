@@ -1,4 +1,5 @@
 {{define "experience"}}
+{{if .Content.Experiences}}
 <div class="accordion fade-in fade-in-delay-2" id="experience" role="region" aria-label="Experiência profissional">
   <button class="accordion-header" aria-expanded="false" aria-controls="experience-content">
     <span class="accordion-header-content">
@@ -42,4 +43,5 @@
     </div>
   </div>
 </div>
+{{end}}
 {{end}}
