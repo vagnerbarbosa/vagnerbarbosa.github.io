@@ -5,9 +5,12 @@ package models
 type Education struct {
 	Institution string   `yaml:"institution" json:"institution"`
 	Degree      string   `yaml:"degree" json:"degree"`
+	DegreeEN    string   `yaml:"degree_en,omitempty" json:"degree_en,omitempty"`
 	Field       string   `yaml:"field,omitempty" json:"field,omitempty"`
 	StartDate   string   `yaml:"start_date,omitempty" json:"start_date,omitempty"`
+	StartDateEN string   `yaml:"start_date_en,omitempty" json:"start_date_en,omitempty"`
 	EndDate     string   `yaml:"end_date,omitempty" json:"end_date,omitempty"`
+	EndDateEN   string   `yaml:"end_date_en,omitempty" json:"end_date_en,omitempty"`
 	Description []string `yaml:"description,omitempty" json:"description,omitempty"`
 }
 

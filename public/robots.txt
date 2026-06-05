@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.vagnerbarbosa.com/sitemap.xml
+Sitemap: https://vagnerbarbosa.github.io/sitemap.xml

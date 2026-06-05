@@ -5,9 +5,13 @@ package models
 type Experience struct {
 	Company     string   `yaml:"company" json:"company"`
 	Title       string   `yaml:"title" json:"title"`
+	TitleEN     string   `yaml:"title_en,omitempty" json:"title_en,omitempty"`
 	StartDate   string   `yaml:"start_date" json:"start_date"`
+	StartDateEN string   `yaml:"start_date_en,omitempty" json:"start_date_en,omitempty"`
 	EndDate     string   `yaml:"end_date" json:"end_date"`
+	EndDateEN   string   `yaml:"end_date_en,omitempty" json:"end_date_en,omitempty"`
 	Description []string `yaml:"description" json:"description"`
+	DescriptionEN []string `yaml:"description_en,omitempty" json:"description_en,omitempty"`
 	TechStack   string   `yaml:"tech_stack,omitempty" json:"tech_stack,omitempty"`
 	Location    string   `yaml:"location,omitempty" json:"location,omitempty"`
 }
