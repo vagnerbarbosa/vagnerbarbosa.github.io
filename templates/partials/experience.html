@@ -28,10 +28,10 @@
       <div class="lang-en" style="display: none;">
 {{range .Content.Experiences}}
         <div class="experience-item">
-          <h2 class="experience-title">{{.Title}}</h2>
-          <p class="experience-company">{{.Company}} • {{.StartDate}}{{if .EndDate}} - {{.EndDate}}{{else}} - Present{{end}}</p>
+          <h2 class="experience-title">{{.TitleEN}}</h2>
+          <p class="experience-company">{{.Company}} • {{.StartDateEN}}{{if .EndDateEN}} - {{.EndDateEN}}{{else}} - Present{{end}}</p>
           <ul>
-{{range .Description}}
+{{range .DescriptionEN}}
             <li>{{.}}</li>
 {{end}}
           </ul>

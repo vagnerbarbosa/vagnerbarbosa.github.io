@@ -22,12 +22,14 @@ content:
     - title: "Desenvolvedor Backend Especialista"
       title_en: "Specialist Backend Developer"
       company: "Zup Innovation (Itaú)"
-      period: "Fev 2025 – Presente"
-      period_en: "Feb 2025 – Present"
-      details:
+      start_date: "Fev 2025"
+      start_date_en: "Feb 2025"
+      end_date: ""
+      end_date_en: ""
+      description:
         - "Como Especialista Backend, atuando em diversas frentes, como: Otimização de FinOps: Referência técnica na evolução do KPI de FinOps para o Itaú, elevando a eficiência de 80% para 96,2% via otimizações em RDS e implementação de Glue Flex"
         - "Liderança Técnica: Gestão direta de mais de 7 desenvolvedores (pleno e sênior), aumentando a maturidade do time via mentorias e planos de carreira baseados em métricas"
-      details_en:
+      description_en:
         - "As a Backend Specialist, working on several fronts, such as: FinOps Optimization: Technical reference in the evolution of FinOps KPIs for Itaú, increasing efficiency from 80% to 96.2% through RDS optimizations and Glue Flex implementation"
         - "Technical Leadership: Direct management of more than 7 developers (mid and senior), increasing team maturity through mentorship and career plans based on metrics"
       tech_stack: "Java • Python • AWS (Lambda • Glue • RDS) • Datadog • Prompt Engineering • RAG e Fine-tuning"
@@ -35,13 +37,15 @@ content:
     - title: "Analista Desenvolvedor Sênior"
       title_en: "Senior Developer Analyst"
       company: "Invillia (PagBank)"
-      period: "Jul 2021 – Fev 2025"
-      period_en: "Jul 2021 – Feb 2025"
-      details:
+      start_date: "Jul 2021"
+      start_date_en: "Jul 2021"
+      end_date: "Fev 2025"
+      end_date_en: "Feb 2025"
+      description:
         - "Como Sênior além das funções de pleno ainda atuei no papel de Tech Lead com as seguintes responsabilidades: Mitigação de Fraude: Desenvolvi soluções de orquestração para Risco e Fraude no PagBank, reduzindo perdas financeiras com fluxos de prevenção e chargeback em tempo real"
         - "Resiliência e Escala: Projetei sistemas de stream de alta performance e validei a escalabilidade através de testes de carga com Locust, garantindo baixa latência sob alto volume"
         - "Gestão de PDI: Acompanhei o Plano de Desenvolvimento Individual da equipe técnica, garantindo alinhamento total com as necessidades de negócio"
-      details_en:
+      description_en:
         - "As a Senior, in addition to full functions, I also acted as Tech Lead with the following responsibilities: Fraud Mitigation: Developed orchestration solutions for Risk and Fraud at PagBank, reducing financial losses with real-time prevention and chargeback flows"
         - "Resilience and Scale: Designed high-performance stream systems and validated scalability through load testing with Locust, ensuring low latency under high volume"
         - "PDI Management: Followed up on the Individual Development Plan of the technical team, ensuring full alignment with business needs"
@@ -50,39 +54,56 @@ content:
     - title: "Analista Desenvolvedor Pleno"
       title_en: "Mid-level Developer Analyst"
       company: "Invillia (PagBank)"
-      period: "Ago 2020 – Jul 2021"
-      period_en: "Aug 2020 – Jul 2021"
-      details:
+      start_date: "Ago 2020"
+      start_date_en: "Aug 2020"
+      end_date: "Jul 2021"
+      end_date_en: "Jul 2021"
+      description:
         - "Atuando no contexto de Risco e Fraude para produtos financeiros do PagBank, implementando soluções focadas em orquestração, enriquecimentos de dados e processos relacionados ao Transacional (Prevenção) e ao Pós Transacional (Chargeback e Disputa)"
-      details_en:
+      description_en:
         - "Working in the context of Risk and Fraud for PagBank financial products, implementing solutions focused on orchestration, data enrichment and processes related to Transactional (Prevention) and Post Transactional (Chargeback and Dispute)"
       tech_stack: "Java 8 • 11 • 17 • Kotlin • Spring Boot • Spring Feign • Gradle • Apache Kafka • Apacha Airflow • SonarQube • CheckStyle • SpotBugs • MockMvc • Rest Docs • Cucumber • Junit • Mockito • RestAssured • Locust • Splunk • New Relic • Jira • Jenkins • Amazon Workspaces • Marathon • Apache Mesos • Kubernetes • Amazon Redshift • Grafana • Prometheus • Open Telemetry"
 
     - title: "Analista Desenvolvedor Pleno"
       title_en: "Mid-level Developer Analyst"
       company: "SONDA"
-      period: "Ago 2019 – Jul 2020"
-      period_en: "Aug 2019 – Jul 2020"
-      details:
+      start_date: "Ago 2019"
+      start_date_en: "Aug 2019"
+      end_date: "Jul 2020"
+      end_date_en: "Jul 2020"
+      description:
         - "Atuando como Desenvolvedor Pleno para clientes em todo território nacional com foco principalmente no Ministério da Justiça e Segurança Pública. Seguindo metodologias Ágeis como SCRUM"
         - "Em linhas gerais as atividades foram: Desenvolvimento de WebServices REST. Criação de Testes Unitários e de Integração; Versionamento de código usando GIT via fluxo GitFlow; Controle de atividades via Azure e Trello"
-      details_en:
+      description_en:
         - "Working as a Mid-level Developer for clients across the country with a focus mainly on the Ministry of Justice and Public Security. Following Agile methodologies such as SCRUM"
         - "In general, the activities were: Development of REST WebServices. Creation of Unit and Integration Tests; Code versioning using GIT via GitFlow; Activity control via Azure and Trello"
       tech_stack: "Java 12 • Hibernate ORM • Hibernate Envers • Maven • Swagger • Trello • Eclipse IDE • Intellij IDE • VS Code • git-scm • Docker • Junit • Jasper Report • Mockito"
 
   education:
-    - title: "Pós-graduação em Inteligência Artificial"
-      title_en: "Postgraduate in Artificial Intelligence"
-      school: "FIAP"
-      period: "Conclusão em 2026"
-      period_en: "Conclusion in 2026"
+    - degree: "Pós-graduação em Inteligência Artificial"
+      degree_en: "Postgraduate in Artificial Intelligence"
+      institution: "FIAP"
+      start_date: ""
+      start_date_en: ""
+      end_date: "2026"
+      end_date_en: "2026"
+      description:
+        - "Foco em LLMs e Agentes de IA"
+    - degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas"
+      degree_en: "Technologist in System Analysis and Development"
+      institution: "IFPB"
+      start_date: "2016"
+      start_date_en: "2016"
+      end_date: "2020"
+      end_date_en: "2020"
+      description:
+        - "Formação base em computação"
 
-    - title: "Tecnólogo em Análise e Desenvolvimento de Sistemas"
-      title_en: "Technologist in System Analysis and Development"
-      school: "IFPB"
-      period: "Concluído em 2020"
-      period_en: "Completed in 2020"
+  certifications:
+    - name: "AWS Certified Solutions Architect"
+      organization: "Amazon Web Services"
+      issue_date: "2023-01-01"
+      credential_url: "https://aws.amazon.com/cert"
 
   technologies:
     - "Java"
@@ -96,6 +117,7 @@ content:
     - "LangChain"
     - "Git"
     - "Linux"
+
   privacy:
     pt: "Este site não coleta dados pessoais, não utiliza cookies de rastreamento e não armazena informações dos visitantes."
     en: "This website does not collect personal data, does not use tracking cookies, and does not store visitor information."
