@@ -137,6 +137,56 @@ func TestE2E_FullPipeline(t *testing.T) {
 	}
 }
 
+func TestE2E_EmptySections(t *testing.T) {
+	runner := NewE2ETestRunner(t)
+
+	// Create a config with an empty certifications list
+	configContent := `
+site:
+  title: "Test Site"
+content:
+  certifications: []
+  experiences: []
+  education: []
+  technologies: []
+`
+	if err := os.WriteFile(runner.ConfigPath, []byte(configContent), 0644); err != nil {
+		t.Fatalf("failed to write test config: %v", err)
+	}
+
+	// Run Generator
+	if err := runner.RunGenerator(); err != nil {
+		t.Fatalf("Generator failed: %v", err)
+	}
+
+	// Validate Output
+	indexPath := filepath.Join(runner.PublicDir, "index.html")
+	htmlContent, err := os.ReadFile(indexPath)
+	if err != nil {
+		t.Fatalf("failed to read index.html: %v", err)
+	}
+	content := string(htmlContent)
+
+	// The markers should NOT be present
+	markers := []struct {
+		name string
+		id   string
+	}{
+		{"Experience", "id=\"experience\""},
+		{"Education", "id=\"education\""},
+		{"Certifications", "id=\"certifications\""},
+		{"Skills", "id=\"skills\""},
+	}
+
+	for _, m := range markers {
+		t.Run(m.name, func(t *testing.T) {
+			if strings.Contains(content, m.id) {
+				t.Errorf("Section %s should NOT be rendered when empty, but found marker %q", m.name, m.id)
+			}
+		})
+	}
+}
+
 func copyDir(src, dst string) error {
 	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
 		if err != nil {

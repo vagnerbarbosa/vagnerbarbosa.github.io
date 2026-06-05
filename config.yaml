@@ -99,11 +99,7 @@ content:
       description:
         - "Formação base em computação"
 
-  certifications:
-    - name: "AWS Certified Solutions Architect"
-      organization: "Amazon Web Services"
-      issue_date: "2023-01-01"
-      credential_url: "https://aws.amazon.com/cert"
+  certifications: []
 
   technologies:
     - "Java"

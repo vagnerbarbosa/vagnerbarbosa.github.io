@@ -1,4 +1,5 @@
 {{define "about"}}
+{{if .Content.ParsedAbout.ParagraphsPT}}
 <div class="accordion expanded fade-in fade-in-delay-1" id="about" role="region" aria-label="Sobre">
   <button class="accordion-header" aria-expanded="true" aria-controls="about-content">
     <span class="accordion-header-content">
@@ -24,4 +25,5 @@
     </div>
   </div>
 </div>
+{{end}}
 {{end}}

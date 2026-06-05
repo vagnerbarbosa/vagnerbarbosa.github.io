@@ -1,4 +1,5 @@
 {{define "education"}}
+{{if .Content.Education}}
 <div class="accordion fade-in fade-in-delay-4" id="education" role="region" aria-label="Formação acadêmica">
   <button class="accordion-header" aria-expanded="false" aria-controls="education-content">
     <span class="accordion-header-content">
@@ -30,4 +31,5 @@
     </div>
   </div>
 </div>
+{{end}}
 {{end}}
