@@ -24,7 +24,6 @@ linters:
     - staticcheck
     - errcheck
     - ineffassign
-    - typecheck
 
     # Linters adicionais recomendados
     - gocyclo
