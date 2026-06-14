@@ -22,17 +22,17 @@ type SiteConfig struct {
 }
 
 type Experience struct {
-	Title       string   `yaml:"title"`
-	TitleEN     string   `yaml:"title_en,omitempty"`
-	Company     string   `yaml:"company"`
-	StartDate   string   `yaml:"start_date"`
-	StartDateEN string   `yaml:"start_date_en,omitempty"`
-	EndDate     string   `yaml:"end_date"`
-	EndDateEN   string   `yaml:"end_date_en,omitempty"`
-	Description []string `yaml:"description"`
+	Title         string   `yaml:"title"`
+	TitleEN       string   `yaml:"title_en,omitempty"`
+	Company       string   `yaml:"company"`
+	StartDate     string   `yaml:"start_date"`
+	StartDateEN   string   `yaml:"start_date_en,omitempty"`
+	EndDate       string   `yaml:"end_date"`
+	EndDateEN     string   `yaml:"end_date_en,omitempty"`
+	Description   []string `yaml:"description"`
 	DescriptionEN []string `yaml:"description_en,omitempty"`
-	TechStack   string   `yaml:"tech_stack"`
-	Location    string   `yaml:"location,omitempty"`
+	TechStack     string   `yaml:"tech_stack"`
+	Location      string   `yaml:"location,omitempty"`
 }
 
 type Education struct {
@@ -48,12 +48,12 @@ type Education struct {
 }
 
 type Certification struct {
-	Name            string `yaml:"name"`
-	Organization    string `yaml:"organization"`
-	IssueDate       string `yaml:"issue_date"`
-	ExpirationDate  string `yaml:"expiration_date,omitempty"`
-	CredentialID    string `yaml:"credential_id,omitempty"`
-	CredentialURL   string `yaml:"credential_url,omitempty"`
+	Name           string `yaml:"name"`
+	Organization   string `yaml:"organization"`
+	IssueDate      string `yaml:"issue_date"`
+	ExpirationDate string `yaml:"expiration_date,omitempty"`
+	CredentialID   string `yaml:"credential_id,omitempty"`
+	CredentialURL  string `yaml:"credential_url,omitempty"`
 }
 
 // AboutContent holds the about section content
@@ -70,13 +70,13 @@ type ParsedAbout struct {
 
 // Content holds all dynamic content
 type Content struct {
-	About        AboutContent `yaml:"about"`
-	ParsedAbout  ParsedAbout
-	Experiences  []Experience `yaml:"experiences"`
-	Education    []Education  `yaml:"education"`
+	About          AboutContent `yaml:"about"`
+	ParsedAbout    ParsedAbout
+	Experiences    []Experience    `yaml:"experiences"`
+	Education      []Education     `yaml:"education"`
 	Certifications []Certification `yaml:"certifications"`
-	Technologies []string     `yaml:"technologies"`
-	Privacy      AboutContent `yaml:"privacy"`
+	Technologies   []string        `yaml:"technologies"`
+	Privacy        AboutContent    `yaml:"privacy"`
 }
 
 // Config is the main configuration structure

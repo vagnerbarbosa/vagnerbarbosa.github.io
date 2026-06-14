@@ -108,7 +108,7 @@ func TestCompareEducation(t *testing.T) {
 			removed:  0,
 		},
 		{
-			name: "all removed",
+			name:     "all removed",
 			linkedin: []models.Education{},
 			current: []models.Education{
 				{Institution: "MIT", Degree: "Bachelor", StartDate: "Jan 2015"},
@@ -176,7 +176,7 @@ func TestCompareCertifications(t *testing.T) {
 			removed:  0,
 		},
 		{
-			name: "all removed",
+			name:     "all removed",
 			linkedin: []models.Certification{},
 			current: []models.Certification{
 				{Name: "AWS", Organization: "Amazon", IssueDate: "Jan 2020"},
@@ -471,11 +471,11 @@ func TestCompareAll(t *testing.T) {
 	}
 	currentExp := []models.Experience{
 		{Company: "Google", Title: "Engineer", StartDate: "Jan 2019"}, // Modified (StartDate differs)
-		{Company: "Apple", Title: "Designer", StartDate: "Jan 2018"},   // Removed
+		{Company: "Apple", Title: "Designer", StartDate: "Jan 2018"},  // Removed
 	}
 
 	linkedinEdu := []models.Education{
-		{Institution: "MIT", Degree: "Bachelor", StartDate: "Jan 2010"}, // Same
+		{Institution: "MIT", Degree: "Bachelor", StartDate: "Jan 2010"},    // Same
 		{Institution: "Stanford", Degree: "Master", StartDate: "Jan 2015"}, // Added
 	}
 	currentEdu := []models.Education{

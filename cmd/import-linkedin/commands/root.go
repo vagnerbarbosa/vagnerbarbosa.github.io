@@ -8,13 +8,13 @@ import (
 
 // Exit codes
 const (
-	ExitSuccess           = 0
-	ExitErrorGeneric      = 1
-	ExitErrorCSV          = 2
-	ExitErrorYAML         = 3
-	ExitErrorNotFound     = 4
-	ExitErrorPermission   = 5
-	ExitErrorInterrupted  = 130
+	ExitSuccess          = 0
+	ExitErrorGeneric     = 1
+	ExitErrorCSV         = 2
+	ExitErrorYAML        = 3
+	ExitErrorNotFound    = 4
+	ExitErrorPermission  = 5
+	ExitErrorInterrupted = 130
 )
 
 // Config holds CLI configuration.

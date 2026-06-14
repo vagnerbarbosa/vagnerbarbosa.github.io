@@ -361,20 +361,20 @@ func TestToTemplateData(t *testing.T) {
 			},
 			Experiences: []Experience{
 				{
-					Title:     "Dev",
-					TitleEN:     "Developer",
-					Company:   "Test Co",
-					StartDate:    "2020-2021",
-					StartDateEN:  "2020-2021",
+					Title:         "Dev",
+					TitleEN:       "Developer",
+					Company:       "Test Co",
+					StartDate:     "2020-2021",
+					StartDateEN:   "2020-2021",
 					Description:   []string{"Detail 1"},
 					DescriptionEN: []string{"Detail EN 1"},
-					TechStack: "Go",
+					TechStack:     "Go",
 				},
 			},
 			Education: []Education{
 				{
-					Degree:    "Degree",
-					DegreeEN:  "Degree",
+					Degree:      "Degree",
+					DegreeEN:    "Degree",
 					Institution: "University",
 					StartDate:   "2015-2019",
 					StartDateEN: "2015-2019",
@@ -453,22 +453,22 @@ func TestToTemplateData_EmptyAbout(t *testing.T) {
 
 func TestConfigStructs(t *testing.T) {
 	exp := Experience{
-		Title:     "Dev",
-		TitleEN:   "Developer",
-		Company:   "Company",
-		StartDate:    "2020-2021",
-		StartDateEN:  "2020-2021",
+		Title:         "Dev",
+		TitleEN:       "Developer",
+		Company:       "Company",
+		StartDate:     "2020-2021",
+		StartDateEN:   "2020-2021",
 		Description:   []string{"detail"},
 		DescriptionEN: []string{"detail"},
-		TechStack: "Go",
+		TechStack:     "Go",
 	}
 	if exp.Title != "Dev" {
 		t.Errorf("Experience.Title = %v, want %v", exp.Title, "Dev")
 	}
 
 	edu := Education{
-		Degree:    "Degree",
-		DegreeEN:  "Degree",
+		Degree:      "Degree",
+		DegreeEN:    "Degree",
 		Institution: "School",
 		StartDate:   "2015-2019",
 		StartDateEN: "2015-2019",

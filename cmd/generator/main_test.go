@@ -1620,7 +1620,6 @@ func TestCopyAndMinifyFile_NoSavings(t *testing.T) {
 	}
 }
 
-
 // TestCopyAndMinifyFile_MinificationError verifica erro na minificação.
 // TestCopyAndMinifyFile_MinificationError verifies minification error handling.
 func TestCopyAndMinifyFile_MinificationError(t *testing.T) {
@@ -2048,7 +2047,7 @@ func TestCopyCNAME_Exists(t *testing.T) {
 	fs.setupAssets(t)
 
 	cnameContent := "vagnerbarbosa.com"
-		os.MkdirAll(filepath.Join(fs.root, "public"), 0755)
+	os.MkdirAll(filepath.Join(fs.root, "public"), 0755)
 	os.WriteFile(filepath.Join(fs.root, "CNAME"), []byte(cnameContent), 0644)
 
 	originalCwd, err := os.Getwd()

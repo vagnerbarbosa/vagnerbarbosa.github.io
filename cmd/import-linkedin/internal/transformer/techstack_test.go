@@ -8,12 +8,12 @@ import (
 
 func TestExtractTechStack(t *testing.T) {
 	tests := []struct {
-		name            string
-		bullets         []string
-		wantCleaned     []string
-		wantTechStack   string
-		wantFound       bool
-		wantPattern     string
+		name          string
+		bullets       []string
+		wantCleaned   []string
+		wantTechStack string
+		wantFound     bool
+		wantPattern   string
 	}{
 		{
 			name:          "US1: Extract tech stack with 'Tecnologias:' pattern",

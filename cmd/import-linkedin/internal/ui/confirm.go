@@ -25,8 +25,8 @@ const (
 
 // Confirmation represents a user's choice for a specific change.
 type Confirmation struct {
-	Change  models.Change
-	Accept  bool
+	Change models.Change
+	Accept bool
 }
 
 // ConfirmAll asks the user to confirm all changes at once.

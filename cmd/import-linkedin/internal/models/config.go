@@ -16,23 +16,23 @@ type About struct {
 
 // SiteConfig represents the site configuration part of the YAML.
 type SiteConfig struct {
-	Title           string  `yaml:"title"`
-	Description     string  `yaml:"description"`
-	BaseURL         string  `yaml:"baseurl"`
-	Username        string  `yaml:"username"`
-	UserDescription string  `yaml:"user_description"`
-	UserTitle       string  `yaml:"user_title"`
-	Email           string  `yaml:"email"`
-	Social          Social  `yaml:"social"`
+	Title           string `yaml:"title"`
+	Description     string `yaml:"description"`
+	BaseURL         string `yaml:"baseurl"`
+	Username        string `yaml:"username"`
+	UserDescription string `yaml:"user_description"`
+	UserTitle       string `yaml:"user_title"`
+	Email           string `yaml:"email"`
+	Social          Social `yaml:"social"`
 }
 
 // Content represents the content part of the YAML.
 type Content struct {
-	About        About          `yaml:"about"`
-	Experiences  []Experience   `yaml:"experiences"`
-	Education    []Education    `yaml:"education"`
+	About          About           `yaml:"about"`
+	Experiences    []Experience    `yaml:"experiences"`
+	Education      []Education     `yaml:"education"`
 	Certifications []Certification `yaml:"certifications"`
-	Technologies []string      `yaml:"technologies"`
+	Technologies   []string        `yaml:"technologies"`
 }
 
 // ConfigPortfolio represents the complete portfolio configuration structure.
