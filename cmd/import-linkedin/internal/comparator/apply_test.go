@@ -230,8 +230,8 @@ func TestGetImportResult(t *testing.T) {
 
 func TestPrintImportResult(t *testing.T) {
 	result := ImportResult{
-		ExperiencesAdded: 1,
-		EducationAdded:    1,
+		ExperiencesAdded:    1,
+		EducationAdded:      1,
 		CertificationsAdded: 1,
 	}
 	// This is mainly to cover the code

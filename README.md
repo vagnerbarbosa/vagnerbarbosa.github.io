@@ -7,6 +7,7 @@
 [![Unit Tests](https://img.shields.io/badge/Unit%20Tests-passing-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
 [![Integration Tests](https://img.shields.io/badge/Integration%20Tests-passing-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
 [![E2E Tests](https://img.shields.io/badge/E2E%20Tests-passing-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
+[![Lint](https://img.shields.io/badge/Lint-golangci--lint-brightgreen)](https://github.com/vagnerbarbosa/vagnerbarbosa.github.io/actions)
 
 > Personal website and portfolio of Vagner Barbosa - Software Engineer
 
@@ -133,6 +134,7 @@ vagnerbarbosa.github.io/
 ├── config.yaml               # Configuração do site
 ├── go.mod                    # Módulo Go
 ├── go.sum                    # Checksums de dependências
+├── .golangci.yml             # Configuração do lint
 ├── SECURITY.md               # Política de segurança do projeto
 ├── .github/
 │   ├── scripts/              # Scripts para GitHub Actions
@@ -207,6 +209,7 @@ go mod download
 | `go test ./...` | Executa testes unitários |
 | `go test -v -tags=integration ./...` | Executa testes de integração (Golden Files) |
 | `go test -v -tags=e2e ./...` | Executa testes de ponta a ponta (E2E) |
+| `golangci-lint run ./...` | Executa lint no código Go |
 
 O site gerado estará disponível em `public/index.html`.
 
@@ -231,7 +234,29 @@ Site generated successfully in public/
 
 ## Qualidade e Testes
 
-O projeto utiliza uma estratégia de testes em múltiplas camadas para garantir que os dados importados do de LinkedIn sejam renderizados corretamente:
+O projeto utiliza **lint automático** e uma estratégia de testes em múltiplas camadas para garantir a qualidade do código:
+
+### Lint (golangci-lint)
+
+O código Go é validado automaticamente pelo [golangci-lint](https://golangci-lint.run/) no CI. Se houver erros de lint, o build falha ❌
+
+**Linters habilitados:**
+- `gofmt`, `goimports`, `govet` - Formatação e análise básica
+- `gosimple`, `staticcheck`, `errcheck` - Análise estática avançada
+- `gocyclo` - Complexidade ciclomática (máx: 15)
+- `lll` - Linhas muito longas (máx: 120 chars)
+- `unused`, `dupl` - Código não utilizado/duplicado
+
+Para rodar localmente:
+```bash
+# Instalar golangci-lint
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+# Executar lint
+golangci-lint run ./...
+```
+
+### Testes
 
 - **Testes Unitários**: Validam componentes isolados do parser e gerador.
 - **Testes de Integração**: Usam **Golden Files** para validar a deterministicidade do pipeline CSV $\rightarrow$ YAML.

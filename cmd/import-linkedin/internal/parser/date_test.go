@@ -43,8 +43,8 @@ func TestConvertDate(t *testing.T) {
 
 func TestValidateDate(t *testing.T) {
 	tests := []struct {
-		name    string
-		input   string
+		name     string
+		input    string
 		expected bool
 	}{
 		{"empty", "", true},
@@ -72,8 +72,8 @@ func TestValidateDate(t *testing.T) {
 
 func TestParseDateRange(t *testing.T) {
 	tests := []struct {
-		name      string
-		input     string
+		name        string
+		input       string
 		expectStart string
 		expectEnd   string
 		expectErr   bool

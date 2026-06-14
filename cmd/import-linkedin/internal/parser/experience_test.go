@@ -286,7 +286,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "valid experience",
 			exp: models.Experience{
 				Company:   "Acme Corp",
-				Title:      "Engineer",
+				Title:     "Engineer",
 				StartDate: "Jan 2020",
 			},
 			wantErr: false,
@@ -295,7 +295,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "missing company",
 			exp: models.Experience{
 				Company:   "",
-				Title:      "Engineer",
+				Title:     "Engineer",
 				StartDate: "Jan 2020",
 			},
 			wantErr: true,
@@ -304,7 +304,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "missing role",
 			exp: models.Experience{
 				Company:   "Acme Corp",
-				Title:      "",
+				Title:     "",
 				StartDate: "Jan 2020",
 			},
 			wantErr: true,
@@ -313,7 +313,7 @@ func TestExperience_Validate(t *testing.T) {
 			name: "missing start date",
 			exp: models.Experience{
 				Company:   "Acme Corp",
-				Title:      "Engineer",
+				Title:     "Engineer",
 				StartDate: "",
 			},
 			wantErr: true,

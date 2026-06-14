@@ -10,11 +10,11 @@ import (
 
 // Diff represents the differences between LinkedIn data and current config.
 type Diff struct {
-	Added        []models.Change
-	Modified     []models.Change
-	Removed      []models.Change
-	Experiences  EntityDiff[models.Experience]
-	Education    EntityDiff[models.Education]
+	Added          []models.Change
+	Modified       []models.Change
+	Removed        []models.Change
+	Experiences    EntityDiff[models.Experience]
+	Education      EntityDiff[models.Education]
 	Certifications EntityDiff[models.Certification]
 }
 

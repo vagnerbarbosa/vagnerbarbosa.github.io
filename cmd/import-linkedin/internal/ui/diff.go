@@ -13,7 +13,7 @@ import (
 // Styles for diff visualization
 var (
 	// Colors
-	addedStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("42"))   // Green
+	addedStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("42"))  // Green
 	removedStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("196")) // Red
 	modifiedStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("220")) // Yellow
 	titleStyle    = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("39"))

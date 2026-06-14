@@ -129,13 +129,13 @@ func MergeConfigs(linkedinData *models.ConfigPortfolio, existingConfig *models.C
 
 // ImportResult represents the result of an import operation.
 type ImportResult struct {
-	ExperiencesAdded    int
-	ExperiencesModified int
-	ExperiencesRemoved  int
-	EducationAdded      int
-	EducationModified   int
-	EducationRemoved    int
-	CertificationsAdded int
+	ExperiencesAdded       int
+	ExperiencesModified    int
+	ExperiencesRemoved     int
+	EducationAdded         int
+	EducationModified      int
+	EducationRemoved       int
+	CertificationsAdded    int
 	CertificationsModified int
 	CertificationsRemoved  int
 }
