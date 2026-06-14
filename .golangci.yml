@@ -1,52 +1,20 @@
-# Configuração do golangci-lint
+# Configuração do golangci-lint v2
 # Documentação: https://golangci-lint.run/usage/configuration/
+
+version: "2"
 
 run:
   timeout: 5m
-  # Não rodar em vendor/
-  issues:
-    exclude-dirs:
-      - vendor
 
 output:
   formats:
-    - format: colored-line-number
+    text:
       path: stdout
   print-issued-lines: true
   print-linter-name: true
 
-linters-settings:
-  # Verifica erros comuns
-  errcheck:
-    check-type-assertions: true
-    check-blank: true
-
-  # Verifica formatação
-  gofmt:
-    simplify: true
-
-  # Verifica imports não utilizados
-  goimports:
-    local-prefixes: github.com/vagnerbarbosa/vagnerbarbosa.github.io
-
-  # Verifica código complexo
-  gocyclo:
-    min-complexity: 15
-
-  # Verifica linhas muito longas
-  lll:
-    line-length: 120
-
-  # Verifica funções muito longas
-  funlen:
-    lines: 60
-    statements: 40
-
-  # Verifica duplicação
-  dupl:
-    threshold: 100
-
 linters:
+  default: none
   enable:
     # Linters oficiais Go
     - gofmt
@@ -71,32 +39,44 @@ linters:
     - godot
     - prealloc
 
-  disable:
-    # Desabilitados intencionalmente
-    - deadcode      # Replaced by unused
-    - structcheck   # Replaced by unused
-    - varcheck      # Replaced by unused
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+
+  gofmt:
+    simplify: true
+
+  goimports:
+    local-prefixes: github.com/vagnerbarbosa/vagnerbarbosa.github.io
+
+  gocyclo:
+    min-complexity: 15
+
+  lll:
+    line-length: 120
+
+  funlen:
+    lines: 60
+    statements: 40
+
+  dupl:
+    threshold: 100
 
 issues:
-  # Excluir alguns padrões comuns
+  exclude-dirs:
+    - vendor
+
   exclude-rules:
-    # Ignorar erros de documentação em testes
     - path: _test\.go
       linters:
         - dupl
         - lll
         - funlen
 
-    # Ignorar linha longa em arquivos de configuração
     - path: config\.yaml
       linters:
         - lll
 
-  # Não usar exclude padrão para ver tudo
-  exclude-use-default: false
-
-  # Máximo de issues por linter
   max-issues-per-linter: 50
-
-  # Máximo de issues do mesmo tipo
   max-same-issues: 10
